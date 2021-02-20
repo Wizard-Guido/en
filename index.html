@@ -152,6 +152,176 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python virtualenv notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/20/Python%20virtualenv%20notes/">Python virtualenv notes</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/20/Python%20virtualenv%20notes/" class="archive-article-date">
+  	<time datetime="2021-02-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><h2 id="1-Perface"><a href="#1-Perface" class="headerlink" title="1. Perface"></a>1. Perface</h2><ul>
+<li><h3 id="Why-do-we-need-virtual-environment"><a href="#Why-do-we-need-virtual-environment" class="headerlink" title="Why do we need virtual environment"></a>Why do we need virtual environment</h3><p>Simply put, an individual virtual environment can be used by an individual python project so that every project won’t affect each other and also won’t affect the python system environment.</p>
+</li>
+<li><h3 id="Why-do-we-use-‘virtualenv’"><a href="#Why-do-we-use-‘virtualenv’" class="headerlink" title="Why do we use ‘virtualenv’"></a>Why do we use ‘virtualenv’</h3><p>In short, it’s the python official recommendation.</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-Install-virtualenv"><a href="#2-Install-virtualenv" class="headerlink" title="2. Install virtualenv"></a>2. Install virtualenv</h2><p><em>PS: My laptop is MacBook, so the following procedure is based on the macbook terminal.</em></p>
+<ol>
+<li><p>Before installing, you should make sure you’ve already installed pip, and then use pip to install env.  </p>
+<blockquote>
+<p>pip3 install virtualenv</p>
+</blockquote>
+</li>
+<li><p>Check if the installation is successful  </p>
+<blockquote>
+<p>virtualenv –version</p>
+</blockquote>
+</li>
+<li><p>Create the big virtual environment  </p>
+<p>Firstly, you should ‘cd’ to the directory where you wanna create VE(virtual environment)</p>
+<blockquote>
+<p> virtualenv envname #Here you should give your virtual environment name</p>
+</blockquote>
+<p>The environment will also install Python setuptools, pip, wheel automatically</p>
+</li>
+<li><p>Activate your environment</p>
+<blockquote>
+<p>Source bigenvname/bin/activate</p>
+</blockquote>
+</li>
+<li><p>Extra procedure</p>
+<p>For me, I often use terminal to start the editor, so when you activate the environment, Use ‘cd’ to the directory where you wanna store your code file. And then start jupyter notebook.</p>
+<blockquote>
+<p>jupyter notebook</p>
+</blockquote>
+<p>So now you can code in the envname virtual environment.</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-Install-virtualenvwrapper"><a href="#3-Install-virtualenvwrapper" class="headerlink" title="3. Install virtualenvwrapper"></a>3. Install virtualenvwrapper</h2><p>*Note: Sometimes, we may create more than one VE, and we’d like to swap between the different VE. Hence, we need the command ‘workon’ which is belong to the package virtualenvwrapper. </p>
+<ol>
+<li><p>Install VEW. </p>
+<blockquote>
+<p>pip3 install virtualenvwrapper</p>
+</blockquote>
+</li>
+<li><p>Configure VEW. </p>
+<blockquote>
+<p>export WORKON_HOME=’your sub-VE address’</p>
+<p>source /usr/local/bin/virtualenvwrapper.sh  // execute the command package</p>
+</blockquote>
+<p>But what if your address is not the above default address, how could you find it? I faced the same problem before. We can try to uninstall the package ‘virtualenvwrapper’ and it will prompt us all the files address we would delete.</p>
+<p>![截屏2021-02-20 13.24.51](/Users/arieskoo/Library/Application Support/typora-user-images/截屏2021-02-20 13.24.51.png)</p>
+</li>
+<li><p>After configuring all the environment parameters, we s=also need to execute source command to make it work. </p>
+<blockquote>
+<p>source ~/.bash_profile</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="4-Use-VEW-to-create-sub-environment"><a href="#4-Use-VEW-to-create-sub-environment" class="headerlink" title="4.  Use VEW to create sub-environment"></a>4.  Use VEW to create sub-environment</h2><ol>
+<li><p>create sub-env</p>
+<blockquote>
+<p>makvirtualenv env01(envname)</p>
+</blockquote>
+<p>The default address is under the previous export WORKON_HOME=’your sub-VE address’.</p>
+</li>
+<li><p>Query the list of VE</p>
+<blockquote>
+<p>lsvirtualenv -b</p>
+</blockquote>
+</li>
+<li><p>query the python pakcages</p>
+<blockquote>
+<p>lssitepackages</p>
+</blockquote>
+</li>
+<li><p>exchange the sub-VE</p>
+<blockquote>
+<p>workon envname</p>
+</blockquote>
+</li>
+<li><p>Remove sub-VE</p>
+<blockquote>
+<p>rmvirtualenv envname</p>
+</blockquote>
+</li>
+<li><p>Install python packages in the sub-VE</p>
+<blockquote>
+<p>pip install packagename</p>
+</blockquote>
+</li>
+<li><p>exit the sub-VE</p>
+<blockquote>
+<p>deactivate</p>
+</blockquote>
+</li>
+<li><p>How to start VE every time start the PC</p>
+<p>Since you totally exit the VE, you need to reactivate the big VE every time you wanna reenter it.</p>
+<blockquote>
+<p>cd big VE address</p>
+<p>source bigenvname/bin/activate</p>
+<p>workon sub-VEname</p>
+</blockquote>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/20/Python%20virtualenv%20notes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Rnotebook" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
