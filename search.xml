@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>DOM &amp; BOM</title>
     <url>/2021/11/04/DOM%20&amp;%20BOM/</url>
     <content><![CDATA[<a id="more"></a>
 
@@ -138,7 +138,7 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>Handy CheatSheet</title>
     <url>/2021/10/27/Handy-CheatSheet/</url>
     <content><![CDATA[<a id="more"></a>
 
@@ -237,7 +237,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>基于MAC的NGINX配置使用---反向代理解决跨域</title>
     <url>/2021/10/19/Nignx%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<a id="more"></a>
 
@@ -398,7 +398,9 @@
   <entry>
     <title>使用Python设置本地测试服务器</title>
     <url>/2021/09/16/Python-localServer/</url>
-    <content><![CDATA[<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
 <li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
 <li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
 </ul>
@@ -418,6 +420,12 @@
 </ul>
 <p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
 ]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>Server</tag>
+      </tags>
   </entry>
   <entry>
     <title></title>
