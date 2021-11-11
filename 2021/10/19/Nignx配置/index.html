@@ -22,19 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="测试本地文件的问题 它们具有异步请求功能。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。 它们具有服务器端语言。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。  利用Python建立简单本地HTTP服务器 安装Python  运行命令行（我是mac），输入以下命令检查是否安装： 1python --ve">
+  <meta name="description" content="安装Nginx Terminal执行以下代码： 12brew search nginxbrew install nginx 安装完成后，Terminal输出信息如下： 1234567891011Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;wwwThe default port has been set in &#x2F;usr&#x2F;loc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Python设置本地测试服务器">
-<meta property="og:url" content="http://example.com/2021/09/16/Python-localServer/index.html">
+<meta property="og:title" content="二进制的流浪">
+<meta property="og:url" content="http://example.com/2021/10/19/Nignx%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="二进制的流浪">
-<meta property="og:description" content="测试本地文件的问题 它们具有异步请求功能。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。 它们具有服务器端语言。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。  利用Python建立简单本地HTTP服务器 安装Python  运行命令行（我是mac），输入以下命令检查是否安装： 1python --ve">
+<meta property="og:description" content="安装Nginx Terminal执行以下代码： 12brew search nginxbrew install nginx 安装完成后，Terminal输出信息如下： 1234567891011Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;wwwThe default port has been set in &#x2F;usr&#x2F;loc">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-15T23:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-20T21:33:48.693Z">
+<meta property="article:published_time" content="2021-10-19T20:43:02.289Z">
+<meta property="article:modified_time" content="2021-11-11T14:01:32.402Z">
 <meta property="article:author" content="Will">
+<meta property="article:tag" content="ClientServer">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/09/16/Python-localServer/">
+<link rel="canonical" href="http://example.com/2021/10/19/Nignx%E9%85%8D%E7%BD%AE/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>使用Python设置本地测试服务器 | 二进制的流浪</title>
+  <title> | 二进制的流浪</title>
   
 
 
@@ -195,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/16/Python-localServer/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/19/Nignx%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -208,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用Python设置本地测试服务器
+          
         </h1>
 
         <div class="post-meta">
@@ -218,15 +219,24 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-16 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-16T00:00:00+01:00">2021-09-16</time>
+              <time title="创建时间：2021-10-19 21:43:02" itemprop="dateCreated datePublished" datetime="2021-10-19T21:43:02+01:00">2021-10-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-20 22:33:48" itemprop="dateModified" datetime="2021-09-20T22:33:48+01:00">2021-09-20</time>
+                <time title="修改时间：2021-11-11 14:01:32" itemprop="dateModified" datetime="2021-11-11T14:01:32+00:00">2021-11-11</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend-%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">Frontend/前端</span></a>
+                </span>
+            </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -234,7 +244,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>418</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -253,25 +263,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
-<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
-<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
+        <a id="more"></a>
+
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，Terminal输出信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
+<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
+<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
+<p>以后再次启动nginx只需执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>访问Nginx默认端口8080</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
+<li><p>其他常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<code>nginx.conf</code>文件</p>
+<ul>
+<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
+</li>
+<li><p>找到nginx.conf文件，进入修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
-<li><p>安装Python</p>
 </li>
-<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
-<li><p>cd到目标文件目录</p>
+<li><p>保存文件，重启Nginx</p>
 </li>
-<li><p>启动服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
-<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
+<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
 </li>
-<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
+<li><p>你会看到前端地址所在的内容</p>
+</li>
+<li><p>进行跨域测试</p>
+</li>
+</ol>
 
     </div>
 
@@ -280,6 +306,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ClientServer/" rel="tag"># ClientServer</a>
+          </div>
 
         
 
@@ -287,12 +316,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/02/20/Python%20virtualenv%20notes/" rel="prev" title="Python virtualenv notes">
-      <i class="fa fa-chevron-left"></i> Python virtualenv notes
+    <a href="/2021/10/04/Javascript%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" rel="prev" title="JavaScript函数进阶---学习笔记">
+      <i class="fa fa-chevron-left"></i> JavaScript函数进阶---学习笔记
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/09/21/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86-%E6%9D%82%E8%B0%88/" rel="next" title="前端知识-杂谈">
-      前端知识-杂谈 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/10/27/Handy-CheatSheet/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -352,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">测试本地文件的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Python%E5%BB%BA%E7%AB%8B%E7%AE%80%E5%8D%95%E6%9C%AC%E5%9C%B0HTTP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">利用Python建立简单本地HTTP服务器</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="nav-number">1.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8Nginx"><span class="nav-number">2.</span> <span class="nav-text">启动Nginx</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
