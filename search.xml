@@ -3,10 +3,11 @@
   <entry>
     <title>DOM &amp; BOM</title>
     <url>/2021/11/04/DOM%20&amp;%20BOM/</url>
-    <content><![CDATA[<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-什么是DOM"><a href="#1-什么是DOM" class="headerlink" title="1. 什么是DOM"></a>1. 什么是DOM</h2><p><code>DOM</code>就是<code>Document Object Model</code>，<strong>文档对象模型</strong>，里边是接口，即方法函数。</p>
-<p>官方定义：DOM是一个**独立于语言的、用于操作XML和HTML文档的程序接口(API)**。在浏览器中主要用于与HTML文档打交道，并且使用DOM API用来访问文档中的数据。<br>DOM是个与ES语言无关的API，它在浏览器中的接口却是用JavaScript来实现的，DOM就成了现在JS编码中的重要部分。</p>
+    <content><![CDATA[<p><strong>本章主要介绍DOM概念、操作DOM的代价、浏览器渲染引擎的机制，性能优化以及节流和防抖等常见面试题。</strong></p>
 <a id="more"></a>
 
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-什么是DOM"><a href="#1-什么是DOM" class="headerlink" title="1. 什么是DOM"></a>1. 什么是DOM</h2><p><code>DOM</code>就是<code>Document Object Model</code>，<strong>文档对象模型</strong>，里边是接口，即方法函数。</p>
+<p>官方定义：DOM是一个**独立于语言的、用于操作XML和HTML文档的程序接口(API)**。在浏览器中主要用于与HTML文档打交道，并且使用DOM API用来访问文档中的数据。<br>DOM是个与ES语言无关的API，它在浏览器中的接口却是用JavaScript来实现的，DOM就成了现在JS编码中的重要部分。</p>
 <h2 id="2-JS修改DOM元素代价很高"><a href="#2-JS修改DOM元素代价很高" class="headerlink" title="2. JS修改DOM元素代价很高"></a>2. JS修改DOM元素代价很高</h2><p>每次操作DOM之前，就会先<strong>访问DOM</strong>，所以也会消耗性能。<br>在此基础上，因为<strong>修改DOM</strong>会导致浏览器重新计算页面的几何变化、引发浏览器模板引擎的<strong>重排</strong>(回流 - 回滚流程)和<strong>重绘</strong>，进而更加消耗性能。</p>
 <h2 id="3-浏览器渲染引擎的工作原理和流程"><a href="#3-浏览器渲染引擎的工作原理和流程" class="headerlink" title="3. 浏览器渲染引擎的工作原理和流程"></a>3. 浏览器渲染引擎的工作原理和流程</h2><p>浏览器下载完页面中的所有资源（比如HTML、JavaScript、CSS、图片等）后，会发生如下的6步过程：</p>
 <ol>
@@ -287,7 +288,9 @@
   <entry>
     <title>Python virtualenv notes</title>
     <url>/2021/02/20/Python%20virtualenv%20notes/</url>
-    <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><h2 id="1-Perface"><a href="#1-Perface" class="headerlink" title="1. Perface"></a>1. Perface</h2><ul>
+    <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
+
+<h2 id="1-Perface"><a href="#1-Perface" class="headerlink" title="1. Perface"></a>1. Perface</h2><ul>
 <li><h3 id="Why-do-we-need-virtual-environment"><a href="#Why-do-we-need-virtual-environment" class="headerlink" title="Why do we need virtual environment"></a>Why do we need virtual environment</h3><p>Simply put, an individual virtual environment can be used by an individual python project so that every project won’t affect each other and also won’t affect the python system environment.</p>
 </li>
 <li><h3 id="Why-do-we-use-‘virtualenv’"><a href="#Why-do-we-use-‘virtualenv’" class="headerlink" title="Why do we use ‘virtualenv’"></a>Why do we use ‘virtualenv’</h3><p>In short, it’s the python official recommendation.</p>
@@ -396,6 +399,12 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>virtualenv</tag>
+      </tags>
   </entry>
   <entry>
     <title>使用Python设置本地测试服务器</title>
@@ -431,9 +440,11 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>R-NoteBook</title>
     <url>/2021/02/16/Rnotebook/</url>
-    <content><![CDATA[<h1 id="R-Lab1-Note"><a href="#R-Lab1-Note" class="headerlink" title="R Lab1 Note"></a>R Lab1 Note</h1><h3 id="1-Basic-Operations"><a href="#1-Basic-Operations" class="headerlink" title="1   Basic Operations"></a>1   Basic Operations</h3><h4 id="Arithmetic-Operations"><a href="#Arithmetic-Operations" class="headerlink" title="Arithmetic Operations"></a>Arithmetic Operations</h4><ol>
+    <content><![CDATA[<h1 id="R-Lab1-Note"><a href="#R-Lab1-Note" class="headerlink" title="R Lab1 Note"></a>R Lab1 Note</h1><a id="more"></a>
+
+<h3 id="1-Basic-Operations"><a href="#1-Basic-Operations" class="headerlink" title="1   Basic Operations"></a>1   Basic Operations</h3><h4 id="Arithmetic-Operations"><a href="#Arithmetic-Operations" class="headerlink" title="Arithmetic Operations"></a>Arithmetic Operations</h4><ol>
 <li><p>Define variable</p>
 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">x &lt;- 10</span><br><span class="line">y &lt;- 20</span><br></pre></td></tr></table></figure></li>
 <li><p>Calculation operation</p>
@@ -606,6 +617,12 @@
 
 <p>Finally, there’re still some knowledge I haven’t mentioned, such as data frame and some more complicated applications of all the structures and plot() function. They will be discussed in the following notes later.</p>
 ]]></content>
+      <categories>
+        <category>R</category>
+      </categories>
+      <tags>
+        <tag>R</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -1008,9 +1025,10 @@
   <entry>
     <title>JavaScript函数进阶---学习笔记</title>
     <url>/2021/10/04/Javascript%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[<h1 id="递归和堆栈"><a href="#递归和堆栈" class="headerlink" title="递归和堆栈"></a>递归和堆栈</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>一个函数在其内部调用自身，就是所谓的<strong>递归</strong></p>
+    <content><![CDATA[<p><strong>本章将深入J高级，诸如Spread语法、闭包、垃圾回收机制、函数对象、SetTimeout和SetInterval、装饰器模式和转发call/apply以及箭头函数。</strong></p>
 <a id="more"></a>
 
+<h1 id="递归和堆栈"><a href="#递归和堆栈" class="headerlink" title="递归和堆栈"></a>递归和堆栈</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>一个函数在其内部调用自身，就是所谓的<strong>递归</strong></p>
 <h3 id="递归和迭代（即循环）-—-两种思考方式"><a href="#递归和迭代（即循环）-—-两种思考方式" class="headerlink" title="递归和迭代（即循环） — 两种思考方式"></a>递归和迭代（即循环） — 两种思考方式</h3><ol>
 <li>递归通常是将函数调用简化为一个更简单的函数调用，然而再将其简化为一个更简单的函数调用，如此反复，直到<strong>基础的递归</strong>（结果显而易见的）</li>
 <li><strong>递归深度：</strong>最大的嵌套调用次数。在JS中，最大递归深度受限于JS引擎，引擎在最大递归深度小于等于10000时是可靠的。</li>
