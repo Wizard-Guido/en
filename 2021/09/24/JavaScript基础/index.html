@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="? 条件运算符1let result &#x3D; condition ? value1 : value2; 注：如果条件为真，则返回value1；否则，返回value2 ‘??’空值合并1let res &#x3D; a ?? b;  如果a已定义，则结果为a 否则，结果为b  用例 12let user &#x3D; &quot;John&quot;;alert(user ?? &quot;Anonymous&amp;quot">
+  <meta name="description" content="JavaScript语语法基础部分一览，包括面试常见的“深浅拷贝”、数据结构操作（如数组插入等）需熟记于心。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript琐碎基础---学习手记">
 <meta property="og:url" content="http://example.com/2021/09/24/JavaScript%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="二进制的流浪">
-<meta property="og:description" content="? 条件运算符1let result &#x3D; condition ? value1 : value2; 注：如果条件为真，则返回value1；否则，返回value2 ‘??’空值合并1let res &#x3D; a ?? b;  如果a已定义，则结果为a 否则，结果为b  用例 12let user &#x3D; &quot;John&quot;;alert(user ?? &quot;Anonymous&amp;quot">
+<meta property="og:description" content="JavaScript语语法基础部分一览，包括面试常见的“深浅拷贝”、数据结构操作（如数组插入等）需熟记于心。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-23T23:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-11T14:52:04.661Z">
+<meta property="article:modified_time" content="2021-11-11T15:02:25.250Z">
 <meta property="article:author" content="Will">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-11 14:52:04" itemprop="dateModified" datetime="2021-11-11T14:52:04+00:00">2021-11-11</time>
+                <time title="修改时间：2021-11-11 15:02:25" itemprop="dateModified" datetime="2021-11-11T15:02:25+00:00">2021-11-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,7 +263,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <a id="more"></a>
+        <p><strong>JavaScript语语法基础部分一览，包括面试常见的“深浅拷贝”、数据结构操作（如数组插入等）需熟记于心。</strong></p>
+<a id="more"></a>
 
 <h1 id="条件运算符"><a href="#条件运算符" class="headerlink" title="? 条件运算符"></a>? 条件运算符</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = condition ? value1 : value2;</span><br></pre></td></tr></table></figure>
 <p><strong>注：</strong>如果条件为真，则返回<code>value1</code>；否则，返回<code>value2</code></p>

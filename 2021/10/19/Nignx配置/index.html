@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="安装Nginx Terminal执行以下代码： 12brew search nginxbrew install nginx 安装完成后，Terminal输出信息如下： 1234567891011Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;wwwThe default port has been set in &#x2F;usr&#x2F;loc">
+  <meta name="description" content="关于Engine X（即Nignx）代理服务器配置说明">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于MAC的NGINX配置使用---反向代理解决跨域">
 <meta property="og:url" content="http://example.com/2021/10/19/Nignx%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="二进制的流浪">
-<meta property="og:description" content="安装Nginx Terminal执行以下代码： 12brew search nginxbrew install nginx 安装完成后，Terminal输出信息如下： 1234567891011Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;wwwThe default port has been set in &#x2F;usr&#x2F;loc">
+<meta property="og:description" content="关于Engine X（即Nignx）代理服务器配置说明">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-18T23:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-11T14:52:14.091Z">
+<meta property="article:modified_time" content="2021-11-11T15:03:07.794Z">
 <meta property="article:author" content="Will">
 <meta property="article:tag" content="ClientServer">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-11 14:52:14" itemprop="dateModified" datetime="2021-11-11T14:52:14+00:00">2021-11-11</time>
+                <time title="修改时间：2021-11-11 15:03:07" itemprop="dateModified" datetime="2021-11-11T15:03:07+00:00">2021-11-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,7 +263,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <a id="more"></a>
+        <p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
+<a id="more"></a>
 
 <h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
 <li><p>Terminal执行以下代码：</p>
