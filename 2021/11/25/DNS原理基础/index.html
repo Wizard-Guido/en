@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前端趋势目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。">
+  <meta name="description" content="DNS，又称为域名系统（Domain Names System），是一项互联网服务，用于进行域名和与之相对应的IP地址进行转化的服务器。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端知识-杂谈">
-<meta property="og:url" content="http://example.com/2021/09/21/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86-%E6%9D%82%E8%B0%88/index.html">
+<meta property="og:title" content="DNS原理基础">
+<meta property="og:url" content="http://example.com/2021/11/25/DNS%E5%8E%9F%E7%90%86%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="二进制的流浪">
-<meta property="og:description" content="前端趋势目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。">
+<meta property="og:description" content="DNS，又称为域名系统（Domain Names System），是一项互联网服务，用于进行域名和与之相对应的IP地址进行转化的服务器。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-20T23:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-11T15:04:14.930Z">
+<meta property="article:published_time" content="2021-11-25T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-11-30T00:11:16.526Z">
 <meta property="article:author" content="Will">
-<meta property="article:tag" content="CONCEPT">
+<meta property="article:tag" content="Network">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/09/21/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86-%E6%9D%82%E8%B0%88/">
+<link rel="canonical" href="http://example.com/2021/11/25/DNS%E5%8E%9F%E7%90%86%E5%9F%BA%E7%A1%80/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>前端知识-杂谈 | 二进制的流浪</title>
+  <title>DNS原理基础 | 二进制的流浪</title>
   
 
 
@@ -196,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/21/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86-%E6%9D%82%E8%B0%88/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/25/DNS%E5%8E%9F%E7%90%86%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -209,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          前端知识-杂谈
+          DNS原理基础
         </h1>
 
         <div class="post-meta">
@@ -219,14 +219,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-21T00:00:00+01:00">2021-09-21</time>
+              <time title="创建时间：2021-11-25 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-25T00:00:00+00:00">2021-11-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-11 15:04:14" itemprop="dateModified" datetime="2021-11-11T15:04:14+00:00">2021-11-11</time>
+                <time title="修改时间：2021-11-30 00:11:16" itemprop="dateModified" datetime="2021-11-30T00:11:16+00:00">2021-11-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,7 +244,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>238</span>
+              <span>933</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -263,10 +263,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
+        <p><strong>DNS，又称为域名系统（Domain Names System），是一项互联网服务，用于进行域名和与之相对应的IP地址进行转化的服务器。</strong></p>
 <a id="more"></a>
 
-<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
+<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>DNS用于将域名转换为IP地址。其中：</p>
+<ol>
+<li>IP地址：一组用点分隔的能唯一标识互联网中的计算机的数字组合</li>
+<li>域名：一串用点分隔的名字，用来表示计算机的名称</li>
+</ol>
+<h2 id="域名构成"><a href="#域名构成" class="headerlink" title="域名构成"></a>域名构成</h2><p><strong>域名是层次结构，从上到下（从书写上看是从右到左），分为根域名、顶级域名、二级域名、三级域名等等。</strong></p>
+<blockquote>
+<ol>
+<li><p>根域名：root</p>
+<ol start="2">
+<li><blockquote>
+<p>顶级域名：net, com, edu, org…</p>
+<ol start="3">
+<li><blockquote>
+<p>二级域名：ibm, baidu, alibaba, ….</p>
+<ol start="4">
+<li><blockquote>
+<p>三级域名：www, mail, …</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p>注意：在域名的每一个层级都有一个域名服务器，如果顶级域名中，有edu域名服务器，com域名服务器。</p>
+<h2 id="查询方式"><a href="#查询方式" class="headerlink" title="查询方式"></a>查询方式</h2><ul>
+<li>递归查询：A只请求B，直到B返回A想要的结果。</li>
+<li>迭代查询：A请求B，B返回结果告知A所需要请求的其他服务器，然后A再请求C、D、E等并拿到响应的返回结果。</li>
+</ul>
+<h2 id="域名缓存"><a href="#域名缓存" class="headerlink" title="域名缓存"></a>域名缓存</h2><ul>
+<li><p>对于域名服务器而言：</p>
+<blockquote>
+<p>在首次进行解析域名时，会使用缓存保存域名和对应的IP地址映射。</p>
+</blockquote>
+</li>
+<li><p>对于本地计算机而言：</p>
+<ul>
+<li><p>对于浏览器：</p>
+<blockquote>
+<p>浏览器会在获取网站域名的实际IP后，用缓存保存下来，以减少网络请求次数</p>
+</blockquote>
+</li>
+<li><p>对于操作系统：</p>
+<blockquote>
+<p>操作系统的缓存就是用户自己配置的hosts文件</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h2><p>大致有七个步骤</p>
+<ol>
+<li><p>首先搜索浏览器的DNS缓存，其缓存中维护了一张域名与IP地址的对应表，若有则返回，并结束操作</p>
+</li>
+<li><p>若没有找到，继续搜索操作系统的DNS缓存，若有则返回，并结束操作</p>
+</li>
+<li><p>若没找到，则操作系统把域名发给本地域名服务器，本地域名服务器在自己的DNS缓存中采用递归方式查找，若有则返回，并结束操作</p>
+</li>
+<li><p>若没找到，则本地服务器向上级域名服务器进行迭代查询</p>
+<blockquote>
+<ol>
+<li>本地域名服务器向根域名服务器发送请求，其会返回顶级域名服务器地址</li>
+<li>本地域名服务器再向顶级域名服务器发送请求，其会返回二级域名服务器地址</li>
+<li>本地域名服务器再向二级域名服务器发送请求，最终返回该域名对应的IP地址</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>至此，请求阶段完成，接下来分三步返回结果至浏览器并缓存。</p>
+<ol start="5">
+<li>本地域名服务器将得到的IP地址返回给操作系统，同时缓存该域名与IP的映射</li>
+<li>操作系统将得到的IP地址返回给浏览器，同时缓存该域名与IP的映射</li>
+<li>浏览器得到该域名对应的IP地址，同时缓存该域名与IP的映射</li>
+</ol>
 
     </div>
 
@@ -276,7 +356,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CONCEPT/" rel="tag"># CONCEPT</a>
+              <a href="/tags/Network/" rel="tag"># Network</a>
           </div>
 
         
@@ -285,12 +365,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/16/Python-localServer/" rel="prev" title="使用Python设置本地测试服务器">
-      <i class="fa fa-chevron-left"></i> 使用Python设置本地测试服务器
+    <a href="/2021/11/04/DOM%20&%20BOM/" rel="prev" title="DOM & BOM">
+      <i class="fa fa-chevron-left"></i> DOM & BOM
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/09/22/HTML%E5%AD%A6%E4%B9%A0%E6%89%8B%E8%AE%B0/" rel="next" title="HTML基础---学习手记">
-      HTML基础---学习手记 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/11/28/Redux%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/" rel="next" title="Redux入门操作详解">
+      Redux入门操作详解 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -350,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.</span> <span class="nav-text">前端趋势</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Domain-Names-System"><span class="nav-number">1.</span> <span class="nav-text">Domain Names System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E6%9E%84%E6%88%90"><span class="nav-number">1.2.</span> <span class="nav-text">域名构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">查询方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E7%BC%93%E5%AD%98"><span class="nav-number">1.4.</span> <span class="nav-text">域名缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B"><span class="nav-number">1.5.</span> <span class="nav-text">查询过程</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
