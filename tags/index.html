@@ -52,7 +52,7 @@
   // Wait for the page to load first
   var _prevOnload = window.onload;
   window.onload = function() {
-      var switchLang = document.getElementsByClassName("menu-item menu-item-switcher")[0];
+      var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
       switchLang.onclick = function() {
           var href = window.location.href;
           var indexOfEn = href.toLowerCase().indexOf('/en/');
@@ -138,9 +138,9 @@
 
 <nav class="site-nav">
   <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-switcher">
+        <li class="menu-item menu-item-switch_lang">
 
-    <a href="https://wizard-guido.github.io/" rel="section"><i class="language fa-fw"></i>中文</a>
+    <a href="https://wizard-guido.github.io/" rel="section"><i class="language fa-fw"></i>简体中文</a>
 
   </li>
         <li class="menu-item menu-item-home">
