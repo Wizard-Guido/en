@@ -58,7 +58,7 @@
               window.location.href = href.replace('/en/', '/');
           }
           else {
-              window.location.href = href + '/en/';
+              window.location.href = href.replace('.io', '.io/en/');
           }
           if(typeof(_prevOnload) === 'function') {
               _prevOnload();
