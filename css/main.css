@@ -1,5 +1,5 @@
 :root {
-  --body-bg-color: #dce2f1;
+  --body-bg-color: #fff2e2;
   --content-bg-color: #fff;
   --card-bg-color: #f5f5f5;
   --text-color: #555;
@@ -1246,7 +1246,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #fff;
+  background: #ffc9a7;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2391,7 +2391,7 @@ mjx-container + br {
 }
 .content-wrap {
   background: var(--content-bg-color);
-  background-color: #dce2f1;
+  background-color: #fff2e2;
   border-radius: initial;
   box-shadow: initial;
   box-sizing: border-box;
@@ -2471,7 +2471,7 @@ mjx-container + br {
   }
 }
 .menu .menu-item {
-  background-color: #dce2f1;
+  background-color: #fff2e2;
   display: block;
   margin: 0;
 }
@@ -2509,6 +2509,7 @@ mjx-container + br {
 }
 .sub-menu {
   background: var(--content-bg-color);
+  background: #fff2e2;
   border-bottom: 1px solid #ddd;
   margin: 0;
   padding: 6px 0;
