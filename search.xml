@@ -502,6 +502,39 @@
       </tags>
   </entry>
   <entry>
+    <title>使用Python设置本地测试服务器</title>
+    <url>/en/2021/09/16/Python-localServer/</url>
+    <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
+<a id="more"></a>
+
+<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
+<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
+<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
+</ul>
+<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
+<li><p>安装Python</p>
+</li>
+<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
+<li><p>cd到目标文件目录</p>
+</li>
+<li><p>启动服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
+<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
+</li>
+<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>Server</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redux入门操作详解</title>
     <url>/en/2021/11/28/Redux%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
@@ -570,39 +603,6 @@
       </categories>
       <tags>
         <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Python设置本地测试服务器</title>
-    <url>/en/2021/09/16/Python-localServer/</url>
-    <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
-<a id="more"></a>
-
-<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
-<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
-<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
-</ul>
-<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
-<li><p>安装Python</p>
-</li>
-<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
-<li><p>cd到目标文件目录</p>
-</li>
-<li><p>启动服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
-<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
-</li>
-<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>Server</tag>
       </tags>
   </entry>
   <entry>
