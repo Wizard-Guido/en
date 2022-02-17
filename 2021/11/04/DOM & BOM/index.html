@@ -30,7 +30,7 @@
 <meta property="og:description" content="**This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-04T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-17T22:20:14.707Z">
+<meta property="article:modified_time" content="2022-02-17T22:26:21.074Z">
 <meta property="article:author" content="Will">
 <meta property="article:tag" content="DOM">
 <meta name="twitter:card" content="summary">
@@ -256,7 +256,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-17 22:20:14" itemprop="dateModified" datetime="2022-02-17T22:20:14+00:00">2022-02-17</time>
+                <time title="Modified: 2022-02-17 22:26:21" itemprop="dateModified" datetime="2022-02-17T22:26:21+00:00">2022-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,7 +294,8 @@
 
       
         <p>**This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter. **</p>
-<p>&lt;! –more–&gt;</p>
+<a id="more"></a>
+
 <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-What-is-the-DOM"><a href="#1-What-is-the-DOM" class="headerlink" title="1. What is the DOM"></a>1. What is the DOM</h2><p>The <code>DOM</code> is the <code>Document Object Model</code>, <strong>Document Object Model</strong>, inside which are interfaces, i.e. methods and functions.</p>
 <p>Official definition: DOM is a <strong>language-independent programmatic interface (API)</strong> for manipulating XML and HTML documents. It is mainly used in browsers to deal with HTML documents and is used to access data in the documents using the DOM API.<br>The DOM is a language-independent API, but its interface in the browser is implemented in JavaScript, and the DOM becomes an important part of the JS coding now.</p>
 <h2 id="2-JS-modifying-DOM-elements-is-costly"><a href="#2-JS-modifying-DOM-elements-is-costly" class="headerlink" title="2. JS modifying DOM elements is costly"></a>2. JS modifying DOM elements is costly</h2><p>Every manipulation of the DOM is preceded by <strong>access to the DOM</strong>, so it also consumes performance.<br>On top of this, because <strong>modifying the DOM</strong> causes the browser to recalculate the geometric changes to the page, triggers a <strong>rearrangement</strong> (reflow - rollback process) and <strong>redrawing</strong> of the browser’s templating engine, which in turn consumes even more performance.</p>
