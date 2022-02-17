@@ -3,7 +3,7 @@
   <entry>
     <title>Basic Principle of DNS</title>
     <url>/en/2021/11/25/Basic%20Principle%20of%20DNS/</url>
-    <content><![CDATA[<p>**DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers. **</p>
+    <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
 <a id="more"></a>
 
 <h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
@@ -94,10 +94,9 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/en/2022/02/17/DOM%20&amp;%20BOM/</url>
-    <content><![CDATA[<hr>
-<p>title: DOM &amp; BOM<br>date: 2021-11-04<br>categories: FrontEnd/FrontEnd<br>tags: [DOM]<br>comments: false<br>summary_img: ../cover/orange.jpg<br>summary_img: … /cover/orange.jpg<br>**This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter. **</p>
+    <title>DOM &amp; BOM</title>
+    <url>/en/2021/11/04/DOM%20&amp;%20BOM/</url>
+    <content><![CDATA[<p><strong>This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter.</strong></p>
 <a id="more"></a>
 
 <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-What-is-the-DOM"><a href="#1-What-is-the-DOM" class="headerlink" title="1. What is the DOM"></a>1. What is the DOM</h2><p>The <code>DOM</code> is the <code>Document Object Model</code>, <strong>Document Object Model</strong>, inside which are interfaces, i.e. methods and functions.</p>
@@ -180,10 +179,16 @@
 <ul>
 <li>If a scroll event is constantly triggered for a limited period of time (e.g. some user is idle and holds down the scroll and keeps dragging it around), the current distance to the top will theoretically never be output as long as the triggering does not stop.</li>
 </ul>
-<p>New requirement: **What about giving feedback after a certain time interval even if the user keeps dragging the scroll bar? **</p>
+<p>New requirement: <strong>What about giving feedback after a certain time interval even if the user keeps dragging the scroll bar?</strong></p>
 <p>It’s actually quite simple: we could design a function that <strong>similar to a control valve that opens periodically, i.e. let the function execute once and then temporarily deactivate for a certain period of time, and reactivate after that time</strong> (similar to a skill cooldown).</p>
 <p><strong>Effect</strong>: if the same event is triggered in large numbers over a short period of time, then <strong>after the function is executed once, the function does not work again</strong> for a specified period of time, and does not re-activate until after that time.</p>
 ]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
   </entry>
   <entry>
     <title>Frontend Frontier</title>
@@ -342,53 +347,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
-    <url>/en/2021/10/19/Nignx%20Config/</url>
-    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
-<a id="more"></a>
-
-<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
-<li><p>Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>安装完成后，Terminal输出信息如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
-<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
-<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
-<p>以后再次启动nginx只需执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>访问Nginx默认端口8080</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
-<li><p>其他常用命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>配置<code>nginx.conf</code>文件</p>
-<ul>
-<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
-</li>
-<li><p>找到nginx.conf文件，进入修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>保存文件，重启Nginx</p>
-</li>
-<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
-</li>
-<li><p>你会看到前端地址所在的内容</p>
-</li>
-<li><p>进行跨域测试</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>ClientServer</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python virtualenv notes</title>
     <url>/en/2021/02/20/Python%20virtualenv%20notes/</url>
     <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
@@ -510,6 +468,53 @@
       </tags>
   </entry>
   <entry>
+    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
+    <url>/en/2021/10/19/Nignx%20Config/</url>
+    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
+<a id="more"></a>
+
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，Terminal输出信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
+<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
+<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
+<p>以后再次启动nginx只需执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>访问Nginx默认端口8080</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
+<li><p>其他常用命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<code>nginx.conf</code>文件</p>
+<ul>
+<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
+</li>
+<li><p>找到nginx.conf文件，进入修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>保存文件，重启Nginx</p>
+</li>
+<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
+</li>
+<li><p>你会看到前端地址所在的内容</p>
+</li>
+<li><p>进行跨域测试</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>ClientServer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Set up local testing server using Python</title>
     <url>/en/2021/09/16/Python-localServer/</url>
     <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
@@ -612,6 +617,20 @@
       <tags>
         <tag>React</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/en/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>R-NoteBook</title>
@@ -799,23 +818,9 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/en/2021/02/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>HTTP &amp; Network Security</title>
     <url>/en/2021/12/06/HTTP%20&amp;%20Network/</url>
-    <content><![CDATA[<p>**This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development. **</p>
+    <content><![CDATA[<p><strong>This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development.</strong></p>
 <a id="more"></a>
 
 <h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>HTTP is a TCP/IP based <strong>application layer protocol</strong>. It does not involve the transmission of datagrams, but mainly specifies the format of communication between the client and the server, and uses port 80 by default.</p>
