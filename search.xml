@@ -96,92 +96,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Handy CheatSheet</title>
-    <url>/en/2021/10/27/Handy-CheatSheet/</url>
-    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
-<thead>
-<tr>
-<th align="center">Algorithm</th>
-<th align="center">Best Time Complexity</th>
-<th align="center">Ave TC</th>
-<th align="center">Worst TC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Selection Sort</td>
-<td align="center">Ω($n^2$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bubble Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Insertion Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Heap Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Quick Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Merge Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bucket Sort</td>
-<td align="center">Ω($n+k$)</td>
-<td align="center">Θ($n+k$)</td>
-<td align="center">O($n^2$)</td>
-</tr>
-<tr>
-<td align="center">Radix Sort</td>
-<td align="center">Ω($nk$)</td>
-<td align="center">Θ($nk$)</td>
-<td align="center">O($nk$)</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
-<li>O($logn$)    ——————–    e.g. Binary Tree</li>
-<li>O($n$)          ——————–    e.g. Simple Search</li>
-<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
-</ol>
-<hr>
-<ol start="4">
-<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
-</ol>
-<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
-<li>sout + enter</li>
-<li>psvm + enter</li>
-<li>fori + enter</li>
-<li>iter + enter</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Algorithm/算法</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DOM &amp; BOM</title>
     <url>/en/2021/11/04/DOM%20&amp;%20BOM/</url>
     <content><![CDATA[<p><strong>本章主要介绍DOM概念、操作DOM的代价、浏览器渲染引擎的机制，性能优化以及节流和防抖等常见面试题。</strong></p>
@@ -276,6 +190,92 @@
       </categories>
       <tags>
         <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Handy CheatSheet</title>
+    <url>/en/2021/10/27/Handy-CheatSheet/</url>
+    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
+<thead>
+<tr>
+<th align="center">Algorithm</th>
+<th align="center">Best Time Complexity</th>
+<th align="center">Ave TC</th>
+<th align="center">Worst TC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Selection Sort</td>
+<td align="center">Ω($n^2$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bubble Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Insertion Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Heap Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Quick Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Merge Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bucket Sort</td>
+<td align="center">Ω($n+k$)</td>
+<td align="center">Θ($n+k$)</td>
+<td align="center">O($n^2$)</td>
+</tr>
+<tr>
+<td align="center">Radix Sort</td>
+<td align="center">Ω($nk$)</td>
+<td align="center">Θ($nk$)</td>
+<td align="center">O($nk$)</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
+<li>O($logn$)    ——————–    e.g. Binary Tree</li>
+<li>O($n$)          ——————–    e.g. Simple Search</li>
+<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
+</ol>
+<hr>
+<ol start="4">
+<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
+</ol>
+<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
+<li>sout + enter</li>
+<li>psvm + enter</li>
+<li>fori + enter</li>
+<li>iter + enter</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Algorithm/算法</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>
