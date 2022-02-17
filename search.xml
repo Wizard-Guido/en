@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/en/2022/02/17/DOM%20&amp;%20BOM/</url>
-    <content><![CDATA[<hr>
-<p>title: DOM &amp; BOM<br>date: 2021-11-04<br>categories: FrontEnd/FrontEnd<br>tags: [DOM]<br>comments: false<br>summary_img: … /cover/orange.jpg<br>summary_img: … /cover/orange.jpg<br>**This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter. **</p>
+    <title>Basic Principle of DNS</title>
+    <url>/en/2021/11/25/Basic%20Principle%20of%20DNS/</url>
+    <content><![CDATA[<p>**DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers. **</p>
+<p>&lt;! –more–&gt;</p>
+<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
+<ol>
+<li>IP address: a dot-separated set of numbers that uniquely identifies a computer on the Internet</li>
+<li>domain name: a dot-separated string of names used to represent the name of a computer</li>
+</ol>
+<h2 id="Domain-Name-Composition"><a href="#Domain-Name-Composition" class="headerlink" title="Domain Name Composition"></a>Domain Name Composition</h2><p>** Domain names are hierarchical, from top to bottom (right to left in writing), divided into root, top level, second level, third level, etc. ** 1.</p>
+<blockquote>
+<ol>
+<li><p>root domain name: root</p>
+</li>
+<li><blockquote>
+<p>Top level domains: net, com, edu, org…</p>
+<ol start="3">
+<li><blockquote>
+<p>2nd level domains: ibm, baidu, alibaba, ….</p>
+<ol start="4">
+<li><blockquote>
+<p>Third level domains: www, mail, …</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<p>Note: At each level of the domain name there is a name server, if in the top level domain, there is edu name server, com name server.</p>
+<h2 id="Query-method"><a href="#Query-method" class="headerlink" title="Query method"></a>Query method</h2><ul>
+<li>Recursive query: A only requests B until B returns the result A wants.</li>
+<li>Iterative query: A requests B, B returns the result informing A of the other servers it needs to request, then A requests C, D, E etc and gets the return result of the response.</li>
+</ul>
+<h2 id="Domain-Caching"><a href="#Domain-Caching" class="headerlink" title="Domain Caching"></a>Domain Caching</h2><ul>
+<li><p>For domain name servers.</p>
+<blockquote>
+<p>When resolving a domain name for the first time, a cache is used to hold the mapping of the domain name to the corresponding IP address.</p>
+</blockquote>
+</li>
+<li><p>For local computers.</p>
+<ul>
+<li><p>For browsers.</p>
+<blockquote>
+<p>The browser will use cache to save the actual IP address of the website domain name after it has been obtained to reduce the number of network requests</p>
+</blockquote>
+</li>
+<li><p>For operating systems.</p>
+<blockquote>
+<p>The operating system cache is the user’s own configured hosts file</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Query-process"><a href="#Query-process" class="headerlink" title="Query process"></a>Query process</h2><p>There are roughly seven steps</p>
+<ol>
+<li><p>first search the browser’s DNS cache, which maintains a table of domain names corresponding to IP addresses, return if available, and end the operation</p>
+</li>
+<li><p>if not found, continue to search the operating system’s DNS cache, return if available, and end the operation</p>
+</li>
+<li><p>if not found, the operating system sends the domain name to the local DNS server, which searches its own DNS cache recursively, returns if there is one, and ends the operation</p>
+</li>
+<li><p>if not found, the local server iterates to the parent DNS server</p>
+<blockquote>
+<ol>
+<li>the local DNS server sends a request to the root DNS server, which returns the top-level DNS address</li>
+<li>the local DNS server then sends a request to the top level DNS server, which returns the address of the second level DNS server</li>
+<li>the local DNS server then sends a request to the second level DNS server, which eventually returns the IP address corresponding to the domain name</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>At this point, the request phase is complete and the result is returned to the browser and cached in three steps. 5.</p>
+<ol start="5">
+<li>the local DNS server returns the IP address to the operating system and caches the mapping of the domain name to the IP</li>
+<li>the operating system returns the IP address to the browser and caches the mapping of the domain name to the IP</li>
+<li>The browser gets the IP address of the domain name and caches the mapping of the domain name to the IP</li>
+</ol>
+]]></content>
+      <categories>
+        <category>FrontEnd/FrontEnd</category>
+      </categories>
+      <tags>
+        <tag>Network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOM &amp; BOM</title>
+    <url>/en/2021/11/04/DOM%20&amp;%20BOM/</url>
+    <content><![CDATA[<p>**This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter. **</p>
 <p>&lt;! –more–&gt;</p>
 <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-What-is-the-DOM"><a href="#1-What-is-the-DOM" class="headerlink" title="1. What is the DOM"></a>1. What is the DOM</h2><p>The <code>DOM</code> is the <code>Document Object Model</code>, <strong>Document Object Model</strong>, inside which are interfaces, i.e. methods and functions.</p>
 <p>Official definition: DOM is a <strong>language-independent programmatic interface (API)</strong> for manipulating XML and HTML documents. It is mainly used in browsers to deal with HTML documents and is used to access data in the documents using the DOM API.<br>The DOM is a language-independent API, but its interface in the browser is implemented in JavaScript, and the DOM becomes an important part of the JS coding now.</p>
@@ -90,6 +181,12 @@
 <p>It’s actually quite simple: we could design a function that <strong>similar to a control valve that opens periodically, i.e. let the function execute once and then temporarily deactivate for a certain period of time, and reactivate after that time</strong> (similar to a skill cooldown).</p>
 <p><strong>Effect</strong>: if the same event is triggered in large numbers over a short period of time, then <strong>after the function is executed once, the function does not work again</strong> for a specified period of time, and does not re-activate until after that time.</p>
 ]]></content>
+      <categories>
+        <category>FrontEnd/FrontEnd</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
   </entry>
   <entry>
     <title>HTML基础---学习手记</title>
@@ -434,6 +531,77 @@
       </tags>
   </entry>
   <entry>
+    <title>Redux入门操作详解</title>
+    <url>/en/2021/11/28/Redux%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
+<a id="more"></a>
+
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
+<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
+<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
+<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
+<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
+<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
+<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
+<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
+<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
+<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>R-NoteBook</title>
     <url>/en/2021/02/16/Rnotebook/</url>
     <content><![CDATA[<h1 id="R-Lab1-Note"><a href="#R-Lab1-Note" class="headerlink" title="R Lab1 Note"></a>R Lab1 Note</h1><a id="more"></a>
@@ -619,77 +787,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Redux入门操作详解</title>
-    <url>/en/2021/11/28/Redux%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
-<a id="more"></a>
-
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
-<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
-<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
-<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
-<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
-<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
-<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
-<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
-<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
-<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/en/2021/02/14/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -719,11 +816,9 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/en/2022/02/17/HTTP%20&amp;%20Network/</url>
-    <content><![CDATA[<hr>
-<p>title: HTTP &amp; Network Security<br>date: 2021-12-06<br>categories: Network<br>tags: [HTTP]<br>comments: false<br>summary_img: … /cover/https.svg</p>
-<p>**This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development. **</p>
+    <title>HTTP &amp; Network Security</title>
+    <url>/en/2021/12/06/HTTP%20&amp;%20Network/</url>
+    <content><![CDATA[<p>**This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development. **</p>
 <p>&lt;! –more–&gt;</p>
 <h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>HTTP is a TCP/IP based <strong>application layer protocol</strong>. It does not involve the transmission of datagrams, but mainly specifies the format of communication between the client and the server, and uses port 80 by default.</p>
 <h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
@@ -897,6 +992,12 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
   </entry>
   <entry>
     <title>JavaScript琐碎基础---学习手记</title>
