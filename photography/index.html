@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://wizard-guido.github.io/en/photos/tree-bus-2.jpg">
 <meta property="og:image" content="https://wizard-guido.github.io/en/photos/sunset-building-1.jpg">
 <meta property="article:published_time" content="2021-11-11T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-17T23:57:29.826Z">
+<meta property="article:modified_time" content="2022-02-18T14:38:38.448Z">
 <meta property="article:author" content="Will">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wizard-guido.github.io/en/photos/tree-bus-2.jpg">
@@ -264,6 +264,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -443,6 +444,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '455054cf930233ba6bb3',
+      clientSecret: '411a90e276dec1ad799b9ace429b94c20f632569',
+      repo        : 'en',
+      owner       : 'Wizard-Guido',
+      admin       : ['Wizard-Guido'],
+      id          : '3656c48b3af564fc8b0513224785644c',
+        language: 'en',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
