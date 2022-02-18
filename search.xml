@@ -347,53 +347,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
-    <url>/en/2021/10/19/NignxConfig/</url>
-    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
-<a id="more"></a>
-
-<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
-<li><p>Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>安装完成后，Terminal输出信息如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
-<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
-<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
-<p>以后再次启动nginx只需执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>访问Nginx默认端口8080</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
-<li><p>其他常用命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>配置<code>nginx.conf</code>文件</p>
-<ul>
-<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
-</li>
-<li><p>找到nginx.conf文件，进入修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>保存文件，重启Nginx</p>
-</li>
-<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
-</li>
-<li><p>你会看到前端地址所在的内容</p>
-</li>
-<li><p>进行跨域测试</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>ClientServer</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python virtualenv notes</title>
     <url>/en/2021/02/20/Python%20virtualenv%20notes/</url>
     <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
@@ -512,6 +465,53 @@
       </categories>
       <tags>
         <tag>virtualenv</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
+    <url>/en/2021/10/19/NignxConfig/</url>
+    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
+<a id="more"></a>
+
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，Terminal输出信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
+<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
+<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
+<p>以后再次启动nginx只需执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>访问Nginx默认端口8080</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
+<li><p>其他常用命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<code>nginx.conf</code>文件</p>
+<ul>
+<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
+</li>
+<li><p>找到nginx.conf文件，进入修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>保存文件，重启Nginx</p>
+</li>
+<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
+</li>
+<li><p>你会看到前端地址所在的内容</p>
+</li>
+<li><p>进行跨域测试</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>ClientServer</tag>
       </tags>
   </entry>
   <entry>
