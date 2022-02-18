@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"wizard-guido.github.io","root":"/en/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.">
+  <meta name="description" content="关于Engine X（即Nignx）代理服务器配置说明">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Basic Principle of DNS">
-<meta property="og:url" content="https://wizard-guido.github.io/en/2021/11/25/Basic%20Principle%20of%20DNS/index.html">
+<meta property="og:title" content="NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC">
+<meta property="og:url" content="https://wizard-guido.github.io/en/2021/10/19/NignxConfig/index.html">
 <meta property="og:site_name" content="Binary Vagabondage">
-<meta property="og:description" content="DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.">
+<meta property="og:description" content="关于Engine X（即Nignx）代理服务器配置说明">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-11-25T00:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-17T23:10:05.939Z">
+<meta property="article:published_time" content="2021-10-18T23:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-17T22:48:13.709Z">
 <meta property="article:author" content="Will">
-<meta property="article:tag" content="Network">
+<meta property="article:tag" content="ClientServer">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wizard-guido.github.io/en/2021/11/25/Basic%20Principle%20of%20DNS/">
+<link rel="canonical" href="https://wizard-guido.github.io/en/2021/10/19/NignxConfig/">
 
 
 <script id="page-configurations">
@@ -70,7 +70,7 @@
       }
   }
 </script>
-  <title>Basic Principle of DNS | Binary Vagabondage</title>
+  <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC | Binary Vagabondage</title>
   
 
 
@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wizard-guido.github.io/en/2021/11/25/Basic%20Principle%20of%20DNS/">
+    <link itemprop="mainEntityOfPage" href="https://wizard-guido.github.io/en/2021/10/19/NignxConfig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/en/images/avatar.jpg">
@@ -239,7 +239,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Basic Principle of DNS
+          NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC
         </h1>
 
         <div class="post-meta">
@@ -249,14 +249,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-11-25 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-25T00:00:00+00:00">2021-11-25</time>
+              <time title="Created: 2021-10-19 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-19T00:00:00+01:00">2021-10-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-02-17 23:10:05" itemprop="dateModified" datetime="2022-02-17T23:10:05+00:00">2022-02-17</time>
+                <time title="Modified: 2022-02-17 22:48:13" itemprop="dateModified" datetime="2022-02-17T22:48:13+00:00">2022-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -264,7 +264,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/en/categories/FrontEnd-%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">FrontEnd/前端</span></a>
+                  <a href="/en/categories/Frontend-%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">Frontend/前端</span></a>
                 </span>
             </span>
 
@@ -274,14 +274,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.4k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+              <span>1 mins.</span>
             </span>
 
         </div>
@@ -293,87 +293,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
+        <p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
 <a id="more"></a>
 
-<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
-<ol>
-<li>IP address: a dot-separated set of numbers that uniquely identifies a computer on the Internet</li>
-<li>domain name: a dot-separated string of names used to represent the name of a computer</li>
-</ol>
-<h2 id="Domain-Name-Composition"><a href="#Domain-Name-Composition" class="headerlink" title="Domain Name Composition"></a>Domain Name Composition</h2><p>** Domain names are hierarchical, from top to bottom (right to left in writing), divided into root, top level, second level, third level, etc. ** 1.</p>
-<blockquote>
-<ol>
-<li><p>root domain name: root</p>
-</li>
-<li><blockquote>
-<p>Top level domains: net, com, edu, org…</p>
-<ol start="3">
-<li><blockquote>
-<p>2nd level domains: ibm, baidu, alibaba, ….</p>
-<ol start="4">
-<li><blockquote>
-<p>Third level domains: www, mail, …</p>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-<p>Note: At each level of the domain name there is a name server, if in the top level domain, there is edu name server, com name server.</p>
-<h2 id="Query-method"><a href="#Query-method" class="headerlink" title="Query method"></a>Query method</h2><ul>
-<li>Recursive query: A only requests B until B returns the result A wants.</li>
-<li>Iterative query: A requests B, B returns the result informing A of the other servers it needs to request, then A requests C, D, E etc and gets the return result of the response.</li>
-</ul>
-<h2 id="Domain-Caching"><a href="#Domain-Caching" class="headerlink" title="Domain Caching"></a>Domain Caching</h2><ul>
-<li><p>For domain name servers.</p>
-<blockquote>
-<p>When resolving a domain name for the first time, a cache is used to hold the mapping of the domain name to the corresponding IP address.</p>
-</blockquote>
-</li>
-<li><p>For local computers.</p>
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，Terminal输出信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
+<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
+<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
+<p>以后再次启动nginx只需执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>访问Nginx默认端口8080</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
+<li><p>其他常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<code>nginx.conf</code>文件</p>
 <ul>
-<li><p>For browsers.</p>
-<blockquote>
-<p>The browser will use cache to save the actual IP address of the website domain name after it has been obtained to reduce the number of network requests</p>
-</blockquote>
+<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
 </li>
-<li><p>For operating systems.</p>
-<blockquote>
-<p>The operating system cache is the user’s own configured hosts file</p>
-</blockquote>
-</li>
+<li><p>找到nginx.conf文件，进入修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-</ul>
-<h2 id="Query-process"><a href="#Query-process" class="headerlink" title="Query process"></a>Query process</h2><p>There are roughly seven steps</p>
-<ol>
-<li><p>first search the browser’s DNS cache, which maintains a table of domain names corresponding to IP addresses, return if available, and end the operation</p>
+<li><p>保存文件，重启Nginx</p>
 </li>
-<li><p>if not found, continue to search the operating system’s DNS cache, return if available, and end the operation</p>
+<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
 </li>
-<li><p>if not found, the operating system sends the domain name to the local DNS server, which searches its own DNS cache recursively, returns if there is one, and ends the operation</p>
+<li><p>你会看到前端地址所在的内容</p>
 </li>
-<li><p>if not found, the local server iterates to the parent DNS server</p>
-<blockquote>
-<ol>
-<li>the local DNS server sends a request to the root DNS server, which returns the top-level DNS address</li>
-<li>the local DNS server then sends a request to the top level DNS server, which returns the address of the second level DNS server</li>
-<li>the local DNS server then sends a request to the second level DNS server, which eventually returns the IP address corresponding to the domain name</li>
-</ol>
-</blockquote>
+<li><p>进行跨域测试</p>
 </li>
-</ol>
-<hr>
-<p>At this point, the request phase is complete and the result is returned to the browser and cached in three steps. 5.</p>
-<ol start="5">
-<li>the local DNS server returns the IP address to the operating system and caches the mapping of the domain name to the IP</li>
-<li>the operating system returns the IP address to the browser and caches the mapping of the domain name to the IP</li>
-<li>The browser gets the IP address of the domain name and caches the mapping of the domain name to the IP</li>
 </ol>
 
     </div>
@@ -384,7 +338,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/en/tags/Network/" rel="tag"># Network</a>
+              <a href="/en/tags/ClientServer/" rel="tag"># ClientServer</a>
           </div>
 
         
@@ -393,12 +347,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/en/2021/11/04/DOM%20&%20BOM/" rel="prev" title="DOM & BOM">
-      <i class="fa fa-chevron-left"></i> DOM & BOM
+    <a href="/en/2021/10/04/JavascriptFunction/" rel="prev" title="JavaScript Function and Advance Notes">
+      <i class="fa fa-chevron-left"></i> JavaScript Function and Advance Notes
     </a></div>
       <div class="post-nav-item">
-    <a href="/en/2021/11/28/Redux%20Introduction/" rel="next" title="Redux Introduction --- Operation Intro">
-      Redux Introduction --- Operation Intro <i class="fa fa-chevron-right"></i>
+    <a href="/en/2021/10/27/Handy-CheatSheet/" rel="next" title="Handy CheatSheet">
+      Handy CheatSheet <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -458,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Domain-Names-System"><span class="nav-number">1.</span> <span class="nav-text">Domain Names System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">1.1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Domain-Name-Composition"><span class="nav-number">1.2.</span> <span class="nav-text">Domain Name Composition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Query-method"><span class="nav-number">1.3.</span> <span class="nav-text">Query method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Domain-Caching"><span class="nav-number">1.4.</span> <span class="nav-text">Domain Caching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Query-process"><span class="nav-number">1.5.</span> <span class="nav-text">Query process</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Nginx"><span class="nav-number">1.</span> <span class="nav-text">安装Nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8Nginx"><span class="nav-number">2.</span> <span class="nav-text">启动Nginx</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

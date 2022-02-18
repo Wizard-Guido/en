@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Basic Principle of DNS</title>
-    <url>/en/2021/11/25/Basic%20Principle%20of%20DNS/</url>
+    <url>/en/2021/11/25/BasicPrincipleofDNS/</url>
     <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
 <a id="more"></a>
 
@@ -95,7 +95,7 @@
   </entry>
   <entry>
     <title>DOM &amp; BOM</title>
-    <url>/en/2021/11/04/DOM%20&amp;%20BOM/</url>
+    <url>/en/2021/11/04/DOM&amp;BOM/</url>
     <content><![CDATA[<p><strong>This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter.</strong></p>
 <a id="more"></a>
 
@@ -192,7 +192,7 @@
   </entry>
   <entry>
     <title>Frontend Frontier</title>
-    <url>/en/2021/09/21/Frontend%20Tech/</url>
+    <url>/en/2021/09/21/FrontendTech/</url>
     <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
 <a id="more"></a>
 
@@ -207,7 +207,7 @@
   </entry>
   <entry>
     <title>HTML Basics Notes</title>
-    <url>/en/2021/09/22/HTML%20Notes/</url>
+    <url>/en/2021/09/22/HTMLNotes/</url>
     <content><![CDATA[<p><strong>关于HTML一些生疏和不常见的知识，简单汇总一下。</strong></p>
 <a id="more"></a>
 
@@ -348,7 +348,7 @@
   </entry>
   <entry>
     <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
-    <url>/en/2021/10/19/Nignx%20Config/</url>
+    <url>/en/2021/10/19/NignxConfig/</url>
     <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
 <a id="more"></a>
 
@@ -549,7 +549,7 @@
   </entry>
   <entry>
     <title>Redux Introduction --- Operation Intro</title>
-    <url>/en/2021/11/28/Redux%20Introduction/</url>
+    <url>/en/2021/11/28/ReduxIntroduction/</url>
     <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
 <a id="more"></a>
 
@@ -819,7 +819,7 @@
   </entry>
   <entry>
     <title>HTTP &amp; Network Security</title>
-    <url>/en/2021/12/06/HTTP%20&amp;%20Network/</url>
+    <url>/en/2021/12/06/HTTP&amp;Network/</url>
     <content><![CDATA[<p><strong>This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development.</strong></p>
 <a id="more"></a>
 
@@ -1004,7 +1004,7 @@
   </entry>
   <entry>
     <title>JavaScript Basics Notes</title>
-    <url>/en/2021/09/24/JavaScript%20Basics/</url>
+    <url>/en/2021/09/24/JavaScriptBasics/</url>
     <content><![CDATA[<p><strong>JavaScript语语法基础部分一览，包括面试常见的“深浅拷贝”、数据结构操作（如数组插入等）需熟记于心。</strong></p>
 <a id="more"></a>
 
@@ -1373,7 +1373,7 @@
   </entry>
   <entry>
     <title>JavaScript Function and Advance Notes</title>
-    <url>/en/2021/10/04/Javascript%20Function/</url>
+    <url>/en/2021/10/04/JavascriptFunction/</url>
     <content><![CDATA[<p><strong>本章将深入J高级，诸如Spread语法、闭包、垃圾回收机制、函数对象、SetTimeout和SetInterval、装饰器模式和转发call/apply以及箭头函数。</strong></p>
 <a id="more"></a>
 
