@@ -191,6 +191,55 @@
       </tags>
   </entry>
   <entry>
+    <title>EavesdroppingAndPackeSniffingOverWi-Fi</title>
+    <url>/en/2022/11/18/EavesdroppingAndPackeSniffingOverWi-Fi/</url>
+    <content><![CDATA[<p>**This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. **</p>
+<a id="more"></a>
+
+<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
+<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
+<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
+<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
+<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
+<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
+<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
+<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
+<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
+<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
+<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
+<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
+<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
+<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
+<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
+<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
+<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
+<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
+<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
+<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
+<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
+<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
+<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
+<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
+<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
+<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
+<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
+<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
+<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
+<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
+<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
+<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
+]]></content>
+      <categories>
+        <category>CyberSecurity/网络安全</category>
+      </categories>
+      <tags>
+        <tag>Security</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Frontend Frontier</title>
     <url>/en/2021/09/21/FrontendTech/</url>
     <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
@@ -394,77 +443,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Redux Introduction --- Operation Intro</title>
-    <url>/en/2021/11/28/ReduxIntroduction/</url>
-    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
-<a id="more"></a>
-
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
-<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
-<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
-<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
-<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
-<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
-<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
-<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
-<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
-<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python virtualenv notes</title>
     <url>/en/2021/02/20/Python%20virtualenv%20notes/</url>
     <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
@@ -616,6 +594,77 @@
       </categories>
       <tags>
         <tag>Server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redux Introduction --- Operation Intro</title>
+    <url>/en/2021/11/28/ReduxIntroduction/</url>
+    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
+<a id="more"></a>
+
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
+<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
+<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
+<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
+<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
+<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
+<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
+<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
+<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
+<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
       </tags>
   </entry>
   <entry>
