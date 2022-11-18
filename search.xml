@@ -394,6 +394,77 @@
       </tags>
   </entry>
   <entry>
+    <title>Redux Introduction --- Operation Intro</title>
+    <url>/en/2021/11/28/ReduxIntroduction/</url>
+    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
+<a id="more"></a>
+
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
+<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
+<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
+<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
+<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
+<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
+<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
+<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
+<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
+<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python virtualenv notes</title>
     <url>/en/2021/02/20/Python%20virtualenv%20notes/</url>
     <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
@@ -548,75 +619,18 @@
       </tags>
   </entry>
   <entry>
-    <title>Redux Introduction --- Operation Intro</title>
-    <url>/en/2021/11/28/ReduxIntroduction/</url>
-    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
-<a id="more"></a>
-
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
-<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
-<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
-<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
-<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
-<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
-<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
-<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
-<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
-<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <title>Hello World</title>
+    <url>/en/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-      </tags>
   </entry>
   <entry>
     <title>R-NoteBook</title>
@@ -802,20 +816,6 @@
       <tags>
         <tag>R</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/en/2021/02/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>HTTP &amp; Network Security</title>
