@@ -22,17 +22,20 @@
     var CONFIG = {"hostname":"wizard-guido.github.io","root":"/en/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="This is a story about Binary Vagabondage...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Binary Vagabondage">
-<meta property="og:url" content="https://wizard-guido.github.io/en/tags/HTTP/index.html">
+  <meta name="description" content="When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Some Methods to Flatten a Nested Array">
+<meta property="og:url" content="https://wizard-guido.github.io/en/2022/12/10/SomeMethodstoFlattenANestedArray/index.html">
 <meta property="og:site_name" content="Binary Vagabondage">
-<meta property="og:description" content="This is a story about Binary Vagabondage...">
+<meta property="og:description" content="When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-09T01:05:21.580Z">
 <meta property="article:author" content="Will">
+<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://wizard-guido.github.io/en/tags/HTTP/">
+<link rel="canonical" href="https://wizard-guido.github.io/en/2022/12/10/SomeMethodstoFlattenANestedArray/">
 
 
 <script id="page-configurations">
@@ -40,7 +43,7 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
@@ -67,7 +70,7 @@
       }
   }
 </script>
-  <title>Tag: HTTP | Binary Vagabondage</title>
+  <title>Some Methods to Flatten a Nested Array | Binary Vagabondage</title>
   
 
 
@@ -216,57 +219,126 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">HTTP
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wizard-guido.github.io/en/2022/12/10/SomeMethodstoFlattenANestedArray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="Will">
+      <meta itemprop="description" content="This is a story about Binary Vagabondage...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Binary Vagabondage">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Some Methods to Flatten a Nested Array
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-12-10 00:00:00" itemprop="dateCreated datePublished" datetime="2022-12-10T00:00:00+00:00">2022-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-01-09 01:05:21" itemprop="dateModified" datetime="2023-01-09T01:05:21+00:00">2023-01-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/en/categories/Algorithm-%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">Algorithm/算法</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>991</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
+<a id="more"></a>
+
+<h1 id="Flatten-an-array-in-JavaScript"><a href="#Flatten-an-array-in-JavaScript" class="headerlink" title="Flatten an array in JavaScript"></a>Flatten an array in JavaScript</h1><h2 id="Method-1-Recursion"><a href="#Method-1-Recursion" class="headerlink" title="Method 1. Recursion"></a>Method 1. Recursion</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      res = res.concat(flattenArray(item));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Method-2-toString-split"><a href="#Method-2-toString-split" class="headerlink" title="Method 2. toString() + split()"></a>Method 2. toString() + split()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// FOr example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>]], <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.toString().split(<span class="string">&quot;,&quot;</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">parseInt</span>(item));</span><br></pre></td></tr></table></figure>
+<h2 id="Method-3-The-flat-method"><a href="#Method-3-The-flat-method" class="headerlink" title="Method 3. The flat() method"></a>Method 3. The flat() method</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// For example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>], [<span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr.flat(); <span class="comment">// The depth level is 1 by default</span></span><br><span class="line">arr.flat(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Method-4-Recursion-map"><a href="#Method-4-Recursion-map" class="headerlink" title="Method 4. Recursion + map"></a>Method 4. Recursion + map</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? flattenArray(item) : item</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-12-06T00:00:00+00:00"
-              content="2021-12-06">
-          12-06
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/Algorithm/" rel="tag"># Algorithm</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/en/2021/12/06/HTTP&Network/" itemprop="url">
-            <span itemprop="name">HTTP & Network Security</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/" rel="prev" title="Eavesdropping and Packet Sniffing over Wi-Fi">
+      <i class="fa fa-chevron-left"></i> Eavesdropping and Packet Sniffing over Wi-Fi
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -313,6 +385,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flatten-an-array-in-JavaScript"><span class="nav-number">1.</span> <span class="nav-text">Flatten an array in JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Method-1-Recursion"><span class="nav-number">1.1.</span> <span class="nav-text">Method 1. Recursion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method-2-toString-split"><span class="nav-number">1.2.</span> <span class="nav-text">Method 2. toString() + split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method-3-The-flat-method"><span class="nav-number">1.3.</span> <span class="nav-text">Method 3. The flat() method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method-4-Recursion-map"><span class="nav-number">1.4.</span> <span class="nav-text">Method 4. Recursion + map</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -445,6 +518,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '455054cf930233ba6bb3',
+      clientSecret: '411a90e276dec1ad799b9ace429b94c20f632569',
+      repo        : 'en',
+      owner       : 'Wizard-Guido',
+      admin       : ['Wizard-Guido'],
+      id          : '2d7502b42c0efb416555fd00ab68854c',
+        language: 'en',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
