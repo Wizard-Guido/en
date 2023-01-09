@@ -94,60 +94,149 @@
       </tags>
   </entry>
   <entry>
-    <title>Frontend Frontier</title>
-    <url>/en/2021/09/21/FrontendTech/</url>
-    <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
+    <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
+    <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
+    <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
 <a id="more"></a>
 
-<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
+<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
+<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
+<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
+<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
+<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
+<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
+<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
+<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
+<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
+<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
+<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
+<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
+<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
+<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
+<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
+<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
+<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
+<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
+<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
+<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
+<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
+<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
+<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
+<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
+<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
+<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
+<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
+<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
+<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
+<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
+<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
+<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
+]]></content>
+      <categories>
+        <category>CyberSecurity</category>
+      </categories>
+      <tags>
+        <tag>Security</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOM &amp; BOM</title>
+    <url>/en/2021/11/04/DOM&amp;BOM/</url>
+    <content><![CDATA[<p><strong>This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter.</strong></p>
+<a id="more"></a>
+
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-What-is-the-DOM"><a href="#1-What-is-the-DOM" class="headerlink" title="1. What is the DOM"></a>1. What is the DOM</h2><p>The <code>DOM</code> is the <code>Document Object Model</code>, <strong>Document Object Model</strong>, inside which are interfaces, i.e. methods and functions.</p>
+<p>Official definition: DOM is a <strong>language-independent programmatic interface (API)</strong> for manipulating XML and HTML documents. It is mainly used in browsers to deal with HTML documents and is used to access data in the documents using the DOM API.<br>The DOM is a language-independent API, but its interface in the browser is implemented in JavaScript, and the DOM becomes an important part of the JS coding now.</p>
+<h2 id="2-JS-modifying-DOM-elements-is-costly"><a href="#2-JS-modifying-DOM-elements-is-costly" class="headerlink" title="2. JS modifying DOM elements is costly"></a>2. JS modifying DOM elements is costly</h2><p>Every manipulation of the DOM is preceded by <strong>access to the DOM</strong>, so it also consumes performance.<br>On top of this, because <strong>modifying the DOM</strong> causes the browser to recalculate the geometric changes to the page, triggers a <strong>rearrangement</strong> (reflow - rollback process) and <strong>redrawing</strong> of the browser’s templating engine, which in turn consumes even more performance.</p>
+<h2 id="3-How-the-browser-rendering-engine-works-and-how-it-works"><a href="#3-How-the-browser-rendering-engine-works-and-how-it-works" class="headerlink" title="3. How the browser rendering engine works and how it works"></a>3. How the browser rendering engine works and how it works</h2><p>After the browser has downloaded all the resources in the page (e.g. HTML, JavaScript, CSS, images, etc.), a 6-step process occurs as follows.</p>
+<ol>
+<li><p>parse the HTML and build the DOM Tree (DOM Tree)</p>
+</li>
+<li><p>parse the CSS to create the CSS rule tree (CSSOM Tree)</p>
+</li>
+<li><p>merge the DOM Tree and CSS rule tree to produce the render tree (render Tree)</p>
+</li>
+<li><p>layout the render tree, calculate the size and position of each element according to the generated render tree, and get the geometry information of each node. (Calculate the position and size of the elements based on the size of the viewport) (rearrangement will take this step)</p>
+</li>
+<li><p>draw the render tree to draw the page pixel information (get the number of pixels per node based on the geometric information of each node on the render tree) (redrawing will take this step)</p>
+</li>
+<li><p>the browser sends the pixel information for each layer of nodes to the GPU, which composites and draws the layers to display on the page</p>
+</li>
+</ol>
+<h3 id="3-1-How-does-the-browser-rendering-engine-generate-the-render-tree"><a href="#3-1-How-does-the-browser-rendering-engine-generate-the-render-tree" class="headerlink" title="3.1 How does the browser rendering engine generate the render tree?"></a>3.1 How does the browser rendering engine generate the render tree?</h3><ol>
+<li>traverses each visible node (except for tags such as meta, link, script, etc.; except for elements with display:none;) starting from the root of the DOM Tree</li>
+<li>for each visible node, find the corresponding rule in the CSSOM and apply the style rule to the corresponding node.</li>
+<li>for each visible node, and its corresponding style, combine to generate a render tree.</li>
+</ol>
+<p><strong>Not visible nodes:</strong> Nodes that will not render output (nodes that will not be displayed on the screen) are the following</p>
+<ul>
+<li>tags such as meta, link, script, etc;</li>
+<li>nodes that are hidden via css, i.e. display:none; (the opacity is not visible to humans, the computer can still see it, so it will still be rendered.) (So will elements with visibility as hidden be rendered? Do a test, a div set visibility invisible, left floating, surrounded by text, to see if the text around to let out a blank area. The final test proved that a blank space was indeed created, which means that the invisibility of visibility and opacity is only invisible to the human eye, but the computer will still calculate the position information and draw it out when generating the render tree. The result of the experiment is shown below :)</li>
+</ul>
+<h2 id="4-What-is-browser-rendering-engine-reordering-and-redrawing"><a href="#4-What-is-browser-rendering-engine-reordering-and-redrawing" class="headerlink" title="4. What is browser rendering engine reordering and redrawing?"></a>4. What is browser rendering engine reordering and redrawing?</h2><h3 id="4-1-Reordering"><a href="#4-1-Reordering" class="headerlink" title="4.1 Reordering"></a>4.1 Reordering</h3><p>When a change in the <strong>DOM affects the geometric properties (width, height and position)</strong> of an element, the browser needs to recalculate the geometric properties of the element, and likewise the geometric properties and <strong>position</strong> of other adjacent elements will be affected as a result. The browser invalidates the affected part of the render tree and reconstructs the render tree. This process is called “reordering”.</p>
+<h3 id="4-2-Redrawing"><a href="#4-2-Redrawing" class="headerlink" title="4.2 Redrawing"></a>4.2 Redrawing</h3><p>Once the reordering is complete, the browser redraws the affected parts of the screen in a process called <strong>redrawing</strong>.<br>Since reordering is the step before redrawing, it is natural that <strong>reordering will result in redrawing</strong> when it occurs.</p>
+<h2 id="5-When-is-a-reorder-triggered"><a href="#5-When-is-a-reorder-triggered" class="headerlink" title="5. When is a reorder triggered?"></a>5. When is a reorder triggered?</h2><p>Reordering is required when the page layout and geometry properties change.<br>(At its core: a reorder is triggered whenever an attribute causes a change in position information)</p>
+<ol>
+<li><p>a visible DOM element is added or removed. (A bunch of people queuing up, adding i.e. inserting a person in the middle/deleting i.e. a person in the middle going away, will inevitably affect the position information of the people in the back of the queue)</p>
+</li>
+<li><p>element position change (reordering is because the position information has changed)</p>
+</li>
+<li><p>element size change (outer margin, inner margin, border thickness, width, height, etc.)</p>
+</li>
+<li><p>change in content, e.g. the amount/content of text changes, or an image is replaced by another image of a different size, font size changes, (bolded text?) Resulting in DOM element position, area change. [Calculations can consume CPU power] 5.</p>
+</li>
+<li><p>page renderer initialization (this is a re-run of the process, right? Definitely a re-arrangement)</p>
+</li>
+<li><p>Browser window size change (Position information will be forced to adjust and a re-arrangement will occur. See the gif below for a page where the position of a div element is not modified by viewport resizing, which also triggers a reorder) [consumes GPU computing power]. Experiment: resize viewport, where the position of a div element in a page is not modified by the viewport adjustment, also triggers a reorder</p>
+</li>
+</ol>
+<h2 id="6-When-is-a-repaint-triggered"><a href="#6-When-is-a-repaint-triggered" class="headerlink" title="6. When is a repaint triggered?"></a>6. When is a repaint triggered?</h2><ol>
+<li><p><strong>Relaying inevitably triggers redrawing</strong>, that’s for sure. This is because the browser’s workflow is to render after typesetting. Redraws flow back (roll back the process) to the typesetting stage, which requires the page to be redrawn afterwards.</p>
+</li>
+<li><p>Cases in which redrawing is triggered individually.<br>Situations other than when the size or position of an element changes, (e.g. when the font colour, background colour etc. changes). (I suspect that bold text will also trigger a redraw, but I have no evidence of this. In theory if you bold text inside a fixed size div, it should not affect the reordering of the elements that follow it, but it is possible that other adjacent text or elements inside that div will be reordered.)</p>
+</li>
+</ol>
+<h2 id="7-Browser-performance-optimisation"><a href="#7-Browser-performance-optimisation" class="headerlink" title="7. Browser performance optimisation"></a>7. Browser performance optimisation</h2><h3 id="7-1-Optimisation"><a href="#7-1-Optimisation" class="headerlink" title="7.1 Optimisation"></a>7.1 Optimisation</h3><p>Modern browsers are pretty well established, as multiple manipulations of the DOM can trigger reordering and redrawing and consume performance. So in addition to our conscious efforts to control the number of DOM manipulations, browsers have been designed to intelligently “throttle” DOM manipulations, for example by implementing queued changes and batch execution.</p>
+<p>To explain, **browsers have a “queue” to store (save) js programs that need to manipulate the DOM. Whenever js code is executed to manipulate the dom, a program is first stored in this queue. After a certain period of time, the browser then links the “ES island” and “DOM island” (that is, the JS engine to link the rendering engine) in a centralised, bulk manner, thus triggering a DOM operation. **You can think of this as “one train after another”.</p>
+<h3 id="7-2-Users-interrupting-optimised-actions"><a href="#7-2-Users-interrupting-optimised-actions" class="headerlink" title="7.2 Users interrupting optimised actions"></a>7.2 Users interrupting optimised actions</h3><p>But we humans don’t perceive this, and may interrupt the browser’s “throttling” step by mistake. Forcing the browser to interrupt the current “wait” to perform an immediate dom operation. This allows the browser to hurry up and finish the JS manipulation of the DOM in its “queue” and then return the latest DOM position information to us. It’s like forcing the doors to close when you press the close button manually.</p>
+<p>This happens when we get the DOM information.</p>
+<p><strong>Properties that interrupt browser optimisation and force a reorder to be triggered:</strong></p>
+<blockquote>
+<p>offsetTop, offsetLeft, offsetWidth, offsetHeight<br>scrollTop, scrollLeft, scrollWidth, scrollHeight<br>clientTop, clientLeft, clientWidth, clientHeight<br>getComputedStyle()</p>
+</blockquote>
+<p>**Because it has to request the latest DOM information from the browser, the browser has to rush the JS engine to the rendering engine to perform a DOM operation. **</p>
+<h2 id="8-Why-is-manipulating-the-DOM-very-expensive"><a href="#8-Why-is-manipulating-the-DOM-very-expensive" class="headerlink" title="8. Why is manipulating the DOM very expensive?"></a>8. Why is manipulating the DOM very expensive?</h2><ol>
+<li>ES and DOM are two different things and each connection consumes performance</li>
+<li>manipulating the DOM leads to reordering and redrawing, which consumes CPU; redrawing consumes GPU</li>
+</ol>
+<h2 id="9-Anti-jitter-amp-throttling-—-from-SegmentFault-Ange"><a href="#9-Anti-jitter-amp-throttling-—-from-SegmentFault-Ange" class="headerlink" title="9. Anti-jitter &amp; throttling — from SegmentFault-Ange"></a>9. Anti-jitter &amp; throttling — from SegmentFault-Ange</h2><h3 id="9-1-Explanation"><a href="#9-1-Explanation" class="headerlink" title="9.1 Explanation"></a>9.1 Explanation</h3><p>Case in point: **Most websites will provide such a button: for returning to the top. **</p>
+<p>This button will only appear after scrolling to a certain position from the top, so let’s now abstract this functional requirement - <strong>Listen to the browser scroll event and return the distance between the current scrollbar and the top</strong>. This could be implemented with a function.</p>
+<p>However, a problem will be found when running it:** The default execution frequency of this function, too ! high! too! ** How high is it? In Chrome, for example, we can click to select the scrollbar of a page, then click once on the [down arrow key] of the keyboard, and find that the function executes <strong>8-9 times</strong>!</p>
+<p>However in reality we don’t need such high frequency feedback, after all the performance of the browser is limited and shouldn’t be wasted, so moving on to discuss how to optimise this scenario.</p>
+<h3 id="9-2-Anti-debounce"><a href="#9-2-Anti-debounce" class="headerlink" title="9.2 Anti-debounce"></a>9.2 Anti-debounce</h3><p><strong>In short, debounce is the process of not executing immediately if a large number of the same events are triggered in a short period of time, but waiting a given amount of time before executing, and then retiming if the event is hit again within a given amount of time</strong>.</p>
+<p>Based on the above scenario, the first idea is first proposed: <strong>Instead of executing the function immediately when the event is triggered for the first time, a deadline value of say 200ms</strong> is given and then.</p>
+<ul>
+<li>If the scroll event is not triggered again within 200ms, then the function is executed</li>
+<li>If the scroll event is triggered again within 200ms, then the current timing is cancelled and the timing starts again</li>
+</ul>
+<p><strong>Effect</strong>: if the same event is triggered in large numbers in a short period of time, the function will only be executed once.</p>
+<h3 id="9-3-Throttle"><a href="#9-3-Throttle" class="headerlink" title="9.3 Throttle"></a>9.3 Throttle</h3><p><strong>In short, a throttle is a function that is executed once at the same interval</strong> if a large number of the same events are triggered in a short period of time.</p>
+<p>Continuing with this thought, the result of using the anti-throttling scheme above to deal with the problem is that</p>
+<ul>
+<li>If a scroll event is constantly triggered for a limited period of time (e.g. some user is idle and holds down the scroll and keeps dragging it around), the current distance to the top will theoretically never be output as long as the triggering does not stop.</li>
+</ul>
+<p>New requirement: <strong>What about giving feedback after a certain time interval even if the user keeps dragging the scroll bar?</strong></p>
+<p>It’s actually quite simple: we could design a function that <strong>similar to a control valve that opens periodically, i.e. let the function execute once and then temporarily deactivate for a certain period of time, and reactivate after that time</strong> (similar to a skill cooldown).</p>
+<p><strong>Effect</strong>: if the same event is triggered in large numbers over a short period of time, then <strong>after the function is executed once, the function does not work again</strong> for a specified period of time, and does not re-activate until after that time.</p>
 ]]></content>
       <categories>
         <category>FrontEnd/前端</category>
       </categories>
       <tags>
-        <tag>CONCEPT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML Basics Notes</title>
-    <url>/en/2021/09/22/HTMLNotes/</url>
-    <content><![CDATA[<p><strong>关于HTML一些生疏和不常见的知识，简单汇总一下。</strong></p>
-<a id="more"></a>
-
-<h2 id="HTML布局元素"><a href="#HTML布局元素" class="headerlink" title="HTML布局元素"></a>HTML布局元素</h2><blockquote>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/Users/arieskoo/Downloads/1-Self-Learning/Blog/%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/Layout.jpg" alt="Layout"></p>
-</blockquote>
-<h2 id="多媒体嵌入"><a href="#多媒体嵌入" class="headerlink" title="多媒体嵌入"></a>多媒体嵌入</h2><h3 id="图片—img"><a href="#图片—img" class="headerlink" title="图片—img"></a>图片—img</h3><p> 为图片提供一个语义容器，在标题和图片之间建立清晰的关联，使用HTML5 的<figure>和<figcaption>元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;当图片无法显示时&quot;</span> <span class="attr">title</span>=<span class="string">&quot;当鼠标悬浮在图片时说明图片&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>说明图片的描述文字<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="视频和音频—video-amp-audio"><a href="#视频和音频—video-amp-audio" class="headerlink" title="视频和音频—video&amp;audio"></a>视频和音频—video&amp;audio</h2><h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;视频资源地址&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    不支持视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><em>controls</em> 显示浏览器提供的控件界面</p>
-<h4 id="使用多个播放源以提高兼容性"><a href="#使用多个播放源以提高兼容性" class="headerlink" title="使用多个播放源以提高兼容性"></a>使用多个播放源以提高兼容性</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    浏览器不支持该视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p> WebM 和 MP4 两种格式在目前已经足够支持大多数平台和浏览器。</p>
-<h4 id="其他video特性—H5"><a href="#其他video特性—H5" class="headerlink" title="其他video特性—H5"></a>其他video特性—H5</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">autoplay</span> <span class="attr">loop</span> <span class="attr">muted</span></span></span><br><span class="line"><span class="tag">       <span class="attr">poster</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 视频。可点击<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;rabbit320.mp4&quot;</span>&gt;</span>此链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>观看<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><em>poster</em>—视频的封面</p>
-<h3 id="audio标签"><a href="#audio标签" class="headerlink" title="audio标签"></a>audio标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 音频时显示<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>audio没有视觉部件，所以除了不支持width、height和poster之外，它支持video所以video标签拥有的特性。</p>
-<h3 id="Iframe元素—嵌入技术"><a href="#Iframe元素—嵌入技术" class="headerlink" title="Iframe元素—嵌入技术"></a>Iframe元素—嵌入技术</h3><p>embed和object元素主要用来嵌入PDF和SVG、Flash，但现今它们都在逐渐被淘汰，只有iframe现在经常还被使用。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;500&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">allowfullscreen</span> <span class="attr">sandbox</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">    Fallback link for browsers that don&#x27;t support iframes</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>**<em>allowfullscreen:</em> **允许进行全屏展示</p>
-<p><em><strong>frameborder:</strong></em> 绘制边框（推荐在CSS中用border）</p>
-<p><em><strong>sandbox:</strong></em> 提高安全性</p>
-<h3 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">&quot;elva-fairy-320w.jpg 320w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-480w.jpg 480w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-800w.jpg 800w&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 320px) 280px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            (max-width: 480px) 440px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            800px&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">src</span>=<span class="string">&quot;elva-fairy-800w.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Elva dressed as a fairy&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><em><strong>srcset:</strong></em> 图像地址 固有宽度（以w为单位）</p>
-<p><em><strong>sizes:</strong></em> (媒体条件) 槽的宽度（条件为真时）</p>
-<p><strong>运行机制：</strong></p>
-<pre><code>                1. 检查设备宽度
-                2. 检查sizes列表中哪个媒体条件第一个为真
-                3. 查看对应的槽宽度
-                4. 加载srcset列表中最接近该槽大小的图像
-</code></pre>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
+        <tag>DOM</tag>
       </tags>
   </entry>
   <entry>
@@ -333,238 +422,6 @@
       </categories>
       <tags>
         <tag>HTTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DOM &amp; BOM</title>
-    <url>/en/2021/11/04/DOM&amp;BOM/</url>
-    <content><![CDATA[<p><strong>This chapter introduces DOM concepts, the cost of manipulating the DOM, the mechanics of browser rendering engines, performance optimizations, and common interview questions such as throttling and anti-jitter.</strong></p>
-<a id="more"></a>
-
-<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="1-What-is-the-DOM"><a href="#1-What-is-the-DOM" class="headerlink" title="1. What is the DOM"></a>1. What is the DOM</h2><p>The <code>DOM</code> is the <code>Document Object Model</code>, <strong>Document Object Model</strong>, inside which are interfaces, i.e. methods and functions.</p>
-<p>Official definition: DOM is a <strong>language-independent programmatic interface (API)</strong> for manipulating XML and HTML documents. It is mainly used in browsers to deal with HTML documents and is used to access data in the documents using the DOM API.<br>The DOM is a language-independent API, but its interface in the browser is implemented in JavaScript, and the DOM becomes an important part of the JS coding now.</p>
-<h2 id="2-JS-modifying-DOM-elements-is-costly"><a href="#2-JS-modifying-DOM-elements-is-costly" class="headerlink" title="2. JS modifying DOM elements is costly"></a>2. JS modifying DOM elements is costly</h2><p>Every manipulation of the DOM is preceded by <strong>access to the DOM</strong>, so it also consumes performance.<br>On top of this, because <strong>modifying the DOM</strong> causes the browser to recalculate the geometric changes to the page, triggers a <strong>rearrangement</strong> (reflow - rollback process) and <strong>redrawing</strong> of the browser’s templating engine, which in turn consumes even more performance.</p>
-<h2 id="3-How-the-browser-rendering-engine-works-and-how-it-works"><a href="#3-How-the-browser-rendering-engine-works-and-how-it-works" class="headerlink" title="3. How the browser rendering engine works and how it works"></a>3. How the browser rendering engine works and how it works</h2><p>After the browser has downloaded all the resources in the page (e.g. HTML, JavaScript, CSS, images, etc.), a 6-step process occurs as follows.</p>
-<ol>
-<li><p>parse the HTML and build the DOM Tree (DOM Tree)</p>
-</li>
-<li><p>parse the CSS to create the CSS rule tree (CSSOM Tree)</p>
-</li>
-<li><p>merge the DOM Tree and CSS rule tree to produce the render tree (render Tree)</p>
-</li>
-<li><p>layout the render tree, calculate the size and position of each element according to the generated render tree, and get the geometry information of each node. (Calculate the position and size of the elements based on the size of the viewport) (rearrangement will take this step)</p>
-</li>
-<li><p>draw the render tree to draw the page pixel information (get the number of pixels per node based on the geometric information of each node on the render tree) (redrawing will take this step)</p>
-</li>
-<li><p>the browser sends the pixel information for each layer of nodes to the GPU, which composites and draws the layers to display on the page</p>
-</li>
-</ol>
-<h3 id="3-1-How-does-the-browser-rendering-engine-generate-the-render-tree"><a href="#3-1-How-does-the-browser-rendering-engine-generate-the-render-tree" class="headerlink" title="3.1 How does the browser rendering engine generate the render tree?"></a>3.1 How does the browser rendering engine generate the render tree?</h3><ol>
-<li>traverses each visible node (except for tags such as meta, link, script, etc.; except for elements with display:none;) starting from the root of the DOM Tree</li>
-<li>for each visible node, find the corresponding rule in the CSSOM and apply the style rule to the corresponding node.</li>
-<li>for each visible node, and its corresponding style, combine to generate a render tree.</li>
-</ol>
-<p><strong>Not visible nodes:</strong> Nodes that will not render output (nodes that will not be displayed on the screen) are the following</p>
-<ul>
-<li>tags such as meta, link, script, etc;</li>
-<li>nodes that are hidden via css, i.e. display:none; (the opacity is not visible to humans, the computer can still see it, so it will still be rendered.) (So will elements with visibility as hidden be rendered? Do a test, a div set visibility invisible, left floating, surrounded by text, to see if the text around to let out a blank area. The final test proved that a blank space was indeed created, which means that the invisibility of visibility and opacity is only invisible to the human eye, but the computer will still calculate the position information and draw it out when generating the render tree. The result of the experiment is shown below :)</li>
-</ul>
-<h2 id="4-What-is-browser-rendering-engine-reordering-and-redrawing"><a href="#4-What-is-browser-rendering-engine-reordering-and-redrawing" class="headerlink" title="4. What is browser rendering engine reordering and redrawing?"></a>4. What is browser rendering engine reordering and redrawing?</h2><h3 id="4-1-Reordering"><a href="#4-1-Reordering" class="headerlink" title="4.1 Reordering"></a>4.1 Reordering</h3><p>When a change in the <strong>DOM affects the geometric properties (width, height and position)</strong> of an element, the browser needs to recalculate the geometric properties of the element, and likewise the geometric properties and <strong>position</strong> of other adjacent elements will be affected as a result. The browser invalidates the affected part of the render tree and reconstructs the render tree. This process is called “reordering”.</p>
-<h3 id="4-2-Redrawing"><a href="#4-2-Redrawing" class="headerlink" title="4.2 Redrawing"></a>4.2 Redrawing</h3><p>Once the reordering is complete, the browser redraws the affected parts of the screen in a process called <strong>redrawing</strong>.<br>Since reordering is the step before redrawing, it is natural that <strong>reordering will result in redrawing</strong> when it occurs.</p>
-<h2 id="5-When-is-a-reorder-triggered"><a href="#5-When-is-a-reorder-triggered" class="headerlink" title="5. When is a reorder triggered?"></a>5. When is a reorder triggered?</h2><p>Reordering is required when the page layout and geometry properties change.<br>(At its core: a reorder is triggered whenever an attribute causes a change in position information)</p>
-<ol>
-<li><p>a visible DOM element is added or removed. (A bunch of people queuing up, adding i.e. inserting a person in the middle/deleting i.e. a person in the middle going away, will inevitably affect the position information of the people in the back of the queue)</p>
-</li>
-<li><p>element position change (reordering is because the position information has changed)</p>
-</li>
-<li><p>element size change (outer margin, inner margin, border thickness, width, height, etc.)</p>
-</li>
-<li><p>change in content, e.g. the amount/content of text changes, or an image is replaced by another image of a different size, font size changes, (bolded text?) Resulting in DOM element position, area change. [Calculations can consume CPU power] 5.</p>
-</li>
-<li><p>page renderer initialization (this is a re-run of the process, right? Definitely a re-arrangement)</p>
-</li>
-<li><p>Browser window size change (Position information will be forced to adjust and a re-arrangement will occur. See the gif below for a page where the position of a div element is not modified by viewport resizing, which also triggers a reorder) [consumes GPU computing power]. Experiment: resize viewport, where the position of a div element in a page is not modified by the viewport adjustment, also triggers a reorder</p>
-</li>
-</ol>
-<h2 id="6-When-is-a-repaint-triggered"><a href="#6-When-is-a-repaint-triggered" class="headerlink" title="6. When is a repaint triggered?"></a>6. When is a repaint triggered?</h2><ol>
-<li><p><strong>Relaying inevitably triggers redrawing</strong>, that’s for sure. This is because the browser’s workflow is to render after typesetting. Redraws flow back (roll back the process) to the typesetting stage, which requires the page to be redrawn afterwards.</p>
-</li>
-<li><p>Cases in which redrawing is triggered individually.<br>Situations other than when the size or position of an element changes, (e.g. when the font colour, background colour etc. changes). (I suspect that bold text will also trigger a redraw, but I have no evidence of this. In theory if you bold text inside a fixed size div, it should not affect the reordering of the elements that follow it, but it is possible that other adjacent text or elements inside that div will be reordered.)</p>
-</li>
-</ol>
-<h2 id="7-Browser-performance-optimisation"><a href="#7-Browser-performance-optimisation" class="headerlink" title="7. Browser performance optimisation"></a>7. Browser performance optimisation</h2><h3 id="7-1-Optimisation"><a href="#7-1-Optimisation" class="headerlink" title="7.1 Optimisation"></a>7.1 Optimisation</h3><p>Modern browsers are pretty well established, as multiple manipulations of the DOM can trigger reordering and redrawing and consume performance. So in addition to our conscious efforts to control the number of DOM manipulations, browsers have been designed to intelligently “throttle” DOM manipulations, for example by implementing queued changes and batch execution.</p>
-<p>To explain, **browsers have a “queue” to store (save) js programs that need to manipulate the DOM. Whenever js code is executed to manipulate the dom, a program is first stored in this queue. After a certain period of time, the browser then links the “ES island” and “DOM island” (that is, the JS engine to link the rendering engine) in a centralised, bulk manner, thus triggering a DOM operation. **You can think of this as “one train after another”.</p>
-<h3 id="7-2-Users-interrupting-optimised-actions"><a href="#7-2-Users-interrupting-optimised-actions" class="headerlink" title="7.2 Users interrupting optimised actions"></a>7.2 Users interrupting optimised actions</h3><p>But we humans don’t perceive this, and may interrupt the browser’s “throttling” step by mistake. Forcing the browser to interrupt the current “wait” to perform an immediate dom operation. This allows the browser to hurry up and finish the JS manipulation of the DOM in its “queue” and then return the latest DOM position information to us. It’s like forcing the doors to close when you press the close button manually.</p>
-<p>This happens when we get the DOM information.</p>
-<p><strong>Properties that interrupt browser optimisation and force a reorder to be triggered:</strong></p>
-<blockquote>
-<p>offsetTop, offsetLeft, offsetWidth, offsetHeight<br>scrollTop, scrollLeft, scrollWidth, scrollHeight<br>clientTop, clientLeft, clientWidth, clientHeight<br>getComputedStyle()</p>
-</blockquote>
-<p>**Because it has to request the latest DOM information from the browser, the browser has to rush the JS engine to the rendering engine to perform a DOM operation. **</p>
-<h2 id="8-Why-is-manipulating-the-DOM-very-expensive"><a href="#8-Why-is-manipulating-the-DOM-very-expensive" class="headerlink" title="8. Why is manipulating the DOM very expensive?"></a>8. Why is manipulating the DOM very expensive?</h2><ol>
-<li>ES and DOM are two different things and each connection consumes performance</li>
-<li>manipulating the DOM leads to reordering and redrawing, which consumes CPU; redrawing consumes GPU</li>
-</ol>
-<h2 id="9-Anti-jitter-amp-throttling-—-from-SegmentFault-Ange"><a href="#9-Anti-jitter-amp-throttling-—-from-SegmentFault-Ange" class="headerlink" title="9. Anti-jitter &amp; throttling — from SegmentFault-Ange"></a>9. Anti-jitter &amp; throttling — from SegmentFault-Ange</h2><h3 id="9-1-Explanation"><a href="#9-1-Explanation" class="headerlink" title="9.1 Explanation"></a>9.1 Explanation</h3><p>Case in point: **Most websites will provide such a button: for returning to the top. **</p>
-<p>This button will only appear after scrolling to a certain position from the top, so let’s now abstract this functional requirement - <strong>Listen to the browser scroll event and return the distance between the current scrollbar and the top</strong>. This could be implemented with a function.</p>
-<p>However, a problem will be found when running it:** The default execution frequency of this function, too ! high! too! ** How high is it? In Chrome, for example, we can click to select the scrollbar of a page, then click once on the [down arrow key] of the keyboard, and find that the function executes <strong>8-9 times</strong>!</p>
-<p>However in reality we don’t need such high frequency feedback, after all the performance of the browser is limited and shouldn’t be wasted, so moving on to discuss how to optimise this scenario.</p>
-<h3 id="9-2-Anti-debounce"><a href="#9-2-Anti-debounce" class="headerlink" title="9.2 Anti-debounce"></a>9.2 Anti-debounce</h3><p><strong>In short, debounce is the process of not executing immediately if a large number of the same events are triggered in a short period of time, but waiting a given amount of time before executing, and then retiming if the event is hit again within a given amount of time</strong>.</p>
-<p>Based on the above scenario, the first idea is first proposed: <strong>Instead of executing the function immediately when the event is triggered for the first time, a deadline value of say 200ms</strong> is given and then.</p>
-<ul>
-<li>If the scroll event is not triggered again within 200ms, then the function is executed</li>
-<li>If the scroll event is triggered again within 200ms, then the current timing is cancelled and the timing starts again</li>
-</ul>
-<p><strong>Effect</strong>: if the same event is triggered in large numbers in a short period of time, the function will only be executed once.</p>
-<h3 id="9-3-Throttle"><a href="#9-3-Throttle" class="headerlink" title="9.3 Throttle"></a>9.3 Throttle</h3><p><strong>In short, a throttle is a function that is executed once at the same interval</strong> if a large number of the same events are triggered in a short period of time.</p>
-<p>Continuing with this thought, the result of using the anti-throttling scheme above to deal with the problem is that</p>
-<ul>
-<li>If a scroll event is constantly triggered for a limited period of time (e.g. some user is idle and holds down the scroll and keeps dragging it around), the current distance to the top will theoretically never be output as long as the triggering does not stop.</li>
-</ul>
-<p>New requirement: <strong>What about giving feedback after a certain time interval even if the user keeps dragging the scroll bar?</strong></p>
-<p>It’s actually quite simple: we could design a function that <strong>similar to a control valve that opens periodically, i.e. let the function execute once and then temporarily deactivate for a certain period of time, and reactivate after that time</strong> (similar to a skill cooldown).</p>
-<p><strong>Effect</strong>: if the same event is triggered in large numbers over a short period of time, then <strong>after the function is executed once, the function does not work again</strong> for a specified period of time, and does not re-activate until after that time.</p>
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>DOM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
-    <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
-    <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
-<a id="more"></a>
-
-<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
-<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
-<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
-<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
-<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
-<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
-<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
-<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
-<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
-<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
-<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
-<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
-<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
-<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
-<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
-<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
-<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
-<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
-<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
-<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
-<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
-<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
-<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
-<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
-<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
-<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
-<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
-<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
-<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
-<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
-<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
-<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
-]]></content>
-      <categories>
-        <category>CyberSecurity</category>
-      </categories>
-      <tags>
-        <tag>Security</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Handy CheatSheet</title>
-    <url>/en/2021/10/27/Handy-CheatSheet/</url>
-    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
-<thead>
-<tr>
-<th align="center">Algorithm</th>
-<th align="center">Best Time Complexity</th>
-<th align="center">Ave TC</th>
-<th align="center">Worst TC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Selection Sort</td>
-<td align="center">Ω($n^2$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bubble Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Insertion Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Heap Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Quick Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Merge Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bucket Sort</td>
-<td align="center">Ω($n+k$)</td>
-<td align="center">Θ($n+k$)</td>
-<td align="center">O($n^2$)</td>
-</tr>
-<tr>
-<td align="center">Radix Sort</td>
-<td align="center">Ω($nk$)</td>
-<td align="center">Θ($nk$)</td>
-<td align="center">O($nk$)</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-
-<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
-<li>O($logn$)    ——————–    e.g. Binary Tree</li>
-<li>O($n$)          ——————–    e.g. Simple Search</li>
-<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
-</ol>
-<hr>
-<ol start="4">
-<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
-</ol>
-<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
-<li>sout + enter</li>
-<li>psvm + enter</li>
-<li>fori + enter</li>
-<li>iter + enter</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Algorithm/算法</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -934,6 +791,149 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Handy CheatSheet</title>
+    <url>/en/2021/10/27/Handy-CheatSheet/</url>
+    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
+<thead>
+<tr>
+<th align="center">Algorithm</th>
+<th align="center">Best Time Complexity</th>
+<th align="center">Ave TC</th>
+<th align="center">Worst TC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Selection Sort</td>
+<td align="center">Ω($n^2$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bubble Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Insertion Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Heap Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Quick Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Merge Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bucket Sort</td>
+<td align="center">Ω($n+k$)</td>
+<td align="center">Θ($n+k$)</td>
+<td align="center">O($n^2$)</td>
+</tr>
+<tr>
+<td align="center">Radix Sort</td>
+<td align="center">Ω($nk$)</td>
+<td align="center">Θ($nk$)</td>
+<td align="center">O($nk$)</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
+<li>O($logn$)    ——————–    e.g. Binary Tree</li>
+<li>O($n$)          ——————–    e.g. Simple Search</li>
+<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
+</ol>
+<hr>
+<ol start="4">
+<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
+</ol>
+<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
+<li>sout + enter</li>
+<li>psvm + enter</li>
+<li>fori + enter</li>
+<li>iter + enter</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Algorithm/算法</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML Basics Notes</title>
+    <url>/en/2021/09/22/HTMLNotes/</url>
+    <content><![CDATA[<p><strong>关于HTML一些生疏和不常见的知识，简单汇总一下。</strong></p>
+<a id="more"></a>
+
+<h2 id="HTML布局元素"><a href="#HTML布局元素" class="headerlink" title="HTML布局元素"></a>HTML布局元素</h2><blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/Users/arieskoo/Downloads/1-Self-Learning/Blog/%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/Layout.jpg" alt="Layout"></p>
+</blockquote>
+<h2 id="多媒体嵌入"><a href="#多媒体嵌入" class="headerlink" title="多媒体嵌入"></a>多媒体嵌入</h2><h3 id="图片—img"><a href="#图片—img" class="headerlink" title="图片—img"></a>图片—img</h3><p> 为图片提供一个语义容器，在标题和图片之间建立清晰的关联，使用HTML5 的<figure>和<figcaption>元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;当图片无法显示时&quot;</span> <span class="attr">title</span>=<span class="string">&quot;当鼠标悬浮在图片时说明图片&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>说明图片的描述文字<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="视频和音频—video-amp-audio"><a href="#视频和音频—video-amp-audio" class="headerlink" title="视频和音频—video&amp;audio"></a>视频和音频—video&amp;audio</h2><h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;视频资源地址&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    不支持视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>controls</em> 显示浏览器提供的控件界面</p>
+<h4 id="使用多个播放源以提高兼容性"><a href="#使用多个播放源以提高兼容性" class="headerlink" title="使用多个播放源以提高兼容性"></a>使用多个播放源以提高兼容性</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    浏览器不支持该视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> WebM 和 MP4 两种格式在目前已经足够支持大多数平台和浏览器。</p>
+<h4 id="其他video特性—H5"><a href="#其他video特性—H5" class="headerlink" title="其他video特性—H5"></a>其他video特性—H5</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">autoplay</span> <span class="attr">loop</span> <span class="attr">muted</span></span></span><br><span class="line"><span class="tag">       <span class="attr">poster</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 视频。可点击<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;rabbit320.mp4&quot;</span>&gt;</span>此链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>观看<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>poster</em>—视频的封面</p>
+<h3 id="audio标签"><a href="#audio标签" class="headerlink" title="audio标签"></a>audio标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 音频时显示<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>audio没有视觉部件，所以除了不支持width、height和poster之外，它支持video所以video标签拥有的特性。</p>
+<h3 id="Iframe元素—嵌入技术"><a href="#Iframe元素—嵌入技术" class="headerlink" title="Iframe元素—嵌入技术"></a>Iframe元素—嵌入技术</h3><p>embed和object元素主要用来嵌入PDF和SVG、Flash，但现今它们都在逐渐被淘汰，只有iframe现在经常还被使用。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;500&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">allowfullscreen</span> <span class="attr">sandbox</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">    Fallback link for browsers that don&#x27;t support iframes</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>**<em>allowfullscreen:</em> **允许进行全屏展示</p>
+<p><em><strong>frameborder:</strong></em> 绘制边框（推荐在CSS中用border）</p>
+<p><em><strong>sandbox:</strong></em> 提高安全性</p>
+<h3 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">&quot;elva-fairy-320w.jpg 320w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-480w.jpg 480w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-800w.jpg 800w&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 320px) 280px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            (max-width: 480px) 440px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            800px&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">src</span>=<span class="string">&quot;elva-fairy-800w.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Elva dressed as a fairy&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em><strong>srcset:</strong></em> 图像地址 固有宽度（以w为单位）</p>
+<p><em><strong>sizes:</strong></em> (媒体条件) 槽的宽度（条件为真时）</p>
+<p><strong>运行机制：</strong></p>
+<pre><code>                1. 检查设备宽度
+                2. 检查sizes列表中哪个媒体条件第一个为真
+                3. 查看对应的槽宽度
+                4. 加载srcset列表中最接近该槽大小的图像
+</code></pre>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Frontend Frontier</title>
+    <url>/en/2021/09/21/FrontendTech/</url>
+    <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
+<a id="more"></a>
+
+<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>CONCEPT</tag>
       </tags>
   </entry>
   <entry>
@@ -1465,6 +1465,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Some Methods to Flatten a Nested Array</title>
+    <url>/en/2022/12/10/SomeMethodstoFlattenANestedArray/</url>
+    <content><![CDATA[<p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
+<a id="more"></a>
+
+<h1 id="Flatten-an-array-in-JavaScript"><a href="#Flatten-an-array-in-JavaScript" class="headerlink" title="Flatten an array in JavaScript"></a>Flatten an array in JavaScript</h1><h2 id="Method-1-Recursion"><a href="#Method-1-Recursion" class="headerlink" title="Method 1. Recursion"></a>Method 1. Recursion</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      res = res.concat(flattenArray(item));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Method-2-toString-split"><a href="#Method-2-toString-split" class="headerlink" title="Method 2. toString() + split()"></a>Method 2. toString() + split()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FOr example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>]], <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.toString().split(<span class="string">&quot;,&quot;</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">parseInt</span>(item));</span><br></pre></td></tr></table></figure>
+<h2 id="Method-3-The-flat-method"><a href="#Method-3-The-flat-method" class="headerlink" title="Method 3. The flat() method"></a>Method 3. The flat() method</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// For example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>], [<span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr.flat(); <span class="comment">// The depth level is 1 by default</span></span><br><span class="line">arr.flat(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Method-4-Recursion-map"><a href="#Method-4-Recursion-map" class="headerlink" title="Method 4. Recursion + map"></a>Method 4. Recursion + map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? flattenArray(item) : item</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
+      <categories>
+        <category>Algorithm/算法</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>R-NoteBook</title>
     <url>/en/2021/02/16/Rnotebook/</url>
     <content><![CDATA[<h1 id="R-Lab1-Note"><a href="#R-Lab1-Note" class="headerlink" title="R Lab1 Note"></a>R Lab1 Note</h1><a id="more"></a>
@@ -1647,28 +1669,6 @@
       </categories>
       <tags>
         <tag>R</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Some Methods to Flatten a Nested Array</title>
-    <url>/en/2022/12/10/SomeMethodstoFlattenANestedArray/</url>
-    <content><![CDATA[<p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
-<a id="more"></a>
-
-<h1 id="Flatten-an-array-in-JavaScript"><a href="#Flatten-an-array-in-JavaScript" class="headerlink" title="Flatten an array in JavaScript"></a>Flatten an array in JavaScript</h1><h2 id="Method-1-Recursion"><a href="#Method-1-Recursion" class="headerlink" title="Method 1. Recursion"></a>Method 1. Recursion</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      res = res.concat(flattenArray(item));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Method-2-toString-split"><a href="#Method-2-toString-split" class="headerlink" title="Method 2. toString() + split()"></a>Method 2. toString() + split()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FOr example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>]], <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.toString().split(<span class="string">&quot;,&quot;</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">parseInt</span>(item));</span><br></pre></td></tr></table></figure>
-<h2 id="Method-3-The-flat-method"><a href="#Method-3-The-flat-method" class="headerlink" title="Method 3. The flat() method"></a>Method 3. The flat() method</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// For example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>], [<span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr.flat(); <span class="comment">// The depth level is 1 by default</span></span><br><span class="line">arr.flat(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="Method-4-Recursion-map"><a href="#Method-4-Recursion-map" class="headerlink" title="Method 4. Recursion + map"></a>Method 4. Recursion + map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? flattenArray(item) : item</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithm/算法</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>
