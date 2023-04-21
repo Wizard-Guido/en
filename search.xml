@@ -94,6 +94,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
+    <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
+    <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
+<a id="more"></a>
+
+<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
+<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
+<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
+<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
+<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
+<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
+<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
+<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
+<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
+<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
+<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
+<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
+<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
+<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
+<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
+<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
+<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
+<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
+<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
+<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
+<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
+<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
+<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
+<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
+<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
+<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
+<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
+<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
+<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
+<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
+<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
+<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
+]]></content>
+      <categories>
+        <category>CyberSecurity</category>
+      </categories>
+      <tags>
+        <tag>Security</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Basic Principle of DNS</title>
     <url>/en/2021/11/25/BasicPrincipleofDNS/</url>
     <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
@@ -284,55 +333,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
-    <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
-    <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
-<a id="more"></a>
-
-<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
-<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
-<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
-<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
-<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
-<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
-<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
-<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
-<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
-<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
-<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
-<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
-<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
-<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
-<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
-<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
-<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
-<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
-<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
-<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
-<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
-<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
-<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
-<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
-<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
-<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
-<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
-<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
-<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
-<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
-<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
-<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
-]]></content>
-      <categories>
-        <category>CyberSecurity</category>
-      </categories>
-      <tags>
-        <tag>Security</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Frontend Frontier</title>
     <url>/en/2021/09/21/FrontendTech/</url>
     <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
@@ -345,48 +345,6 @@
       </categories>
       <tags>
         <tag>CONCEPT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML Basics Notes</title>
-    <url>/en/2021/09/22/HTMLNotes/</url>
-    <content><![CDATA[<p><strong>关于HTML一些生疏和不常见的知识，简单汇总一下。</strong></p>
-<a id="more"></a>
-
-<h2 id="HTML布局元素"><a href="#HTML布局元素" class="headerlink" title="HTML布局元素"></a>HTML布局元素</h2><blockquote>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/Users/arieskoo/Downloads/1-Self-Learning/Blog/%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/Layout.jpg" alt="Layout"></p>
-</blockquote>
-<h2 id="多媒体嵌入"><a href="#多媒体嵌入" class="headerlink" title="多媒体嵌入"></a>多媒体嵌入</h2><h3 id="图片—img"><a href="#图片—img" class="headerlink" title="图片—img"></a>图片—img</h3><p> 为图片提供一个语义容器，在标题和图片之间建立清晰的关联，使用HTML5 的<figure>和<figcaption>元素。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;当图片无法显示时&quot;</span> <span class="attr">title</span>=<span class="string">&quot;当鼠标悬浮在图片时说明图片&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>说明图片的描述文字<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="视频和音频—video-amp-audio"><a href="#视频和音频—video-amp-audio" class="headerlink" title="视频和音频—video&amp;audio"></a>视频和音频—video&amp;audio</h2><h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;视频资源地址&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    不支持视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><em>controls</em> 显示浏览器提供的控件界面</p>
-<h4 id="使用多个播放源以提高兼容性"><a href="#使用多个播放源以提高兼容性" class="headerlink" title="使用多个播放源以提高兼容性"></a>使用多个播放源以提高兼容性</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    浏览器不支持该视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p> WebM 和 MP4 两种格式在目前已经足够支持大多数平台和浏览器。</p>
-<h4 id="其他video特性—H5"><a href="#其他video特性—H5" class="headerlink" title="其他video特性—H5"></a>其他video特性—H5</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">autoplay</span> <span class="attr">loop</span> <span class="attr">muted</span></span></span><br><span class="line"><span class="tag">       <span class="attr">poster</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 视频。可点击<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;rabbit320.mp4&quot;</span>&gt;</span>此链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>观看<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><em>poster</em>—视频的封面</p>
-<h3 id="audio标签"><a href="#audio标签" class="headerlink" title="audio标签"></a>audio标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 音频时显示<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>audio没有视觉部件，所以除了不支持width、height和poster之外，它支持video所以video标签拥有的特性。</p>
-<h3 id="Iframe元素—嵌入技术"><a href="#Iframe元素—嵌入技术" class="headerlink" title="Iframe元素—嵌入技术"></a>Iframe元素—嵌入技术</h3><p>embed和object元素主要用来嵌入PDF和SVG、Flash，但现今它们都在逐渐被淘汰，只有iframe现在经常还被使用。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;500&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">allowfullscreen</span> <span class="attr">sandbox</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">    Fallback link for browsers that don&#x27;t support iframes</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>**<em>allowfullscreen:</em> **允许进行全屏展示</p>
-<p><em><strong>frameborder:</strong></em> 绘制边框（推荐在CSS中用border）</p>
-<p><em><strong>sandbox:</strong></em> 提高安全性</p>
-<h3 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">&quot;elva-fairy-320w.jpg 320w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-480w.jpg 480w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-800w.jpg 800w&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 320px) 280px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            (max-width: 480px) 440px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            800px&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">src</span>=<span class="string">&quot;elva-fairy-800w.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Elva dressed as a fairy&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><em><strong>srcset:</strong></em> 图像地址 固有宽度（以w为单位）</p>
-<p><em><strong>sizes:</strong></em> (媒体条件) 槽的宽度（条件为真时）</p>
-<p><strong>运行机制：</strong></p>
-<pre><code>                1. 检查设备宽度
-                2. 检查sizes列表中哪个媒体条件第一个为真
-                3. 查看对应的槽宽度
-                4. 加载srcset列表中最接近该槽大小的图像
-</code></pre>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -575,89 +533,58 @@
       </tags>
   </entry>
   <entry>
-    <title>Handy CheatSheet</title>
-    <url>/en/2021/10/27/Handy-CheatSheet/</url>
-    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
-<thead>
-<tr>
-<th align="center">Algorithm</th>
-<th align="center">Best Time Complexity</th>
-<th align="center">Ave TC</th>
-<th align="center">Worst TC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Selection Sort</td>
-<td align="center">Ω($n^2$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bubble Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Insertion Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Heap Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Quick Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Merge Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bucket Sort</td>
-<td align="center">Ω($n+k$)</td>
-<td align="center">Θ($n+k$)</td>
-<td align="center">O($n^2$)</td>
-</tr>
-<tr>
-<td align="center">Radix Sort</td>
-<td align="center">Ω($nk$)</td>
-<td align="center">Θ($nk$)</td>
-<td align="center">O($nk$)</td>
-</tr>
-</tbody></table>
+    <title>My first blog</title>
+    <url>/en/2021/02/14/My-first-blog/</url>
+    <content><![CDATA[<p>##Fist Charpter</p>
+<p>content</p>
+<hr>
+<p>##Second Charpter</p>
+<p>content</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
+<p>:wq</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>HTML Basics Notes</title>
+    <url>/en/2021/09/22/HTMLNotes/</url>
+    <content><![CDATA[<p><strong>关于HTML一些生疏和不常见的知识，简单汇总一下。</strong></p>
 <a id="more"></a>
 
-<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
-<li>O($logn$)    ——————–    e.g. Binary Tree</li>
-<li>O($n$)          ——————–    e.g. Simple Search</li>
-<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
-</ol>
-<hr>
-<ol start="4">
-<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
-</ol>
-<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
-<li>sout + enter</li>
-<li>psvm + enter</li>
-<li>fori + enter</li>
-<li>iter + enter</li>
-</ol>
+<h2 id="HTML布局元素"><a href="#HTML布局元素" class="headerlink" title="HTML布局元素"></a>HTML布局元素</h2><blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">article</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/Users/arieskoo/Downloads/1-Self-Learning/Blog/%E5%8D%9A%E5%AE%A2%E5%A4%87%E4%BB%BD/Layout.jpg" alt="Layout"></p>
+</blockquote>
+<h2 id="多媒体嵌入"><a href="#多媒体嵌入" class="headerlink" title="多媒体嵌入"></a>多媒体嵌入</h2><h3 id="图片—img"><a href="#图片—img" class="headerlink" title="图片—img"></a>图片—img</h3><p> 为图片提供一个语义容器，在标题和图片之间建立清晰的关联，使用HTML5 的<figure>和<figcaption>元素。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;当图片无法显示时&quot;</span> <span class="attr">title</span>=<span class="string">&quot;当鼠标悬浮在图片时说明图片&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>说明图片的描述文字<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="视频和音频—video-amp-audio"><a href="#视频和音频—video-amp-audio" class="headerlink" title="视频和音频—video&amp;audio"></a>视频和音频—video&amp;audio</h2><h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;视频资源地址&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    不支持视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>controls</em> 显示浏览器提供的控件界面</p>
+<h4 id="使用多个播放源以提高兼容性"><a href="#使用多个播放源以提高兼容性" class="headerlink" title="使用多个播放源以提高兼容性"></a>使用多个播放源以提高兼容性</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    浏览器不支持该视频时显示</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> WebM 和 MP4 两种格式在目前已经足够支持大多数平台和浏览器。</p>
+<h4 id="其他video特性—H5"><a href="#其他video特性—H5" class="headerlink" title="其他video特性—H5"></a>其他video特性—H5</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">autoplay</span> <span class="attr">loop</span> <span class="attr">muted</span></span></span><br><span class="line"><span class="tag">       <span class="attr">poster</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/webm&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 视频。可点击<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;rabbit320.mp4&quot;</span>&gt;</span>此链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>观看<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>poster</em>—视频的封面</p>
+<h3 id="audio标签"><a href="#audio标签" class="headerlink" title="audio标签"></a>audio标签</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/mp3&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;audio/ogg&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>你的浏览器不支持 HTML5 音频时显示<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>audio没有视觉部件，所以除了不支持width、height和poster之外，它支持video所以video标签拥有的特性。</p>
+<h3 id="Iframe元素—嵌入技术"><a href="#Iframe元素—嵌入技术" class="headerlink" title="Iframe元素—嵌入技术"></a>Iframe元素—嵌入技术</h3><p>embed和object元素主要用来嵌入PDF和SVG、Flash，但现今它们都在逐渐被淘汰，只有iframe现在经常还被使用。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;address&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;500&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">allowfullscreen</span> <span class="attr">sandbox</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;address&quot;</span>&gt;</span></span><br><span class="line">    Fallback link for browsers that don&#x27;t support iframes</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>**<em>allowfullscreen:</em> **允许进行全屏展示</p>
+<p><em><strong>frameborder:</strong></em> 绘制边框（推荐在CSS中用border）</p>
+<p><em><strong>sandbox:</strong></em> 提高安全性</p>
+<h3 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">&quot;elva-fairy-320w.jpg 320w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-480w.jpg 480w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-800w.jpg 800w&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">sizes</span>=<span class="string">&quot;(max-width: 320px) 280px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            (max-width: 480px) 440px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            800px&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">src</span>=<span class="string">&quot;elva-fairy-800w.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Elva dressed as a fairy&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em><strong>srcset:</strong></em> 图像地址 固有宽度（以w为单位）</p>
+<p><em><strong>sizes:</strong></em> (媒体条件) 槽的宽度（条件为真时）</p>
+<p><strong>运行机制：</strong></p>
+<pre><code>                1. 检查设备宽度
+                2. 检查sizes列表中哪个媒体条件第一个为真
+                3. 查看对应的槽宽度
+                4. 加载srcset列表中最接近该槽大小的图像
+</code></pre>
 ]]></content>
       <categories>
-        <category>Algorithm/算法</category>
+        <category>Frontend/前端</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -1030,6 +957,127 @@
       </tags>
   </entry>
   <entry>
+    <title>Python virtualenv notes</title>
+    <url>/en/2021/02/20/Python%20virtualenv%20notes/</url>
+    <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
+
+<h2 id="1-Perface"><a href="#1-Perface" class="headerlink" title="1. Perface"></a>1. Perface</h2><ul>
+<li><h3 id="Why-do-we-need-virtual-environment"><a href="#Why-do-we-need-virtual-environment" class="headerlink" title="Why do we need virtual environment"></a>Why do we need virtual environment</h3><p>Simply put, an individual virtual environment can be used by an individual python project so that every project won’t affect each other and also won’t affect the python system environment.</p>
+</li>
+<li><h3 id="Why-do-we-use-‘virtualenv’"><a href="#Why-do-we-use-‘virtualenv’" class="headerlink" title="Why do we use ‘virtualenv’"></a>Why do we use ‘virtualenv’</h3><p>In short, it’s the python official recommendation.</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-Install-virtualenv"><a href="#2-Install-virtualenv" class="headerlink" title="2. Install virtualenv"></a>2. Install virtualenv</h2><p><em>PS: My laptop is MacBook, so the following procedure is based on the macbook terminal.</em></p>
+<ol>
+<li><p>Before installing, you should make sure you’ve already installed pip, and then use pip to install env.  </p>
+<blockquote>
+<p>pip3 install virtualenv</p>
+</blockquote>
+</li>
+<li><p>Check if the installation is successful  </p>
+<blockquote>
+<p>virtualenv –version</p>
+</blockquote>
+</li>
+<li><p>Create the big virtual environment  </p>
+<p>Firstly, you should ‘cd’ to the directory where you wanna create VE(virtual environment)</p>
+<blockquote>
+<p> virtualenv envname #Here you should give your virtual environment name</p>
+</blockquote>
+<p>The environment will also install Python setuptools, pip, wheel automatically</p>
+</li>
+<li><p>Activate your environment</p>
+<blockquote>
+<p>Source bigenvname/bin/activate</p>
+</blockquote>
+</li>
+<li><p>Extra procedure</p>
+<p>For me, I often use terminal to start the editor, so when you activate the environment, Use ‘cd’ to the directory where you wanna store your code file. And then start jupyter notebook.</p>
+<blockquote>
+<p>jupyter notebook</p>
+</blockquote>
+<p>So now you can code in the envname virtual environment.</p>
+</li>
+</ol>
+<hr>
+<h2 id="3-Install-virtualenvwrapper"><a href="#3-Install-virtualenvwrapper" class="headerlink" title="3. Install virtualenvwrapper"></a>3. Install virtualenvwrapper</h2><p>*Note: Sometimes, we may create more than one VE, and we’d like to swap between the different VE. Hence, we need the command ‘workon’ which is belong to the package virtualenvwrapper. </p>
+<ol>
+<li><p>Install VEW. </p>
+<blockquote>
+<p>pip3 install virtualenvwrapper</p>
+</blockquote>
+</li>
+<li><p>Configure VEW. </p>
+<blockquote>
+<p>export WORKON_HOME=’your sub-VE address’</p>
+<p>source /usr/local/bin/virtualenvwrapper.sh  // execute the command package</p>
+</blockquote>
+<p>But what if your address is not the above default address, how could you find it? I faced the same problem before. We can try to uninstall the package ‘virtualenvwrapper’ and it will prompt us all the files address we would delete.</p>
+<p>![截屏2021-02-20 13.24.51](/Users/arieskoo/Library/Application Support/typora-user-images/截屏2021-02-20 13.24.51.png)</p>
+</li>
+<li><p>After configuring all the environment parameters, we s=also need to execute source command to make it work. </p>
+<blockquote>
+<p>source ~/.bash_profile</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="4-Use-VEW-to-create-sub-environment"><a href="#4-Use-VEW-to-create-sub-environment" class="headerlink" title="4.  Use VEW to create sub-environment"></a>4.  Use VEW to create sub-environment</h2><ol>
+<li><p>create sub-env</p>
+<blockquote>
+<p>makvirtualenv env01(envname)</p>
+</blockquote>
+<p>The default address is under the previous export WORKON_HOME=’your sub-VE address’.</p>
+</li>
+<li><p>Query the list of VE</p>
+<blockquote>
+<p>lsvirtualenv -b</p>
+</blockquote>
+</li>
+<li><p>query the python pakcages</p>
+<blockquote>
+<p>lssitepackages</p>
+</blockquote>
+</li>
+<li><p>exchange the sub-VE</p>
+<blockquote>
+<p>workon envname</p>
+</blockquote>
+</li>
+<li><p>Remove sub-VE</p>
+<blockquote>
+<p>rmvirtualenv envname</p>
+</blockquote>
+</li>
+<li><p>Install python packages in the sub-VE</p>
+<blockquote>
+<p>pip install packagename</p>
+</blockquote>
+</li>
+<li><p>exit the sub-VE</p>
+<blockquote>
+<p>deactivate</p>
+</blockquote>
+</li>
+<li><p>How to start VE every time start the PC</p>
+<p>Since you totally exit the VE, you need to reactivate the big VE every time you wanna reenter it.</p>
+<blockquote>
+<p>cd big VE address</p>
+<p>source bigenvname/bin/activate</p>
+<p>workon sub-VEname</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>virtualenv</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript Function and Advance Notes</title>
     <url>/en/2021/10/04/JavascriptFunction/</url>
     <content><![CDATA[<p><strong>本章将深入J高级，诸如Spread语法、闭包、垃圾回收机制、函数对象、SetTimeout和SetInterval、装饰器模式和转发call/apply以及箭头函数。</strong></p>
@@ -1273,288 +1321,89 @@
       </tags>
   </entry>
   <entry>
-    <title>My first blog</title>
-    <url>/en/2021/02/14/My-first-blog/</url>
-    <content><![CDATA[<p>##Fist Charpter</p>
-<p>content</p>
-<hr>
-<p>##Second Charpter</p>
-<p>content</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
-<p>:wq</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
-    <url>/en/2021/10/19/NignxConfig/</url>
-    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
+    <title>Handy CheatSheet</title>
+    <url>/en/2021/10/27/Handy-CheatSheet/</url>
+    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
+<thead>
+<tr>
+<th align="center">Algorithm</th>
+<th align="center">Best Time Complexity</th>
+<th align="center">Ave TC</th>
+<th align="center">Worst TC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Selection Sort</td>
+<td align="center">Ω($n^2$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bubble Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Insertion Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Heap Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Quick Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Merge Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bucket Sort</td>
+<td align="center">Ω($n+k$)</td>
+<td align="center">Θ($n+k$)</td>
+<td align="center">O($n^2$)</td>
+</tr>
+<tr>
+<td align="center">Radix Sort</td>
+<td align="center">Ω($nk$)</td>
+<td align="center">Θ($nk$)</td>
+<td align="center">O($nk$)</td>
+</tr>
+</tbody></table>
 <a id="more"></a>
 
-<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
-<li><p>Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>安装完成后，Terminal输出信息如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
-<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
-<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
-<p>以后再次启动nginx只需执行以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
-<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>访问Nginx默认端口8080</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
-<li><p>其他常用命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>配置<code>nginx.conf</code>文件</p>
-<ul>
-<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
-</li>
-<li><p>找到nginx.conf文件，进入修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>保存文件，重启Nginx</p>
-</li>
-<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
-</li>
-<li><p>你会看到前端地址所在的内容</p>
-</li>
-<li><p>进行跨域测试</p>
-</li>
+<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
+<li>O($logn$)    ——————–    e.g. Binary Tree</li>
+<li>O($n$)          ——————–    e.g. Simple Search</li>
+<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
+</ol>
+<hr>
+<ol start="4">
+<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
+</ol>
+<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
+<li>sout + enter</li>
+<li>psvm + enter</li>
+<li>fori + enter</li>
+<li>iter + enter</li>
 </ol>
 ]]></content>
       <categories>
-        <category>Frontend/前端</category>
+        <category>Algorithm/算法</category>
       </categories>
       <tags>
-        <tag>ClientServer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python virtualenv notes</title>
-    <url>/en/2021/02/20/Python%20virtualenv%20notes/</url>
-    <content><![CDATA[<h1 id="Python3-virtual-environment-construction"><a href="#Python3-virtual-environment-construction" class="headerlink" title="Python3 virtual environment construction"></a>Python3 virtual environment construction</h1><a id="more"></a>
-
-<h2 id="1-Perface"><a href="#1-Perface" class="headerlink" title="1. Perface"></a>1. Perface</h2><ul>
-<li><h3 id="Why-do-we-need-virtual-environment"><a href="#Why-do-we-need-virtual-environment" class="headerlink" title="Why do we need virtual environment"></a>Why do we need virtual environment</h3><p>Simply put, an individual virtual environment can be used by an individual python project so that every project won’t affect each other and also won’t affect the python system environment.</p>
-</li>
-<li><h3 id="Why-do-we-use-‘virtualenv’"><a href="#Why-do-we-use-‘virtualenv’" class="headerlink" title="Why do we use ‘virtualenv’"></a>Why do we use ‘virtualenv’</h3><p>In short, it’s the python official recommendation.</p>
-</li>
-</ul>
-<hr>
-<h2 id="2-Install-virtualenv"><a href="#2-Install-virtualenv" class="headerlink" title="2. Install virtualenv"></a>2. Install virtualenv</h2><p><em>PS: My laptop is MacBook, so the following procedure is based on the macbook terminal.</em></p>
-<ol>
-<li><p>Before installing, you should make sure you’ve already installed pip, and then use pip to install env.  </p>
-<blockquote>
-<p>pip3 install virtualenv</p>
-</blockquote>
-</li>
-<li><p>Check if the installation is successful  </p>
-<blockquote>
-<p>virtualenv –version</p>
-</blockquote>
-</li>
-<li><p>Create the big virtual environment  </p>
-<p>Firstly, you should ‘cd’ to the directory where you wanna create VE(virtual environment)</p>
-<blockquote>
-<p> virtualenv envname #Here you should give your virtual environment name</p>
-</blockquote>
-<p>The environment will also install Python setuptools, pip, wheel automatically</p>
-</li>
-<li><p>Activate your environment</p>
-<blockquote>
-<p>Source bigenvname/bin/activate</p>
-</blockquote>
-</li>
-<li><p>Extra procedure</p>
-<p>For me, I often use terminal to start the editor, so when you activate the environment, Use ‘cd’ to the directory where you wanna store your code file. And then start jupyter notebook.</p>
-<blockquote>
-<p>jupyter notebook</p>
-</blockquote>
-<p>So now you can code in the envname virtual environment.</p>
-</li>
-</ol>
-<hr>
-<h2 id="3-Install-virtualenvwrapper"><a href="#3-Install-virtualenvwrapper" class="headerlink" title="3. Install virtualenvwrapper"></a>3. Install virtualenvwrapper</h2><p>*Note: Sometimes, we may create more than one VE, and we’d like to swap between the different VE. Hence, we need the command ‘workon’ which is belong to the package virtualenvwrapper. </p>
-<ol>
-<li><p>Install VEW. </p>
-<blockquote>
-<p>pip3 install virtualenvwrapper</p>
-</blockquote>
-</li>
-<li><p>Configure VEW. </p>
-<blockquote>
-<p>export WORKON_HOME=’your sub-VE address’</p>
-<p>source /usr/local/bin/virtualenvwrapper.sh  // execute the command package</p>
-</blockquote>
-<p>But what if your address is not the above default address, how could you find it? I faced the same problem before. We can try to uninstall the package ‘virtualenvwrapper’ and it will prompt us all the files address we would delete.</p>
-<p>![截屏2021-02-20 13.24.51](/Users/arieskoo/Library/Application Support/typora-user-images/截屏2021-02-20 13.24.51.png)</p>
-</li>
-<li><p>After configuring all the environment parameters, we s=also need to execute source command to make it work. </p>
-<blockquote>
-<p>source ~/.bash_profile</p>
-</blockquote>
-</li>
-</ol>
-<hr>
-<h2 id="4-Use-VEW-to-create-sub-environment"><a href="#4-Use-VEW-to-create-sub-environment" class="headerlink" title="4.  Use VEW to create sub-environment"></a>4.  Use VEW to create sub-environment</h2><ol>
-<li><p>create sub-env</p>
-<blockquote>
-<p>makvirtualenv env01(envname)</p>
-</blockquote>
-<p>The default address is under the previous export WORKON_HOME=’your sub-VE address’.</p>
-</li>
-<li><p>Query the list of VE</p>
-<blockquote>
-<p>lsvirtualenv -b</p>
-</blockquote>
-</li>
-<li><p>query the python pakcages</p>
-<blockquote>
-<p>lssitepackages</p>
-</blockquote>
-</li>
-<li><p>exchange the sub-VE</p>
-<blockquote>
-<p>workon envname</p>
-</blockquote>
-</li>
-<li><p>Remove sub-VE</p>
-<blockquote>
-<p>rmvirtualenv envname</p>
-</blockquote>
-</li>
-<li><p>Install python packages in the sub-VE</p>
-<blockquote>
-<p>pip install packagename</p>
-</blockquote>
-</li>
-<li><p>exit the sub-VE</p>
-<blockquote>
-<p>deactivate</p>
-</blockquote>
-</li>
-<li><p>How to start VE every time start the PC</p>
-<p>Since you totally exit the VE, you need to reactivate the big VE every time you wanna reenter it.</p>
-<blockquote>
-<p>cd big VE address</p>
-<p>source bigenvname/bin/activate</p>
-<p>workon sub-VEname</p>
-</blockquote>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>virtualenv</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Set up local testing server using Python</title>
-    <url>/en/2021/09/16/Python-localServer/</url>
-    <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
-<a id="more"></a>
-
-<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
-<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
-<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
-</ul>
-<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
-<li><p>安装Python</p>
-</li>
-<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
-<li><p>cd到目标文件目录</p>
-</li>
-<li><p>启动服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
-<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
-</li>
-<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
-]]></content>
-      <categories>
-        <category>Frontend/前端</category>
-      </categories>
-      <tags>
-        <tag>Server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redux Introduction --- Operation Intro</title>
-    <url>/en/2021/11/28/ReduxIntroduction/</url>
-    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
-<a id="more"></a>
-
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
-<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
-<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
-<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
-<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
-<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
-<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
-<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
-<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
-<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
+        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -1743,6 +1592,138 @@
       </tags>
   </entry>
   <entry>
+    <title>Redux Introduction --- Operation Intro</title>
+    <url>/en/2021/11/28/ReduxIntroduction/</url>
+    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
+<a id="more"></a>
+
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
+<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
+<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
+<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
+<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
+<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
+<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
+<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
+<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
+<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
+    <url>/en/2021/10/19/NignxConfig/</url>
+    <content><![CDATA[<p><strong>关于Engine X（即Nignx）代理服务器配置说明</strong></p>
+<a id="more"></a>
+
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search nginx</span><br><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>安装完成后，Terminal输出信息如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Docroot is: &#x2F;usr&#x2F;local&#x2F;var&#x2F;www</span><br><span class="line"></span><br><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">To start nginx:</span><br><span class="line">  brew services start nginx</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx&#x2F;bin&#x2F;nginx -g &#39;daemon off;&#39;</span><br></pre></td></tr></table></figure>
+<h1 id="启动Nginx"><a href="#启动Nginx" class="headerlink" title="启动Nginx"></a>启动Nginx</h1></li>
+<li><p>第一次安装后启动nginx，Terminal执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew services start nginx</span><br></pre></td></tr></table></figure>
+<p>以后再次启动nginx只需执行以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果出现不成功的情况，可采取以下方法：先结束主进程再重启</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps -ax | grep nginx # 查看进程号</span><br><span class="line">sudo kill -s QUIT 主进程ID号</span><br><span class="line">sudo nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>访问Nginx默认端口8080</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></li>
+<li><p>其他常用命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -s stop # 停止nginx</span><br><span class="line">nginx -s reload # 重启nginx</span><br><span class="line">nginx # 启动nginx</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<code>nginx.conf</code>文件</p>
+<ul>
+<li><p>进入Finder，按住<code>shift</code>+<code>command</code>+G，然后搜索<code>local/etc</code>，找到nginx文件夹</p>
+</li>
+<li><p>找到nginx.conf文件，进入修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80; &#x2F;&#x2F; 默认80端口，选择一个未被使用的接口即可</span><br><span class="line">	server_name: localhost;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourfronend.com; &#x2F;&#x2F; 此处为你浏览器所在的地址</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	location &#x2F;api&#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;yourbackend.com; &#x2F;&#x2F; 此处为你浏览器所请求的地址</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>保存文件，重启Nginx</p>
+</li>
+<li><p>访问Nignx的监听端口，本例为<code>http://localhost:80</code></p>
+</li>
+<li><p>你会看到前端地址所在的内容</p>
+</li>
+<li><p>进行跨域测试</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>ClientServer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/en/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Some Methods to Flatten a Nested Array</title>
     <url>/en/2022/12/10/SomeMethodstoFlattenANestedArray/</url>
     <content><![CDATA[<p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
@@ -1765,17 +1746,36 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/en/2021/02/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>Set up local testing server using Python</title>
+    <url>/en/2021/09/16/Python-localServer/</url>
+    <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
+<a id="more"></a>
+
+<h2 id="测试本地文件的问题"><a href="#测试本地文件的问题" class="headerlink" title="测试本地文件的问题"></a>测试本地文件的问题</h2><ul>
+<li><strong>它们具有异步请求功能</strong>。如果您只是从本地文件运行示例，某些浏览器（包括 Chrome）将不会运行异步请求。这是因为安全限制。</li>
+<li><strong>它们具有服务器端语言</strong>。服务器端语言（例如 PHP 或 Python）需要一个特殊的服务器来解释代码并交付结果。</li>
+</ul>
+<h2 id="利用Python建立简单本地HTTP服务器"><a href="#利用Python建立简单本地HTTP服务器" class="headerlink" title="利用Python建立简单本地HTTP服务器"></a>利用Python建立简单本地HTTP服务器</h2><ul>
+<li><p>安装Python</p>
+</li>
+<li><p>运行命令行（我是mac），输入以下命令检查是否安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python --version</span><br></pre></td></tr></table></figure></li>
+<li><p>cd到目标文件目录</p>
+</li>
+<li><p>启动服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure></li>
+<li><p>默认端口号是8000，通过localhost:8000来访问此服务器</p>
+</li>
+<li><p><strong>PS:</strong> 切换端口号使用如下命令（以7800端口号为例）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 7800</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><em><strong>最后， Python的http.server只是静态文件服务器，他无法运行python、php、javascript等语言的代码，所以要在本地运行服务器端语言代码，可以使用Python Web框架，比如Django等</strong></em></p>
 ]]></content>
+      <categories>
+        <category>Frontend/前端</category>
+      </categories>
+      <tags>
+        <tag>Server</tag>
+      </tags>
   </entry>
 </search>
