@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon.ico">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT Serif:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/en/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/en/lib/pace/pace-theme-minimal.min.css">
+  <script src="/en/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wizard-guido.github.io","root":"/en/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="This article focuses on an infrastructure as code tool, terraform, and helps deveopers quickly and confidently scale your cloud deployments, and also easily maintain and manage the infrastructure of t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Infrastructure as Code --- Terraform">
+<meta property="og:url" content="https://wizard-guido.github.io/en/2025/05/08/Terraform/index.html">
+<meta property="og:site_name" content="Binary Vagabondage">
+<meta property="og:description" content="This article focuses on an infrastructure as code tool, terraform, and helps deveopers quickly and confidently scale your cloud deployments, and also easily maintain and manage the infrastructure of t">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-07T23:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-27T18:20:32.178Z">
+<meta property="article:author" content="Will">
+<meta property="article:tag" content="IAC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wizard-guido.github.io/en/2025/05/08/Terraform/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+
+<script type="text/javascript">
+  // Wait for the page to load first
+  var _prevOnload = window.onload;
+  window.onload = function() {
+      var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
+      switchLang.onclick = function() {
+          var href = window.location.href;
+          var indexOfEn = href.toLowerCase().indexOf('/en/');
+          if(indexOfEn !== -1) {
+              window.location.href = href.replace('/en/', '/');
+          }
+          else {
+              window.location.href = href.replace('.io', '.io/en');
+          }
+          if(typeof(_prevOnload) === 'function') {
+              _prevOnload();
+          }
+          return false;
+      }
+  }
+</script>
+  <title>Infrastructure as Code --- Terraform | Binary Vagabondage</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Binary Vagabondage</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-switch_lang">
+
+    <a href="https://wizard-guido.github.io/" rel="section"><i class="fa fa-language fa-fw"></i>简体中文</a>
+
+  </li>
+        <li class="menu-item menu-item-home">
+
+    <a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/en/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-training">
+
+    <a href="/en/training/" rel="section"><i class="fa fa-dumbbell fa-fw"></i>Training</a>
+
+  </li>
+        <li class="menu-item menu-item-photography">
+
+    <a href="/en/photography/" rel="section"><i class="fas fa-camera fa-fw"></i>Photography</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Wizard-Guido?tab=repositories" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wizard-guido.github.io/en/2025/05/08/Terraform/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="Will">
+      <meta itemprop="description" content="In me the tiger sniffs the rose">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Binary Vagabondage">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Infrastructure as Code --- Terraform
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-05-08 00:00:00" itemprop="dateCreated datePublished" datetime="2025-05-08T00:00:00+01:00">2025-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-10-27 18:20:32" itemprop="dateModified" datetime="2025-10-27T18:20:32+00:00">2025-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/en/categories/Infrastructure-As-Code/" itemprop="url" rel="index"><span itemprop="name">Infrastructure As Code</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>5.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>5 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>This article focuses on an infrastructure as code tool, terraform, and helps deveopers quickly and confidently scale your cloud deployments, and also easily maintain and manage the infrastructure of their projects.</strong></p>
+<a id="more"></a>
+
+<p>Terraform is an IAC tool created by Hashicorp, and it defines infrastructure (cloud, on-prem, SaaS) in declarative .tf files and provisions it. Terragrunt is a thin wrapper around Terraform, created by Gruntwork. It helps with managing Terraform projects at scale (especially with multiple environments, accounts, or modules).</p>
+<h2 id="1-IAC-Tool-—-Terraform"><a href="#1-IAC-Tool-—-Terraform" class="headerlink" title="1. IAC Tool — Terraform"></a>1. IAC Tool — Terraform</h2><h3 id="1-1-Terraform"><a href="#1-1-Terraform" class="headerlink" title="1.1 Terraform"></a>1.1 Terraform</h3><ul>
+<li><strong>Core features</strong>:</li>
+<li>Uses providers (AWS, Azure, GCP, etc.).</li>
+<li>Manages resources (VMs, databases, networks, etc.).</li>
+<li>Maintains state (in .tfstate files).</li>
+<li>Supports modules for reusability.</li>
+</ul>
+<p>✅ Best when: you want a direct, provider-backed tool to define and manage infrastructure.</p>
+<h3 id="1-2-Terragrunt"><a href="#1-2-Terragrunt" class="headerlink" title="1.2 Terragrunt"></a>1.2 Terragrunt</h3><ul>
+<li><strong>Core features</strong>:</li>
+<li>DRY (Don’t Repeat Yourself): Centralizes common Terraform code and variables.</li>
+<li>Handles remote state management easily (e.g., S3 + DynamoDB for AWS).</li>
+<li>Manages multiple Terraform modules (e.g., prod, dev, staging).</li>
+<li>Dependency management: ensures some stacks are applied before others.</li>
+<li>Adds a standard project structure.</li>
+</ul>
+<p>✅ Best when: you have <strong>many environments, modules, or teams</strong> and need orchestration and consistency.</p>
+<h3 id="1-3-Terraform-and-Terragrunt"><a href="#1-3-Terraform-and-Terragrunt" class="headerlink" title="1.3 Terraform and Terragrunt"></a>1.3 Terraform and Terragrunt</h3><ul>
+<li><p><strong>Terraform</strong> is the <strong>engine</strong>: it does the actual work of provisioning.</p>
+</li>
+<li><p><strong>Terragrunt</strong> is the <strong>orchestrator</strong>: it helps you run Terraform consistently across many environments with less repetition.</p>
+</li>
+</ul>
+<h3 id="1-4-When-to-use-what"><a href="#1-4-When-to-use-what" class="headerlink" title="1.4 When to use what"></a>1.4 When to use what</h3><ul>
+<li><p>Small project, single environment → <strong>Terraform only</strong> is fine.</p>
+</li>
+<li><p>Large project, multiple environments/accounts → <strong>Terraform + Terragrunt</strong> gives better structure and automation.</p>
+</li>
+</ul>
+<h2 id="2-Example-of-Usage"><a href="#2-Example-of-Usage" class="headerlink" title="2. Example of Usage"></a>2. Example of Usage</h2><h3 id="2-1-Folder-Structure"><a href="#2-1-Folder-Structure" class="headerlink" title="2.1 Folder Structure"></a>2.1 Folder Structure</h3><p>A common pattern is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">infra-live&#x2F;</span><br><span class="line">├── terragrunt.hcl       # Root configuration (backend, provider defaults)</span><br><span class="line">├── dev&#x2F;</span><br><span class="line">│  ├── app&#x2F;</span><br><span class="line">│  │  └── terragrunt.hcl</span><br><span class="line">│  └── network&#x2F;</span><br><span class="line">│    └── terragrunt.hcl</span><br><span class="line">├── stage&#x2F;</span><br><span class="line">│  ├── app&#x2F;</span><br><span class="line">│  │  └── terragrunt.hcl</span><br><span class="line">│  └── network&#x2F;</span><br><span class="line">│    └── terragrunt.hcl</span><br><span class="line">├── prod&#x2F;</span><br><span class="line">│  ├── app&#x2F;</span><br><span class="line">│  │  └── terragrunt.hcl</span><br><span class="line">│  └── network&#x2F;</span><br><span class="line">│    └── terragrunt.hcl</span><br><span class="line">infra-modules&#x2F;</span><br><span class="line">├── network&#x2F;</span><br><span class="line">│  └── main.tf</span><br><span class="line">├── app&#x2F;</span><br><span class="line">│  └── main.tf</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p><strong>infra-modules/</strong> → reusable <strong>Terraform modules</strong> (network, app, etc.)</p>
+</li>
+<li><p><strong>infra-live/</strong> → <strong>Terragrunt configs</strong> per environment that call the modules</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-2-Root-terragrunt-hcl"><a href="#2-2-Root-terragrunt-hcl" class="headerlink" title="2.2 Root terragrunt.hcl"></a>2.2 Root terragrunt.hcl</h3><p>This defines <strong>common settings</strong> (remote state + provider configs) for all environments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># infra-live&#x2F;terragrunt.hcl</span><br><span class="line"></span><br><span class="line">remote_state &#123;</span><br><span class="line"> backend &#x3D; &quot;azurerm&quot;</span><br><span class="line"> config &#x3D; &#123;</span><br><span class="line">  resource_group_name &#x3D; &quot;rg-terraform-state&quot;</span><br><span class="line">  storage_account_name &#x3D; &quot;tfstatestorageacct&quot;</span><br><span class="line">  container_name    &#x3D; &quot;tfstate&quot;</span><br><span class="line">  key         &#x3D; &quot;$&#123;path_relative_to_include()&#125;&#x2F;terraform.tfstate&quot;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">generate &quot;provider&quot; &#123;</span><br><span class="line"> path   &#x3D; &quot;provider.tf&quot;</span><br><span class="line"> if_exists &#x3D; &quot;overwrite&quot;</span><br><span class="line"> contents &#x3D; &lt;&lt;EOF</span><br><span class="line"> provider &quot;azurerm&quot; &#123;</span><br><span class="line"> 	features &#123;&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> EOF</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>👉 What this does:</p>
+<ul>
+<li><p>Stores Terraform state in an <strong>Azure Storage Account</strong> (remote backend).</p>
+</li>
+<li><p>Generates a provider block so we don’t need to repeat it in every module.</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-3-Module-Example-—-network"><a href="#2-3-Module-Example-—-network" class="headerlink" title="2.3 Module Example — network"></a>2.3 Module Example — network</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># infra-modules&#x2F;network&#x2F;main.tf</span><br><span class="line"></span><br><span class="line">resource &quot;azurerm_resource_group&quot; &quot;rg&quot; &#123;</span><br><span class="line"> name &#x3D; var.resource_group_name</span><br><span class="line"> location &#x3D; var.location</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">resource &quot;azurerm_virtual_network&quot; &quot;vnet&quot; &#123;</span><br><span class="line"> name        &#x3D; var.vnet_name</span><br><span class="line"> address_space    &#x3D; [&quot;10.0.0.0&#x2F;16&quot;]</span><br><span class="line"> location      &#x3D; azurerm_resource_group.rg.location</span><br><span class="line"> resource_group_name &#x3D; azurerm_resource_group.rg.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">variable &quot;resource_group_name&quot; &#123;&#125;</span><br><span class="line"></span><br><span class="line">variable &quot;location&quot; &#123;&#125;</span><br><span class="line"></span><br><span class="line">variable &quot;vnet_name&quot; &#123;&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-4-Terragrunt-Environment-Config-—-Dev-Network"><a href="#2-4-Terragrunt-Environment-Config-—-Dev-Network" class="headerlink" title="2.4 Terragrunt Environment Config — Dev Network"></a>2.4 Terragrunt Environment Config — Dev Network</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># infra-live&#x2F;dev&#x2F;network&#x2F;terragrunt.hcl</span><br><span class="line"></span><br><span class="line">include &#123;</span><br><span class="line"> path &#x3D; find_in_parent_folders()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">terraform &#123;</span><br><span class="line"> source &#x3D; &quot;..&#x2F;..&#x2F;..&#x2F;infra-modules&#x2F;network&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inputs &#x3D; &#123;</span><br><span class="line"> resource_group_name &#x3D; &quot;rg-dev&quot;</span><br><span class="line"> location      &#x3D; &quot;eastus&quot;</span><br><span class="line"> vnet_name      &#x3D; &quot;vnet-dev&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>👉 Breakdown:</p>
+<ul>
+<li><p><code>include &#123;&#125;</code> → pulls in root terragrunt.hcl (so backend/provider settings apply).</p>
+</li>
+<li><p><code>terraform &#123; source = ... &#125;</code> → points to the Terraform module.</p>
+</li>
+<li><p><code>inputs &#123;&#125;</code> → values for <strong>this environment</strong>.</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-5-Terragrunt-Environment-Config-—-Dev-App"><a href="#2-5-Terragrunt-Environment-Config-—-Dev-App" class="headerlink" title="2.5 Terragrunt Environment Config — Dev App"></a>2.5 Terragrunt Environment Config — Dev App</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># infra-live&#x2F;dev&#x2F;app&#x2F;terragrunt.hcl</span><br><span class="line"></span><br><span class="line">include &#123;</span><br><span class="line"> path &#x3D; find_in_parent_folders()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">terraform &#123;</span><br><span class="line"> source &#x3D; &quot;..&#x2F;..&#x2F;..&#x2F;infra-modules&#x2F;app&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"> paths &#x3D; [&quot;..&#x2F;network&quot;]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inputs &#x3D; &#123;</span><br><span class="line"> resource_group_name &#x3D; &quot;rg-dev&quot;</span><br><span class="line"> location      &#x3D; &quot;eastus&quot;</span><br><span class="line"> app_name      &#x3D; &quot;myapp-dev&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>👉 Breakdown:</p>
+<ul>
+<li><p>Declares <strong>dependency</strong> on network (so VNet is created first).</p>
+</li>
+<li><p>Uses same provider/backend from root.</p>
+</li>
+<li><p>Environment-specific app name.</p>
+</li>
+</ul>
+<hr>
+<h3 id="2-6-Running-Terragrunt"><a href="#2-6-Running-Terragrunt" class="headerlink" title="2.6 Running Terragrunt"></a>2.6 Running Terragrunt</h3><p>Commands are the same as Terraform but scoped:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd infra-live/dev/network</span><br><span class="line"></span><br><span class="line">terragrunt init</span><br><span class="line"></span><br><span class="line">terragrunt plan</span><br><span class="line"></span><br><span class="line">terragrunt apply</span><br></pre></td></tr></table></figure>
+<p>Or run for <strong>all modules in an environment</strong>:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> infra<span class="literal">-live</span>/dev</span><br><span class="line"></span><br><span class="line">terragrunt run<span class="literal">-all</span> plan</span><br><span class="line"></span><br><span class="line">terragrunt run<span class="literal">-all</span> apply</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-🔑-Key-Syntax-amp-Behavior"><a href="#3-🔑-Key-Syntax-amp-Behavior" class="headerlink" title="3. 🔑 Key Syntax &amp; Behavior"></a>3. 🔑 Key Syntax &amp; Behavior</h2><ul>
+<li><p><code>include &#123;&#125;</code> → inherit root config (keeps DRY).</p>
+</li>
+<li><p><code>terraform &#123; source = ... &#125;</code> → points to a reusable Terraform module.</p>
+</li>
+<li><p><code>inputs = &#123;&#125;</code> → variables passed to the module.</p>
+</li>
+<li><p><code>dependencies &#123;&#125;</code> → ensures correct order across stacks.</p>
+</li>
+<li><p><code>remote_state &#123;&#125;</code> → centralizes state storage in Azure.</p>
+</li>
+<li><p><code>generate &#123;&#125;</code> → dynamically writes files (like provider.tf).</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/IAC/" rel="tag"># IAC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/en/2025/03/16/Docker%20Intro/" rel="prev" title="Understanding Docker Technologoy">
+      <i class="fa fa-chevron-left"></i> Understanding Docker Technologoy
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-IAC-Tool-%E2%80%94-Terraform"><span class="nav-number">1.</span> <span class="nav-text">1. IAC Tool — Terraform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Terraform"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Terraform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Terragrunt"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Terragrunt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Terraform-and-Terragrunt"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Terraform and Terragrunt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-When-to-use-what"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 When to use what</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Example-of-Usage"><span class="nav-number">2.</span> <span class="nav-text">2. Example of Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Folder-Structure"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Folder Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Root-terragrunt-hcl"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Root terragrunt.hcl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Module-Example-%E2%80%94-network"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Module Example — network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Terragrunt-Environment-Config-%E2%80%94-Dev-Network"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Terragrunt Environment Config — Dev Network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Terragrunt-Environment-Config-%E2%80%94-Dev-App"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Terragrunt Environment Config — Dev App</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Running-Terragrunt"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Running Terragrunt</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%F0%9F%94%91-Key-Syntax-amp-Behavior"><span class="nav-number">3.</span> <span class="nav-text">3. 🔑 Key Syntax &amp; Behavior</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Will"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Will</p>
+  <div class="site-description" itemprop="description">In me the tiger sniffs the rose</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/en/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Will</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">113k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">1:43</span>
+</div>
+
+<!--
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/en/lib/anime.min.js"></script>
+  <script src="/en/lib/velocity/velocity.min.js"></script>
+  <script src="/en/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/en/js/utils.js"></script>
+
+<script src="/en/js/motion.js"></script>
+
+
+<script src="/en/js/schemes/pisces.js"></script>
+
+
+<script src="/en/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/en/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '455054cf930233ba6bb3',
+      clientSecret: '411a90e276dec1ad799b9ace429b94c20f632569',
+      repo        : 'en',
+      owner       : 'Wizard-Guido',
+      admin       : ['Wizard-Guido'],
+      id          : 'd51b0b94b823574e846f92bbfd0a0695',
+        language: 'en',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
