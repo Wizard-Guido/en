@@ -1,99 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Basic Principle of DNS</title>
-    <url>/en/2021/11/25/BasicPrincipleofDNS/</url>
-    <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
-<a id="more"></a>
-
-<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
-<ol>
-<li>IP address: a dot-separated set of numbers that uniquely identifies a computer on the Internet</li>
-<li>domain name: a dot-separated string of names used to represent the name of a computer</li>
-</ol>
-<h2 id="Domain-Name-Composition"><a href="#Domain-Name-Composition" class="headerlink" title="Domain Name Composition"></a>Domain Name Composition</h2><p>** Domain names are hierarchical, from top to bottom (right to left in writing), divided into root, top level, second level, third level, etc. ** 1.</p>
-<blockquote>
-<ol>
-<li><p>root domain name: root</p>
-</li>
-<li><blockquote>
-<p>Top level domains: net, com, edu, org…</p>
-<ol start="3">
-<li><blockquote>
-<p>2nd level domains: ibm, baidu, alibaba, ….</p>
-<ol start="4">
-<li><blockquote>
-<p>Third level domains: www, mail, …</p>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-</blockquote>
-<p>Note: At each level of the domain name there is a name server, if in the top level domain, there is edu name server, com name server.</p>
-<h2 id="Query-method"><a href="#Query-method" class="headerlink" title="Query method"></a>Query method</h2><ul>
-<li>Recursive query: A only requests B until B returns the result A wants.</li>
-<li>Iterative query: A requests B, B returns the result informing A of the other servers it needs to request, then A requests C, D, E etc and gets the return result of the response.</li>
-</ul>
-<h2 id="Domain-Caching"><a href="#Domain-Caching" class="headerlink" title="Domain Caching"></a>Domain Caching</h2><ul>
-<li><p>For domain name servers.</p>
-<blockquote>
-<p>When resolving a domain name for the first time, a cache is used to hold the mapping of the domain name to the corresponding IP address.</p>
-</blockquote>
-</li>
-<li><p>For local computers.</p>
-<ul>
-<li><p>For browsers.</p>
-<blockquote>
-<p>The browser will use cache to save the actual IP address of the website domain name after it has been obtained to reduce the number of network requests</p>
-</blockquote>
-</li>
-<li><p>For operating systems.</p>
-<blockquote>
-<p>The operating system cache is the user’s own configured hosts file</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Query-process"><a href="#Query-process" class="headerlink" title="Query process"></a>Query process</h2><p>There are roughly seven steps</p>
-<ol>
-<li><p>first search the browser’s DNS cache, which maintains a table of domain names corresponding to IP addresses, return if available, and end the operation</p>
-</li>
-<li><p>if not found, continue to search the operating system’s DNS cache, return if available, and end the operation</p>
-</li>
-<li><p>if not found, the operating system sends the domain name to the local DNS server, which searches its own DNS cache recursively, returns if there is one, and ends the operation</p>
-</li>
-<li><p>if not found, the local server iterates to the parent DNS server</p>
-<blockquote>
-<ol>
-<li>the local DNS server sends a request to the root DNS server, which returns the top-level DNS address</li>
-<li>the local DNS server then sends a request to the top level DNS server, which returns the address of the second level DNS server</li>
-<li>the local DNS server then sends a request to the second level DNS server, which eventually returns the IP address corresponding to the domain name</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<hr>
-<p>At this point, the request phase is complete and the result is returned to the browser and cached in three steps. 5.</p>
-<ol start="5">
-<li>the local DNS server returns the IP address to the operating system and caches the mapping of the domain name to the IP</li>
-<li>the operating system returns the IP address to the browser and caches the mapping of the domain name to the IP</li>
-<li>The browser gets the IP address of the domain name and caches the mapping of the domain name to the IP</li>
-</ol>
-]]></content>
-      <categories>
-        <category>FrontEnd/前端</category>
-      </categories>
-      <tags>
-        <tag>Network</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>10 Design Patterns</title>
     <url>/en/2023/03/11/10DesignPatterns/</url>
     <content><![CDATA[<p><strong>This article will talk about some classical desgin patterns that every developer should know to level up.</strong></p>
@@ -284,67 +191,96 @@
       </tags>
   </entry>
   <entry>
-    <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
-    <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
-    <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
+    <title>Basic Principle of DNS</title>
+    <url>/en/2021/11/25/BasicPrincipleofDNS/</url>
+    <content><![CDATA[<p><strong>DNS, also known as the Domain Names System, is an Internet service used to translate domain names and their corresponding IP addresses into servers.</strong></p>
 <a id="more"></a>
 
-<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
-<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
-<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
-<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
-<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
-<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
-<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
-<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
-<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
-<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
-<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
-<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
-<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
-<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
-<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
-<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
-<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
-<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
-<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
-<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
-<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
-<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
-<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
-<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
-<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
-<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
-<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
-<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
-<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
-<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
-<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
-<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
-]]></content>
-      <categories>
-        <category>CyberSecurity</category>
-      </categories>
-      <tags>
-        <tag>Security</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Frontend Frontier</title>
-    <url>/en/2021/09/21/FrontendTech/</url>
-    <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
-<a id="more"></a>
-
-<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
+<h1 id="Domain-Names-System"><a href="#Domain-Names-System" class="headerlink" title="Domain Names System"></a>Domain Names System</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>DNS is used to translate domain names into IP addresses. Where.</p>
+<ol>
+<li>IP address: a dot-separated set of numbers that uniquely identifies a computer on the Internet</li>
+<li>domain name: a dot-separated string of names used to represent the name of a computer</li>
+</ol>
+<h2 id="Domain-Name-Composition"><a href="#Domain-Name-Composition" class="headerlink" title="Domain Name Composition"></a>Domain Name Composition</h2><p>** Domain names are hierarchical, from top to bottom (right to left in writing), divided into root, top level, second level, third level, etc. ** 1.</p>
+<blockquote>
+<ol>
+<li><p>root domain name: root</p>
+</li>
+<li><blockquote>
+<p>Top level domains: net, com, edu, org…</p>
+<ol start="3">
+<li><blockquote>
+<p>2nd level domains: ibm, baidu, alibaba, ….</p>
+<ol start="4">
+<li><blockquote>
+<p>Third level domains: www, mail, …</p>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+<p>Note: At each level of the domain name there is a name server, if in the top level domain, there is edu name server, com name server.</p>
+<h2 id="Query-method"><a href="#Query-method" class="headerlink" title="Query method"></a>Query method</h2><ul>
+<li>Recursive query: A only requests B until B returns the result A wants.</li>
+<li>Iterative query: A requests B, B returns the result informing A of the other servers it needs to request, then A requests C, D, E etc and gets the return result of the response.</li>
+</ul>
+<h2 id="Domain-Caching"><a href="#Domain-Caching" class="headerlink" title="Domain Caching"></a>Domain Caching</h2><ul>
+<li><p>For domain name servers.</p>
+<blockquote>
+<p>When resolving a domain name for the first time, a cache is used to hold the mapping of the domain name to the corresponding IP address.</p>
+</blockquote>
+</li>
+<li><p>For local computers.</p>
+<ul>
+<li><p>For browsers.</p>
+<blockquote>
+<p>The browser will use cache to save the actual IP address of the website domain name after it has been obtained to reduce the number of network requests</p>
+</blockquote>
+</li>
+<li><p>For operating systems.</p>
+<blockquote>
+<p>The operating system cache is the user’s own configured hosts file</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Query-process"><a href="#Query-process" class="headerlink" title="Query process"></a>Query process</h2><p>There are roughly seven steps</p>
+<ol>
+<li><p>first search the browser’s DNS cache, which maintains a table of domain names corresponding to IP addresses, return if available, and end the operation</p>
+</li>
+<li><p>if not found, continue to search the operating system’s DNS cache, return if available, and end the operation</p>
+</li>
+<li><p>if not found, the operating system sends the domain name to the local DNS server, which searches its own DNS cache recursively, returns if there is one, and ends the operation</p>
+</li>
+<li><p>if not found, the local server iterates to the parent DNS server</p>
+<blockquote>
+<ol>
+<li>the local DNS server sends a request to the root DNS server, which returns the top-level DNS address</li>
+<li>the local DNS server then sends a request to the top level DNS server, which returns the address of the second level DNS server</li>
+<li>the local DNS server then sends a request to the second level DNS server, which eventually returns the IP address corresponding to the domain name</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>At this point, the request phase is complete and the result is returned to the browser and cached in three steps. 5.</p>
+<ol start="5">
+<li>the local DNS server returns the IP address to the operating system and caches the mapping of the domain name to the IP</li>
+<li>the operating system returns the IP address to the browser and caches the mapping of the domain name to the IP</li>
+<li>The browser gets the IP address of the domain name and caches the mapping of the domain name to the IP</li>
+</ol>
 ]]></content>
       <categories>
         <category>FrontEnd/前端</category>
       </categories>
       <tags>
-        <tag>CONCEPT</tag>
+        <tag>Network</tag>
       </tags>
   </entry>
   <entry>
@@ -470,6 +406,70 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Frontend Frontier</title>
+    <url>/en/2021/09/21/FrontendTech/</url>
+    <content><![CDATA[<h2 id="前端趋势"><a href="#前端趋势" class="headerlink" title="前端趋势"></a>前端趋势</h2><p>目前有走向微前端的趋势，所谓微前端的提出，可以说是在MPA（多页）和SPA（单页）之间的折中，现今大多数网站都采用SPA，然而随着时间的推移，SPA内的东西越来越多，并且由于各部分之间的耦合性，使得维护成本越来越高。</p>
+<a id="more"></a>
+
+<p>因此微前端的概念被提出，即降低内部的耦合性，实现类似高内聚低耦合的效果。目前流行的有Web-Component，将网页各部分模块化，各模块之间互不干扰，独立工作（例如各模块甚至可以使用不同的编程语言来编写）。（PS: 这一概念可以与后端的微服务对比参考）</p>
+]]></content>
+      <categories>
+        <category>FrontEnd/前端</category>
+      </categories>
+      <tags>
+        <tag>CONCEPT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
+    <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
+    <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
+<a id="more"></a>
+
+<h1 id="Eavesdropping-and-packet-sniffing-over-Wi-Fi"><a href="#Eavesdropping-and-packet-sniffing-over-Wi-Fi" class="headerlink" title="Eavesdropping and packet sniffing over Wi-Fi"></a>Eavesdropping and packet sniffing over Wi-Fi</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping. It will begin from the definition of Wi-Fi eavesdropping, passing by posting some threats of the confidentiality attack and what will be at risk from this attack, through mentioning the principles that the Wi-Fi eavesdropping is based on and some common preventative measures in order to secure the network and show what we can do to protect our Wi-Fi. At the end, a brief conclusion will be given.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Eavesdropping is an action of spying on personal information and the victims can’t realize that. It’s the confidentiality attack that usually takes place on the internet. Wi-Fi eavesdropping focuses on capturing, recombining and reading the data packets which are transmitted between devices on the internet. Wi-Fi eavesdropping usually takes the form of packet sniffing to achieve their purpose. Packet sniffing is the process of collecting and gathering all the data packets regardless of the destination address of these packets. This type of technology can be legal or illegal which depends on who uses it. For example, the government will use this technology to detect if any criminal events exist on the internet and it’s legal. But black-hat hackers can also utilize it to intercept some sensitive information which is illegal. This report will focus on the illegal events and their influences.</p>
+<p>Before discussing threats resulting from eavesdropping, we need to figure out the principle of Wi-Fi eavesdropping firstly. Wi-Fi eavesdropping can also be called packet sniffing in a way. According to Ethernet protocol, every data packet has a header which should include the destination physical address and each node on the network can find it but only the node who has the same address as the packet will receive it. However, using some tools can set the network interface setting to the monitor mode, which will allow this node to receive any packet regardless of the destination physical address. Therefore, Wi-Fi eavesdropping just utilizes this principle to sniff every packet potentially, which means it’s very difficult for general users to find whether they are being eavesdropped.</p>
+<h2 id="Security-threats-from-Wi-Fi-eavesdropping"><a href="#Security-threats-from-Wi-Fi-eavesdropping" class="headerlink" title="Security threats from Wi-Fi eavesdropping"></a>Security threats from Wi-Fi eavesdropping</h2><p>The personal privacy will be exposed to the attackers if the bad guy successfully sniffs the packets. For example, public Wi-Fi is very common in the modern society, especially in the coffee bar like Starbucks. If you and the attacker are under the same public Wi-Fi, your data packets are vulnerable to this interception. Particularly, if your data packets are not encrypted in certain way, like you just unencrypted HTTP to visit some websites and submit some tables, then your personal information will be more likely to leak, such as the websites you are accessing, user name and password, what you download and even all your emails. </p>
+<p>The business information might be stolen by black-hat hackers, especially some sensitive business information which will result in money loss or even company bankruptcy. For instance, in a big company an employee is an attacker who put a packet sniffer on the internal network to eavesdrop some sensitive data like financial data which will cause a big crisis of the company. After that, it might lead to job loss and even trigger some social problems in some small areas.</p>
+<p>Besides, if a technical corporation makes a mistake on its products, it will not only affect itself like company future and share price, but also hundreds of thousands of users who own its products, which even cause a huge panic in the society. For example, according to cnet website news, in 2019 a smart video ring created by Amazon company was found to have vulnerability leaking Wi-Fi login information. (Alfred, 2019) The leaking happens when you first set your ring device. It will send the sensitive information such as Wi-Fi username and password in the plain form, which shows that everyone can see the information and even successfully enter your network and eavesdrop all your information on the network. That sounds horrible but it’s true.  </p>
+<p>In some cases, eavesdropping attack could lead to a big social event. According to an essay in UKESSAYS, over 55,000 wireless routers’ passwords are compromised due to the user bad habit that they don’t change the default password, which gives the eavesdroppers a chance to catch their data easily. [2] This case shows that many users are lack of network security awareness and it will let Wi-Fi eavesdropping become easier.</p>
+<h2 id="Why-is-Wi-Fi-so-vulnerable-to-compromise"><a href="#Why-is-Wi-Fi-so-vulnerable-to-compromise" class="headerlink" title="Why is Wi-Fi so vulnerable to compromise?"></a>Why is Wi-Fi so vulnerable to compromise?</h2><p>The most important reason is that most of users around the world don’t develop the awareness about how important network security is and how to protect their data on the internet. If users don’t know the basic knowledge of network, it will be difficult for them to know how to protect their sensitive information.</p>
+<p>Another reason is that Wi-Fi is different from wired network. Particularly, the public Wi-Fi offer everyone to access, which also allow attackers to access. It will be easier for eavesdroppers to find your devices and intercept your data since you and attackers are under the same network.</p>
+<p>Although cyber security has developed for many years, the only way to prevent us from eavesdropping is encryption. However, unfortunately, even if we use the encryption technology to secure our data, attackers still can capture data packet but in its encrypted form which also makes it possible to decipher data by using some other technologies.</p>
+<p>Last but not least, if we see the history of Wi-Fi, it’s not difficult to find Wi-Fi security problems. At the beginning, WEP was developed as the first version of Wi-Fi, but people find WEP has many security flaws after using it for a while. And then WAP was created to enhance the security as a temporary measure. But WPA was just a upgrade version of WEP and people found it was vulnerable to attack. Finally, WPA2 with advanced encryption standard was established to replace the previous protocols since WPA2 is secure enough to protect home network, but attackers still can use Wi-Fi Protected Setup to intrude into the network although it might take them about 10 hours.[3] In short, it is shown clearly that Wi-Fi itself has some inherent flaws actually and we can’t guarantee it will protect our privacy easily.</p>
+<h2 id="Common-solutions-to-eavesdropping"><a href="#Common-solutions-to-eavesdropping" class="headerlink" title="Common solutions to eavesdropping"></a>Common solutions to eavesdropping</h2><p>There are lots of ways to prevent data packets from sniffing, but the core of most measures is encryption and the difference between them is the way of encryption. In addition, there are also some indirect ways to reduce the possibility and effect of suffering from Wi-Fi eavesdropping.</p>
+<h3 id="Encryption"><a href="#Encryption" class="headerlink" title="Encryption"></a>Encryption</h3><p>In terms of encryption, the most effective way is using virtual private network(VPN) and HTTPS to surf. First, Using plain HTTP will not provide you any encryption service which means your transmitting data packets are completely exposed to anyone on the network. Compared with that, HTTPS has an additional ‘S’ which means SSL. HTTPS uses SSL to encrypt HTTP requests and responses and makes data safer than HTTP. According to the experiment of Jon Watson, he separately use HTTP, HTTPS and VPN to visit a website and use a packet sniffer called Wireshark to capture his own data. The result shows that when using HTTP, he can sniff all the packets and see all information including his username, password and his destination website, but when using HTTPS, he can also sniff all data packets but in the encrypted form and he just can see the website that he wants to visit, and when using VPN, he can only know a bunch of encrypted data sent to the Open VPN server. Hence, this experiment illustrates that HTTP is not secure and HTTPS is better but not as good as VPN. And it also indicates that using VPN means that you need to trust your VPN server since they can decipher your sending to see your data. So besides using VPN, we still need to use HTTPS that can protect our data from VPN server because even if they decipher our data packets, they will find data is still encrypted by HTTPS. ( Jon, 2018) From this point of view, the combination of HTTPS and VPN seems to be a best choice for most users.</p>
+<p>In addition, for some special users such as the government and big company, the methods mentioned above are obviously not safe enough. Therefore, another enhanced encryption called military-grade encryption will meet their requirement. Due to using a 256-bit encryption, even if data packets are sniffed by others successfully, it will take over 5,000 years to decipher them. Generally, this military-grade encryption is a great way to defend packet sniffing. But it is often used in some special area and not very widespread.</p>
+<p>Last but not least, the special encryption I really want to mention is end-to-end encryption technology. If we want to explain this technology clearly, we need to talk a little about hop-by-hop encryption. According to Dan York, hop-by-hop uses SSL encryption to ensure the security of the transmission between the user and the server. But unfortunately, when data stream arrives in the server, the protection will disappear because the server need to decode them to get some necessary information, which also provides hackers some chances. (Dan, 2010) If the server is hacked by other tools, the information of every user through this server will be dumped out on the internet. Hence, in order to make data packets safer, we introduce this technology called end-to-end encryption. It only allows both of sender and receiver to decipher the data, which means only the two side have the decryption key except others and even the server. Therefore, there is no way to see this information in its decrypted form. But suppose there is a back door here and the hacker find it, they will have the ability to eavesdrop all the information. In short, end- to-end encryption provides a higher level of security to protect our data, however, packets still could be stolen through the combination of packet sniffing and other technologies.</p>
+<h3 id="Other-indirect-measures"><a href="#Other-indirect-measures" class="headerlink" title="Other indirect measures"></a>Other indirect measures</h3><p>In terms of indirect way, there are some common solutions including turning off SSID broadcasting, disabling DHCP, and network segmentation.</p>
+<p>Firstly, SSID is service set identifier which is the name of your wireless network. Many routers set SSID broadcast as a default setting. If you turn off your SSID broadcast, other users’ terminal devices can’t find your network. However, hiding your network name doesn’t represent it disappearance in fact. It does exist actually, which means hackers still can find it. Some programs such as NetStumbler can help them easily locate your network. Consequently, it will only work for those inexperienced users and be useless for most hackers. (Paul, 2019)</p>
+<p>Secondly, DHCP is dynamic host configuration protocol. If you disable DHCP, your router will not give any devices IP automatically. Instead, you need to configure your device IP and then the router will recognize it. This measure can prevent hackers from entering your router as they don’t know your router internal IP and can’t configure their device IP. But the premise is that you have changed your router default IP which can make it hardly possible for hackers to guess your IP. (Miguel, 2014) Therefore, it will work but also lead to some inconvenient access for your own devices.</p>
+<p>Finally, network segmentation is a structural approach which can divide a network into many independent subnets and every subnet is an individual network. For example, in business network, if employees are in one subnet, they will not be authorized to access other sensitive subnets, which also reduce the possibility of eavesdropping attack. Since a hacker use phishing or other ways to control one employee’s computer, he still can’t use the packet sniffer to capture some valuable information in different subnet. From pure security point of view, this measure will reduce the attack risk obviously. Nevertheless, once the hackers decide to capture the information, they will try to comprise many users in the business company, which means it’s still possible to eavesdrop sensitive information.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This report presents the definition and principle of Wi-Fi eavesdropping in a simple way and illustrates eavesdropping’s threats and how to protect us from them in detail. </p>
+<p>As I show in the report, the majority of threats is information leak including private information, sensitive business strategies and confidential government policies. The worst effect of threats is leading to a social event and people’s panic and the smallest consequence is individual privacy disclosure. Either of these results is serious, hence, we need to take some measures to avoid suffering from packet sniffing.</p>
+<p>In my opinion, all the measures can be divided into two types. One is direct solution called encryption. The other is indirect solution including network segmentation etc. Compared with indirect solution, encryption is the most effective measure to prevent eavesdropping attacks, especially military grade encryption and end-to-end encryption because it is very difficult for hackers to decode them through either spending long time or finding a backdoor. And improving the network security awareness of users is also very significant since many attacks just use very simple method and are easy to avoid. Besides, other measures can also be taken into consideration as they are able to help users reduce the possibility of eavesdropping obviously.</p>
+<p>At the end, with the development of Wi-Fi, people can’t live and work without it although it still brings us some security problems. We are expecting some key technological breakthroughs to avoid illegal Wi-Fi eavesdropping well.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] Alfred, Ring doorbells had vulnerability leaking Wi-Fi login info, 2019 </p>
+<p><a href="https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/">https://www.cnet.com/news/ring-doorbells-had-vulnerability-leaking-wi-fi-login-info-researchers-found/</a></p>
+<p>[2]<a href="https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php">https://www.ukessays.com/essays/computer-science/wifi-eavesdropping-attack-overview-and-challenegs.php</a></p>
+<p>[3] <a href="https://www.netspotapp.com/wifi-encryption-and-security.html">https://www.netspotapp.com/wifi-encryption-and-security.html</a></p>
+<p>[4] Jon,What is packet sniffing and how can you avoid it?, 2018 </p>
+<p><a href="https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/">https://www.comparitech.com/blog/information-security/what-is-packet-sniffing/</a></p>
+<p>[5] Dan, Seven Deadliest Unified Communications Attacks, Chapter 3, Page 61, 2010</p>
+<p><a href="https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf">https://cdn.ttgtmedia.com/searchUnifiedCommunications/downloads/Seven_Deadliest_UC_Attacks_Ch3.pdf</a></p>
+<p>[6] Paul, How to disable SSID broadcast to hide your Wi-Fi, 2019 </p>
+<p><a href="https://nordvpn.com/blog/how-to-disable-ssid-broadcast/">https://nordvpn.com/blog/how-to-disable-ssid-broadcast/</a></p>
+<p>[7] Miguel, Does Disabling DHCP on Your Router Really Help Your Security?, 2014 </p>
+<p><a href="https://www.maketecheasier.com/does-disabling-dhcp-improve-security/">https://www.maketecheasier.com/does-disabling-dhcp-improve-security/</a></p>
+]]></content>
+      <categories>
+        <category>CyberSecurity</category>
+      </categories>
+      <tags>
+        <tag>Security</tag>
       </tags>
   </entry>
   <entry>
@@ -1155,6 +1155,19 @@
       </tags>
   </entry>
   <entry>
+    <title>My first blog</title>
+    <url>/en/2021/02/14/My-first-blog/</url>
+    <content><![CDATA[<p>##Fist Charpter</p>
+<p>content</p>
+<hr>
+<p>##Second Charpter</p>
+<p>content</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
+<p>:wq</p>
+]]></content>
+  </entry>
+  <entry>
     <title>JavaScript Function and Advance Notes</title>
     <url>/en/2021/10/04/JavascriptFunction/</url>
     <content><![CDATA[<p><strong>本章将深入J高级，诸如Spread语法、闭包、垃圾回收机制、函数对象、SetTimeout和SetInterval、装饰器模式和转发call/apply以及箭头函数。</strong></p>
@@ -1396,19 +1409,6 @@
       <tags>
         <tag>JavaScript</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>My first blog</title>
-    <url>/en/2021/02/14/My-first-blog/</url>
-    <content><![CDATA[<p>##Fist Charpter</p>
-<p>content</p>
-<hr>
-<p>##Second Charpter</p>
-<p>content</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
-<p>:wq</p>
-]]></content>
   </entry>
   <entry>
     <title>NGINX Configure --- Reverse Proxy to resolve cross-domain based on MAC</title>
@@ -1873,8 +1873,8 @@
     <content><![CDATA[<p><strong>This article focuses on an infrastructure as code tool, terraform, and helps developers quickly and confidently scale your cloud deployments, and also easily maintain and manage the infrastructure of their projects.</strong></p>
 <a id="more"></a>
 
-<p>Terraform is an IAC tool created by Hashicorp, and it defines infrastructure (cloud, on-prem, SaaS) in declarative .tf files and provisions it. Terragrunt is a thin wrapper around Terraform, created by Gruntwork. It helps with managing Terraform projects at scale (especially with multiple environments, accounts, or modules).</p>
-<h2 id="1-IAC-Tool-—-Terraform"><a href="#1-IAC-Tool-—-Terraform" class="headerlink" title="1. IAC Tool — Terraform"></a>1. IAC Tool — Terraform</h2><h3 id="1-1-Terraform"><a href="#1-1-Terraform" class="headerlink" title="1.1 Terraform"></a>1.1 Terraform</h3><ul>
+<h2 id="1-IAC-Tool-—-Terraform"><a href="#1-IAC-Tool-—-Terraform" class="headerlink" title="1. IAC Tool — Terraform"></a>1. IAC Tool — Terraform</h2><p>Terraform is an IAC tool created by Hashicorp, and it defines infrastructure (cloud, on-prem, SaaS) in declarative .tf files and provisions it. Terragrunt is a thin wrapper around Terraform, created by Gruntwork. It helps with managing Terraform projects at scale (especially with multiple environments, accounts, or modules).</p>
+<h3 id="1-1-Terraform"><a href="#1-1-Terraform" class="headerlink" title="1.1 Terraform"></a>1.1 Terraform</h3><ul>
 <li><strong>Core features</strong>:</li>
 <li>Uses providers (AWS, Azure, GCP, etc.).</li>
 <li>Manages resources (VMs, databases, networks, etc.).</li>
@@ -1976,6 +1976,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/en/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Some Methods to Flatten a Nested Array</title>
     <url>/en/2022/12/10/SomeMethodstoFlattenANestedArray/</url>
     <content><![CDATA[<p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
@@ -1996,19 +2010,5 @@
       <tags>
         <tag>Algorithm</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/en/2021/02/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
