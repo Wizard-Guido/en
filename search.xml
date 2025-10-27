@@ -94,6 +94,131 @@
       </tags>
   </entry>
   <entry>
+    <title>Understanding Docker Technologoy</title>
+    <url>/en/2025/03/16/Docker%20Intro/</url>
+    <content><![CDATA[<p><strong>This article will talk about docker, one of the most popular containerisation technologies that every developer should know and master.</strong></p>
+<a id="more"></a>
+
+<h1 id="Understanding-Docker-and-Docker-Compose-A-Comprehensive-Guide"><a href="#Understanding-Docker-and-Docker-Compose-A-Comprehensive-Guide" class="headerlink" title="Understanding Docker and Docker Compose: A Comprehensive Guide"></a>Understanding Docker and Docker Compose: A Comprehensive Guide</h1><h2 id="1-What-is-Docker"><a href="#1-What-is-Docker" class="headerlink" title="1. What is Docker?"></a>1. What is Docker?</h2><p>Docker is a platform that enables developers to package applications and their dependencies into lightweight, portable containers. Think of a container as a standardized unit that includes everything needed to run a piece of software: code, runtime, system tools, libraries, and settings.</p>
+<p><strong>The Core Problem Docker Solves:</strong> Have you ever heard developers say “it works on my machine”? Docker eliminates this problem by ensuring that applications run identically across different environments—whether on your laptop, a colleague’s workstation, or a production server.</p>
+<h3 id="Key-Concepts-in-Docker"><a href="#Key-Concepts-in-Docker" class="headerlink" title="Key Concepts in Docker"></a>Key Concepts in Docker</h3><ul>
+<li><strong>Images</strong>: Read-only templates that contain the application and its dependencies</li>
+<li><strong>Containers</strong>: Running instances of images—lightweight, isolated processes</li>
+<li><strong>Dockerfile</strong>: A text file with instructions to build a Docker image</li>
+<li><strong>Docker Engine</strong>: The runtime that executes and manages containers</li>
+</ul>
+<h2 id="2-What-is-Docker-Compose"><a href="#2-What-is-Docker-Compose" class="headerlink" title="2. What is Docker Compose?"></a>2. What is Docker Compose?</h2><p>Docker Compose is a tool for defining and running multi-container Docker applications. While Docker handles individual containers, Docker Compose orchestrates multiple containers that work together.</p>
+<h3 id="2-1-Why-Docker-Compose"><a href="#2-1-Why-Docker-Compose" class="headerlink" title="2.1 Why Docker Compose?"></a>2.1 Why Docker Compose?</h3><p>Let me ask you this: What happens when your application needs multiple services? For example, a web application might need:</p>
+<ul>
+<li>A web server (Node.js, Python, etc.)</li>
+<li>A database (PostgreSQL, MongoDB)</li>
+<li>A cache layer (Redis)</li>
+<li>A reverse proxy (Nginx)</li>
+</ul>
+<p>Running each service individually with separate <code>docker run</code> commands becomes tedious and error-prone. Docker Compose solves this by letting you define all services in a single YAML file.</p>
+<h2 id="3-Key-Differences"><a href="#3-Key-Differences" class="headerlink" title="3. Key Differences"></a>3. Key Differences</h2><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Docker</th>
+<th>Docker Compose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Purpose</strong></td>
+<td>Manages individual containers</td>
+<td>Orchestrates multiple containers</td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>Command-line or Dockerfile</td>
+<td>YAML configuration file</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Single-container applications</td>
+<td>Multi-container applications</td>
+</tr>
+<tr>
+<td><strong>Networking</strong></td>
+<td>Manual network setup</td>
+<td>Automatic network creation</td>
+</tr>
+<tr>
+<td><strong>Startup</strong></td>
+<td>One container at a time</td>
+<td>All services with one command</td>
+</tr>
+</tbody></table>
+<h2 id="4-Benefits-of-Docker-Technology"><a href="#4-Benefits-of-Docker-Technology" class="headerlink" title="4. Benefits of Docker Technology"></a>4. Benefits of Docker Technology</h2><h3 id="4-1-Consistency-Across-Environments"><a href="#4-1-Consistency-Across-Environments" class="headerlink" title="4.1. Consistency Across Environments"></a>4.1. <strong>Consistency Across Environments</strong></h3><p>Eliminates the “works on my machine” problem by ensuring identical environments everywhere.</p>
+<h3 id="4-2-Isolation"><a href="#4-2-Isolation" class="headerlink" title="4.2. Isolation"></a>4.2. <strong>Isolation</strong></h3><p>Each container runs independently, preventing conflicts between different applications or versions.</p>
+<h3 id="4-3-Efficiency"><a href="#4-3-Efficiency" class="headerlink" title="4.3. Efficiency"></a>4.3. <strong>Efficiency</strong></h3><p>Containers share the host OS kernel, making them more lightweight than traditional virtual machines.</p>
+<h3 id="4-4-Rapid-Deployment"><a href="#4-4-Rapid-Deployment" class="headerlink" title="4.4. Rapid Deployment"></a>4.4. <strong>Rapid Deployment</strong></h3><p>Start, stop, and rebuild applications in seconds rather than minutes.</p>
+<h3 id="4-5-Scalability"><a href="#4-5-Scalability" class="headerlink" title="4.5. Scalability"></a>4.5. <strong>Scalability</strong></h3><p>Easily replicate containers to handle increased load.</p>
+<h3 id="4-6-Version-Control"><a href="#4-6-Version-Control" class="headerlink" title="4.6. Version Control"></a>4.6. <strong>Version Control</strong></h3><p>Docker images can be versioned, making rollbacks simple and reliable.</p>
+<h2 id="5-Practical-Example-Dockerizing-a-Full-Stack-Application"><a href="#5-Practical-Example-Dockerizing-a-Full-Stack-Application" class="headerlink" title="5. Practical Example: Dockerizing a Full-Stack Application"></a>5. Practical Example: Dockerizing a Full-Stack Application</h2><p>Let me walk you through dockerizing a real-world application: a Node.js/Express API with a PostgreSQL database and Redis for caching.</p>
+<h3 id="5-1-Project-Structure"><a href="#5-1-Project-Structure" class="headerlink" title="5.1 Project Structure"></a>5.1 Project Structure</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">my-app&#x2F;</span><br><span class="line">├── backend&#x2F;</span><br><span class="line">│   ├── src&#x2F;</span><br><span class="line">│   │   └── server.js</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   └── Dockerfile</span><br><span class="line">├── docker-compose.yml</span><br><span class="line">└── .env</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-Steps"><a href="#5-2-Steps" class="headerlink" title="5.2 Steps"></a>5.2 Steps</h3><h4 id="Step-1-Create-the-Backend-Application"><a href="#Step-1-Create-the-Backend-Application" class="headerlink" title="Step 1: Create the Backend Application"></a>Step 1: Create the Backend Application</h4><p><strong>backend/src/server.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; Pool &#125; = <span class="built_in">require</span>(<span class="string">&#x27;pg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> redis = <span class="built_in">require</span>(<span class="string">&#x27;redis&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PostgreSQL connection</span></span><br><span class="line"><span class="keyword">const</span> pool = <span class="keyword">new</span> Pool(&#123;</span><br><span class="line">  host: process.env.DB_HOST,</span><br><span class="line">  port: process.env.DB_PORT,</span><br><span class="line">  database: process.env.DB_NAME,</span><br><span class="line">  user: process.env.DB_USER,</span><br><span class="line">  password: process.env.DB_PASSWORD,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Redis connection</span></span><br><span class="line"><span class="keyword">const</span> redisClient = redis.createClient(&#123;</span><br><span class="line">  socket: &#123;</span><br><span class="line">    host: process.env.REDIS_HOST,</span><br><span class="line">    port: process.env.REDIS_PORT,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">redisClient.connect();</span><br><span class="line"></span><br><span class="line">app.use(express.json());</span><br><span class="line"></span><br><span class="line"><span class="comment">// Health check endpoint</span></span><br><span class="line">app.get(<span class="string">&#x27;/health&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> pool.query(<span class="string">&#x27;SELECT NOW()&#x27;</span>);</span><br><span class="line">    <span class="keyword">await</span> redisClient.ping();</span><br><span class="line">    res.json(&#123; <span class="attr">status</span>: <span class="string">&#x27;healthy&#x27;</span>, <span class="attr">timestamp</span>: <span class="keyword">new</span> <span class="built_in">Date</span>() &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).json(&#123; <span class="attr">status</span>: <span class="string">&#x27;unhealthy&#x27;</span>, <span class="attr">error</span>: error.message &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Example endpoint with caching</span></span><br><span class="line">app.get(<span class="string">&#x27;/users&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// Check cache first</span></span><br><span class="line">    <span class="keyword">const</span> cachedUsers = <span class="keyword">await</span> redisClient.get(<span class="string">&#x27;users&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (cachedUsers) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.json(&#123; <span class="attr">source</span>: <span class="string">&#x27;cache&#x27;</span>, <span class="attr">data</span>: <span class="built_in">JSON</span>.parse(cachedUsers) &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Query database</span></span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> pool.query(<span class="string">&#x27;SELECT * FROM users LIMIT 10&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Cache the result</span></span><br><span class="line">    <span class="keyword">await</span> redisClient.setEx(<span class="string">&#x27;users&#x27;</span>, <span class="number">60</span>, <span class="built_in">JSON</span>.stringify(result.rows));</span><br><span class="line">    </span><br><span class="line">    res.json(&#123; <span class="attr">source</span>: <span class="string">&#x27;database&#x27;</span>, <span class="attr">data</span>: result.rows &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).json(&#123; <span class="attr">error</span>: error.message &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running on port <span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>backend/package.json</strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;backend&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;src/server.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;node src/server.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;express&quot;</span>: <span class="string">&quot;^4.18.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;pg&quot;</span>: <span class="string">&quot;^8.11.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;redis&quot;</span>: <span class="string">&quot;^4.6.7&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step-2-Create-the-Dockerfile"><a href="#Step-2-Create-the-Dockerfile" class="headerlink" title="Step 2: Create the Dockerfile"></a>Step 2: Create the Dockerfile</h4><p><strong>backend/Dockerfile</strong></p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Use official Node.js runtime as base image</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set working directory in container</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Copy package files</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install dependencies</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install --production</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Copy application code</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> src ./src</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Expose the port the app runs on</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">3000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Command to run the application</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;npm&quot;</span>, <span class="string">&quot;start&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<p>**Note: **Each comment means what each instruction does. Understanding the layered nature of Docker images is crucial—each instruction creates a new layer.</p>
+<p><strong>Why copy package.json separately?</strong> This is a Docker best practice called “<strong>layer caching</strong>.” Docker caches each step. If your code changes but dependencies don’t, Docker skips reinstalling everything. This makes rebuilds MUCH faster.</p>
+<h5 id="Step-3-Create-the-Docker-Compose-Configuration"><a href="#Step-3-Create-the-Docker-Compose-Configuration" class="headerlink" title="Step 3: Create the Docker Compose Configuration"></a>Step 3: Create the Docker Compose Configuration</h5><p><strong>docker-compose.yml</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="comment"># Backend API Service</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./backend</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">my-app-backend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PORT=3000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_HOST=postgres</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_PORT=5432</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_NAME=myappdb</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_USER=admin</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_PASSWORD=secretpassword</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">REDIS_HOST=redis</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">REDIS_PORT=6379</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">postgres</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app-network</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./backend/src:/app/src</span>  <span class="comment"># Hot reload for development</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># PostgreSQL Database</span></span><br><span class="line">  <span class="attr">postgres:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres:15-alpine</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">my-app-postgres</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">POSTGRES_DB=myappdb</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">POSTGRES_USER=admin</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">POSTGRES_PASSWORD=secretpassword</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;5432:5432&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">postgres-data:/var/lib/postgresql/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./init.sql:/docker-entrypoint-initdb.d/init.sql</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app-network</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Redis Cache</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis:7-alpine</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">my-app-redis</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app-network</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Named volumes for data persistence</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">postgres-data:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Network for service communication</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">app-network:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure>
+<h4 id="Step-4-Create-Database-Initialization-Script"><a href="#Step-4-Create-Database-Initialization-Script" class="headerlink" title="Step 4: Create Database Initialization Script"></a>Step 4: Create Database Initialization Script</h4><p><strong>init.sql</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- Create users table</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> users (</span><br><span class="line">    id SERIAL <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    created_at <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Insert sample data</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> users (username, email) <span class="keyword">VALUES</span></span><br><span class="line">    (<span class="string">&#x27;john_doe&#x27;</span>, <span class="string">&#x27;john@example.com&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;jane_smith&#x27;</span>, <span class="string">&#x27;jane@example.com&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;bob_wilson&#x27;</span>, <span class="string">&#x27;bob@example.com&#x27;</span>)</span><br><span class="line"><span class="keyword">ON</span> CONFLICT (username) DO NOTHING;</span><br></pre></td></tr></table></figure>
+<h3 id="Step-5-Running-the-Application"><a href="#Step-5-Running-the-Application" class="headerlink" title="Step 5: Running the Application"></a>Step 5: Running the Application</h3><p>Here’s where Docker Compose shows its power. Instead of running multiple <code>docker run</code> commands, you execute just one:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Start all services</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># View logs</span></span><br><span class="line">docker-compose logs -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check service status</span></span><br><span class="line">docker-compose ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># Stop all services</span></span><br><span class="line">docker-compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rebuild and restart</span></span><br><span class="line">docker-compose up -d --build</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-Understanding-the-Docker-Compose-Configuration"><a href="#5-3-Understanding-the-Docker-Compose-Configuration" class="headerlink" title="5.3 Understanding the Docker Compose Configuration"></a>5.3 Understanding the Docker Compose Configuration</h3><p>Let me break down what’s happening here—can you identify why we use <code>depends_on</code>? It ensures services start in the correct order, though it doesn’t wait for a service to be “ready,” only “started.”</p>
+<p><strong>Key Features Demonstrated:</strong></p>
+<ol>
+<li><strong>Service Definition</strong>: Three services (backend, postgres, redis) working together</li>
+<li><strong>Networking</strong>: Automatic network creation allows services to communicate using service names</li>
+<li><strong>Volume Mounting</strong>: Data persistence for PostgreSQL and hot-reload for development</li>
+<li><strong>Environment Variables</strong>: Configuration without hardcoding values</li>
+<li><strong>Port Mapping</strong>: Exposing services to the host machine</li>
+<li><strong>Dependencies</strong>: Ensuring proper startup order</li>
+</ol>
+<h3 id="5-4-Testing-the-Application"><a href="#5-4-Testing-the-Application" class="headerlink" title="5.4 Testing the Application"></a>5.4 Testing the Application</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Check health</span></span><br><span class="line">curl http://localhost:3000/health</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get users (first call hits database)</span></span><br><span class="line">curl http://localhost:3000/users</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get users again (second call hits cache)</span></span><br><span class="line">curl http://localhost:3000/users</span><br></pre></td></tr></table></figure>
+<h2 id="6-Advanced-Docker-Compose-Features"><a href="#6-Advanced-Docker-Compose-Features" class="headerlink" title="6. Advanced Docker Compose Features"></a>6. Advanced Docker Compose Features</h2><h3 id="6-1-Environment-Files"><a href="#6-1-Environment-Files" class="headerlink" title="6.1 Environment Files"></a>6.1 Environment Files</h3><p>Create a <code>.env</code> file for sensitive data:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DB_PASSWORD&#x3D;secretpassword</span><br><span class="line">POSTGRES_PASSWORD&#x3D;secretpassword</span><br></pre></td></tr></table></figure>
+<p>Reference in docker-compose.yml:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">DB_PASSWORD=$&#123;DB_PASSWORD&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-2-Multiple-Compose-Files"><a href="#6-2-Multiple-Compose-Files" class="headerlink" title="6.2 Multiple Compose Files"></a>6.2 Multiple Compose Files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Development</span></span><br><span class="line">docker-compose -f docker-compose.yml -f docker-compose.dev.yml up</span><br><span class="line"></span><br><span class="line"><span class="comment"># Production</span></span><br><span class="line">docker-compose -f docker-compose.yml -f docker-compose.prod.yml up</span><br></pre></td></tr></table></figure>
+<h2 id="7-Best-Practices-of-Docker-Compose"><a href="#7-Best-Practices-of-Docker-Compose" class="headerlink" title="7. Best Practices of Docker Compose"></a>7. Best Practices of Docker Compose</h2><ol>
+<li><p><strong>Use .dockerignore</strong>: Exclude unnecessary files from the build context</p>
+</li>
+<li><p><strong>Multi-stage builds</strong>: Reduce image size by separating build and runtime dependencies</p>
+<ol>
+<li><h3 id="Single-Stage-Build-Inefficient"><a href="#Single-Stage-Build-Inefficient" class="headerlink" title="Single-Stage Build (Inefficient)"></a>Single-Stage Build (Inefficient)</h3><p>dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install           <span class="comment"># Installs ALL dependencies (including dev tools)</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm run build         <span class="comment"># Builds your app</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;npm&quot;</span>, <span class="string">&quot;start&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Problem: Final image includes build tools, dev dependencies, source code</span></span><br><span class="line"><span class="comment"># Image size: ~500MB</span></span><br></pre></td></tr></table></figure>
+<h3 id="Multi-Stage-Build-Efficient"><a href="#Multi-Stage-Build-Efficient" class="headerlink" title="Multi-Stage Build (Efficient)"></a>Multi-Stage Build (Efficient)</h3><p>dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stage 1: BUILD - Use full Node.js with build tools</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span> AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install                    <span class="comment"># All dependencies</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm run build                  <span class="comment"># Creates /app/dist</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Stage 2: RUN - Use lightweight Node.js, copy only what&#x27;s needed</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine               <span class="comment"># Smaller base image</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install --production      <span class="comment"># Only production dependencies</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> --from=builder /app/dist ./dist   <span class="comment"># Copy ONLY the built files</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;dist/server.js&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result: Final image only has production code and dependencies</span></span><br><span class="line"><span class="comment"># Image size: ~150MB</span></span><br></pre></td></tr></table></figure>
+<p><strong>Key insight:</strong> The final image only contains what’s in the LAST stage. Everything from earlier stages is discarded.</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Don’t run as root</strong>: Create non-root users in containers for security</p>
+</li>
+<li><p><strong>Use specific image tags</strong>: Avoid <code>latest</code> for reproducibility</p>
+</li>
+<li><p><strong>Health checks</strong>: Implement health checks for better orchestration</p>
+</li>
+<li><p><strong>Named volumes</strong>: Use named volumes for important data</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Containerisation</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Eavesdropping and Packet Sniffing over Wi-Fi</title>
     <url>/en/2022/11/18/EavesdroppingAndPacketSniffingOverWi-Fi/</url>
     <content><![CDATA[<p><strong>This report illustrates the eavesdropping and packet sniffing over Wi-Fi networks, one of the most common attacks. It will focus on the threats and some popular solutions of Wi-Fi eavesdropping.</strong></p>
@@ -533,19 +658,6 @@
       </tags>
   </entry>
   <entry>
-    <title>My first blog</title>
-    <url>/en/2021/02/14/My-first-blog/</url>
-    <content><![CDATA[<p>##Fist Charpter</p>
-<p>content</p>
-<hr>
-<p>##Second Charpter</p>
-<p>content</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
-<p>:wq</p>
-]]></content>
-  </entry>
-  <entry>
     <title>HTML Basics Notes</title>
     <url>/en/2021/09/22/HTMLNotes/</url>
     <content><![CDATA[<p><strong>关于HTML一些生疏和不常见的知识，简单汇总一下。</strong></p>
@@ -585,6 +697,105 @@
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My first blog</title>
+    <url>/en/2021/02/14/My-first-blog/</url>
+    <content><![CDATA[<p>##Fist Charpter</p>
+<p>content</p>
+<hr>
+<p>##Second Charpter</p>
+<p>content</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>content</p>
+<p>:wq</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Handy CheatSheet</title>
+    <url>/en/2021/10/27/Handy-CheatSheet/</url>
+    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
+<thead>
+<tr>
+<th align="center">Algorithm</th>
+<th align="center">Best Time Complexity</th>
+<th align="center">Ave TC</th>
+<th align="center">Worst TC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Selection Sort</td>
+<td align="center">Ω($n^2$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bubble Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center">Insertion Sort</td>
+<td align="center">Ω($n$)</td>
+<td align="center">Θ($n^2$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Heap Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Quick Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($n^2$)</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>Merge Sort</strong></td>
+<td align="center">Ω($nlogn$)</td>
+<td align="center">Θ($nlogn$)</td>
+<td align="center"><strong>O($nlogn$)</strong></td>
+</tr>
+<tr>
+<td align="center">Bucket Sort</td>
+<td align="center">Ω($n+k$)</td>
+<td align="center">Θ($n+k$)</td>
+<td align="center">O($n^2$)</td>
+</tr>
+<tr>
+<td align="center">Radix Sort</td>
+<td align="center">Ω($nk$)</td>
+<td align="center">Θ($nk$)</td>
+<td align="center">O($nk$)</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
+<li>O($logn$)    ——————–    e.g. Binary Tree</li>
+<li>O($n$)          ——————–    e.g. Simple Search</li>
+<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
+</ol>
+<hr>
+<ol start="4">
+<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
+</ol>
+<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
+<li>sout + enter</li>
+<li>psvm + enter</li>
+<li>fori + enter</li>
+<li>iter + enter</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Algorithm/算法</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -1321,89 +1532,74 @@
       </tags>
   </entry>
   <entry>
-    <title>Handy CheatSheet</title>
-    <url>/en/2021/10/27/Handy-CheatSheet/</url>
-    <content><![CDATA[<h1 id="Algorithm-Time-Complexity"><a href="#Algorithm-Time-Complexity" class="headerlink" title="Algorithm Time Complexity"></a>Algorithm Time Complexity</h1><table>
-<thead>
-<tr>
-<th align="center">Algorithm</th>
-<th align="center">Best Time Complexity</th>
-<th align="center">Ave TC</th>
-<th align="center">Worst TC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Selection Sort</td>
-<td align="center">Ω($n^2$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bubble Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center">Insertion Sort</td>
-<td align="center">Ω($n$)</td>
-<td align="center">Θ($n^2$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Heap Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Quick Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($n^2$)</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>Merge Sort</strong></td>
-<td align="center">Ω($nlogn$)</td>
-<td align="center">Θ($nlogn$)</td>
-<td align="center"><strong>O($nlogn$)</strong></td>
-</tr>
-<tr>
-<td align="center">Bucket Sort</td>
-<td align="center">Ω($n+k$)</td>
-<td align="center">Θ($n+k$)</td>
-<td align="center">O($n^2$)</td>
-</tr>
-<tr>
-<td align="center">Radix Sort</td>
-<td align="center">Ω($nk$)</td>
-<td align="center">Θ($nk$)</td>
-<td align="center">O($nk$)</td>
-</tr>
-</tbody></table>
+    <title>Redux Introduction --- Operation Intro</title>
+    <url>/en/2021/11/28/ReduxIntroduction/</url>
+    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
 <a id="more"></a>
 
-<h1 id="Time-Complexity-Rank"><a href="#Time-Complexity-Rank" class="headerlink" title="Time Complexity Rank"></a>Time Complexity Rank</h1><ol>
-<li>O($logn$)    ——————–    e.g. Binary Tree</li>
-<li>O($n$)          ——————–    e.g. Simple Search</li>
-<li>O($nlogn$)  ——————–    e.g. Quick Sort</li>
-</ol>
+<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
+<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
+<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
+<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
+<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
+<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
+<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
+<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
+<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
+<p>实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<ol start="4">
-<li>O($n^2$)        ——————–     e.g. Selection Sort (Not Recommended Time Complexity)</li>
-</ol>
-<h1 id="Java-IDEA-IDE-ShortCut"><a href="#Java-IDEA-IDE-ShortCut" class="headerlink" title="Java IDEA IDE ShortCut"></a>Java IDEA IDE ShortCut</h1><ol>
-<li>sout + enter</li>
-<li>psvm + enter</li>
-<li>fori + enter</li>
-<li>iter + enter</li>
-</ol>
+<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
+<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>Algorithm/算法</category>
+        <category>FrontEnd/前端</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
+        <tag>React</tag>
       </tags>
   </entry>
   <entry>
@@ -1592,74 +1788,39 @@
       </tags>
   </entry>
   <entry>
-    <title>Redux Introduction --- Operation Intro</title>
-    <url>/en/2021/11/28/ReduxIntroduction/</url>
-    <content><![CDATA[<p><strong>Redux 是 JavaScript 状态容器，提供可预测化的状态管理。</strong>随着 JavaScript 单页应用开发日趋复杂，<strong>JavaScript 需要管理比任何时候都要多的 state （状态）</strong>。 这些 state 可能包括<strong>服务器响应、缓存数据、本地生成尚未持久化到服务器的数据</strong>，也包括<strong>UI 状态，如激活的路由，被选中的标签，是否显示加载动效或者分页器</strong>等等。<strong>本次主要讲解当前针对react框架的redux，即REACT-REDUX。</strong></p>
+    <title>Hello World</title>
+    <url>/en/2021/02/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Some Methods to Flatten a Nested Array</title>
+    <url>/en/2022/12/10/SomeMethodstoFlattenANestedArray/</url>
+    <content><![CDATA[<p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
 <a id="more"></a>
 
-<h1 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React-Redux"></a>React-Redux</h1><p><strong>首先，react-redux与redux的核心理念一致，只是一些API的使用上存在差异，react-redux使得在react中使用redux更为简便。</strong></p>
-<h2 id="Redux的三大原则——Three-Principles"><a href="#Redux的三大原则——Three-Principles" class="headerlink" title="Redux的三大原则——Three Principles"></a>Redux的三大原则——Three Principles</h2><h3 id="单一数据源"><a href="#单一数据源" class="headerlink" title="单一数据源"></a>单一数据源</h3><p>整个应用的<code>state</code>被存储在一棵object tree上，并且这个object tree只存在于<code>store</code>，且<code>store</code>是唯一的，仅此一个。</p>
-<h3 id="State只读"><a href="#State只读" class="headerlink" title="State只读"></a>State只读</h3><p>唯一改变state的方法是触发<strong>action</strong>，action是一个用于描述已发生事件的对象，其形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code></p>
-<h3 id="使用纯函数来执行修改"><a href="#使用纯函数来执行修改" class="headerlink" title="使用纯函数来执行修改"></a>使用纯函数来执行修改</h3><p><strong>为了描述action如何改变state tree，需要编写reducers。</strong></p>
-<p>Reducer只是一些纯函数，它接收先前的 state 和 action，并返回新的 state。</p>
-<h2 id="React-Redux实际操作步骤"><a href="#React-Redux实际操作步骤" class="headerlink" title="React-Redux实际操作步骤"></a>React-Redux实际操作步骤</h2><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>在src下新建名为<code>redux</code>的文件，并创建好4个common JS文件，分别为<code>store.js</code>, <code>reducer.js</code>, <code>action.js</code>以及<code>constant.js</code>。其中<code>constant.js</code>用于存储常量，其余三个代表redux的三个核心。</p>
-<p>注：如果不只一个<code>action/reducer</code>，可以分别创建action和reducer的文件夹。</p>
-<p>在<code>index.js</code>中引入<code>store.js</code>，并从<code>react-redux</code>中引入<code>Provider</code>，<code>Provider</code>组件用于给<code>App</code>下的每个需要用到redux的组件传递<code>store</code>。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    <span class="comment">//为所有组件提供store</span></span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="步骤二——编写store"><a href="#步骤二——编写store" class="headerlink" title="步骤二——编写store"></a>步骤二——编写store</h3><p>在store文件中引入能创建<code>store</code>实例的<code>creatStore</code>、能修改状态的<code>reducer</code>和能执行异步的<code>thunk</code>和中间件<code>applyMiddleware</code>（如果需要）。</p>
-<p>注：<strong>对于多个状态需要维护的情况，从<code>redux</code>中引入<code>combineReducers</code>方法，该方法可以通过对象<code>&#123;&#125;</code>的键值对<code>key:value</code>形式，维护任意多个状态（即reducer）。</strong></p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware, combineReducers&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> countReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/count&#x27;</span></span><br><span class="line"><span class="keyword">import</span> personReducer <span class="keyword">from</span> <span class="string">&#x27;./reducers/person&#x27;</span></span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&#x27;redux-thunk&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> allReducers = combineReducers(&#123;<span class="attr">count</span>: countReducer, <span class="attr">people</span>: personReducer&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="步骤三——编写action"><a href="#步骤三——编写action" class="headerlink" title="步骤三——编写action"></a>步骤三——编写action</h3><p>引入store文件，和常量文件constant（如果有）。编写action函数，其会返回一个action对象，形式为<code>&#123;type:&quot;&quot;, data:&quot;&quot;&#125;</code>。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../store&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;INCREMENT, DECREMENT&#125; <span class="keyword">from</span> <span class="string">&#x27;../constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:INCREMENT, data&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createDecrementAction = <span class="function"><span class="params">data</span> =&gt;</span> (&#123;<span class="attr">type</span>:DECREMENT, data&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> createIncrementAsyncAction = <span class="function">(<span class="params">data, time</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            store.dispatch(&#123;<span class="attr">type</span>:INCREMENT, data&#125;)</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四——编写reducer"><a href="#步骤四——编写reducer" class="headerlink" title="步骤四——编写reducer"></a>步骤四——编写reducer</h3><p><strong>reducer负责维护状态。</strong>编写reducer函数，需要设置初始化的状态值，并对函数传入<code>action</code>参数，根据<code>action</code>对象的<code>type</code>和<code>data</code>对状态进行操作，并返回操作后的状态。</p>
-<p>实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initNumber = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">countReducer</span>(<span class="params">preState=initNumber, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type, data&#125; = action;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState + data;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> preState - data;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> preState;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>至此，redux部分的基本三大件已经写完。接下来需要编写组建模块。</p>
-<h3 id="步骤五——编写Container-Component"><a href="#步骤五——编写Container-Component" class="headerlink" title="步骤五——编写Container/Component"></a>步骤五——编写Container/Component</h3><p>首先，引入<code>action</code>，并从<code>react-redux</code>中引入<code>connect</code>函数，该函数用于创建并暴露一个Container容器，同时将state和action传入组件中，并且它们都会被传入到组件自身的<code>prorps</code>属性中。实例如下：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">// 引入connect</span></span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="comment">// 引入action</span></span><br><span class="line"><span class="keyword">import</span> &#123;createIncrementAction, createDecrementAction, createIncrementAsyncAction&#125; <span class="keyword">from</span> <span class="string">&#x27;../../redux/actions/count&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">  	<span class="comment">// 传入state</span></span><br><span class="line">    state =&gt; (&#123;<span class="attr">count</span>: state.count, <span class="attr">people</span>: state.people&#125;),</span><br><span class="line">  	<span class="comment">// 传入action</span></span><br><span class="line">    &#123;<span class="attr">increment</span>: createIncrementAction,</span><br><span class="line">     decrement: createDecrementAction,</span><br><span class="line">     asyncIncrement: createIncrementAsyncAction</span><br><span class="line">    &#125;</span><br><span class="line">    )(Count)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h1 id="Flatten-an-array-in-JavaScript"><a href="#Flatten-an-array-in-JavaScript" class="headerlink" title="Flatten an array in JavaScript"></a>Flatten an array in JavaScript</h1><h2 id="Method-1-Recursion"><a href="#Method-1-Recursion" class="headerlink" title="Method 1. Recursion"></a>Method 1. Recursion</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      res = res.concat(flattenArray(item));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Method-2-toString-split"><a href="#Method-2-toString-split" class="headerlink" title="Method 2. toString() + split()"></a>Method 2. toString() + split()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FOr example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>]], <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.toString().split(<span class="string">&quot;,&quot;</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">parseInt</span>(item));</span><br></pre></td></tr></table></figure>
+<h2 id="Method-3-The-flat-method"><a href="#Method-3-The-flat-method" class="headerlink" title="Method 3. The flat() method"></a>Method 3. The flat() method</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// For example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>], [<span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr.flat(); <span class="comment">// The depth level is 1 by default</span></span><br><span class="line">arr.flat(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Method-4-Recursion-map"><a href="#Method-4-Recursion-map" class="headerlink" title="Method 4. Recursion + map"></a>Method 4. Recursion + map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? flattenArray(item) : item</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 
 ]]></content>
       <categories>
-        <category>FrontEnd/前端</category>
+        <category>Algorithm/算法</category>
       </categories>
       <tags>
-        <tag>React</tag>
+        <tag>Algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -1710,42 +1871,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/en/2021/02/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Some Methods to Flatten a Nested Array</title>
-    <url>/en/2022/12/10/SomeMethodstoFlattenANestedArray/</url>
-    <content><![CDATA[<p><strong>When dealing with data in the client side, programmers often face this data structure that is called nested array. It’s very difficult for us tp iterate through all the data, especially when we wanna compare all of them and get some specific data. Therefore, flattening an array is very important for us to master. This chapter will introduce seversal ways to flatten an array.</strong></p>
-<a id="more"></a>
-
-<h1 id="Flatten-an-array-in-JavaScript"><a href="#Flatten-an-array-in-JavaScript" class="headerlink" title="Flatten an array in JavaScript"></a>Flatten an array in JavaScript</h1><h2 id="Method-1-Recursion"><a href="#Method-1-Recursion" class="headerlink" title="Method 1. Recursion"></a>Method 1. Recursion</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      res = res.concat(flattenArray(item));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      res.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Method-2-toString-split"><a href="#Method-2-toString-split" class="headerlink" title="Method 2. toString() + split()"></a>Method 2. toString() + split()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// FOr example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>]], <span class="number">9</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.toString().split(<span class="string">&quot;,&quot;</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">parseInt</span>(item));</span><br></pre></td></tr></table></figure>
-<h2 id="Method-3-The-flat-method"><a href="#Method-3-The-flat-method" class="headerlink" title="Method 3. The flat() method"></a>Method 3. The flat() method</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// For example</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>], [<span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line">arr.flat(); <span class="comment">// The depth level is 1 by default</span></span><br><span class="line">arr.flat(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="Method-4-Recursion-map"><a href="#Method-4-Recursion-map" class="headerlink" title="Method 4. Recursion + map"></a>Method 4. Recursion + map</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattenArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].concat(arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    item <span class="keyword">instanceof</span> <span class="built_in">Array</span> ? flattenArray(item) : item</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
-      <categories>
-        <category>Algorithm/算法</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Set up local testing server using Python</title>
     <url>/en/2021/09/16/Python-localServer/</url>
     <content><![CDATA[<p><strong>关于使用Python搭建简易本地服务器指南，可用于异步测试等。</strong></p>
@@ -1776,131 +1901,6 @@
       </categories>
       <tags>
         <tag>Server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Understanding Docker Technologoy</title>
-    <url>/en/2025/03/16/Docker%20Intro/</url>
-    <content><![CDATA[<p><strong>This article will talk about docker, one of the most popular containerisation technologies that every developer should know and master.</strong></p>
-<a id="more"></a>
-
-<h1 id="Understanding-Docker-and-Docker-Compose-A-Comprehensive-Guide"><a href="#Understanding-Docker-and-Docker-Compose-A-Comprehensive-Guide" class="headerlink" title="Understanding Docker and Docker Compose: A Comprehensive Guide"></a>Understanding Docker and Docker Compose: A Comprehensive Guide</h1><h2 id="1-What-is-Docker"><a href="#1-What-is-Docker" class="headerlink" title="1. What is Docker?"></a>1. What is Docker?</h2><p>Docker is a platform that enables developers to package applications and their dependencies into lightweight, portable containers. Think of a container as a standardized unit that includes everything needed to run a piece of software: code, runtime, system tools, libraries, and settings.</p>
-<p><strong>The Core Problem Docker Solves:</strong> Have you ever heard developers say “it works on my machine”? Docker eliminates this problem by ensuring that applications run identically across different environments—whether on your laptop, a colleague’s workstation, or a production server.</p>
-<h3 id="Key-Concepts-in-Docker"><a href="#Key-Concepts-in-Docker" class="headerlink" title="Key Concepts in Docker"></a>Key Concepts in Docker</h3><ul>
-<li><strong>Images</strong>: Read-only templates that contain the application and its dependencies</li>
-<li><strong>Containers</strong>: Running instances of images—lightweight, isolated processes</li>
-<li><strong>Dockerfile</strong>: A text file with instructions to build a Docker image</li>
-<li><strong>Docker Engine</strong>: The runtime that executes and manages containers</li>
-</ul>
-<h2 id="2-What-is-Docker-Compose"><a href="#2-What-is-Docker-Compose" class="headerlink" title="2. What is Docker Compose?"></a>2. What is Docker Compose?</h2><p>Docker Compose is a tool for defining and running multi-container Docker applications. While Docker handles individual containers, Docker Compose orchestrates multiple containers that work together.</p>
-<h3 id="2-1-Why-Docker-Compose"><a href="#2-1-Why-Docker-Compose" class="headerlink" title="2.1 Why Docker Compose?"></a>2.1 Why Docker Compose?</h3><p>Let me ask you this: What happens when your application needs multiple services? For example, a web application might need:</p>
-<ul>
-<li>A web server (Node.js, Python, etc.)</li>
-<li>A database (PostgreSQL, MongoDB)</li>
-<li>A cache layer (Redis)</li>
-<li>A reverse proxy (Nginx)</li>
-</ul>
-<p>Running each service individually with separate <code>docker run</code> commands becomes tedious and error-prone. Docker Compose solves this by letting you define all services in a single YAML file.</p>
-<h2 id="3-Key-Differences"><a href="#3-Key-Differences" class="headerlink" title="3. Key Differences"></a>3. Key Differences</h2><table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>Docker</th>
-<th>Docker Compose</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Purpose</strong></td>
-<td>Manages individual containers</td>
-<td>Orchestrates multiple containers</td>
-</tr>
-<tr>
-<td><strong>Configuration</strong></td>
-<td>Command-line or Dockerfile</td>
-<td>YAML configuration file</td>
-</tr>
-<tr>
-<td><strong>Use Case</strong></td>
-<td>Single-container applications</td>
-<td>Multi-container applications</td>
-</tr>
-<tr>
-<td><strong>Networking</strong></td>
-<td>Manual network setup</td>
-<td>Automatic network creation</td>
-</tr>
-<tr>
-<td><strong>Startup</strong></td>
-<td>One container at a time</td>
-<td>All services with one command</td>
-</tr>
-</tbody></table>
-<h2 id="4-Benefits-of-Docker-Technology"><a href="#4-Benefits-of-Docker-Technology" class="headerlink" title="4. Benefits of Docker Technology"></a>4. Benefits of Docker Technology</h2><h3 id="4-1-Consistency-Across-Environments"><a href="#4-1-Consistency-Across-Environments" class="headerlink" title="4.1. Consistency Across Environments"></a>4.1. <strong>Consistency Across Environments</strong></h3><p>Eliminates the “works on my machine” problem by ensuring identical environments everywhere.</p>
-<h3 id="4-2-Isolation"><a href="#4-2-Isolation" class="headerlink" title="4.2. Isolation"></a>4.2. <strong>Isolation</strong></h3><p>Each container runs independently, preventing conflicts between different applications or versions.</p>
-<h3 id="4-3-Efficiency"><a href="#4-3-Efficiency" class="headerlink" title="4.3. Efficiency"></a>4.3. <strong>Efficiency</strong></h3><p>Containers share the host OS kernel, making them more lightweight than traditional virtual machines.</p>
-<h3 id="4-4-Rapid-Deployment"><a href="#4-4-Rapid-Deployment" class="headerlink" title="4.4. Rapid Deployment"></a>4.4. <strong>Rapid Deployment</strong></h3><p>Start, stop, and rebuild applications in seconds rather than minutes.</p>
-<h3 id="4-5-Scalability"><a href="#4-5-Scalability" class="headerlink" title="4.5. Scalability"></a>4.5. <strong>Scalability</strong></h3><p>Easily replicate containers to handle increased load.</p>
-<h3 id="4-6-Version-Control"><a href="#4-6-Version-Control" class="headerlink" title="4.6. Version Control"></a>4.6. <strong>Version Control</strong></h3><p>Docker images can be versioned, making rollbacks simple and reliable.</p>
-<h2 id="5-Practical-Example-Dockerizing-a-Full-Stack-Application"><a href="#5-Practical-Example-Dockerizing-a-Full-Stack-Application" class="headerlink" title="5. Practical Example: Dockerizing a Full-Stack Application"></a>5. Practical Example: Dockerizing a Full-Stack Application</h2><p>Let me walk you through dockerizing a real-world application: a Node.js/Express API with a PostgreSQL database and Redis for caching.</p>
-<h3 id="5-1-Project-Structure"><a href="#5-1-Project-Structure" class="headerlink" title="5.1 Project Structure"></a>5.1 Project Structure</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">my-app&#x2F;</span><br><span class="line">├── backend&#x2F;</span><br><span class="line">│   ├── src&#x2F;</span><br><span class="line">│   │   └── server.js</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   └── Dockerfile</span><br><span class="line">├── docker-compose.yml</span><br><span class="line">└── .env</span><br></pre></td></tr></table></figure>
-<h3 id="5-2-Steps"><a href="#5-2-Steps" class="headerlink" title="5.2 Steps"></a>5.2 Steps</h3><h4 id="Step-1-Create-the-Backend-Application"><a href="#Step-1-Create-the-Backend-Application" class="headerlink" title="Step 1: Create the Backend Application"></a>Step 1: Create the Backend Application</h4><p><strong>backend/src/server.js</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; Pool &#125; = <span class="built_in">require</span>(<span class="string">&#x27;pg&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> redis = <span class="built_in">require</span>(<span class="string">&#x27;redis&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express();</span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PostgreSQL connection</span></span><br><span class="line"><span class="keyword">const</span> pool = <span class="keyword">new</span> Pool(&#123;</span><br><span class="line">  host: process.env.DB_HOST,</span><br><span class="line">  port: process.env.DB_PORT,</span><br><span class="line">  database: process.env.DB_NAME,</span><br><span class="line">  user: process.env.DB_USER,</span><br><span class="line">  password: process.env.DB_PASSWORD,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Redis connection</span></span><br><span class="line"><span class="keyword">const</span> redisClient = redis.createClient(&#123;</span><br><span class="line">  socket: &#123;</span><br><span class="line">    host: process.env.REDIS_HOST,</span><br><span class="line">    port: process.env.REDIS_PORT,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">redisClient.connect();</span><br><span class="line"></span><br><span class="line">app.use(express.json());</span><br><span class="line"></span><br><span class="line"><span class="comment">// Health check endpoint</span></span><br><span class="line">app.get(<span class="string">&#x27;/health&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> pool.query(<span class="string">&#x27;SELECT NOW()&#x27;</span>);</span><br><span class="line">    <span class="keyword">await</span> redisClient.ping();</span><br><span class="line">    res.json(&#123; <span class="attr">status</span>: <span class="string">&#x27;healthy&#x27;</span>, <span class="attr">timestamp</span>: <span class="keyword">new</span> <span class="built_in">Date</span>() &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).json(&#123; <span class="attr">status</span>: <span class="string">&#x27;unhealthy&#x27;</span>, <span class="attr">error</span>: error.message &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Example endpoint with caching</span></span><br><span class="line">app.get(<span class="string">&#x27;/users&#x27;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// Check cache first</span></span><br><span class="line">    <span class="keyword">const</span> cachedUsers = <span class="keyword">await</span> redisClient.get(<span class="string">&#x27;users&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (cachedUsers) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.json(&#123; <span class="attr">source</span>: <span class="string">&#x27;cache&#x27;</span>, <span class="attr">data</span>: <span class="built_in">JSON</span>.parse(cachedUsers) &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Query database</span></span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> pool.query(<span class="string">&#x27;SELECT * FROM users LIMIT 10&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Cache the result</span></span><br><span class="line">    <span class="keyword">await</span> redisClient.setEx(<span class="string">&#x27;users&#x27;</span>, <span class="number">60</span>, <span class="built_in">JSON</span>.stringify(result.rows));</span><br><span class="line">    </span><br><span class="line">    res.json(&#123; <span class="attr">source</span>: <span class="string">&#x27;database&#x27;</span>, <span class="attr">data</span>: result.rows &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    res.status(<span class="number">500</span>).json(&#123; <span class="attr">error</span>: error.message &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Server running on port <span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><strong>backend/package.json</strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;backend&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;src/server.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;node src/server.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;express&quot;</span>: <span class="string">&quot;^4.18.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;pg&quot;</span>: <span class="string">&quot;^8.11.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;redis&quot;</span>: <span class="string">&quot;^4.6.7&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step-2-Create-the-Dockerfile"><a href="#Step-2-Create-the-Dockerfile" class="headerlink" title="Step 2: Create the Dockerfile"></a>Step 2: Create the Dockerfile</h4><p><strong>backend/Dockerfile</strong></p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Use official Node.js runtime as base image</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set working directory in container</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Copy package files</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Install dependencies</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install --production</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Copy application code</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> src ./src</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Expose the port the app runs on</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">3000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Command to run the application</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;npm&quot;</span>, <span class="string">&quot;start&quot;</span>]</span></span><br></pre></td></tr></table></figure>
-<p>**Note: **Each comment means what each instruction does. Understanding the layered nature of Docker images is crucial—each instruction creates a new layer.</p>
-<p><strong>Why copy package.json separately?</strong> This is a Docker best practice called “<strong>layer caching</strong>.” Docker caches each step. If your code changes but dependencies don’t, Docker skips reinstalling everything. This makes rebuilds MUCH faster.</p>
-<h5 id="Step-3-Create-the-Docker-Compose-Configuration"><a href="#Step-3-Create-the-Docker-Compose-Configuration" class="headerlink" title="Step 3: Create the Docker Compose Configuration"></a>Step 3: Create the Docker Compose Configuration</h5><p><strong>docker-compose.yml</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="comment"># Backend API Service</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">build:</span></span><br><span class="line">      <span class="attr">context:</span> <span class="string">./backend</span></span><br><span class="line">      <span class="attr">dockerfile:</span> <span class="string">Dockerfile</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">my-app-backend</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">PORT=3000</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_HOST=postgres</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_PORT=5432</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_NAME=myappdb</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_USER=admin</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DB_PASSWORD=secretpassword</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">REDIS_HOST=redis</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">REDIS_PORT=6379</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">postgres</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">redis</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app-network</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./backend/src:/app/src</span>  <span class="comment"># Hot reload for development</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># PostgreSQL Database</span></span><br><span class="line">  <span class="attr">postgres:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">postgres:15-alpine</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">my-app-postgres</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">POSTGRES_DB=myappdb</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">POSTGRES_USER=admin</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">POSTGRES_PASSWORD=secretpassword</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;5432:5432&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">postgres-data:/var/lib/postgresql/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./init.sql:/docker-entrypoint-initdb.d/init.sql</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app-network</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Redis Cache</span></span><br><span class="line">  <span class="attr">redis:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">redis:7-alpine</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">my-app-redis</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app-network</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Named volumes for data persistence</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">postgres-data:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Network for service communication</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">app-network:</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">bridge</span></span><br></pre></td></tr></table></figure>
-<h4 id="Step-4-Create-Database-Initialization-Script"><a href="#Step-4-Create-Database-Initialization-Script" class="headerlink" title="Step 4: Create Database Initialization Script"></a>Step 4: Create Database Initialization Script</h4><p><strong>init.sql</strong></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- Create users table</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> users (</span><br><span class="line">    id SERIAL <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">UNIQUE</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    created_at <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Insert sample data</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> users (username, email) <span class="keyword">VALUES</span></span><br><span class="line">    (<span class="string">&#x27;john_doe&#x27;</span>, <span class="string">&#x27;john@example.com&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;jane_smith&#x27;</span>, <span class="string">&#x27;jane@example.com&#x27;</span>),</span><br><span class="line">    (<span class="string">&#x27;bob_wilson&#x27;</span>, <span class="string">&#x27;bob@example.com&#x27;</span>)</span><br><span class="line"><span class="keyword">ON</span> CONFLICT (username) DO NOTHING;</span><br></pre></td></tr></table></figure>
-<h3 id="Step-5-Running-the-Application"><a href="#Step-5-Running-the-Application" class="headerlink" title="Step 5: Running the Application"></a>Step 5: Running the Application</h3><p>Here’s where Docker Compose shows its power. Instead of running multiple <code>docker run</code> commands, you execute just one:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Start all services</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># View logs</span></span><br><span class="line">docker-compose logs -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check service status</span></span><br><span class="line">docker-compose ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># Stop all services</span></span><br><span class="line">docker-compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rebuild and restart</span></span><br><span class="line">docker-compose up -d --build</span><br></pre></td></tr></table></figure>
-<h3 id="5-3-Understanding-the-Docker-Compose-Configuration"><a href="#5-3-Understanding-the-Docker-Compose-Configuration" class="headerlink" title="5.3 Understanding the Docker Compose Configuration"></a>5.3 Understanding the Docker Compose Configuration</h3><p>Let me break down what’s happening here—can you identify why we use <code>depends_on</code>? It ensures services start in the correct order, though it doesn’t wait for a service to be “ready,” only “started.”</p>
-<p><strong>Key Features Demonstrated:</strong></p>
-<ol>
-<li><strong>Service Definition</strong>: Three services (backend, postgres, redis) working together</li>
-<li><strong>Networking</strong>: Automatic network creation allows services to communicate using service names</li>
-<li><strong>Volume Mounting</strong>: Data persistence for PostgreSQL and hot-reload for development</li>
-<li><strong>Environment Variables</strong>: Configuration without hardcoding values</li>
-<li><strong>Port Mapping</strong>: Exposing services to the host machine</li>
-<li><strong>Dependencies</strong>: Ensuring proper startup order</li>
-</ol>
-<h3 id="5-4-Testing-the-Application"><a href="#5-4-Testing-the-Application" class="headerlink" title="5.4 Testing the Application"></a>5.4 Testing the Application</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Check health</span></span><br><span class="line">curl http://localhost:3000/health</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get users (first call hits database)</span></span><br><span class="line">curl http://localhost:3000/users</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get users again (second call hits cache)</span></span><br><span class="line">curl http://localhost:3000/users</span><br></pre></td></tr></table></figure>
-<h2 id="6-Advanced-Docker-Compose-Features"><a href="#6-Advanced-Docker-Compose-Features" class="headerlink" title="6. Advanced Docker Compose Features"></a>6. Advanced Docker Compose Features</h2><h3 id="6-1-Environment-Files"><a href="#6-1-Environment-Files" class="headerlink" title="6.1 Environment Files"></a>6.1 Environment Files</h3><p>Create a <code>.env</code> file for sensitive data:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DB_PASSWORD&#x3D;secretpassword</span><br><span class="line">POSTGRES_PASSWORD&#x3D;secretpassword</span><br></pre></td></tr></table></figure>
-<p>Reference in docker-compose.yml:</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">environment:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">DB_PASSWORD=$&#123;DB_PASSWORD&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="6-2-Multiple-Compose-Files"><a href="#6-2-Multiple-Compose-Files" class="headerlink" title="6.2 Multiple Compose Files"></a>6.2 Multiple Compose Files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Development</span></span><br><span class="line">docker-compose -f docker-compose.yml -f docker-compose.dev.yml up</span><br><span class="line"></span><br><span class="line"><span class="comment"># Production</span></span><br><span class="line">docker-compose -f docker-compose.yml -f docker-compose.prod.yml up</span><br></pre></td></tr></table></figure>
-<h2 id="7-Best-Practices-of-Docker-Compose"><a href="#7-Best-Practices-of-Docker-Compose" class="headerlink" title="7. Best Practices of Docker Compose"></a>7. Best Practices of Docker Compose</h2><ol>
-<li><p><strong>Use .dockerignore</strong>: Exclude unnecessary files from the build context</p>
-</li>
-<li><p><strong>Multi-stage builds</strong>: Reduce image size by separating build and runtime dependencies</p>
-<ol>
-<li><h3 id="Single-Stage-Build-Inefficient"><a href="#Single-Stage-Build-Inefficient" class="headerlink" title="Single-Stage Build (Inefficient)"></a>Single-Stage Build (Inefficient)</h3><p>dockerfile</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install           <span class="comment"># Installs ALL dependencies (including dev tools)</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm run build         <span class="comment"># Builds your app</span></span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;npm&quot;</span>, <span class="string">&quot;start&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Problem: Final image includes build tools, dev dependencies, source code</span></span><br><span class="line"><span class="comment"># Image size: ~500MB</span></span><br></pre></td></tr></table></figure>
-<h3 id="Multi-Stage-Build-Efficient"><a href="#Multi-Stage-Build-Efficient" class="headerlink" title="Multi-Stage Build (Efficient)"></a>Multi-Stage Build (Efficient)</h3><p>dockerfile</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stage 1: BUILD - Use full Node.js with build tools</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span> AS builder</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install                    <span class="comment"># All dependencies</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm run build                  <span class="comment"># Creates /app/dist</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Stage 2: RUN - Use lightweight Node.js, copy only what&#x27;s needed</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span>-alpine               <span class="comment"># Smaller base image</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> package*.json ./</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install --production      <span class="comment"># Only production dependencies</span></span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> --from=builder /app/dist ./dist   <span class="comment"># Copy ONLY the built files</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;dist/server.js&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result: Final image only has production code and dependencies</span></span><br><span class="line"><span class="comment"># Image size: ~150MB</span></span><br></pre></td></tr></table></figure>
-<p><strong>Key insight:</strong> The final image only contains what’s in the LAST stage. Everything from earlier stages is discarded.</p>
-</li>
-</ol>
-</li>
-<li><p><strong>Don’t run as root</strong>: Create non-root users in containers for security</p>
-</li>
-<li><p><strong>Use specific image tags</strong>: Avoid <code>latest</code> for reproducibility</p>
-</li>
-<li><p><strong>Health checks</strong>: Implement health checks for better orchestration</p>
-</li>
-<li><p><strong>Named volumes</strong>: Use named volumes for important data</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Containerisation</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
 </search>
