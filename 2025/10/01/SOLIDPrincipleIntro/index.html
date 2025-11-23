@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon.ico">
+  <link rel="mask-icon" href="/en/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT Serif:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/en/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/en/lib/pace/pace-theme-minimal.min.css">
+  <script src="/en/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wizard-guido.github.io","root":"/en/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="This article is a detailed, mid-level–friendly introduction on SOLID principles with practical, real-world C# examples.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SOLID Principle Intro">
+<meta property="og:url" content="https://wizard-guido.github.io/en/2025/10/01/SOLIDPrincipleIntro/index.html">
+<meta property="og:site_name" content="Binary Vagabondage">
+<meta property="og:description" content="This article is a detailed, mid-level–friendly introduction on SOLID principles with practical, real-world C# examples.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-30T23:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-23T16:46:49.318Z">
+<meta property="article:author" content="Will">
+<meta property="article:tag" content="OOD">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wizard-guido.github.io/en/2025/10/01/SOLIDPrincipleIntro/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+
+<script type="text/javascript">
+  // Wait for the page to load first
+  var _prevOnload = window.onload;
+  window.onload = function() {
+      var switchLang = document.getElementsByClassName("menu-item menu-item-switch_lang")[0];
+      switchLang.onclick = function() {
+          var href = window.location.href;
+          var indexOfEn = href.toLowerCase().indexOf('/en/');
+          if(indexOfEn !== -1) {
+              window.location.href = href.replace('/en/', '/');
+          }
+          else {
+              window.location.href = href.replace('.io', '.io/en');
+          }
+          if(typeof(_prevOnload) === 'function') {
+              _prevOnload();
+          }
+          return false;
+      }
+  }
+</script>
+  <title>SOLID Principle Intro | Binary Vagabondage</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Binary Vagabondage</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-switch_lang">
+
+    <a href="https://wizard-guido.github.io/" rel="section"><i class="fa fa-language fa-fw"></i>简体中文</a>
+
+  </li>
+        <li class="menu-item menu-item-home">
+
+    <a href="/en/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/en/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-training">
+
+    <a href="/en/training/" rel="section"><i class="fa fa-dumbbell fa-fw"></i>Training</a>
+
+  </li>
+        <li class="menu-item menu-item-photography">
+
+    <a href="/en/photography/" rel="section"><i class="fas fa-camera fa-fw"></i>Photography</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Wizard-Guido?tab=repositories" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wizard-guido.github.io/en/2025/10/01/SOLIDPrincipleIntro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="Will">
+      <meta itemprop="description" content="In me the tiger sniffs the rose">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Binary Vagabondage">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SOLID Principle Intro
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-10-01 00:00:00" itemprop="dateCreated datePublished" datetime="2025-10-01T00:00:00+01:00">2025-10-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-11-23 16:46:49" itemprop="dateModified" datetime="2025-11-23T16:46:49+00:00">2025-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/en/categories/Object-Oriented-Design/" itemprop="url" rel="index"><span itemprop="name">Object-Oriented Design</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>6.8k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>This article is a <strong>detailed, mid-level–friendly introduction on SOLID principles</strong> with <strong>practical, real-world C# examples</strong>.</p>
+<a id="more"></a>
+
+<h1 id="Mastering-SOLID-Principles-in-C-—-A-Practical-Guide-for-Mid-Level-Engineers"><a href="#Mastering-SOLID-Principles-in-C-—-A-Practical-Guide-for-Mid-Level-Engineers" class="headerlink" title="Mastering SOLID Principles in C# — A Practical Guide for Mid-Level Engineers"></a><strong>Mastering SOLID Principles in C# — A Practical Guide for Mid-Level Engineers</strong></h1><p>SOLID is a set of five core design principles that help developers write <strong>clean</strong>, <strong>maintainable</strong>, and <strong>extensible</strong> software. As systems grow, codebases naturally become harder to manage—SOLID helps you fight that entropy.</p>
+<p>This article walks through each SOLID principle with <strong>realistic C# examples</strong> that apply to typical enterprise work: APIs, services, repositories, domain logic, validation, and more.</p>
+<hr>
+<h2 id="1-S-—-Single-Responsibility-Principle-SRP"><a href="#1-S-—-Single-Responsibility-Principle-SRP" class="headerlink" title="1. S — Single Responsibility Principle (SRP)"></a>1. S — Single Responsibility Principle (SRP)</h2><blockquote>
+<p><strong>A class should have one reason to change.</strong></p>
+</blockquote>
+<p>SRP is often misunderstood as “a class does only one thing.”<br> It actually means: <strong>a class should have one responsibility (axis of change).</strong></p>
+<h3 id="❌-Bad-Example-—-A-service-doing-too-much"><a href="#❌-Bad-Example-—-A-service-doing-too-much" class="headerlink" title="❌ Bad Example — A service doing too much"></a>❌ <strong>Bad Example — A service doing too much</strong></h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OrderService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlaceOrder</span>(<span class="params">Order order</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 1. Validate</span></span><br><span class="line">        <span class="keyword">if</span> (order.Items.Count == <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Empty order&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. Save to DB</span></span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">var</span> conn = <span class="keyword">new</span> SqlConnection(<span class="string">&quot;...&quot;</span>);</span><br><span class="line">        conn.Open();</span><br><span class="line">        <span class="comment">// ... Insert SQL here</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. Send confirmation email</span></span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">var</span> client = <span class="keyword">new</span> SmtpClient(<span class="string">&quot;server&quot;</span>);</span><br><span class="line">        client.Send(<span class="string">&quot;noreply@shop.com&quot;</span>, order.CustomerEmail, <span class="string">&quot;Order placed&quot;</span>, <span class="string">&quot;Thank you!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Why this is bad:</strong></p>
+<ul>
+<li>Business logic, persistence, and email sending all mixed</li>
+<li>Modifying one behavior risks breaking others</li>
+<li>Hard to test</li>
+</ul>
+<h3 id="✅-Good-Example-—-Split-responsibilities"><a href="#✅-Good-Example-—-Split-responsibilities" class="headerlink" title="✅ Good Example — Split responsibilities"></a>✅ Good Example — Split responsibilities</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IOrderRepository</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Save</span>(<span class="params">Order order</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEmailService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SendOrderConfirmation</span>(<span class="params">Order order</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">OrderService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IOrderRepository _repository;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IEmailService _email;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OrderService</span>(<span class="params">IOrderRepository repository, IEmailService email</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _repository = repository;</span><br><span class="line">        _email = email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">PlaceOrder</span>(<span class="params">Order order</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Validate(order);</span><br><span class="line">        _repository.Save(order);</span><br><span class="line">        _email.SendOrderConfirmation(order);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Validate</span>(<span class="params">Order order</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!order.Items.Any())</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Empty order&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now each class has <em>one reason to change</em>:</p>
+<ul>
+<li>Validation → change rules</li>
+<li>Repo → change storage</li>
+<li>Email → change messaging provider</li>
+</ul>
+<hr>
+<h2 id="2-O-—-Open-Closed-Principle-OCP"><a href="#2-O-—-Open-Closed-Principle-OCP" class="headerlink" title="2. O — Open/Closed Principle (OCP)"></a>2. O — Open/Closed Principle (OCP)</h2><blockquote>
+<p><strong>Classes should be open for extension, but closed for modification.</strong></p>
+</blockquote>
+<p>This avoids editing existing classes when adding new behaviors—reducing risk and testing load.</p>
+<h4 id="Use-polymorphism-strategies-or-configuration-instead-of-if-else-growth"><a href="#Use-polymorphism-strategies-or-configuration-instead-of-if-else-growth" class="headerlink" title="Use polymorphism, strategies, or configuration instead of if/else growth."></a>Use <strong>polymorphism</strong>, <strong>strategies</strong>, or <strong>configuration</strong> instead of <code>if/else</code> growth.</h4><h3 id="❌-Bad-Example-—-Growing-conditional-logic"><a href="#❌-Bad-Example-—-Growing-conditional-logic" class="headerlink" title="❌ Bad Example — Growing conditional logic"></a>❌ Bad Example — Growing conditional logic</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">decimal</span> <span class="title">CalculateDiscount</span>(<span class="params">Customer customer</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (customer.Type == <span class="string">&quot;Regular&quot;</span>) <span class="keyword">return</span> <span class="number">0</span>m;</span><br><span class="line">    <span class="keyword">if</span> (customer.Type == <span class="string">&quot;Premium&quot;</span>) <span class="keyword">return</span> <span class="number">0.1</span>m;</span><br><span class="line">    <span class="keyword">if</span> (customer.Type == <span class="string">&quot;VIP&quot;</span>) <span class="keyword">return</span> <span class="number">0.2</span>m;  <span class="comment">// Added later</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Every new customer type requires modifying this method.</p>
+<h3 id="✅-Good-Example-—-Strategy-pattern-for-extension"><a href="#✅-Good-Example-—-Strategy-pattern-for-extension" class="headerlink" title="✅ Good Example — Strategy pattern for extension"></a>✅ Good Example — Strategy pattern for extension</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IDiscountStrategy</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="built_in">decimal</span> <span class="title">GetDiscount</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RegularCustomerDiscount</span> : <span class="title">IDiscountStrategy</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">decimal</span> <span class="title">GetDiscount</span>(<span class="params"></span>)</span> =&gt; <span class="number">0</span>m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PremiumCustomerDiscount</span> : <span class="title">IDiscountStrategy</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">decimal</span> <span class="title">GetDiscount</span>(<span class="params"></span>)</span> =&gt; <span class="number">0.10</span>m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">VipCustomerDiscount</span> : <span class="title">IDiscountStrategy</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">decimal</span> <span class="title">GetDiscount</span>(<span class="params"></span>)</span> =&gt; <span class="number">0.20</span>m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DiscountService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IDiscountStrategy _strategy;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiscountService</span>(<span class="params">IDiscountStrategy strategy</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">decimal</span> <span class="title">Calculate</span>(<span class="params"></span>)</span> =&gt; _strategy.GetDiscount();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Adding a new customer type no longer edits existing code—just add a new class.</p>
+<hr>
+<h2 id="3-L-—-Liskov-Substitution-Principle-LSP"><a href="#3-L-—-Liskov-Substitution-Principle-LSP" class="headerlink" title="3. L — Liskov Substitution Principle (LSP)"></a>3. L — Liskov Substitution Principle (LSP)</h2><blockquote>
+<p><strong>Subtypes must be replaceable for their base types without breaking behavior.</strong></p>
+</blockquote>
+<p>If a derived class breaks the expected behavior of its parent, that violates LSP.</p>
+<h3 id="❌-Bad-Example-—-Overriding-to-break-rules"><a href="#❌-Bad-Example-—-Overriding-to-break-rules" class="headerlink" title="❌ Bad Example — Overriding to break rules"></a>❌ Bad Example — Overriding to break rules</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FileStorage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Save</span>(<span class="params"><span class="built_in">string</span> data</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        File.WriteAllText(<span class="string">&quot;data.txt&quot;</span>, data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ReadOnlyFileStorage</span> : <span class="title">FileStorage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Save</span>(<span class="params"><span class="built_in">string</span> data</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="string">&quot;Read-only storage cannot save.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This breaks expectations—<code>FileStorage.Save()</code> must always save.</p>
+<h3 id="✅-Good-Example-—-Remove-inheritance-and-use-composition"><a href="#✅-Good-Example-—-Remove-inheritance-and-use-composition" class="headerlink" title="✅ Good Example — Remove inheritance and use composition"></a>✅ Good Example — Remove inheritance and use composition</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IWritableStorage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Save</span>(<span class="params"><span class="built_in">string</span> data</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IReadOnlyStorage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">Read</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FileStorage</span> : <span class="title">IWritableStorage</span>, <span class="title">IReadOnlyStorage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Save</span>(<span class="params"><span class="built_in">string</span> data</span>)</span> &#123; <span class="comment">/*...*/</span> &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Read</span>(<span class="params"></span>)</span> &#123; <span class="comment">/*...*/</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ReadOnlyFileStorage</span> : <span class="title">IReadOnlyStorage</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Read</span>(<span class="params"></span>)</span> &#123; <span class="comment">/*...*/</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now no class violates the expectation of its interface.</p>
+<hr>
+<h3 id="4-I-—-Interface-Segregation-Principle-ISP"><a href="#4-I-—-Interface-Segregation-Principle-ISP" class="headerlink" title="4. I — Interface Segregation Principle (ISP)"></a>4. I — Interface Segregation Principle (ISP)</h3><blockquote>
+<p><strong>Clients should not be forced to depend on methods they do not use.</strong></p>
+</blockquote>
+<h3 id="❌-Bad-Example-—-Fat-interface"><a href="#❌-Bad-Example-—-Fat-interface" class="headerlink" title="❌ Bad Example — Fat interface"></a>❌ Bad Example — Fat interface</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IRepository</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">T <span class="title">Get</span>(<span class="params"><span class="built_in">int</span> id</span>)</span>;</span><br><span class="line">    <span class="function">IEnumerable&lt;T&gt; <span class="title">GetAll</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add</span>(<span class="params">T entity</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Delete</span>(<span class="params"><span class="built_in">int</span> id</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params">T entity</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">BulkInsert</span>(<span class="params">IEnumerable&lt;T&gt; entities</span>)</span>; <span class="comment">// Some repos don’t need this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now all implementations must support operations they may not need.</p>
+<h3 id="✅-Good-Example-—-Split-into-smaller-interfaces"><a href="#✅-Good-Example-—-Split-into-smaller-interfaces" class="headerlink" title="✅ Good Example — Split into smaller interfaces"></a>✅ Good Example — Split into smaller interfaces</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IReadRepository</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">T <span class="title">Get</span>(<span class="params"><span class="built_in">int</span> id</span>)</span>;</span><br><span class="line">    <span class="function">IEnumerable&lt;T&gt; <span class="title">GetAll</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IWriteRepository</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add</span>(<span class="params">T entity</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params">T entity</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Delete</span>(<span class="params"><span class="built_in">int</span> id</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can now have:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ReadOnlyCustomerRepository</span> : <span class="title">IReadRepository</span>&lt;<span class="title">Customer</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">// Only read operations implemented</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="5-D-—-Dependency-Inversion-Principle-DIP"><a href="#5-D-—-Dependency-Inversion-Principle-DIP" class="headerlink" title="5. D — Dependency Inversion Principle (DIP)"></a>5. D — Dependency Inversion Principle (DIP)</h3><blockquote>
+<p><strong>Depend on abstractions, not concretions.</strong></p>
+</blockquote>
+<p>High-level modules shouldn’t depend on low-level modules.</p>
+<h3 id="❌-Bad-Example-—-Hard-coded-dependency"><a href="#❌-Bad-Example-—-Hard-coded-dependency" class="headerlink" title="❌ Bad Example — Hard-coded dependency"></a>❌ Bad Example — Hard-coded dependency</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NotificationService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> SmtpClient _smtp = <span class="keyword">new</span> SmtpClient(<span class="string">&quot;server&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span>(<span class="params"><span class="built_in">string</span> email</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _smtp.Send(<span class="string">&quot;noreply@shop.com&quot;</span>, email, <span class="string">&quot;Hi&quot;</span>, <span class="string">&quot;Message&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You cannot unit test this or swap the provider.</p>
+<h3 id="✅-Good-Example-—-Inject-abstractions"><a href="#✅-Good-Example-—-Inject-abstractions" class="headerlink" title="✅ Good Example — Inject abstractions"></a>✅ Good Example — Inject abstractions</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEmailSender</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Send</span>(<span class="params"><span class="built_in">string</span> to, <span class="built_in">string</span> subject, <span class="built_in">string</span> message</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SmtpEmailSender</span> : <span class="title">IEmailSender</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span>(<span class="params"><span class="built_in">string</span> to, <span class="built_in">string</span> subject, <span class="built_in">string</span> message</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// SMTP implementation</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NotificationService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IEmailSender _email;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NotificationService</span>(<span class="params">IEmailSender email</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _email = email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Notify</span>(<span class="params"><span class="built_in">string</span> to</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _email.Send(to, <span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;Message&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now NotificationService depends on a <strong>stable abstraction</strong>, not a volatile concrete class.</p>
+<hr>
+<h3 id="Putting-It-All-Together-—-A-SOLID-Mini-Architecture"><a href="#Putting-It-All-Together-—-A-SOLID-Mini-Architecture" class="headerlink" title="Putting It All Together — A SOLID Mini Architecture"></a>Putting It All Together — A SOLID Mini Architecture</h3><p>A typical order workflow using all SOLID principles:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Controller -&gt; Service -&gt; Repository -&gt; DB</span><br><span class="line">                     -&gt; Validator</span><br><span class="line">                     -&gt; EmailProvider</span><br></pre></td></tr></table></figure>
+<h4 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits:"></a>Benefits:</h4><ul>
+<li>Easy unit tests</li>
+<li>Plug-in new providers (Email, DB, Logger, Payment Gateway)</li>
+<li>Open to extension, closed for risky modification</li>
+<li>Each class small and purposeful</li>
+</ul>
+<h3 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts"></a>Final Thoughts</h3><p>SOLID is not about dogmatically splitting classes—it’s about <strong>managing change</strong>.<br> Mid-level engineers gain massive productivity by learning these principles deeply:</p>
+<ul>
+<li>SRP → reduces coupling</li>
+<li>OCP → reduces risk</li>
+<li>LSP → ensures reliability</li>
+<li>ISP → keeps interfaces clean</li>
+<li>DIP → enables flexibility</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/OOD/" rel="tag"># OOD</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/en/2025/05/08/Terraform/" rel="prev" title="Infrastructure as Code --- Terraform">
+      <i class="fa fa-chevron-left"></i> Infrastructure as Code --- Terraform
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mastering-SOLID-Principles-in-C-%E2%80%94-A-Practical-Guide-for-Mid-Level-Engineers"><span class="nav-number">1.</span> <span class="nav-text">Mastering SOLID Principles in C# — A Practical Guide for Mid-Level Engineers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-S-%E2%80%94-Single-Responsibility-Principle-SRP"><span class="nav-number">1.1.</span> <span class="nav-text">1. S — Single Responsibility Principle (SRP)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-Bad-Example-%E2%80%94-A-service-doing-too-much"><span class="nav-number">1.1.1.</span> <span class="nav-text">❌ Bad Example — A service doing too much</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Good-Example-%E2%80%94-Split-responsibilities"><span class="nav-number">1.1.2.</span> <span class="nav-text">✅ Good Example — Split responsibilities</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-O-%E2%80%94-Open-Closed-Principle-OCP"><span class="nav-number">1.2.</span> <span class="nav-text">2. O — Open&#x2F;Closed Principle (OCP)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-polymorphism-strategies-or-configuration-instead-of-if-else-growth"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">Use polymorphism, strategies, or configuration instead of if&#x2F;else growth.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-Bad-Example-%E2%80%94-Growing-conditional-logic"><span class="nav-number">1.2.1.</span> <span class="nav-text">❌ Bad Example — Growing conditional logic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Good-Example-%E2%80%94-Strategy-pattern-for-extension"><span class="nav-number">1.2.2.</span> <span class="nav-text">✅ Good Example — Strategy pattern for extension</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-L-%E2%80%94-Liskov-Substitution-Principle-LSP"><span class="nav-number">1.3.</span> <span class="nav-text">3. L — Liskov Substitution Principle (LSP)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-Bad-Example-%E2%80%94-Overriding-to-break-rules"><span class="nav-number">1.3.1.</span> <span class="nav-text">❌ Bad Example — Overriding to break rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Good-Example-%E2%80%94-Remove-inheritance-and-use-composition"><span class="nav-number">1.3.2.</span> <span class="nav-text">✅ Good Example — Remove inheritance and use composition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-I-%E2%80%94-Interface-Segregation-Principle-ISP"><span class="nav-number">1.3.3.</span> <span class="nav-text">4. I — Interface Segregation Principle (ISP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-Bad-Example-%E2%80%94-Fat-interface"><span class="nav-number">1.3.4.</span> <span class="nav-text">❌ Bad Example — Fat interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Good-Example-%E2%80%94-Split-into-smaller-interfaces"><span class="nav-number">1.3.5.</span> <span class="nav-text">✅ Good Example — Split into smaller interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-D-%E2%80%94-Dependency-Inversion-Principle-DIP"><span class="nav-number">1.3.6.</span> <span class="nav-text">5. D — Dependency Inversion Principle (DIP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%8C-Bad-Example-%E2%80%94-Hard-coded-dependency"><span class="nav-number">1.3.7.</span> <span class="nav-text">❌ Bad Example — Hard-coded dependency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%85-Good-Example-%E2%80%94-Inject-abstractions"><span class="nav-number">1.3.8.</span> <span class="nav-text">✅ Good Example — Inject abstractions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Putting-It-All-Together-%E2%80%94-A-SOLID-Mini-Architecture"><span class="nav-number">1.3.9.</span> <span class="nav-text">Putting It All Together — A SOLID Mini Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Benefits"><span class="nav-number">1.3.9.1.</span> <span class="nav-text">Benefits:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Final-Thoughts"><span class="nav-number">1.3.10.</span> <span class="nav-text">Final Thoughts</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Will"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Will</p>
+  <div class="site-description" itemprop="description">In me the tiger sniffs the rose</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/en/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Will</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">120k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">1:49</span>
+</div>
+
+<!--
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/en/lib/anime.min.js"></script>
+  <script src="/en/lib/velocity/velocity.min.js"></script>
+  <script src="/en/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/en/js/utils.js"></script>
+
+<script src="/en/js/motion.js"></script>
+
+
+<script src="/en/js/schemes/pisces.js"></script>
+
+
+<script src="/en/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/en/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '455054cf930233ba6bb3',
+      clientSecret: '411a90e276dec1ad799b9ace429b94c20f632569',
+      repo        : 'en',
+      owner       : 'Wizard-Guido',
+      admin       : ['Wizard-Guido'],
+      id          : 'b8039b180c6b2469d626440bef1f1a19',
+        language: 'en',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
